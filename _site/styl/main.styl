@@ -1,62 +1,94 @@
-$header-color = #363636
-$header-text-color = #878785
-$header-height = 75px
+/****************************************************************
+* Variables
+****************************************************************/
 
-$sidebar-color = #404040
-$link-color = white
-$selected-link-color = #fa5c4f
+$navbar-color = #DA262E
+$navbar-text-color = #878785
+$navbar-height = 100px
+$navbar-link-color = white
 
-.navbar-default
-  font-size: 16px
-  height: $header-height
-  background-color: $header-color
-  color: $header-text-color
-  border-bottom: 0
+$sidebar-color = #E6E6E3
+$sidebar-link-color = #404040 
+$sidebar-selected-link-color = #fa5c4f
 
-  a
-    color: $link-color !important
-
-    &.selected
-      color: $selected-link-color !important
+/****************************************************************
+* Body / html
+****************************************************************/
 
 html, body
   height: 100%
+
+body
+  // Top navbar is fixed, so add padding to prevent content from going beneath
+  padding-top: $navbar-height
+  -webkit-font-smoothing: antialiased
+
+/****************************************************************
+* Main content area
+****************************************************************/
+
+.main-content
+  padding: 48px
+
+/****************************************************************
+* Utility classes
+****************************************************************/
 
 // For getting sidebar to expand 100% of height
 .fill
   height: 100%
 
-body
-  padding-top: $header-height
-  -webkit-font-smoothing: antialiased
 
-  .main-content
-    padding: 48px
+/****************************************************************
+* Main header navbar
+****************************************************************/
 
-.navbar-nav
-  // TODO: Find a better way to center
-  padding-top: 10px
-  
+.navbar-default
+  font-size: 18px
+  height: $navbar-height
+  background-color: $navbar-color
+  color: $navbar-text-color
+  border-bottom: 0
+
+  .navbar-brand
+    
+    img
+      height: 50px
+      margin-top: 10px
+
+  a
+    color: $navbar-link-color !important
+
+    &.selected
+      color: $selected-link-color !important
+
+  .navbar-nav
+    // TODO: Find a better way to center
+    padding-top: 25px
+
+/****************************************************************
+* Side nav
+****************************************************************/
+
 .side-nav
   background-color: $sidebar-color
   padding-top: 15px
-  height: 100%
-  min-height: 100%
+  position: fixed;
 
   ul
     list-style: none
   
   a
-    color: $link-color
+    color: $sidebar-link-color
 
     &.selected
-      color: $selected-link-color
+      color: $sidebar-selected-link-color
 
-.nav
+  .nav
 
-  li
-    
-    a
-      &:hover
-        // Overwrite the default hover styling
-        background-color: transparent
+    li
+      
+      a
+        &:hover
+          // Overwrite the default hover styling
+          background-color: transparent
