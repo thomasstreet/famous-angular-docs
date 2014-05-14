@@ -1,3 +1,12 @@
 .navbar-default {
   font-size: 16px;
+  height: 75px;
+  background-color: #363636;
+  color: #878785;
+}
+body {
+  padding-top: 75px;
+}
+.side-nav {
+  background-color: #404040;
 }

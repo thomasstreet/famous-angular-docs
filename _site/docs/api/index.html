@@ -49,42 +49,6 @@
 </nav>
 
 
-    <div class="header horizontal-gradient">
-      <div class="container">
-        <h3>Javascript</h3>
-        <h4>Build amazing AngularJS apps with the power of Famo.us</h4>
-      </div>
-      <div class="news">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 news-col">
-              <div class="picker">
-                <select onchange="window.location.href=this.options[this.selectedIndex].value">
-
-  <option
-   value="/docs/unstable/api/"
-   selected>
-    unstable (latest)
-  </option>
-
-</select>
-
-
-
-              </div>
-            </div>
-            <div class="col-sm-4 search-col">
-              <div class="search-bar">
-  <span class="search-icon ionic"><i class="ion-ios7-search-strong"></i></span>
-  <input type="search" id="search-input" value="Search">
-</div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div id="search-results" class="search-results" style="display:none">
   <div class="container">
     <div class="search-section search-api">
@@ -107,29 +71,38 @@
 
       <div class="row">
 
-        <div class="col-md-2 col-sm-3 aside-menu">
+        <div class="col-md-2 col-sm-3 side-nav">
 
           <div>
 
             <ul class="nav left-menu">
               <li class="menu-title">
-                <a href="/docs/overview/">Overview</a>
-              </li>
-            </ul>
+                <div class="picker">
+                  <select onchange="window.location.href=this.options[this.selectedIndex].value">
 
-            <ul class="nav left-menu">
+  <option
+   value="/docs/unstable/api/"
+   selected>
+    unstable (latest)
+  </option>
+
+</select>
+
+
+
+                </div>
+              </li>
+
               <li class="menu-title">
-                <a href="/docs/components/">CSS</a>
+                <div class="search-bar">
+  <span class="search-icon ionic"><i class="ion-ios7-search-strong"></i></span>
+  <input type="search" id="search-input" value="Search">
+</div>
+
               </li>
             </ul>
 
-            <!-- Docs: JavaScript -->
             <ul class="nav left-menu active-menu">
-              <li class="menu-title">
-                <a href="/docs/unstable/api/">
-                  JavaScript
-                </a>
-              </li>
               
     
   <!-- Directives -->
@@ -234,11 +207,6 @@
 
             </ul>
 
-            <ul class="nav left-menu">
-              <li class="menu-title">
-                <a href="/docs/guide/">Guide</a>
-              </li>
-            </ul>
 
           </div>
 
