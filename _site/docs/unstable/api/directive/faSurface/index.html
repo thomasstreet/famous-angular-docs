@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Famous Angular.">
+<meta name="keywords" content="angular,anguarljs,famo.us,famous,phonegap,html5,threejs,famous-angular">
+
+
+    
+      <!-- version /docs/unstable should not be indexed -->
+      <meta name="robots" content="noindex">
+    
+
+    <title>fa-surface - Directive in module famous.angular - Angular Famous</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+  </head>
+
+  <body class="docs docs-page docs-api">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle button ionic" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <i class="icon ion-navicon"></i>
+      </button>
+      <a class="navbar-brand" href="/">
+        
+          <img src="/img/famous-angular-logos.png" width="123" height="43" alt="Famous Angular">
+        
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="nav-link" href="/getting-started/">Getting Started</a></li>
+        <li><a class="nav-link" href="/docs/">Docs</a></li>
+        <li><a class="nav-link" href="https://github.com/FamousInternal/famous-angular">Github</a></li>
+          <li><a class="nav-link" href="http://famo.us/">Famo.us</a></li>
+        <li><a class="nav-link" href="http://www.angularjs.com/">AngularJS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="header horizontal-gradient">
+      <div class="container">
+        <h3>fa-surface</h3>
+        <h4>Directive in module famous.angular</h4>
+      </div>
+      <div class="news">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 news-col">
+              <div class="picker">
+                <select onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/unstable/api/"
+   selected>
+    unstable (latest)
+  </option>
+
+</select>
+
+
+
+              </div>
+            </div>
+            <div class="col-sm-4 search-col">
+              <div class="search-bar">
+  <span class="search-icon ionic"><i class="ion-ios7-search-strong"></i></span>
+  <input type="search" id="search-input" value="Search">
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="search-results" class="search-results" style="display:none">
+  <div class="container">
+    <div class="search-section search-api">
+      <h4>JavaScript</h4>
+      <ul id="results-api"></ul>
+    </div>
+    <div class="search-section search-css">
+      <h4>CSS</h4>
+      <ul id="results-css"></ul>
+    </div>
+    <div class="search-section search-content">
+      <h4>Resources</h4>
+      <ul id="results-content"></ul>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container content-container">
+
+      <div class="row">
+
+        <div class="col-md-2 col-sm-3 aside-menu">
+
+          <div>
+
+            <ul class="nav left-menu">
+              <li class="menu-title">
+                <a href="/docs/overview/">Overview</a>
+              </li>
+            </ul>
+
+            <ul class="nav left-menu">
+              <li class="menu-title">
+                <a href="/docs/components/">CSS</a>
+              </li>
+            </ul>
+
+            <!-- Docs: JavaScript -->
+            <ul class="nav left-menu active-menu">
+              <li class="menu-title">
+                <a href="/docs/unstable/api/">
+                  JavaScript
+                </a>
+              </li>
+              
+    
+  <!-- Directives -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Directives
+    </a>
+    <ul>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faAnimation/">
+                fa-animation
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/animate/">
+                animate
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faApp/">
+                fa-app
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faGridLayout/">
+                fa-grid-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faImageSurface/">
+                fa-image-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faIndex/">
+                fa-index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faModifier/">
+                fa-modifier
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faSurface/">
+                fa-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="/docs/unstable/api/directive/faView/">
+                fa-view
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Services
+    </a>
+    <ul>
+        
+        <li>
+            <a href="/docs/unstable/api/service/famous/">
+                famous
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Providers
+    </a>
+    <ul>
+        
+        <li>
+            <a href="/docs/unstable/api/provider/famousProvider/">
+                famousProvider
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+
+            </ul>
+
+            <ul class="nav left-menu">
+              <li class="menu-title">
+                <a href="/docs/guide/">Guide</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-10 col-sm-9 main-content">
+          <div class="improve-docs">
+  <a href='https://github.com/FamousInternal/famous-angular/edit/master/app/scripts/famous.angular.js#L1220'>
+    Improve this doc
+  </a>
+</div>
+
+
+
+
+<h1 class="api-title">
+
+  fa-surface
+
+
+
+</h1>
+
+
+<p>This directive is used to create general Famo.us surfaces, which are the
+leaf nodes of the scene graph.  The content inside
+surfaces is what gets rendered to the screen.
+This is where you can create form elements, attach
+images, or output raw text content with one-way databinding .
+You can include entire complex HTML snippets inside a faSurface, including
+ngIncludes or custom (vanilla Angular) directives.</p>
+
+<h2 id="usage">Usage</h2>
+
+
+<pre><code class="html">&lt;fa-surface&gt;
+  Here's some data-bound content 
+&lt;/fa-surface&gt;
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="pre-footer">
+
+      <div class="row ionic">
+
+        <div class="col-sm-6 col-a">
+          <h4>
+            <a href="/getting-started/">Getting started <span class="icon ion-arrow-right-c"></span></a>
+          </h4>
+          <p>
+            Learn more about how Ionic was built, why you should use it, and what's included. We'll cover
+            the basics and help you get started from the ground up.
+          </p>
+        </div>
+
+        <div class="col-sm-6 col-b">
+          <h4>
+            <a href="/docs/">Documentation <span class="icon ion-arrow-right-c"></span></a>
+          </h4>
+          <p>
+            What are you waiting for? Take a look and get coding! Our documentation covers all you need to know
+            to get an app up and running in minutes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="/js/site.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
+
+
+  </body>
+</html>
