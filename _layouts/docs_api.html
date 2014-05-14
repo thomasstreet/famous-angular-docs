@@ -18,11 +18,11 @@
 
     {% include search_results.html %}
 
-    <div class="container content-container">
+    <div class="container-fluid fill">
 
-      <div class="row">
+      <div class="row fill">
 
-        <div class="col-md-2 col-sm-3 side-nav">
+        <div class="col-md-2 side-nav fill">
 
           <div>
 
@@ -31,10 +31,6 @@
                 <div class="picker">
                   {% include api_version_select.html %}
                 </div>
-              </li>
-
-              <li class="menu-title">
-                {% include search_bar.html %}
               </li>
             </ul>
 
@@ -47,36 +43,8 @@
 
         </div>
 
-        <div class="col-md-10 col-sm-9 main-content">
+        <div class="col-md-10 main-content">
           {{ content }}
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="pre-footer">
-
-      <div class="row ionic">
-
-        <div class="col-sm-6 col-a">
-          <h4>
-            <a href="/getting-started/">Getting started <span class="icon ion-arrow-right-c"></span></a>
-          </h4>
-          <p>
-            Learn more about how Ionic was built, why you should use it, and what's included. We'll cover
-            the basics and help you get started from the ground up.
-          </p>
-        </div>
-
-        <div class="col-sm-6 col-b">
-          <h4>
-            <a href="/docs/">Documentation <span class="icon ion-arrow-right-c"></span></a>
-          </h4>
-          <p>
-            What are you waiting for? Take a look and get coding! Our documentation covers all you need to know
-            to get an app up and running in minutes.
-          </p>
         </div>
 
       </div>

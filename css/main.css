@@ -3,10 +3,43 @@
   height: 75px;
   background-color: #363636;
   color: #878785;
+  border-bottom: 0;
+}
+.navbar-default a {
+  color: #fff !important;
+}
+.navbar-default a.selected {
+  color: #fa5c4f !important;
+}
+html,
+body {
+  height: 100%;
+}
+.fill {
+  height: 100%;
 }
 body {
   padding-top: 75px;
+  -webkit-font-smoothing: antialiased;
+}
+body .main-content {
+  padding: 48px;
+}
+.navbar-nav {
+  padding-top: 10px;
 }
 .side-nav {
   background-color: #404040;
+  padding-top: 15px;
+  height: 100%;
+  min-height: 100%;
+}
+.side-nav ul {
+  list-style: none;
+}
+.side-nav a {
+  color: #fff;
+}
+.side-nav a.selected {
+  color: #fa5c4f;
 }

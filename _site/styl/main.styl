@@ -1,16 +1,54 @@
 $header-color = #363636
 $header-text-color = #878785
 $header-height = 75px
+
 $sidebar-color = #404040
+$link-color = white
+$selected-link-color = #fa5c4f
 
 .navbar-default
   font-size: 16px
   height: $header-height
   background-color: $header-color
   color: $header-text-color
+  border-bottom: 0
+
+  a
+    color: $link-color !important
+
+    &.selected
+      color: $selected-link-color !important
+
+html, body
+  height: 100%
+
+// For getting sidebar to expand 100% of height
+.fill
+  height: 100%
 
 body
   padding-top: $header-height
+  -webkit-font-smoothing: antialiased
+
+  .main-content
+    padding: 48px
+
+.navbar-nav
+  // TODO: Find a better way to center
+  padding-top: 10px
+  
 
 .side-nav
   background-color: $sidebar-color
+  padding-top: 15px
+  height: 100%
+  min-height: 100%
+
+  ul
+    list-style: none
+  
+  a
+    color: $link-color
+
+    &.selected
+      color: $selected-link-color
