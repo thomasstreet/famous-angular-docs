@@ -10,7 +10,7 @@ docType: "directive"
 ---
 
 <div class="improve-docs">
-  <a href='https://github.com/FamousInternal/famous-angular/edit/master/app/scripts/famous.angular.js#L834'>
+  <a href='https://github.com/FamousInternal/famous-angular/edit/master/dist/scripts/famous.angular.js#L630'>
     Improve this doc
   </a>
 </div>
@@ -32,9 +32,9 @@ docType: "directive"
 
 This directive creates a Famo.us Modifier that will affect all children render nodes.  Its properties can be bound
 to numbers (including using Angular's data-binding, though this is discouraged for performance reasons)
-or to functions that return numbers (preferred, because the reference to the function is passed
+or to functions that return numbers.  The latter is  preferred, because the reference to the function is passed
 directly on to Famo.us, where only the reference to that function needs to be
-watched by Angular instead of needing to $watch the values returned by the function.)
+watched by Angular instead of needing to $watch the values returned by the function.
 
 
 
