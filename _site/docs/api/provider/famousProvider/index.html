@@ -14,7 +14,7 @@
 
     <title>famousProvider - Provider in module famous.angular - Angular Famous</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/main.css" rel="stylesheet">
+<link href="/css/main.min.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
@@ -38,9 +38,9 @@
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><a class="nav-link" href="/home">Home</a></li>
+        <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/examples">Examples</a></li>
-        <li><a class="nav-link" href="/docs">Docs</a></li>
+        <li><a class="nav-link" href="/docs/api">Docs</a></li>
         <li><a class="nav-link" href="https://github.com/FamousInternal/famous-angular">Github</a></li>
       </ul>
     </div>
@@ -300,6 +300,58 @@ We use this provider to avoid needing to deal with AMD on any other angular file
 </table>
 
 
+
+
+<div id="find"></div>
+
+
+<h2>
+  <code>find(selector)</code>
+
+</h2>
+
+
+<p>given a selector, retrieves
+the isolate on a template-declared scene graph element.  This is useful
+for manipulating Famo.us objects directly after they've been declared in the DOM.
+As in normal Angular, this DOM look-up should be performed in the postLink function
+of a directive.</p>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        selector
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>the selector for the elements to look up</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<ul>
+<li>Returns:
+<code>Array</code> an array of the isolate objects of the selected elements.</li>
+</ul>
 
 
         </div>

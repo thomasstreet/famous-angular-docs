@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include meta_tags.html %}
+
+    {% if page.versionHref != "/docs" %}
+      <!-- version {{ page.versionHref }} should not be indexed -->
+      <meta name="robots" content="noindex">
+    {% endif %}
+
+    <title>{{page.title}}{% if page.header_sub_title %} - {{ page.header_sub_title}}{% endif %} - Angular Famous</title>
+    {% include head_includes.html %}
+  </head>
+
+  <body class="docs docs-page docs-api">
+
+    {% include nav_links.html %}
+
+    {% include footer.html %}
+
+    {% include base_scripts.html %}
+
+  </body>
+</html>

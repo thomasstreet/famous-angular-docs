@@ -37,7 +37,6 @@ body
   // TODO: Find a better way to center
   padding-top: 10px
   
-
 .side-nav
   background-color: $sidebar-color
   padding-top: 15px
@@ -52,3 +51,12 @@ body
 
     &.selected
       color: $selected-link-color
+
+.nav
+
+  li
+    
+    a
+      &:hover
+        // Overwrite the default hover styling
+        background-color: transparent
