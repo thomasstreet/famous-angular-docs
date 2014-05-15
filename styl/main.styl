@@ -7,7 +7,7 @@ $navbar-text-color = #878785
 $navbar-height = 100px
 $navbar-link-color = white
 
-$sidebar-color = #E6E6E3
+$sidebar-color = #F2F2F2
 $sidebar-link-color = #404040 
 $sidebar-selected-link-color = #fa5c4f
 
@@ -22,6 +22,8 @@ body
   // Top navbar is fixed, so add padding to prevent content from going beneath
   padding-top: $navbar-height
   -webkit-font-smoothing: antialiased
+  // famous.css is causing oveflow:hidden resulting in the scroll bar dissapearing
+  overflow: scroll !important;
 
 /****************************************************************
 * Main content area
@@ -135,3 +137,6 @@ body
 
   .square
     background-color: red
+    position: absolute;
+    width: 100%;
+    height: 100%;

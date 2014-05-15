@@ -1,4 +1,4 @@
-angular.module('controller.homepage', [])
+angular.module('controller.homepage', ['famous.angular'])
   .controller('homepageExamplesCtrl', function($scope) {
 
     $scope.testArray = [

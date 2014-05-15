@@ -5,15 +5,15 @@
         {{content}}
       </div>
       <div class="col-md-6">
-        <fa-app>
+        <div fa-app>
           <fa-grid-layout fa-options="options.grid">
-            <fa-surface fa-size="[40, 20]" ng-repeat='test in testArray' class='square'>
-              {{$index}}
-              {{test}}
-              Unit test
+            <fa-surface fa-size="[100, 100]" ng-repeat='test in testArray'>
+              <div class='square'>
+                Unit test {{$index}}
+              </div>
             </fa-surface>
           </fa-grid-layout>
-        <fa-app>
+        </div>
       </div>
     </div>
   </div>
