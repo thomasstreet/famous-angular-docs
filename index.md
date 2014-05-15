@@ -19,7 +19,7 @@ layout: home
 {% contentfor code2 %}
 {% highlight bash linenos %}
 
-<input type="text" ng-model="translateX">
+<input type="range" ng-model="translateX">
 
 <fa-modifier fa-translate="[translateX, 0]">
   <fa-surface fa-size="[40, 40]" class="square">
