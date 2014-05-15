@@ -24,5 +24,7 @@ angular.module('controller.homepage', ['famous.angular'])
 
     $scope.squares = [0, 100, 200, 300];
 
+    $scope.translateX = 200;
+
   })
 ;
