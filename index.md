@@ -3,22 +3,42 @@ title: Famo.us / Angular
 layout: home
 ---
 
-{% capture code-example-1 %}
-  {% highlight bash linenos %}
-  <fa-app>
-    <fa-surface ng-repeat="square in squares">
+{% contentfor code1 %}
+{% highlight bash linenos %}
 
-    </fa-surface>
-  </fa-app>
-  {% endhighlight %}
-{% endcapture %}
+<fa-app>
+  <fa-surface ng-repeat="square in squares">
 
-{% capture code-example-2 %}
-  {% highlight bash linenos %}
-  <fa-app>
-    <fa-surface >
+  </fa-surface>
+</fa-app>
 
-    </fa-surface>
-  </fa-app>
-  {% endhighlight %}
-{% endcapture %}
+{% endhighlight %}
+{% endcontentfor %}
+
+
+
+{% contentfor code2 %}
+{% highlight bash linenos %}
+
+<fa-app>
+  <fa-surface >
+
+  </fa-surface>
+</fa-app>
+
+{% endhighlight %}
+{% endcontentfor %}
+
+
+
+{% contentfor code3 %}
+{% highlight bash linenos %}
+
+<fa-app>
+  <fa-surface >
+
+  </fa-surface>
+</fa-app>
+
+{% endhighlight %}
+{% endcontentfor %}
