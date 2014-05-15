@@ -5,7 +5,7 @@
       <div class="description">
         <h3>Easily generate surfaces with ng-repeat</h3>
         <p>
-          ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat!
+          Have your views determine the looping of surfaces to keep your MVC logic separated and clean.
         </p>
       </div>
       <div class="row">
@@ -29,7 +29,7 @@
         <div class="col-md-offset-4 col-md-8">
           <h3>Combine Angular bindings with Famo.us attributes</h3>
           <p>
-            Binding binding binding!
+            Allow users to easily dictate surface sizes and translation distances by leveraging Angular bindings.
           </p>
         </div>
       </div>
@@ -40,7 +40,7 @@
               <fa-surface>
                 <input type="range" ng-model="$parent.translateX">
                </fa-surface>
-              <fa-modifier fa-translate="[translateX, 40]">
+              <fa-modifier fa-translate="[translateX * 2, 40]">
                 <fa-surface fa-size="[40, 40]" class="square">
                 </fa-surface>
               </fa-modifier>
@@ -55,7 +55,7 @@
 
     <div class="example-block">
       <div class="description">
-        <h3>Conditional add surfaces or modifiers with ng-if</h3>
+        <h3>Conditionally add surfaces or modifiers with ng-if</h3>
         <p>
           To be written!
         </p>
