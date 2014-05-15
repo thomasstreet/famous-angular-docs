@@ -96,23 +96,32 @@
 
       <section class="examples" ng-controller="homepageExamplesCtrl">
   <div class="container">
+    <div class="description">
+      <h2>Intuitive for Famo.us users</h2>
+      <p>
+        Blah blah blah!
+      </p>
+    </div>
     <div class="row">
-      <div class="col-md-6">
-        <p><h2>Intuitive for Famo.us users<h2></p>
+      <div class="col-md-8">
+        
 
-<p><div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
 <span class="lineno">2</span>   &lt;fa-surface&gt;
-<span class="lineno">3</span>
+<span class="lineno">3</span> 
 <span class="lineno">4</span>   &lt;/fa-surface&gt;
-<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div></p>
+<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div>
+
+
+
 
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div fa-app>
           <fa-grid-layout fa-options="options.grid">
-            <fa-surface fa-size="[100, 100]" ng-repeat='test in testArray'>
+            <fa-surface fa-size="[40, 40]" ng-repeat='test in testArray'>
               <div class='square'>
-                Unit test 
+                
               </div>
             </fa-surface>
           </fa-grid-layout>

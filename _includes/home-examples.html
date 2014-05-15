@@ -1,15 +1,21 @@
 <section class="examples" ng-controller="homepageExamplesCtrl">
   <div class="container">
+    <div class="description">
+      <h2>Intuitive for Famo.us users</h2>
+      <p>
+        Blah blah blah!
+      </p>
+    </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         {{content}}
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div fa-app>
           <fa-grid-layout fa-options="options.grid">
-            <fa-surface fa-size="[100, 100]" ng-repeat='test in testArray'>
+            <fa-surface fa-size="[40, 40]" ng-repeat='test in testArray'>
               <div class='square'>
-                Unit test {{$index}}
+                {{$index}}
               </div>
             </fa-surface>
           </fa-grid-layout>
