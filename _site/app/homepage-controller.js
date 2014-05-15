@@ -14,13 +14,15 @@ angular.module('controller.homepage', ['famous.angular'])
 
     $scope.options = {
       grid: {
-        dimensions: [4, 2]
+        dimensions: [2, 2]
       }
     }; 
 
     $scope.sizes = {
       gridSurfaces: [$scope.data.distance, undefined]
     };
+
+    $scope.squares = [0, 100, 200, 300];
 
   })
 ;

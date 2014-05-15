@@ -1,26 +1,89 @@
 <section class="examples" ng-controller="homepageExamplesCtrl">
   <div class="container">
-    <div class="description">
-      <h2>Intuitive for Famo.us users</h2>
-      <p>
-        Blah blah blah!
-      </p>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        {{content}}
+
+    <div class="example-block">
+      <div class="description">
+        <h2>Intuitive for Famo.us users</h2>
+        <p>
+          Blah blah blah!
+        </p>
       </div>
-      <div class="col-md-4">
-        <div fa-app>
-          <fa-grid-layout fa-options="options.grid">
-            <fa-surface fa-size="[40, 40]" ng-repeat='test in testArray'>
-              <div class='square'>
-                {{$index}}
-              </div>
-            </fa-surface>
-          </fa-grid-layout>
+      <div class="row">
+        <div class="col-md-8">
+          {{content}}
+        </div>
+        <div class="col-md-4">
+          <div fa-app>
+            <fa-grid-layout fa-options="options.grid">
+              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
+                <div class='square'>
+                  {% raw %}
+                    {{$index}}
+                  {% endraw %}
+                </div>
+              </fa-surface>
+            </fa-grid-layout>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="example-block">
+      <div class="description row">
+        <div class="col-md-offset-4 col-md-8">
+          <h2>Two binding</h2>
+          <p>
+            Blah blah blah!
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" ng-model="squares.length">
+          <div fa-app>
+            <fa-grid-layout fa-options="options.grid">
+              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
+                <div class='square'>
+                  {% raw %}
+                    {{$index}}
+                  {% endraw %}
+                </div>
+              </fa-surface>
+            </fa-grid-layout>
+          </div>
+        </div>
+        <div class="col-md-8">
+          {{content}}
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="description">
+        <h2>Intuitive for Famo.us users</h2>
+        <p>
+          Blah blah blah!
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          {{content}}
+        </div>
+        <div class="col-md-4">
+          <div fa-app>
+            <fa-grid-layout fa-options="options.grid">
+              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
+                <div class='square'>
+                  {% raw %}
+                    {{$index}}
+                  {% endraw %}
+                </div>
+              </fa-surface>
+            </fa-grid-layout>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
