@@ -9,7 +9,7 @@
     {% endif %}
 
     <title>{{page.title}}{% if page.header_sub_title %} - {{ page.header_sub_title}}{% endif %} - Angular Famous</title>
-    {% include home_head_includes.html %}
+    {% include head_includes.html %}
   </head>
 
   <body class="docs docs-page docs-api">
@@ -23,7 +23,14 @@
 
     {% include footer.html %}
 
-    {% include base_scripts.html %}
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/requirejs/require.js"></script>
+    <script src="/bower_components/famous-angular/famous.angular.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/homepage-controller.js"></script>
 
+    {% include base_scripts.html %}
   </body>
 </html>
