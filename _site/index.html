@@ -15,12 +15,16 @@
 
     <title>Famo.us / Angular - Angular Famous</title>
     <!--Bower Scripts-->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="bower_components/famous/core/famous.css">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/default.css">
 
 <link href="/css/main.min.css" rel="stylesheet">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/famous-angular/famous-angular.min.js"></script>
+
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
@@ -54,31 +58,57 @@
 </nav>
 
 
-    <div class="container home-container">
+    <div class="home">
+      <section class="introduction">
 
-      <img class="home-logo" src="/img/famous-angular-logos.png" />
+  <div class="container">
 
-      <p class="introduction">
-        Famo.us reimagined.
-      </p>
-      <p class="sub-text">
-        Intuitive Angular directives for Famo.us.
-      </p>
+    <img class="home-logo" src="/img/famous-angular-logos.png" />
 
-      <div class="button-links">
-        <a href="/docs/api">
-          <button class="btn btn-outline-inverse btn-lg">
-            <i class="fa fa-file-text-o"></i>
-            Docs
-          </button>
-        </a>
-        <a href="https://github.com/FamousInternal/famous-angular">
-          <button class="btn btn-outline-inverse btn-lg">
-            <i class="fa fa-github"></i>
-            Github
-          </button>
-        </a>
+    <p class="slogan">
+      Famo.us reimagined.
+    </p>
+    <p class="sub-text">
+      Intuitive Angular directives for Famo.us.
+    </p>
+
+    <div class="button-links">
+      <a href="/docs/api">
+        <button class="btn btn-outline-inverse btn-lg">
+          <i class="fa fa-file-text-o"></i>
+          Docs
+        </button>
+      </a>
+      <a href="https://github.com/FamousInternal/famous-angular">
+        <button class="btn btn-outline-inverse btn-lg">
+          <i class="fa fa-github"></i>
+          Github
+        </button>
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+      <section class="examples" controller="examplesCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p><h2>Intuitive for Famo.us users<h2></p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
+<span class="lineno">2</span>   &lt;fa-surface&gt;
+<span class="lineno">3</span>
+<span class="lineno">4</span>   &lt;/fa-surface&gt;
+<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div></p>
+
       </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+  </div>
+</section>
 
     </div>
 

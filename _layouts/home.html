@@ -17,32 +17,9 @@
 
     {% include nav_links.html %}
 
-    <div class="container home-container">
-
-      <img class="home-logo" src="/img/famous-angular-logos.png" />
-
-      <p class="introduction">
-        Famo.us reimagined.
-      </p>
-      <p class="sub-text">
-        Intuitive Angular directives for Famo.us.
-      </p>
-
-      <div class="button-links">
-        <a href="/docs/api">
-          <button class="btn btn-outline-inverse btn-lg">
-            <i class="fa fa-file-text-o"></i>
-            Docs
-          </button>
-        </a>
-        <a href="https://github.com/FamousInternal/famous-angular">
-          <button class="btn btn-outline-inverse btn-lg">
-            <i class="fa fa-github"></i>
-            Github
-          </button>
-        </a>
-      </div>
-
+    <div class="home">
+      {% include home-introduction.html %}
+      {% include home-examples.html %}
     </div>
 
     {% include footer.html %}
