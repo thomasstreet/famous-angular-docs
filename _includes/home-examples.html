@@ -1,15 +1,19 @@
-<section class="examples" ng-controller="homepageCtrl">
+<section class="examples" ng-controller="homepageExamplesCtrl">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
         {{content}}
       </div>
       <div class="col-md-6">
-        <!--<fa-app>-->
-          <!--<fa-surface fa-size="[20, 20]" class="square">-->
-
-          <!--</fa-surface>-->
-        <!--</fa-app>-->
+        <fa-app>
+          <fa-grid-layout fa-options="options.grid">
+            <fa-surface fa-size="[40, 20]" ng-repeat='test in testArray' class='square'>
+              {{$index}}
+              {{test}}
+              Unit test
+            </fa-surface>
+          </fa-grid-layout>
+        <fa-app>
       </div>
     </div>
   </div>
