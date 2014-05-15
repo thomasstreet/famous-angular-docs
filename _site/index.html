@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='famous-angular'>
+<html lang="en" ng-app="famous-angular">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,14 +86,12 @@
 
 </section>
 
-      <section class="examples" ng-controller="homepageExamplesCtrl">
+      <section class="examples">
   <div class="container">
-
-    <h2>Code Examples</h2>
 
     <div class="example-block">
       <div class="description">
-        <h3>Generate surfaces and modifiers with ng-repeat</h3>
+        <h3>Easily generate surfaces with ng-repeat</h3>
         <p>
           ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat!
         </p>
@@ -102,11 +100,10 @@
         <div class="col-md-8">
           
 
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
-<span class="lineno">2</span>   &lt;fa-surface ng-repeat<span class="o">=</span><span class="s2">&quot;square in squares&quot;</span>&gt;
-<span class="lineno">3</span> 
-<span class="lineno">4</span>   &lt;/fa-surface&gt;
-<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[square.x, 40]&quot;</span> ng-repeat<span class="o">=</span><span class="s1">&#39;square in squares&#39;</span>&gt;
+<span class="lineno">2</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>&gt;
+<span class="lineno">3</span>   &lt;/fa-surface&gt;
+<span class="lineno">4</span> &lt;/fa-modifier&gt;</code></pre></div>
 
 
 
@@ -114,15 +111,11 @@
         </div>
         <div class="col-md-4">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
-                <div class='square'>
-                  
-                    {{$index}}
-                  
-                </div>
-              </fa-surface>
-            </fa-grid-layout>
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
+                <fa-surface fa-size="[40, 40]" class="square">
+                </fa-surface>
+              </fa-modifier>
           </div>
         </div>
       </div>
@@ -131,37 +124,35 @@
     <div class="example-block">
       <div class="description row">
         <div class="col-md-offset-4 col-md-8">
-          <h3>Leverage Angular bindings with famo.us attributes</h3>
+          <h3>Combine Angular bindings with Famo.us attributes</h3>
           <p>
-            Blah blah blah!
+            Binding binding binding!
           </p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <input type="text" ng-model="translateX">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-modifier fa-translate="[translateX, 0]">
-                <fa-surface fa-size="[40, 40]">
-                  <div class='square'>
-                    Test
-                    
-                    
-                  </div>
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <input type="range" ng-model="$parent.translateX">
+               </fa-surface>
+              <fa-modifier fa-translate="[translateX, 40]">
+                <fa-surface fa-size="[40, 40]" class="square">
                 </fa-surface>
               </fa-modifier>
-            </fa-grid-layout>
+             </div>
           </div>
         </div>
         <div class="col-md-8">
           
 
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
-<span class="lineno">2</span>   &lt;fa-surface &gt;
-<span class="lineno">3</span> 
-<span class="lineno">4</span>   &lt;/fa-surface&gt;
-<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;translateX&quot;</span>&gt;
+<span class="lineno">2</span> 
+<span class="lineno">3</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[translateX, 0]&quot;</span>&gt;
+<span class="lineno">4</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>&gt;
+<span class="lineno">5</span>   &lt;/fa-surface&gt;
+<span class="lineno">6</span> &lt;/fa-modifier&gt;</code></pre></div>
 
 
 
@@ -172,20 +163,19 @@
 
     <div class="example-block">
       <div class="description">
-        <h3>Intuitive for Famo.us users</h3>
+        <h3>Conditional add surfaces or modifiers with ng-if</h3>
         <p>
-          Blah blah blah!
+          To be written!
         </p>
       </div>
       <div class="row">
         <div class="col-md-8">
           
 
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-app&gt;
-<span class="lineno">2</span>   &lt;fa-surface &gt;
-<span class="lineno">3</span> 
-<span class="lineno">4</span>   &lt;/fa-surface&gt;
-<span class="lineno">5</span> &lt;/fa-app&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[50, 0]&quot;</span> ng-if<span class="o">=</span><span class="s2">&quot;translate == true&quot;</span>&gt;
+<span class="lineno">2</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span>&gt;
+<span class="lineno">3</span>   &lt;/fa-surface&gt;
+<span class="lineno">4</span> &lt;/fa-modifier&gt;</code></pre></div>
 
 
 
@@ -193,15 +183,10 @@
         </div>
         <div class="col-md-4">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
-                <div class='square'>
-                  
-                    {{$index}}
-                  
-                </div>
+            <fa-modifier fa-translate="[50, 0]">
+              <fa-surface fa-size="[40, 40]" class="square">
               </fa-surface>
-            </fa-grid-layout>
+            </fa-modifier>
           </div>
         </div>
       </div>

@@ -6,11 +6,10 @@ layout: home
 {% contentfor code1 %}
 {% highlight bash linenos %}
 
-<fa-app>
-  <fa-surface ng-repeat="square in squares">
-
+<fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares'>
+  <fa-surface fa-size="[40, 40]" class="square">
   </fa-surface>
-</fa-app>
+</fa-modifier>
 
 {% endhighlight %}
 {% endcontentfor %}
@@ -20,11 +19,12 @@ layout: home
 {% contentfor code2 %}
 {% highlight bash linenos %}
 
-<fa-app>
-  <fa-surface >
+<input type="text" ng-model="translateX">
 
+<fa-modifier fa-translate="[translateX, 0]">
+  <fa-surface fa-size="[40, 40]" class="square">
   </fa-surface>
-</fa-app>
+</fa-modifier>
 
 {% endhighlight %}
 {% endcontentfor %}
@@ -34,11 +34,10 @@ layout: home
 {% contentfor code3 %}
 {% highlight bash linenos %}
 
-<fa-app>
-  <fa-surface >
-
+<fa-modifier fa-translate="[50, 0]" ng-if="translate == true">
+  <fa-surface fa-size="[40, 40]">
   </fa-surface>
-</fa-app>
+</fa-modifier>
 
 {% endhighlight %}
 {% endcontentfor %}

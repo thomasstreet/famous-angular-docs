@@ -1,11 +1,9 @@
-<section class="examples" ng-controller="homepageExamplesCtrl">
+<section class="examples">
   <div class="container">
-
-    <h2>Code Examples</h2>
 
     <div class="example-block">
       <div class="description">
-        <h3>Generate surfaces and modifiers with ng-repeat</h3>
+        <h3>Easily generate surfaces with ng-repeat</h3>
         <p>
           ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat! ng-repeat!
         </p>
@@ -16,15 +14,11 @@
         </div>
         <div class="col-md-4">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
-                <div class='square'>
-                  {% raw %}
-                    {{$index}}
-                  {% endraw %}
-                </div>
-              </fa-surface>
-            </fa-grid-layout>
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
+                <fa-surface fa-size="[40, 40]" class="square">
+                </fa-surface>
+              </fa-modifier>
           </div>
         </div>
       </div>
@@ -33,27 +27,24 @@
     <div class="example-block">
       <div class="description row">
         <div class="col-md-offset-4 col-md-8">
-          <h3>Leverage Angular bindings with famo.us attributes</h3>
+          <h3>Combine Angular bindings with Famo.us attributes</h3>
           <p>
-            Blah blah blah!
+            Binding binding binding!
           </p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <input type="text" ng-model="translateX">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-modifier fa-translate="[translateX, 0]">
-                <fa-surface fa-size="[40, 40]">
-                  <div class='square'>
-                    Test
-                    {% raw %}
-                    {% endraw %}
-                  </div>
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <input type="range" ng-model="$parent.translateX">
+               </fa-surface>
+              <fa-modifier fa-translate="[translateX, 40]">
+                <fa-surface fa-size="[40, 40]" class="square">
                 </fa-surface>
               </fa-modifier>
-            </fa-grid-layout>
+             </div>
           </div>
         </div>
         <div class="col-md-8">
@@ -64,9 +55,9 @@
 
     <div class="example-block">
       <div class="description">
-        <h3>Intuitive for Famo.us users</h3>
+        <h3>Conditional add surfaces or modifiers with ng-if</h3>
         <p>
-          Blah blah blah!
+          To be written!
         </p>
       </div>
       <div class="row">
@@ -75,15 +66,10 @@
         </div>
         <div class="col-md-4">
           <div fa-app>
-            <fa-grid-layout fa-options="options.grid">
-              <fa-surface fa-size="[40, 40]" ng-repeat='square in squares'>
-                <div class='square'>
-                  {% raw %}
-                    {{$index}}
-                  {% endraw %}
-                </div>
+            <fa-modifier fa-translate="[50, 0]">
+              <fa-surface fa-size="[40, 40]" class="square">
               </fa-surface>
-            </fa-grid-layout>
+            </fa-modifier>
           </div>
         </div>
       </div>
