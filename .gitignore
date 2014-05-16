@@ -1,2 +1,5 @@
 docs/
 _site/docs/
+_site/Gemfile.lock
+_site/bower_components/
+bower_components/
