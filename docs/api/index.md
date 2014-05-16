@@ -8,7 +8,8 @@ header_sub_title: Build amazing AngularJS apps with the power of Famo.us
 searchable: false
 ---
 
-# AngularJS Extensions
+# Famo.us/Angular
 
-Angular-Famous provides a set of directives and services to integrate Famo.us into your AngularJS app.
+Famo.us/Angular provides a set of directives and services to integrate Famo.us into your AngularJS app, or to build a Famo.us app from scratch using AngularJS.
+
 Explore our API docs for detailed information.
