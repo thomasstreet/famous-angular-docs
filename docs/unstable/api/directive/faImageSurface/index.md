@@ -49,6 +49,39 @@ the specified ImageUrl.
 ```
   
   
+<h2 id="api" style="clear:both;">API</h2>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        faImageUrl
+        
+        
+      </td>
+      <td>
+        
+  <code>String</code>
+      </td>
+      <td>
+        <p>String url pointing to the image that should be loaded into the Famo.us ImageSurface</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+  
 
   
 
