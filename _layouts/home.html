@@ -1,3 +1,6 @@
+{% assign lvl = page.url | append:'X' | split:'/' | size %}
+{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+
 <!DOCTYPE html>
 <html lang="en" ng-app="famous-angular">
   <head>
@@ -23,13 +26,19 @@
 
     {% include footer.html %}
 
-    <script src="/bower_components/underscore/underscore.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/requirejs/require.js"></script>
-    <script src="/bower_components/famous-angular/famous.angular.js"></script>
-    <script src="/app/app.js"></script>
-    <script src="/app/homepage-controller.js"></script>
+    <script src="{{relative}}bower_components/underscore/underscore.js"></script>
+    <script src="{{relative}}bower_components/jquery/dist/jquery.js"></script>
+    <script src="{{relative}}bower_components/angular/angular.js"></script>
+    <script src="{{relative}}bower_components/requirejs/require.js"></script>
+    <script>
+      require.config({
+        baseUrl: '{{relative}}bower_components'
+      })
+    </script>
+    <script src="{{relative}}bower_components/famous-angular/famous.angular.js"></script>
+    
+    <script src="{{relative}}app/app.js"></script>
+    <script src="{{relative}}app/homepage-controller.js"></script>
 
     {% include base_scripts.html %}
   </body>

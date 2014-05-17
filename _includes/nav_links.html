@@ -1,3 +1,5 @@
+{% assign lvl = page.url | append:'X' | split:'/' | size %}
+{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -8,16 +10,16 @@
         {% if page.header_logo %}
           {{ page.header_logo }}
         {% else %}
-          <img src="/img/famous-angular-white-logo.png" alt="Famous Angular">
+          <img src="{{relative}}img/famous-angular-white-logo.png" alt="Famous Angular">
         {% endif %}
       </a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><a class="nav-link" href="/">Home</a></li>
-        <li><a class="nav-link" href="https://famo.us">FAQ</a></li>
-        <li><a class="nav-link" href="/docs/api">Docs</a></li>
+        <li><a class="nav-link" href="{{relative}}">Home</a></li>
+        <li><a class="nav-link" href="{{relative}}faq">FAQ</a></li>
+        <li><a class="nav-link" href="{{relative}}docs/api">Docs</a></li>
         <li><a class="nav-link" href="https://github.com/FamousInternal/famous-angular">Github</a></li>
         <li><a class="nav-link" href="https://famo.us/docs"><span style="color: #CCC; opacity: .66">Famo.us Docs</span></a></li>
       </ul>

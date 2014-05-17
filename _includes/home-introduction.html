@@ -1,8 +1,11 @@
+{% assign lvl = page.url | append:'X' | split:'/' | size %}
+{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+
 <section class="introduction">
 
   <div class="container">
 
-    <img class="home-logo" src="/img/famous-angular-logos.png" />
+    <img class="home-logo" src="{{relative}}img/famous-angular-logos.png" />
 
     <p class="slogan">
       Famo.us, meet AngularJS.
@@ -12,13 +15,13 @@
     </p>
 
     <div class="button-links">
-      <a href="/docs/api">
+      <a href="{{relative}}docs/api">
         <button class="btn btn-outline-inverse btn-lg">
           <i class="fa fa-question-circle"></i>
           FAQ
         </button>
       </a>
-      <a href="/docs/api">
+      <a href="{{relative}}docs/api">
         <button class="btn btn-outline-inverse btn-lg">
           <i class="fa fa-file-text-o"></i>
           Docs
