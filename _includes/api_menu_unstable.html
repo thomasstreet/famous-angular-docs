@@ -1,3 +1,5 @@
+{% assign lvl = page.url | append:'X' | split:'/' | size %}
+{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 
   <!-- Directives -->
   <li class="menu-section">
@@ -7,109 +9,109 @@
     <ul>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faAnimation/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faAnimation/">
                 fa-animation
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/animate/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/animate/">
                 animate
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faApp/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faApp/">
                 fa-app
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faClick/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faClick/">
                 fa-click
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faGridLayout/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faGridLayout/">
                 fa-grid-layout
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faImageSurface/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faImageSurface/">
                 fa-image-surface
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faIndex/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faIndex/">
                 fa-index
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faModifier/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faModifier/">
                 fa-modifier
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faPipeFrom/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faPipeFrom/">
                 fa-pipe-from
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faPipeTo/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faPipeTo/">
                 fa-pipe-to
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faRenderNode/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faRenderNode/">
                 fa-render-node
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faScrollView/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faScrollView/">
                 fa-scroll-view
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faSurface/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faSurface/">
                 fa-surface
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faTap/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faTap/">
                 fa-tap
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faTouchend/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faTouchend/">
                 fa-touchend
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faTouchmove/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faTouchmove/">
                 fa-touchmove
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faTouchstart/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faTouchstart/">
                 fa-touchstart
             </a>
         </li>
         
         <li>
-            <a href="{{ page.versionHref }}/api/directive/faView/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/directive/faView/">
                 fa-view
             </a>
         </li>
@@ -126,7 +128,7 @@
     <ul>
         
         <li>
-            <a href="{{ page.versionHref }}/api/service/$famous/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/service/$famous/">
                 $famous
             </a>
         </li>
@@ -143,7 +145,7 @@
     <ul>
         
         <li>
-            <a href="{{ page.versionHref }}/api/provider/$famousProvider/">
+            <a href="{{relative}}{{ page.versionHref | replace_first: '/', '' }}/api/provider/$famousProvider/">
                 $famousProvider
             </a>
         </li>
