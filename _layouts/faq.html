@@ -22,6 +22,31 @@
         <section>
           <h2>The Basics</h2>
           <ul>
+
+            <li>
+              <a href="#q1">
+                {% contentblock q1 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#q2">
+                {% contentblock q2 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#q3">
+                {% contentblock q3 %}
+              </a>
+            </li>
+
+          </ul>
+        </section>
+
+        <section>
+          <h2>Instructional Questions</h2>
+          <ul>
             <li>
               <a href="#q1">
                 {% contentblock q1 %}
@@ -32,46 +57,39 @@
                 {% contentblock q2 %}
               </a>
             </li>
+            <li>
+              <a href="#q3">
+                {% contentblock q3 %}
+              </a>
+            </li>
           </ul>
-        </section>
-
-        <section>
-        <h2>Instructional Questions</h2>
-        <ul>
-          <li>
-            <a href="#q1">
-              {% contentblock q1 %}
-            </a>
-          </li>
-          <li>
-            <a href="#q2">
-              {% contentblock q2 %}
-            </a>
-          </li>
-        </ul>
         </section>
       </div>
 
       <hr>
 
       <section class="row answer-block">
-        <h3 id="q1">
+        <h3>
+          <span id="q1"></span>
           {% contentblock q1 %}
         </h3>
-        <p>
-          {% contentblock a1 %}
-        </p>
+        {% contentblock a1 %}
       </section>
 
-      <div class="row answer-block">
+      <section class="row answer-block">
         <h3 id="q2">
           {% contentblock q2 %}
         </h3>
-        <p>
-          {% contentblock a2 %}
-        </p>
-      </div>
+        {% contentblock a2 %}
+      </section>
 
+      <section class="row answer-block">
+        <h3>
+          <span id="q3"></span>
+          {% contentblock q3 %}
+        </h3>
+        {% contentblock a3 %}
+      </section>
     </div>
 
     {% include footer.html %}
