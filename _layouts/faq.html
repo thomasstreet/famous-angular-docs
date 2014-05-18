@@ -72,94 +72,188 @@
           <h2>Instructional Questions</h2>
           <ul>
             <li>
-              <a href="#q1">
-                {% contentblock basics-q1 %}
+              <a href="#instruct-q1">
+                {% contentblock instruct-q1 %}
               </a>
             </li>
             <li>
-              <a href="#q2">
-                {% contentblock basics-q2 %}
+              <a href="#instruct-q2">
+                {% contentblock instruct-q2 %}
               </a>
             </li>
             <li>
-              <a href="#q3">
-                {% contentblock basics-q3 %}
+              <a href="#instruct-q3">
+                {% contentblock instruct-q3 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q4">
+                {% contentblock instruct-q3 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q5">
+                {% contentblock instruct-q3 %}
               </a>
             </li>
           </ul>
         </section>
       </div>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q1"></span>
-          {% contentblock basics-q1 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a1 %}
-        </div>
+      <section id="basics">
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q1"></span>
+            {% contentblock basics-q1 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a1 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q2"></span>
+            {% contentblock basics-q2 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a2 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q3"></span>
+            {% contentblock basics-q3 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a3 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q4"></span>
+            {% contentblock basics-q4 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a4 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q5"></span>
+            {% contentblock basics-q5 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a5 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q6"></span>
+            {% contentblock basics-q6 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a6 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q7"></span>
+            {% contentblock basics-q7 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a7 %}
+          </div>
+        </section>
+
       </section>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q2"></span>
-          {% contentblock basics-q2 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a2 %}
-        </div>
-      </section>
+      <hr>
+      <hr>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q3"></span>
-          {% contentblock basics-q3 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a3 %}
-        </div>
-      </section>
+      <section id="instruct">
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q4"></span>
-          {% contentblock basics-q4 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a4 %}
-        </div>
-      </section>
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q1"></span>
+            {% contentblock instruct-q1 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a1 %}
+          </div>
+        </section>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q5"></span>
-          {% contentblock basics-q5 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a5 %}
-        </div>
-      </section>
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q2"></span>
+            {% contentblock instruct-q2 | markdownify %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a2 %}
+          </div>
+        </section>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q6"></span>
-          {% contentblock basics-q6 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a6 %}
-        </div>
-      </section>
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q3"></span>
+            {% contentblock instruct-q3 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a3 %}
+          </div>
+        </section>
 
-      <section class="row answer-block">
-        <h3>
-          <span id="basics-q7"></span>
-          {% contentblock basics-q7 %}
-        </h3>
-        <div class="answer">
-          {% contentblock basics-a7 %}
-        </div>
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q4"></span>
+            {% contentblock instruct-q4 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a4 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q5"></span>
+            {% contentblock instruct-q5 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a5 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q6"></span>
+            {% contentblock instruct-q6 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a6 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q7"></span>
+            {% contentblock instruct-q7 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a7 %}
+          </div>
+        </section>
+
       </section>
     </div>
+
+    <hr>
+    <hr>
 
     {% include footer.html %}
 
