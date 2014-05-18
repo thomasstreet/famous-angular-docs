@@ -19,5 +19,12 @@ angular.module('controller.homepage', ['famous.angular'])
 
     $scope.translateX = 50;
 
+    $scope.showSquare = false;
+
+    $scope.$watch('showSquare', function(value) {
+      console.log(value);
+      //$scope.showSquare = Boolean(value);
+    });
+
   })
 ;

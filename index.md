@@ -33,6 +33,7 @@ layout: home
 
 {% contentfor code3 %}
 {% highlight bash linenos %}
+<button ng-click="!translate">
 
 <fa-modifier fa-translate="[50, 0]" ng-if="translate == true">
   <fa-surface fa-size="[40, 40]">

@@ -207,10 +207,12 @@
         <div class="col-md-8">
           
 
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[50, 0]&quot;</span> ng-if<span class="o">=</span><span class="s2">&quot;translate == true&quot;</span>&gt;
-<span class="lineno">2</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span>&gt;
-<span class="lineno">3</span>   &lt;/fa-surface&gt;
-<span class="lineno">4</span> &lt;/fa-modifier&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;button ng-click<span class="o">=</span><span class="s2">&quot;!translate&quot;</span>&gt;
+<span class="lineno">2</span> 
+<span class="lineno">3</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[50, 0]&quot;</span> ng-if<span class="o">=</span><span class="s2">&quot;translate == true&quot;</span>&gt;
+<span class="lineno">4</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span>&gt;
+<span class="lineno">5</span>   &lt;/fa-surface&gt;
+<span class="lineno">6</span> &lt;/fa-modifier&gt;</code></pre></div>
 
 
 
@@ -218,10 +220,16 @@
         </div>
         <div class="col-md-4">
           <div fa-app style="height: 300px">
-            <fa-modifier fa-translate="[50, 0]">
-              <fa-surface fa-size="[40, 40]" class="square">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <button ng-click="$parent.showSquare = !$parent.showSquare">Show square</button>
+                <!--<input type="text" ng-model="$parent.showSquare">-->
               </fa-surface>
-            </fa-modifier>
+              <fa-modifier fa-translate="[0, 40]">
+                <fa-surface fa-size="[40, 40]" class="square" ng-if="$parent.showSquare === false">
+                </fa-surface>
+              </fa-modifier>
+            </div>
           </div>
         </div>
       </div>

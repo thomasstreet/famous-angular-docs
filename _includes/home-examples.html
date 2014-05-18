@@ -67,10 +67,16 @@
         </div>
         <div class="col-md-4">
           <div fa-app style="height: 300px">
-            <fa-modifier fa-translate="[50, 0]">
-              <fa-surface fa-size="[40, 40]" class="square">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <button ng-click="$parent.showSquare = !$parent.showSquare">Show square</button>
+                <!--<input type="text" ng-model="$parent.showSquare">-->
               </fa-surface>
-            </fa-modifier>
+              <fa-modifier fa-translate="[0, 40]">
+                <fa-surface fa-size="[40, 40]" class="square" ng-if="$parent.showSquare === false">
+                </fa-surface>
+              </fa-modifier>
+            </div>
           </div>
         </div>
       </div>
