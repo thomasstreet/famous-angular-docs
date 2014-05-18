@@ -33,18 +33,11 @@ Why should Famo.us developers use Angular?
 
 
 {% contentfor q3 %}
-Why should Angular developers use Famo.us?
+How do animations work in F/A?
 {% endcontentfor %}
 
 {% contentfor a3 %}
-If you want to tap into Famo.us’s cross-platform rendering power inside a new or existing Angular app, or if you’d like to approach Famo.us with a familiar approach and workflow (i.e. with AngularJS,) then Famo.us/Angular is a great choice.
-
-{% highlight bash linenos %}
-<fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares'>
-  <fa-surface fa-size="[40, 40]" class="square">
-  </fa-surface>
-</fa-modifier>
-{% endhighlight %}
+There are two primary ways to perform animations in F/A: declaratively and imperatively. The declarative way uses a timeline model, allowing you to declare how several different attributes over several different elements should respond to a single timeline. The imperative way uses Famo.us Transitionable objects, allowing you to specify animations in a more vanilla-Famo.us way. More information is available in the docs, and there will be more detail on these two approaches in the Famo.us/Angular Famo.us University course.
 {% endcontentfor %}
 
 
