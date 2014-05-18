@@ -110,69 +110,88 @@ How do I use the Famo.us’s built-in views and layouts?
 {% contentfor instruct-a2 %}
 Core Famo.us components are supported by custom directives that wrap them, exposing their api through HTML attributes.
 
-For example, you can create a Famo.us modifier with an <code>&lt;fa-modifier&gt;</code> tag, and pass a translate value as: <div class="inline">{% highlight html %}<fa-modifier fa-translate=”[50,150,2]”>{% endhighlight %}</div>
+For example, you can create a Famo.us modifier with an <code>&lt;fa-modifier&gt;</code> tag, and pass a translate value as: <code>&lt;fa-modifier fa-translate=”[50,150,2]”&gt;</code>
 
-Similarly, a <fa-scroll-view> can be instantiated with attribute options (details in docs), and you simply add children to it by making them contents of the <fa-scroll-view> HTML tag.
+Similarly, a <code>&lt;fa-scroll-view&gt;</code> can be instantiated with attribute options (details in docs), and you simply add children to it by making them contents of the <fa-scroll-view> HTML tag.
 {% endcontentfor %}
 
 
 
 {% contentfor instruct-q3 %}
-How do animations work in F/A?
+How does event piping work in F/A?
 {% endcontentfor %}
 
 {% contentfor instruct-a3 %}
-There are two primary ways to perform animations in F/A: declaratively and imperatively.
+The fa-pipe-to and fa-pipe-from directives give you a declarative interface for handling Famo.us events.
 
-<ol>
-  <li>
-    The declarative way uses a timeline model, allowing you to declare how several different attributes over several different elements should respond to a single timeline.
-  </li>
-  <li>
-    The imperative way uses Famo.us Transitionable objects, allowing you to specify animations in a more vanilla-Famo.us way.
-  </li>
-</ol>
+You can read more about Famo.us piping to get a better idea of how this works.
 
-More information is available in the docs, and there will be more detail on these two approaches in the Famo.us/Angular Famo.us University course.
+For eventing within your application (i.e. not necessarily touch events, but programmatically triggered events) you can use Angular’s $emit, $broadcast, and $on, as well.
 {% endcontentfor %}
 
 
 
 {% contentfor instruct-q4 %}
-Can I integrate F/A with an existing AngularJS app?
+How do I put images (or videos, etc) inside my app?
 {% endcontentfor %}
 
 {% contentfor instruct-a4 %}
-Yes, and it’s very simple. The best way for now is to install Famo.us/Angular using bower, i.e. bower install famous-angular. Then add “famous.angular” as a module in your Angular app (in the app bootstrap step, just like you’d add any other Angular module). Afterwards, you are ready to start writing F/A directives.
+<fa-surface> is the entry point back into normal HTML, allowing any standard HTML content including images, videos, or even normal Angular directives.
+
+For example, you can nest <img> tags inside an fa-surface directive:
+<fa-surface>
+ <img src="images/lock-screen/capsule.svg" />
+  </fa-surface>
+
+  Use specialized Famo.us components for different media, for example for images you can use a <fa-image-surface>, passing image-url=”your/image/url” as an attribute.
 {% endcontentfor %}
 
 
 
 {% contentfor instruct-q5 %}
-Do Angular directives like ng-repeat and ng-if work with F/A directives?
+How do I use Transitionables?
 {% endcontentfor %}
 
 {% contentfor instruct-a5 %}
-Yes! Since F/A works with-the-grain for both Angular and Famo.us, you can use standard Angular directives like ng-repeat, ng-include, etc. You can also use custom Angular directives (<my-custom-directive>) when creating your app.
+Transitionables do not currently have a declarative HTML interface in F/A (use the fa-animation directive for declarative animations.) Basic Transitionables will need to be created in javascript, inside a controller.
+
+You can instantiate Transitionables in the controller, and then bind them to the $scope to be used with directives:
+
+<ul>
+  <li>
+    Controller
+    <code>
+      var Transitionable = famous['famous/transitions/Transitionable']
+      $scope.xTransitionable = new Transitionable(0);
+    </code>
+  </li>
+  <li>
+    Template
+    <code>
+      <fa-modifier fa-translate=”[xTransitionable.get,0,0]”>...</fa-modifier> 
+    </code>
+   </li>
+</ul>
 {% endcontentfor %}
 
 
 
-{% contentfor instruct-q6 %}
+
+{% contentfor troubleshoot-q1 %}
 Can I use existing (vanilla) Famo.us components in F/A?
 {% endcontentfor %}
 
-{% contentfor instruct-a6 %}
+{% contentfor troubleshoot-a1 %}
 Yes. Right now the easiest way is to use the fa-render-node directive, which allows you to pass a reference to an arbitrary render node from your controller. You can use requirejs to import your vanilla Famo.us component and instantiate it in your Angular controller. Afterwards, pass it by name to a <fa-render-node> element in the HTML.
 {% endcontentfor %}
 
 
 
-{% contentfor instruct-q7 %}
+{% contentfor troubleshoot-q2 %}
 Is an F/A app slower than a plain Famo.us app?
 {% endcontentfor %}
 
-{% contentfor instruct-a7 %}
+{% contentfor troubleshoot-a2 %}
 As with any AngularJS app (or any software, really,) it’s possible to “shoot yourself in the foot.” That said, F/A has been carefully designed to decouple Angular and its digest cycle from Famo.us’s render cycle—all rendering is handled by Famo.us itself, and the entire F/A DOM that you author is actually hidden from screen. There are a couple of ways to consider optimizing your code, for example, prefer passing references of functions directly to modifiers instead of evaluating them in code [myFunc instead of myFunc()]—more explanation in the fa-modifier documentation. In general, Angular changes will only cause Famo.us repaints if rendered content actually changes, so in short, “no,” a F/A app it’s not practically slower than a plain Famo.us app.
 {% endcontentfor %}
 
