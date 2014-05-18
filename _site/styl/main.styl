@@ -69,6 +69,22 @@ body
     // TODO: Find a better way to center
     padding-top: 25px
 
+    .btn-group
+      padding-top: 8px
+      padding-left: 15px
+
+      button
+        border: 1px solid white 
+        background-color: $navbar-color
+
+        a
+          color: white !important
+          font-size: 16px
+
+          &.famous-link
+            color: $sidebar-color !important
+        
+
 /****************************************************************
 * Side nav
 ****************************************************************/
@@ -77,6 +93,7 @@ body
   background-color: $sidebar-color
   padding: 30px 0 30px 50px
   position: fixed
+  overflow: auto
 
   ul
     list-style: none
