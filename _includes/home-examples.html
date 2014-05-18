@@ -1,7 +1,6 @@
 <section class="examples">
   <div class="container">
 
-
     <div class="example-block">
       <div class="description">
         <h3>Easily generate surfaces with ng-repeat</h3>
@@ -14,16 +13,16 @@
           {% contentblock code1 %}
         </div>
         <div class="col-md-4">
-          <div fa-app style="height: 300px">
-            <div ng-controller="homepageExamplesCtrl">
-              <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
-                <fa-surface fa-size="[40, 40]" class="square">
-                </fa-surface>
-              </fa-modifier>
+          <div fa-app style="height: 300px" ng-controller="homepageExamplesCtrl">
+            <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
+              <fa-surface fa-size="[40, 40]" class="square">
+              </fa-surface>
+            </fa-modifier>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="example-block">
       <div class="description row">
@@ -39,7 +38,7 @@
           <div fa-app style="height: 300px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-surface>
-                <input type="range" ng-model="$parent.translateX">
+                <input type="range" ng-model="$parent.translateX" />
                </fa-surface>
               <fa-modifier fa-translate="[translateX * 2, 40]">
                 <fa-surface fa-size="[40, 40]" class="square">

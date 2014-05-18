@@ -45,10 +45,6 @@ var requirements = [
 	"famous/views/Scrollview"
 ]
 
-require.config({
-	baseUrl: "/scripts"
-});
-
 //declare the module before the async callback so that
 //it will be accessible to other synchronously loaded angular
 //components
@@ -551,7 +547,6 @@ angular.module('famous.angular')
       template: '<div style="display: none;"><div></div></div>',
       transclude: true,
       restrict: 'EA',
-      scope: {},
       compile: function(tElement, tAttrs, transclude){
         return {
           pre: function(scope, element, attrs){
