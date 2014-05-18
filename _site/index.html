@@ -185,12 +185,18 @@
         <div class="col-md-8">
           
 
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;range&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;translateX&quot;</span>&gt;
-<span class="lineno">2</span> 
-<span class="lineno">3</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[translateX, 0]&quot;</span>&gt;
-<span class="lineno">4</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>&gt;
-<span class="lineno">5</span>   &lt;/fa-surface&gt;
-<span class="lineno">6</span> &lt;/fa-modifier&gt;</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="lineno"> 1</span> &lt;div ng-controller<span class="o">=</span><span class="s2">&quot;homepageExamplesCtrl&quot;</span>&gt;
+<span class="lineno"> 2</span>   &lt;fa-modifier ng-repeat<span class="o">=</span><span class="s2">&quot;square in squares&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;rotateMod&quot;</span> fa-translate<span class="o">=</span><span class="s2">&quot;[square.x, 50, 2]&quot;</span> fa-origin<span class="o">=</span><span class="s2">&quot;[.125, .125]&quot;</span>&gt;
+<span class="lineno"> 3</span>     &lt;fa-surface <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>  fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span>&gt;&lt;/fa-surface&gt;
+<span class="lineno"> 4</span>   &lt;/fa-modifier&gt;
+<span class="lineno"> 5</span>   &lt;fa-animation <span class="nv">autoplay</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="nv">duration</span><span class="o">=</span><span class="s2">&quot;1200&quot;</span> <span class="nv">loop</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>&gt;
+<span class="lineno"> 6</span>     &lt;animate  <span class="nv">targetModSelector</span><span class="o">=</span><span class="s2">&quot;.rotateMod&quot;</span>
+<span class="lineno"> 7</span>               <span class="nv">field</span><span class="o">=</span><span class="s2">&quot;rotateZ&quot;</span>
+<span class="lineno"> 8</span>               <span class="nv">startValue</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+<span class="lineno"> 9</span>               <span class="nv">endValue</span><span class="o">=</span><span class="s2">&quot;6.283&quot;</span>
+<span class="lineno">10</span>               <span class="nv">curve</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span> &gt;&lt;/animate&gt;
+<span class="lineno">11</span>   &lt;/fa-animation&gt;
+<span class="lineno">12</span> &lt;/div&gt;</code></pre></div>
 
 
 
@@ -270,45 +276,6 @@
 
 
 
-        </div>
-      </div>
-    </div>
-
-    <div class="example-block">
-      <div class="description">
-        <h3>Conditionally add surfaces or modifiers with ng-if</h3>
-        <p>
-          To be written!
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          
-
-<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;button ng-click<span class="o">=</span><span class="s2">&quot;!translate&quot;</span>&gt;
-<span class="lineno">2</span> 
-<span class="lineno">3</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[50, 0]&quot;</span> ng-if<span class="o">=</span><span class="s2">&quot;translate == true&quot;</span>&gt;
-<span class="lineno">4</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span>&gt;
-<span class="lineno">5</span>   &lt;/fa-surface&gt;
-<span class="lineno">6</span> &lt;/fa-modifier&gt;</code></pre></div>
-
-
-
-
-        </div>
-        <div class="col-md-4">
-          <div fa-app style="height: 300px">
-            <div ng-controller="homepageExamplesCtrl">
-              <fa-surface>
-                <button ng-click="$parent.showSquare = !$parent.showSquare">Show square</button>
-                <!--<input type="text" ng-model="$parent.showSquare">-->
-              </fa-surface>
-              <fa-modifier fa-translate="[0, 40]">
-                <fa-surface fa-size="[40, 40]" class="square" ng-if="$parent.showSquare === false">
-                </fa-surface>
-              </fa-modifier>
-            </div>
-          </div>
         </div>
       </div>
     </div>

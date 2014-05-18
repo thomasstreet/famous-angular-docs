@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col-md-8">
-          {% contentblock code2 %}
+          {% contentblock animations %}
         </div>
       </div>
     </div>
@@ -108,34 +108,6 @@
         </div>
         <div class="col-md-8">
           {% contentblock code2 %}
-        </div>
-      </div>
-    </div>
-
-    <div class="example-block">
-      <div class="description">
-        <h3>Conditionally add surfaces or modifiers with ng-if</h3>
-        <p>
-          To be written!
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          {% contentblock code3 %}
-        </div>
-        <div class="col-md-4">
-          <div fa-app style="height: 300px">
-            <div ng-controller="homepageExamplesCtrl">
-              <fa-surface>
-                <button ng-click="$parent.showSquare = !$parent.showSquare">Show square</button>
-                <!--<input type="text" ng-model="$parent.showSquare">-->
-              </fa-surface>
-              <fa-modifier fa-translate="[0, 40]">
-                <fa-surface fa-size="[40, 40]" class="square" ng-if="$parent.showSquare === false">
-                </fa-surface>
-              </fa-modifier>
-            </div>
-          </div>
         </div>
       </div>
     </div>
