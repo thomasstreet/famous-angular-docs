@@ -12,18 +12,64 @@
     {% include head_includes.html %}
   </head>
 
-  <body class="docs docs-page docs-api">
+  <body class="faq-page">
 
     {% include nav_links.html %}
 
-    <div class="container-fluid">
+    <div class="container faq-content">
 
-      <div class="row">
+      <div class="index">
+        <section>
+          <h2>The Basics</h2>
+          <ul>
+            <li>
+              <a href="#q1">
+                {% contentblock q1 %}
+              </a>
+            </li>
+            <li>
+              <a href="#q2">
+                {% contentblock q2 %}
+              </a>
+            </li>
+          </ul>
+        </section>
 
-        {{ content }}
+        <section>
+        <h2>Instructional Questions</h2>
+        <ul>
+          <li>
+            <a href="#q1">
+              {% contentblock q1 %}
+            </a>
+          </li>
+          <li>
+            <a href="#q2">
+              {% contentblock q2 %}
+            </a>
+          </li>
+        </ul>
+        </section>
+      </div>
 
-        {{ q1 }}
+      <hr>
 
+      <section class="row answer-block">
+        <h3 id="q1">
+          {% contentblock q1 %}
+        </h3>
+        <p>
+          {% contentblock a1 %}
+        </p>
+      </section>
+
+      <div class="row answer-block">
+        <h3 id="q2">
+          {% contentblock q2 %}
+        </h3>
+        <p>
+          {% contentblock a2 %}
+        </p>
       </div>
 
     </div>
