@@ -198,6 +198,15 @@ $scope.xTransitionable = new Transitionable(0);
 
 
 
+{% contentfor about-q1 %}
+Who's building this?
+{% endcontentfor %}
+
+{% contentfor about-a1 %}
+{% endcontentfor %}
+
+
+
 {% contentfor troubleshoot-q1 %}
 Can I use existing (vanilla) Famo.us components in F/A?
 {% endcontentfor %}
