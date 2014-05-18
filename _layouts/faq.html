@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include meta_tags.html %}
+
+    {% if page.versionHref != "/docs" %}
+      <!-- version {{ page.versionHref }} should not be indexed -->
+      <meta name="robots" content="noindex">
+    {% endif %}
+
+    <title>{{page.title}}{% if page.header_sub_title %} - {{ page.header_sub_title}}{% endif %} - Angular Famous</title>
+    {% include head_includes.html %}
+  </head>
+
+  <body class="faq-page">
+
+    {% include nav_links.html %}
+
+    <div class="container faq-content">
+
+      <div class="index row">
+        <section>
+          <h2>The Basics</h2>
+          <ul>
+
+            <li>
+              <a href="#basics-q1">
+                {% contentblock basics-q1 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#basics-q2">
+                {% contentblock basics-q2 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#basics-q3">
+                {% contentblock basics-q3 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#basics-q4">
+                {% contentblock basics-q4 %}
+              </a>
+            </li>
+
+
+            <li>
+              <a href="#basics-q5">
+                {% contentblock basics-q5 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#basics-q6">
+                {% contentblock basics-q6 %}
+              </a>
+            </li>
+
+            <li>
+              <a href="#basics-q7">
+                {% contentblock basics-q7 %}
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Instructional Questions</h2>
+          <ul>
+            <li>
+              <a href="#instruct-q1">
+                {% contentblock instruct-q1 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q2">
+                {% contentblock instruct-q2 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q3">
+                {% contentblock instruct-q3 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q4">
+                {% contentblock instruct-q4 %}
+              </a>
+            </li>
+            <li>
+              <a href="#instruct-q5">
+                {% contentblock instruct-q5 %}
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <section id="basics">
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q1"></span>
+            {% contentblock basics-q1 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a1 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q2"></span>
+            {% contentblock basics-q2 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a2 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q3"></span>
+            {% contentblock basics-q3 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a3 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q4"></span>
+            {% contentblock basics-q4 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a4 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q5"></span>
+            {% contentblock basics-q5 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a5 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q6"></span>
+            {% contentblock basics-q6 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a6 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="basics-q7"></span>
+            {% contentblock basics-q7 %}
+          </h3>
+          <div class="answer">
+            {% contentblock basics-a7 %}
+          </div>
+        </section>
+
+      </section>
+
+      <hr>
+
+      <section id="instruct">
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q1"></span>
+            {% contentblock instruct-q1 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a1 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q2"></span>
+            {% contentblock instruct-q2 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a2 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q3"></span>
+            {% contentblock instruct-q3 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a3 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q4"></span>
+            {% contentblock instruct-q4 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a4 %}
+          </div>
+        </section>
+
+        <section class="row answer-block">
+          <h3>
+            <span id="instruct-q5"></span>
+            {% contentblock instruct-q5 %}
+          </h3>
+          <div class="answer">
+            {% contentblock instruct-a5 %}
+          </div>
+        </section>
+
+      </section>
+    </div>
+
+    {% include footer.html %}
+
+    {% include base_scripts.html %}
+
+  </body>
+</html>
