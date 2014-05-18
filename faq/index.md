@@ -174,7 +174,7 @@ How do I use Transitionables?
 {% endcontentfor %}
 
 {% contentfor instruct-a5 %}
-Transitionables do not currently have a declarative HTML interface in F/A (use the fa-animation directive for declarative animations.) Basic Transitionables will need to be created in javascript, inside a controller.
+Transitionables do not currently have a declarative HTML interface in F/A (use the fa-animation directive for declarative animations). Basic Transitionables will need to be created in javascript, inside a controller.
 
 You can instantiate Transitionables in the controller, and then bind them to the <code>$scope</code> to be used with directives:
 
@@ -215,12 +215,3 @@ Is an F/A app slower than a plain Famo.us app?
 {% contentfor troubleshoot-a2 %}
 As with any AngularJS app (or any software, really,) it’s possible to “shoot yourself in the foot.” That said, F/A has been carefully designed to decouple Angular and its digest cycle from Famo.us’s render cycle—all rendering is handled by Famo.us itself, and the entire F/A DOM that you author is actually hidden from screen. There are a couple of ways to consider optimizing your code, for example, prefer passing references of functions directly to modifiers instead of evaluating them in code [myFunc instead of myFunc()]—more explanation in the fa-modifier documentation. In general, Angular changes will only cause Famo.us repaints if rendered content actually changes, so in short, “no,” a F/A app it’s not practically slower than a plain Famo.us app.
 {% endcontentfor %}
-
-
-
-{% highlight bash linenos %}
-<fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares'>
-  <fa-surface fa-size="[40, 40]" class="square">
-  </fa-surface>
-</fa-modifier>
-{% endhighlight %}
