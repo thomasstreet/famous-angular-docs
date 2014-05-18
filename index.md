@@ -3,6 +3,19 @@ title: Famo.us / Angular
 layout: home
 ---
 
+
+{% contentfor declarativeui %}
+{% highlight bash linenos %}
+
+<fa-grid-layout fa-options="options.grid" >
+  <fa-surface fa-size="[40, 40]" class="square" ng-repeat="square in squares">
+  </fa-surface>
+</fa-grid-layout>
+
+{% endhighlight %}
+{% endcontentfor %}
+
+
 {% contentfor code1 %}
 {% highlight bash linenos %}
 

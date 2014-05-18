@@ -123,11 +123,88 @@
       <section class="examples">
   <div class="container">
 
+
     <div class="example-block">
       <div class="description">
-        <h3>Easily generate surfaces with ng-repeat</h3>
+        <h3>Create your Famo.us app visually, in HTML</h3>
         <p>
-          Loop surfaces in your views to keep your MVC logic separated and clean.
+          Bring the benefits of declarative UI authoring to your Famo.us app
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          
+
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;fa-grid-layout fa-options<span class="o">=</span><span class="s2">&quot;options.grid&quot;</span> &gt;
+<span class="lineno">2</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span> ng-repeat<span class="o">=</span><span class="s2">&quot;square in squares&quot;</span>&gt;
+<span class="lineno">3</span>   &lt;/fa-surface&gt;
+<span class="lineno">4</span> &lt;/fa-grid-layout&gt;</code></pre></div>
+
+
+
+
+        </div>
+        <div class="col-md-4">
+          <div fa-app style="height: 200px;">
+            <fa-grid-layout ng-controller="homepageExamplesCtrl" fa-options="options.grid">
+              <fa-surface fa-size="[40, 40]" class="square" ng-repeat="square in squares">
+              </fa-surface>
+            </fa-grid-layout>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="example-block">
+      <div class="description row">
+        <div class="col-md-offset-4 col-md-8">
+          <h3>Bring Angular apps to life with Famo.us animations</h3>
+          <p>
+            Easily add animations to Famo.us objects declaratively, imperatively, or both.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div fa-app style="height: 300px">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-modifier ng-repeat="square in squares" class="rotateMod" fa-translate="[square.x, 50, 2]" fa-origin="[.125, .125]">
+                <fa-surface class="square"  fa-size="[40, 40]"></fa-surface>
+              </fa-modifier>
+              <fa-animation autoplay="true" duration="1200" loop="true">
+                <animate  targetModSelector=".rotateMod"
+                          field="rotateZ"
+                          startValue="0"
+                          endValue="6.283"
+                          curve="linear" ></animate>
+              </fa-animation>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          
+
+<div class="highlight"><pre><code class="bash"><span class="lineno">1</span> &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;range&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;translateX&quot;</span>&gt;
+<span class="lineno">2</span> 
+<span class="lineno">3</span> &lt;fa-modifier fa-translate<span class="o">=</span><span class="s2">&quot;[translateX, 0]&quot;</span>&gt;
+<span class="lineno">4</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>&gt;
+<span class="lineno">5</span>   &lt;/fa-surface&gt;
+<span class="lineno">6</span> &lt;/fa-modifier&gt;</code></pre></div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="example-block">
+      <div class="description">
+        <h3>Use familiar Angular concepts, like ng-repeat</h3>
+        <p>
+          Make use of Angular tools to keep MVC logic separated and clean.
         </p>
       </div>
       <div class="row">
@@ -144,11 +221,13 @@
 
         </div>
         <div class="col-md-4">
-          <div fa-app style="height: 300px" ng-controller="homepageExamplesCtrl">
-            <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
-              <fa-surface fa-size="[40, 40]" class="square">
-              </fa-surface>
-            </fa-modifier>
+          <div fa-app style="height: 300px">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-modifier  fa-translate="[square.x, 40]" ng-repeat='square in squares' >
+                <fa-surface fa-size="[40, 40]" class="square">
+                </fa-surface>
+              </fa-modifier>
+            </div>
           </div>
         </div>
       </div>
