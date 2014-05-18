@@ -8,7 +8,7 @@ angular.module('controller.homepage', ['famous.angular'])
     };
 
     $scope.squares = [
-      { x: 0 }, { x: 100 }, { x: 200 }, { x: 300 }
+      { x: 0 }, { x: 75 }, { x: 150 }, { x: 225 }
     ];
 
     $scope.translateX = 50;

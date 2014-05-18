@@ -30,6 +30,8 @@
 
 
 
+
+    <link rel="stylesheet" href="bower_components/famous-angular/dist/famous-angular.min.css">
   </head>
 
   <body class="docs docs-page docs-api">
@@ -143,7 +145,7 @@
 
         </div>
         <div class="col-md-4">
-          <div fa-app>
+          <div fa-app style="height: 300px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-modifier fa-translate="[square.x, 40]" ng-repeat='square in squares' >
                 <fa-surface fa-size="[40, 40]" class="square">
@@ -165,7 +167,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div fa-app>
+          <div fa-app style="height: 300px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-surface>
                 <input type="range" ng-model="$parent.translateX">
@@ -215,7 +217,7 @@
 
         </div>
         <div class="col-md-4">
-          <div fa-app>
+          <div fa-app style="height: 300px">
             <fa-modifier fa-translate="[50, 0]">
               <fa-surface fa-size="[40, 40]" class="square">
               </fa-surface>
