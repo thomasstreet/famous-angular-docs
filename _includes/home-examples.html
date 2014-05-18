@@ -14,7 +14,7 @@
           {% contentblock declarativeui %}
         </div>
         <div class="col-md-4">
-          <div fa-app style="height: 200px;">
+          <div fa-app style="height: 160px;">
             <fa-grid-layout ng-controller="homepageExamplesCtrl" fa-options="options.grid">
               <fa-surface fa-size="[40, 40]" class="square" ng-repeat="square in squares">
               </fa-surface>
@@ -70,7 +70,7 @@
           {% contentblock code1 %}
         </div>
         <div class="col-md-4">
-          <div fa-app style="height: 300px">
+          <div fa-app style="height: 150px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-modifier  fa-translate="[square.x, 40]" ng-repeat='square in squares' >
                 <fa-surface fa-size="[40, 40]" class="square">
@@ -94,7 +94,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div fa-app style="height: 300px">
+          <div fa-app style="height: 160px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-surface>
                 <input type="range" ng-model="$parent.translateX" />
@@ -109,6 +109,15 @@
         <div class="col-md-8">
           {% contentblock code2 %}
         </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="description">
+        <h3>...and more!</h3>
+        <p>
+           Read the <a href="{{relative}}docs/api">docs</a> to learn more.
+        </p>
       </div>
     </div>
 
