@@ -107,6 +107,20 @@ body
 * Side nav
 ****************************************************************/
 
+// Mobile screens
+@media (max-width: 641px)
+
+  .side-nav
+    position: static !important
+    padding-bottom: 0 !important
+
+// Non-mobile screens
+@media (min-width: 641px)
+
+  .side-nav
+    @extend .fill
+
+
 .side-nav
   background-color: $sidebar-color
   padding: 30px 0 30px 50px
@@ -141,10 +155,6 @@ body
           // Overwrite the default hover styling
           background-color: transparent
 
-media (max-width: 641px)
-
-  .side-nav
-    position: static !important
 
 /****************************************************************
 * Homepage
