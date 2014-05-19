@@ -25,6 +25,15 @@ body
   font-family: OpenSans !important
 
 /****************************************************************
+* General mobile
+****************************************************************/
+
+@media (max-width: 641px)
+  h1
+    font-size: 28px
+
+
+/****************************************************************
 * Footer content area
 ****************************************************************/
 
@@ -49,6 +58,10 @@ body
 
 .main-content
   padding: 48px
+
+@media (max-width: 641px)
+  .main-content
+    padding: 20px 15px
 
 /****************************************************************
 * Utility classes
@@ -107,11 +120,26 @@ body
 * Side nav
 ****************************************************************/
 
+// Mobile screens
+@media (max-width: 641px)
+
+  .side-nav
+    position: static !important
+    padding-bottom: 0 !important
+
+// Non-mobile screens
+@media (min-width: 641px)
+
+  .side-nav
+    @extend .fill
+
+
 .side-nav
   background-color: $sidebar-color
   padding: 30px 0 30px 50px
   position: fixed
   overflow: auto
+  padding-bottom: 150px
 
   ul
     list-style: none
@@ -139,6 +167,7 @@ body
         &:hover
           // Overwrite the default hover styling
           background-color: transparent
+
 
 /****************************************************************
 * Homepage
