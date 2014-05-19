@@ -245,7 +245,7 @@
           <div class="answer">
             <p>Yes! Since F/A works with-the-grain for both Angular and Famo.us, you can use standard Angular directives like <code>ng-repeat</code>, <code>ng-include</code>, etc.</p>
 
-<p>You can also use custom Angular directives (<code>&lt;my-custom-directive&gt;</code>) when creating your app.</p>
+<p>You can also use custom Angular directives (<code>my-custom-directive</code>) when creating your app.</p>
 
           </div>
         </section>
@@ -261,7 +261,7 @@
 
 <p>You can use requirejs to import your vanilla Famo.us component and instantiate it in your Angular controller.</p>
 
-<p>Afterwards, pass it by name to a <code><fa-render-node></code> element in the HTML.</p>
+<p>Afterwards, pass it by name to a <code>&lt;fa-render-node&gt;</code> element in the HTML.</p>
 
           </div>
         </section>
@@ -277,7 +277,7 @@
 
 <p>That said, F/A has been carefully designed to decouple Angular and its digest cycle from Famo.us’s render cycle—all rendering is handled by Famo.us itself, and the entire F/A DOM that you author is actually hidden from screen.</p>
 
-<p>There are a couple of ways to consider optimizing your code, for example, prefer passing references of functions directly to modifiers instead of evaluating them in code [myFunc instead of myFunc()]—more explanation in the fa-modifier documentation.</p>
+<p>There are a couple of ways to consider optimizing your code, for example, prefer passing references of functions directly to modifiers instead of evaluating them in code <code>[myFunc instead of myFunc()]</code> — more explanation in the fa-modifier documentation.</p>
 
 <p>In general, Angular changes will only cause Famo.us repaints if rendered content actually changes, so in short, “no,” a F/A app it’s not practically slower than a plain Famo.us app.</p>
 
@@ -296,7 +296,7 @@
 
           </h3>
           <div class="answer">
-            <p>Just like <code>ng-app</code>, you can put the <code>fa-app</code> attribute on any HTML element (though only display: block container/host elements are supported, for now.)</p>
+            <p>Just like <code>ng-app</code>, you can put the <code>fa-app</code> attribute on any HTML element (though only <code>display: block</code> container/host elements are supported, for now.)</p>
 
 <p>This is your entry point to F/A:  the contents of that fa-app element will be compiled as Famo.us/Angular.</p>
 
@@ -344,7 +344,7 @@
 
           </h3>
           <div class="answer">
-            <p><code>&lt;fa-surface&gt;</code> is the entry point back into normal HTML, allowing any standard HTML content including images, videos, or even normal Angular directives.</p>
+            <p><code>&lt;fa-surface</code>> is the entry point back into normal HTML, allowing any standard HTML content including images, videos, or even normal Angular directives.</p>
 
 <p>For example, you can nest <code>&lt;img&gt;</code> tags inside an <code>&lt;fa-surface&gt;</code> directive:</p>
 
@@ -365,7 +365,7 @@
 
           </h3>
           <div class="answer">
-            <p>Transitionables do not currently have a declarative HTML interface in F/A (use the fa-animation directive for declarative animations). Basic Transitionables will need to be created in javascript, inside a controller.</p>
+            <p>Transitionables do not currently have a declarative HTML interface in F/A (use the <code>fa-animation</code> directive for declarative animations). Basic Transitionables will need to be created in javascript, inside a controller.</p>
 
 <p>You can instantiate Transitionables in the controller, and then bind them to the <code>$scope</code> to be used with directives:</p>
 
