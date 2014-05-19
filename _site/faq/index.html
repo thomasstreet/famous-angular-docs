@@ -155,6 +155,12 @@
 
               </a>
             </li>
+            <li>
+              <a href="#instruct-q6">
+                <p>Why won't my app scroll on mobile?</p>
+
+              </a>
+            </li>
           </ul>
         </section>
       </div>
@@ -389,6 +395,36 @@
           </div>
         </section>
 
+        <section class="answer-block">
+          <h3>
+            <span id="instruct-q6"></span>
+            <p>Why won't my app scroll on mobile?</p>
+
+          </h3>
+          <div class="answer">
+            <p>This is an <a href="https://github.com/Famous/core/issues/14">outstanding bug in Famo.us core.</a></p>
+
+<p>If you are using Famo.us in non-full-screen contexts, it still absorbs window-level touch events, which breaks scrolling on mobile.</p>
+
+<p>A temporary fix if you want non-full-screen elements (a common use-case with F/A) is to modify famous/core/Engine.js, removing this block circa line 121:</p>
+
+<pre><code class="javascript">// prevent scrolling via browser
+window.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, true);
+</code></pre>
+
+<p>=></p>
+
+<pre><code class="javascript">// prevent scrolling via browser
+//window.addEventListener('touchmove', function(event) {
+//    //event.preventDefault();
+//}, true);
+</code></pre>
+
+          </div>
+        </section>
+
       </section>
     </div>
 
@@ -396,7 +432,7 @@
 
 <div class="footer">
   <p>
-  <a href="https://famo.us"><img src="../img/famous-logo.png" style="height: 26px; margin-top: -3px;" alt="Famo.us"></a> <span style="margin: 10px;">+</span> <a href="http://thomasstreet.com/"><img src="../img/TS_Just_Logo.png" height="20px" alt="Thomas Street web development"></a>
+  <a href="https://famo.us"><img src="../img/famous-logo.png" style="height: 26px; margin-top: -3px;" alt="Famo.us"></a> <span style="margin: 10px;">+</span> <a href="http://thomasstreet.com/"><img src="../img/TS_Just_logo.png" height="20px" alt="Thomas Street web development"></a>
   </p>
 </div>
 

@@ -197,6 +197,34 @@ $scope.xTransitionable = new Transitionable(0);
 
 
 
+{% contentfor instruct-q6 %}
+Why won't my app scroll on mobile?
+{% endcontentfor %}
+
+{% contentfor instruct-a6 %}
+This is an [outstanding bug in Famo.us core.](https://github.com/Famous/core/issues/14)
+
+If you are using Famo.us in non-full-screen contexts, it still absorbs window-level touch events, which breaks scrolling on mobile.
+
+A temporary fix if you want non-full-screen elements (a common use-case with F/A) is to modify famous/core/Engine.js, removing this block circa line 121:
+
+```javascript
+// prevent scrolling via browser
+window.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, true);
+```
+=>
+
+```javascript
+// prevent scrolling via browser
+//window.addEventListener('touchmove', function(event) {
+//    //event.preventDefault();
+//}, true);
+```
+{% endcontentfor %}
+
+
 
 {% contentfor about-q1 %}
 Who's building this?
