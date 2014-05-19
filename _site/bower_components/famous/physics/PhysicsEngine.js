@@ -29,15 +29,16 @@ define(function(require, exports, module) {
         this._constraints    = [];   //list of IDs of agents that are constraints
 
         this._buffer         = 0.0;
-        this._timestamp      = 17;
-        this._minTimeStep    = 1000 / 120;
-        this._maxTimestep    = 17;
         this._prevTime       = now();
         this._isSleeping     = false;
         this._eventHandler   = null;
         this._currAgentId    = 0;
         this._hasBodies      = false;
     }
+
+    var TIMESTEP = 17;
+    var MIN_TIME_STEP = 17;
+    var MAX_TIME_STEP = 1000 / 120;
 
     /**
      * @property PhysicsEngine.DEFAULT_OPTIONS
@@ -104,7 +105,7 @@ define(function(require, exports, module) {
         var array = (body.isBody) ? this._bodies : this._particles;
         var index = array.indexOf(body);
         if (index > -1) {
-            for (var i = 0; i < Object.keys(this._agents); i++) this.detachFrom(i, body);
+            for (var i = 0; i < Object.keys(this._agents).length; i++) this.detachFrom(i, body);
             array.splice(index,1);
         }
         if (this.getBodies().length === 0) this._hasBodies = false;
@@ -402,8 +403,8 @@ define(function(require, exports, module) {
 
         this._prevTime = currTime;
 
-        if (dtFrame < this._minTimeStep) return;
-        if (dtFrame > this._maxTimeStep) dtFrame = this._maxTimestep;
+        if (dtFrame < MIN_TIME_STEP) return;
+        if (dtFrame > MAX_TIME_STEP) dtFrame = MAX_TIME_STEP;
 
         //robust integration
 //        this._buffer += dtFrame;
@@ -413,7 +414,7 @@ define(function(require, exports, module) {
 //        };
 //        _integrate.call(this, this._buffer);
 //        this._buffer = 0.0;
-        _integrate.call(this, this._timestamp);
+        _integrate.call(this, TIMESTEP);
 
 //        this.emit('update', this);
     };

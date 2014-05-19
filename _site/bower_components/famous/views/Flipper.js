@@ -12,7 +12,6 @@ define(function(require, exports, module) {
     var Transitionable = require('famous/transitions/Transitionable');
     var RenderNode = require('famous/core/RenderNode');
     var OptionsManager = require('famous/core/OptionsManager');
-    var Utility = require('famous/utilities/Utility');
 
     /**
      * Allows you to link two renderables as front and back sides that can be
@@ -23,38 +22,55 @@ define(function(require, exports, module) {
      * @constructor
      * @param {Options} [options] An object of options.
      * @param {Transition} [options.transition=true] The transition executed when flipping your Flipper instance.
-     * @param {Boolean} [options.cull=true] If true, culls the 'hidden' side untill you flip to it.
      */
     function Flipper(options) {
         this.options = Object.create(Flipper.DEFAULT_OPTIONS);
         this._optionsManager = new OptionsManager(this.options);
         if (options) this.setOptions(options);
 
-        this._side = 0;
-        this.state = new Transitionable(0);
+        this.angle = new Transitionable(0);
 
-        this.frontNode = new RenderNode();
-        this.backNode = new RenderNode();
+        this.frontNode = undefined;
+        this.backNode = undefined;
+
+        this.flipped = false;
     }
+
+    Flipper.DIRECTION_X = 0;
+    Flipper.DIRECTION_Y = 1;
+
+    var SEPERATION_LENGTH = 1;
 
     Flipper.DEFAULT_OPTIONS = {
         transition: true,
-        cull: true,
-        direction: Utility.Direction.Y
+        direction: Flipper.DIRECTION_X
     };
 
     /**
-     * Flips from the current side to the opposite one with the Flipper instance's default transition.
+     * Toggles the rotation between the front and back renderables
      *
-     * @method setDefaultTransition
-     * @param {Number} side Can be either one or zero (one represents the back, zero represents the front).
-     *   Defaults to the default transition (true).
-     * @param {function} [callback] Executes after transitioning to the toggled state.
+     * @method flip
+     * @param {Object} [transition] Transition definition
+     * @param {Function} [callback] Callback
      */
-    Flipper.prototype.flip = function flip(side, callback) {
-        if (side === undefined) side = (this._side === 1) ? 0 : 1;
-        this._side = side;
-        this.state.set(side, this.options.transition, callback);
+    Flipper.prototype.flip = function flip(transition, callback) {
+        var angle = this.flipped ? 0 : Math.PI;
+        this.setAngle(angle, transition, callback);
+        this.flipped = !this.flipped;
+    };
+
+    /**
+     * Basic setter to the angle
+     *
+     * @method setAngle
+     * @param {Number} angle
+     * @param {Object} [transition] Transition definition
+     * @param {Function} [callback] Callback
+     */
+    Flipper.prototype.setAngle = function setAngle(angle, transition, callback) {
+        if (transition === undefined) transition = this.options.transition;
+        if (this.angle.isActive()) this.angle.halt();
+        this.angle.set(angle, transition, callback);
     };
 
     /**
@@ -72,10 +88,10 @@ define(function(require, exports, module) {
      *
      * @method setFront
      * @chainable
-     * @param {Object} obj The renderable you want to add to the front.
+     * @param {Object} node The renderable you want to add to the front.
      */
-    Flipper.prototype.setFront = function setFront(obj) {
-        return this.frontNode.set(obj);
+    Flipper.prototype.setFront = function setFront(node) {
+        this.frontNode = node;
     };
 
     /**
@@ -83,10 +99,10 @@ define(function(require, exports, module) {
      *
      * @method setBack
      * @chainable
-     * @param {Object} obj The renderable you want to add to the back.
+     * @param {Object} node The renderable you want to add to the back.
      */
-    Flipper.prototype.setBack = function setBack(obj) {
-        return this.backNode.set(obj);
+    Flipper.prototype.setBack = function setBack(node) {
+        this.backNode = node;
     };
 
     /**
@@ -97,29 +113,36 @@ define(function(require, exports, module) {
      * @return {Number} Render spec for this component
      */
     Flipper.prototype.render = function render() {
-        var pos = this.state.get();
-        var axis = this.options.direction;
-        var frontRotation = [0, 0, 0];
-        var backRotation = [0, 0, 0];
-        frontRotation[axis] = Math.PI * pos;
-        backRotation[axis] = Math.PI * (pos + 1);
+        var angle = this.angle.get();
 
-        if (this.options.cull && !this.state.isActive()) {
-            if (pos) return this.backNode.render();
-            else return this.frontNode.render();
+        var frontTransform;
+        var backTransform;
+
+        if (this.options.direction === Flipper.DIRECTION_X) {
+            frontTransform = Transform.rotateY(angle);
+            backTransform = Transform.rotateY(angle + Math.PI);
         }
         else {
-            return [
-                {
-                    transform: Transform.rotate.apply(null, frontRotation),
-                    target: this.frontNode.render()
-                },
-                {
-                    transform: Transform.rotate.apply(null, backRotation),
-                    target: this.backNode.render()
-                }
-            ];
+            frontTransform = Transform.rotateX(angle);
+            backTransform = Transform.rotateX(angle + Math.PI);
         }
+
+        var result = [];
+        if (this.frontNode){
+            result.push({
+                transform: frontTransform,
+                target: this.frontNode.render()
+            });
+        }
+
+        if (this.backNode){
+            result.push({
+                transform: Transform.moveThen([0, 0, SEPERATION_LENGTH], backTransform),
+                target: this.backNode.render()
+            });
+        }
+
+        return result;
     };
 
     module.exports = Flipper;

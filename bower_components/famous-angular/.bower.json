@@ -7,7 +7,7 @@
   "dependencies": {
     "angular": "1.2.16",
     "requirejs": ">=2.1.0",
-    "famous": "~0.1.2"
+    "famous": "~0.2.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
@@ -34,11 +34,11 @@
     "karma-e2e.conf.js",
     "package.json"
   ],
-  "_release": "6222f28809",
+  "_release": "7884efa991",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "6222f288099412d33746d8d6202fae6e9fbd5635"
+    "commit": "7884efa9914018f3fb0bc5e59643b74060c81d16"
   },
   "_source": "ssh://git@github.com/FamousInternal/famous-angular.git",
   "_target": "*",
