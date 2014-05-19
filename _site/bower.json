@@ -21,5 +21,8 @@
     "bootstrap": "~3.1.1",
     "requirejs": "~2.1.11",
     "underscore": "~1.6.0"
+  },
+  "resolutions": {
+    "famous": "~0.2.0"
   }
 }
