@@ -2,7 +2,7 @@ Famo.us/Angular Docs
 =======================
 
 <p>
-  1. Check in <code>bower.json</code> that you have the correct local path for the <code>"famous-angular"</code> repo.  Then run a <code>bower install</code>
+  1. Install the frontend dependencies with <code>bower install</code>
 </p>
 
 <p>
@@ -10,5 +10,8 @@ Famo.us/Angular Docs
 </p>
 
 <p>
-  3. Go up a level into the main <code>famous-angular</code> repo, and then run <code>gulp dev-site</code> and check <code>localhost:4000</code> 
+  3. Install the node modules needed for gulp with <code>npm install</code>
+</p>
+<p>
+  4. Run <code>gulp dev</code> and visit <code>localhost:4000</code> 
 </p>
