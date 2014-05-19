@@ -118,7 +118,7 @@ define(function(require, exports, module) {
 
     // prevent scrolling via browser
     window.addEventListener('touchmove', function(event) {
-        event.preventDefault();
+        //event.preventDefault();
     }, true);
 
     /**
