@@ -43,6 +43,6 @@
     "mkdirp": "^0.5.0",
     "winston": "^0.7.3",
     "gulp-wait": "0.0.2",
-    "gulp-ngmin": "^0.3.0"
+    "gulp-ngmin": "~0.3.0"
   }
 }
