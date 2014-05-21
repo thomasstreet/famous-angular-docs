@@ -1,6 +1,6 @@
 /**
  * famous-angular - Allow famo.us components to work seamlessly with other components inside existing or future Angular apps
- * @version v0.0.0
+ * @version v0.0.9
  * @link https://github.com/FamousInternal/famous-angular
  * @license 
  */
@@ -123,7 +123,7 @@ require(requirements, function(/*args*/) {
 		   */
 		   
 		_modules.find = function(selector){
-			var elems = angular.element(selector);
+			var elems = angular.element(window.document.querySelector(selector));
 			var scopes = _.map(elems, function(elem){
 				return angular.element(elem).scope();
 			});
@@ -319,12 +319,10 @@ angular.module('famous.angular')
                     //dig out the reference to our modifier
                     //TODO:  support passing a direct reference to a modifier
                     //       instead of performing a DOM lookup
-                    var modElements = element.parent().find(
-                      animate.attributes['targetmodselector'].value
-                    );
+	                var modElements = angular.element(element[0].parentNode)[0].querySelectorAll(animate.attributes['targetmodselector'].value);
                     
                     
-                    _.each(modElements, function(modElement){
+                    angular.forEach(modElements, function(modElement){
                       var modScope = angular.element(modElement).scope();
                       var modifier = modScope.isolate[modScope.$id].modifier;
                       var getTransform = modScope.isolate[modScope.$id].getTransform;
@@ -566,8 +564,7 @@ angular.module('famous.angular')
 
             
             element.append('<div class="famous-angular-container"></div>');
-            var famousContainer = $(element.find('.famous-angular-container'))[0];
-            isolate.context = Engine.createContext(famousContainer);
+            isolate.context = Engine.createContext(element[0].querySelector('.famous-angular-container'));
 
             function AppView(){
               View.apply(this, arguments);
@@ -624,7 +621,7 @@ angular.module('famous.angular')
 
             var isolate = $famousDecorator.ensureIsolate(scope);
             transclude(scope, function(clone) {
-              element.find('div div').append(clone);
+	            angular.element(element[0].querySelectorAll('div div')[0]).append(clone);
             });
             isolate.readyToRender = true;
           }
@@ -719,9 +716,13 @@ angular.module('famous.angular')
               _children.sort(function(a, b){
                 return a.index - b.index;
               });
-              isolate.renderNode.sequenceFrom(_.map(_children, function(c){
-                return c.renderNode
-              }));
+              isolate.renderNode.sequenceFrom(function(_children) {
+	              var _ch = [];
+	              angular.forEach(_children, function(c, i) {
+		              _ch[i] = c.renderNode;
+	              })
+	              return _ch;
+              }(_children));
             }
 
             scope.$on('registerChild', function(evt, data){
@@ -734,9 +735,15 @@ angular.module('famous.angular')
 
             scope.$on('unregisterChild', function(evt, data){
               if(evt.targetScope.$id != scope.$id){
-                _children = _.reject(_children, function(c){
-                  return c.id === data.id
-                });
+	            _children = function(_children) {
+		          var _ch = [];
+		          angular.forEach(_children, function(c) {
+			        if(c.id !== data.id) {
+				      _ch.push(c);
+			        }
+		          });
+		          return _ch;
+	            }(_children);
                 updateGridLayout();
                 evt.stopPropagation();
               }
@@ -945,17 +952,17 @@ angular.module('famous.angular')
             isolate.getTransform = function() {
               //var transforms = [Transform.translate(0, 0, 0)];
               var transforms = [];
-              if (attrs.faTranslate && scope.$eval(attrs.faTranslate)) {
+              if (attrs.faTranslate && scope.$eval(attrs.faTranslate) !== undefined) {
                 var values = scope.$eval(attrs.faTranslate).map(get)
                 transforms.push(Transform.translate.apply(this, values));
               }
 
-              if(attrs.faRotate && scope.$eval(attrs.faRotate)){
+              if(attrs.faRotate && scope.$eval(attrs.faRotate) !== undefined){
                 var values = scope.$eval(attrs.faRotate).map(get)
                 transforms.push(Transform.rotate.apply(this, values));
               }
               //only apply faRotateX, etc. if faRotate is not defined
-              if (attrs.faRotateX && scope.$eval(attrs.faRotateX)){
+              if (attrs.faRotateX && scope.$eval(attrs.faRotateX) !== undefined){
                 transforms.push(
                   Transform.rotateX(
                     get(
@@ -964,7 +971,7 @@ angular.module('famous.angular')
                   )
                 );
               }
-              if (attrs.faRotateY && scope.$eval(attrs.faRotateY)) {
+              if (attrs.faRotateY && scope.$eval(attrs.faRotateY) !== undefined) {
                 transforms.push(
                   Transform.rotateY(
                     get(
@@ -973,7 +980,7 @@ angular.module('famous.angular')
                   )
                 );
               }
-              if (attrs.faRotateZ && scope.$eval(attrs.faRotateZ)) {
+              if (attrs.faRotateZ && scope.$eval(attrs.faRotateZ) !== undefined) {
                 transforms.push(
                   Transform.rotateZ(
                     get(
@@ -983,13 +990,12 @@ angular.module('famous.angular')
                 );
               }
 
-              if (attrs.faScale && scope.$eval(attrs.faScale)){
+              if (attrs.faScale && scope.$eval(attrs.faScale) !== undefined){
                 var values = scope.$eval(attrs.faScale).map(get)
                 transforms.push(Transform.scale.apply(this, values));
               }
-
               
-              if (attrs.faSkew && scope.$eval(attrs.faSkew)) {
+              if (attrs.faSkew && scope.$eval(attrs.faSkew) !== undefined) {
                 var values = scope.$eval(attrs.faSkew).map(get)
                 transforms.push(Transform.skew.apply(this, values));
               }
@@ -1003,7 +1009,7 @@ angular.module('famous.angular')
             };
 
             isolate.getOpacity = function(){
-              if (attrs.faOpacity && scope.$eval(attrs.faOpacity))
+              if (attrs.faOpacity && scope.$eval(attrs.faOpacity) !== undefined)
                 return get(scope.$eval(attrs.faOpacity));
               return 1;
             }
@@ -1287,7 +1293,13 @@ angular.module('famous.angular')
                 }); 
 
                 var options = {
-                  array: _.map(_children, function(c){ return c.renderNode }) 
+                  array: function(_children) {
+	                  var _ch = [];
+	                  angular.forEach(_children, function(c, i) {
+		                  _ch[i] = c.renderNode;
+	                  })
+	                  return _ch;
+                  }(_children)
                 };
                 //set the first page on the scrollview if
                 //specified
@@ -1310,9 +1322,16 @@ angular.module('famous.angular')
 
             scope.$on('unregisterChild', function(evt, data){
               if(evt.targetScope.$id != scope.$id){
-                _children = _.reject(_children, function(c){
-                  return c.id === data.id
-                });
+
+	            _children = function(_children) {
+		          var _ch = [];
+		          angular.forEach(_children, function(c) {
+			        if(c.id !== data.id) {
+				      _ch.push(c);
+			        }
+		          });
+		          return _ch;
+	            }(_children);
                 updateScrollview();
                 evt.stopPropagation();
               }
@@ -1426,15 +1445,17 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             var updateContent = function(){
-              var compiledEl = isolate.compiledEl = isolate.compiledEl || $compile(element.find('div.fa-surface').contents())(scope)
-              isolate.renderNode.setContent(isolate.compiledEl.context);
+//              var compiledEl = isolate.compiledEl = isolate.compiledEl || $compile(element.find('div.fa-surface').contents())(scope)
+//              isolate.renderNode.setContent(isolate.compiledEl.context);
+	            //TODO check if $compile is needed ?
+	            isolate.renderNode.setContent(element[0].querySelector('div.fa-surface'));
             };
 
             updateContent();
 
             //boilerplate
             transclude(scope, function(clone) {
-              element.find('div.fa-surface').append(clone);
+	          angular.element(element[0].querySelectorAll('div.fa-surface')).append(clone);
             });
 
             scope.$emit('registerChild', isolate);
@@ -1451,7 +1472,7 @@ angular.module('famous.angular')
  * @restrict A
  * @param {expression} faTap Expression to evaluate upon tap. (Event object is available as `$event`)
  * @description
- * This directive allows you to specify custom behavior when an element is taped.
+ * This directive allows you to specify custom behavior when an element is tapped.
  *
  * @usage
  * ```html

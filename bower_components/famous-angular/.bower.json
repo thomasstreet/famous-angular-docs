@@ -1,8 +1,9 @@
 {
   "name": "famous-angular",
-  "description": "Allow famo.us components to work seamlessly with other components inside existing or future Angular apps",
-  "license": "",
-  "homepage": "https://github.com/FamousInternal/famous-angular",
+  "description": "Integrate Famo.us into AngularJS apps and build Famo.us apps using AngularJS tools",
+  "version": "0.0.11",
+  "license": "MPL v2.0",
+  "homepage": "https://github.com/Famous/famous-angular",
   "main": "dist/famous-angular.js",
   "dependencies": {
     "angular": "1.2.16",
@@ -34,13 +35,13 @@
     "karma-e2e.conf.js",
     "package.json"
   ],
-  "_release": "86f7c5d69c",
+  "_release": "0.0.11",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "86f7c5d69c33c69f236c8c0d7878afb3642376ad"
+    "type": "version",
+    "tag": "0.0.11",
+    "commit": "75b4c6478cddfd2fefdd906d5877b14435ba4ac0"
   },
-  "_source": "ssh://git@github.com/FamousInternal/famous-angular.git",
-  "_target": "*",
-  "_originalSource": "ssh://git@github.com/FamousInternal/famous-angular.git"
+  "_source": "git://github.com/Famous/famous-angular.git",
+  "_target": "~0.0.11",
+  "_originalSource": "famous-angular"
 }

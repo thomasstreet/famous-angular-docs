@@ -76,6 +76,7 @@ body
 * Main header navbar
 ****************************************************************/
 
+
 .navbar-default
   font-size: 18px
   height: $navbar-height
@@ -115,6 +116,24 @@ body
         &.famous-link
           color: $sidebar-color !important
         
+
+
+// For mobile screens using a horizontal viewport
+@media (max-height: 640px)
+  .navbar-default
+    height: auto
+
+  a
+    &.navbar-brand
+      padding: 5px 0 0 5px
+
+      img
+        margin: 0 !important
+
+  button
+    &.navbar-toggle
+      margin-top: 5px !important
+
 
 /****************************************************************
 * Side nav
