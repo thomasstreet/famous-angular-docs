@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Famous Angular.">
+<meta name="keywords" content="angular,angularjs,famo.us,famous,phonegap,html5,threejs,famous-angular">
+
+
+    
+      <!-- version /docs/unstable should not be indexed -->
+      <meta name="robots" content="noindex">
+    
+
+    <title>$famousDecorator - Service in module famous.angular - Angular Famous</title>
+    
+
+<!--Bower Scripts-->
+<!--<link rel="stylesheet" href="/bower_components/famous/core/famous.css">-->
+<link rel="stylesheet" href="../../../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/default.css">
+<link rel="stylesheet" href="../../../../../css/fonts.css">
+
+<link href="../../../../../css/main.min.css" rel="stylesheet">
+
+ <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+
+
+
+  </head>
+
+  <body class="docs docs-page docs-api">
+
+    
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle button" data-toggle="collapse" data-target=".navbar-ex1-collapse" style="color: white; margin-top: 30px;">
+        Menu
+      </button>
+      <a class="navbar-brand" href="http://famo.us">
+        
+          <img src="../../../../../img/famous-angular-white-logo.png" alt="Famous Angular">
+        
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse" style="background-color: rgb(218, 38, 46);">
+      <ul class="nav navbar-nav">
+        <li><a class="nav-link" href="../../../../../">Home</a></li>
+        <li><a class="nav-link" href="../../../../../faq">FAQ</a></li>
+        <li><a class="nav-link" href="https://github.com/Famous/famous-angular">Github</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="btn-group">
+          <a class="btn btn-default" href="../../../../../docs/api">Famo.us / Angular Docs
+          </a>
+          <a class="btn btn-default" href="https://famo.us/docs">Famo.us Docs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-sm-3 col-xs-12 side-nav">
+
+          <ul class="nav left-menu active-menu">
+            
+    
+
+
+  <!-- Directives -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Directives
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faAnimation/">
+                fa-animation
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/animate/">
+                animate
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faApp/">
+                fa-app
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faClick/">
+                fa-click
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faGridLayout/">
+                fa-grid-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faImageSurface/">
+                fa-image-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faIndex/">
+                fa-index
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faModifier/">
+                fa-modifier
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faPipeFrom/">
+                fa-pipe-from
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faPipeTo/">
+                fa-pipe-to
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faRenderNode/">
+                fa-render-node
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faScrollView/">
+                fa-scroll-view
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faSurface/">
+                fa-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faTap/">
+                fa-tap
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faTouchend/">
+                fa-touchend
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faTouchmove/">
+                fa-touchmove
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faTouchstart/">
+                fa-touchstart
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/directive/faView/">
+                fa-view
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Services
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/service/$famous/">
+                $famous
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/service/$famousDecorator/">
+                $famousDecorator
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Providers
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../../docs/unstable/api/provider/$famousProvider/">
+                $famousProvider
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+
+          </ul>
+
+        </div>
+
+        <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
+          <div class="improve-docs">
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/services/famousDecorator.js#L1'>
+    Improve this doc
+  </a>
+</div>
+
+
+
+
+<h1 class="api-title">
+
+  $famousDecorator
+
+
+
+</h1>
+
+
+<p>Manages the creation and handling of isolate scopes.</p>
+
+<p>Isolate scopes are like a namespacing inside plain Angular child scopes,
+with the purpose of storing properties available only to one particular
+scope.<br/>
+The scopes are still able to communicate with the parent via events
+($emit, $broadcast), yet still have their own $scope properties that will
+not conflict with the parent or other siblings.</p>
+
+<h2>Methods</h2>
+
+<div id="ensureIsolate"></div>
+
+
+<h2>
+  <code>ensureIsolate(scope)</code>
+
+</h2>
+
+
+<p>Checks the passed in scope for an existing isolate property.  If
+scope.isolate does not already exist, create it.</p>
+
+<p>If the scope is being used in conjunction with an ng-repeat, assign
+the default ng-repeat index onto the scope.</p>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        scope
+        
+        
+      </td>
+      <td>
+        
+  <code>String</code>
+      </td>
+      <td>
+        <p>the scope to ensure that the isolate property
+exists on</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<ul>
+<li>Returns:
+<code>Object</code> the isolated scope object from scope.isolate</li>
+</ul>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    
+
+<script src="../../../../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>
