@@ -1,12 +1,12 @@
 {
   "name": "famous-angular-docs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/thomasstreet/famous-angular-docs",
   "authors": [
     "Andre Levi <andre@thomasstreet.com>",
     "Zack Brown <zack@thomasstreet.com>"
   ],
-  "license": "MIT",
+  "license": "MPL v2.0",
   "ignore": [
     "**/.*",
     "node_modules",
