@@ -1,11 +1,12 @@
 {
   "name": "famous-angular-docs",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "homepage": "https://github.com/thomasstreet/famous-angular-docs",
   "authors": [
-    "Andre Levi <andrelevi09@gmail.com>"
+    "Andre Levi <andre@thomasstreet.com>",
+    "Zack Brown <zack@thomasstreet.com>"
   ],
-  "license": "MIT",
+  "license": "MPL v2.0",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,8 +16,8 @@
   ],
   "dependencies": {
     "angular": "~1.2.16",
-    "famous": "~0.1.2",
-    "famous-angular": "~0.0.11",
+    "famous": "~0.2.0",
+    "famous-angular": "~0.0.12",
     "jquery": "~2.1.1",
     "bootstrap": "~3.1.1",
     "requirejs": "~2.1.11",
