@@ -213,6 +213,12 @@
             </a>
         </li>
         
+        <li>
+            <a href="../../../../../docs/unstable/api/service/$famousPipe/">
+                $famousPipe
+            </a>
+        </li>
+        
     </ul>
   </li>
 
@@ -258,12 +264,12 @@
 </h1>
 
 
-<p>This directive add an event handler object to set of downstream handlers.</p>
+<p>This directive pipes an element's event handler to a source event handler.</p>
 
 <h2 id="usage">Usage</h2>
 
 
-<pre><code class="html">&lt;ANY fa-pipe-to="eventHandler"&gt;
+<pre><code class="html">&lt;ANY fa-pipe-to="EventHandler"&gt;
   &lt;!-- zero or more render nodes --&gt;
 &lt;/ANY&gt;
 </code></pre>
@@ -294,7 +300,7 @@
   <code>Object</code>
       </td>
       <td>
-        <p>Event handler target object</p>
+        <p>Event handler source object</p>
 
         
       </td>
