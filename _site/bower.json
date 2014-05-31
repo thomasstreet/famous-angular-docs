@@ -17,7 +17,7 @@
   "dependencies": {
     "angular": "~1.2.16",
     "famous": "~0.2.0",
-    "famous-angular": "~0.0.12",
+    "famous-angular": "~0.0.13",
     "jquery": "~2.1.1",
     "bootstrap": "~3.1.1",
     "requirejs": "~2.1.11",
