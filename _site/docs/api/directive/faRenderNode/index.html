@@ -107,6 +107,12 @@
         </li>
         
         <li>
+            <a href="../../../../docs/unstable/api/directive/faFlipper/">
+                fa-flipper
+            </a>
+        </li>
+        
+        <li>
             <a href="../../../../docs/unstable/api/directive/faGridLayout/">
                 fa-grid-layout
             </a>
@@ -265,12 +271,13 @@
 
 
 <p>A directive to insert a <a href="https://famo.us/docs/0.1.1/core/RenderNode/">Famo.us RenderNode</a> that is
-a wrapper for inserting a renderable component (like a Modifer or Surface) into the render tree.</p>
+a wrapper for inserting a renderable component (like a Modifer or Surface) into the render tree.
+allows you to pass a reference to an arbitrary render node from your controller.</p>
 
 <h2 id="usage">Usage</h2>
 
 
-<pre><code class="html">&lt;fa-render-node&gt;
+<pre><code class="html">&lt;fa-render-node fa-node="arbitrary render node reference"&gt;
     &lt;!-- content --&gt;
 &lt;/fa-render-node&gt;
 </code></pre>
