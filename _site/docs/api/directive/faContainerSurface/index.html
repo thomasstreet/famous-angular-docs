@@ -12,7 +12,7 @@
       <meta name="robots" content="noindex">
     
 
-    <title>fa-flipper - Directive in module famous.angular - Angular Famous</title>
+    <title>fa-container-surface - Directive in module famous.angular - Angular Famous</title>
     
 
 <!--Bower Scripts-->
@@ -271,7 +271,7 @@
 
         <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
           <div class="improve-docs">
-  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-flipper.js#L1'>
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-container-surface.js#L1'>
     Improve this doc
   </a>
 </div>
@@ -281,48 +281,25 @@
 
 <h1 class="api-title">
 
-  fa-flipper
+  fa-container-surface
 
 
 
 </h1>
 
 
-<p>This directive will create a Famo.us Flipper containing the
-specified front and back elements. The provided <code>options</code> object
-will pass directly through to the Famo.us Flipper's
-constructor.  See [https://famo.us/docs/0.2.0/views/Flipper/]</p>
+<p>This directive will create a Famo.us ContainerSurface containing the
+specified child elements. The provided <code>options</code> object
+will pass directly through to the Famo.us ContainerSurface's
+constructor.  See [https://famo.us/docs/0.2.0/surfaces/ContainerSurface/]</p>
 
 <h2 id="usage">Usage</h2>
 
 
-<pre><code class="html">&lt;fa-flipper fa-options="scopeOptionsObject"&gt;
-  &lt;!-- two render nodes --&gt;
-&lt;/fa-flipper&gt;
+<pre><code class="html">&lt;fa-container-surface fa-options="scopeOptionsObject"&gt;
+  &lt;!-- zero or more render nodes --&gt;
+&lt;/fa-container-surface&gt;
 </code></pre>
-
-<h2 id="example">Example</h2>
-
-
-<p>A Famous Flipper has a <code>.flip()</code> method that toggles a rotation between front and back sides.
-In the example below, when an <code>fa-surface</code> is clicked, it calls the function <code>flipIt</code>.</p>
-
-
-<p>This function attempts a DOM lookup for an isolate of an <code>fa-flipper</code> element, and calls the <code>.flip()</code> function of <code>fa-flipper</code>. </p>
-
-
-<pre><code class="lang-html">&lt;fa-flipper&gt;
-   &lt;fa-surface fa-background-color=&quot;&#39;yellow&#39;&quot; fa-click=&quot;flipIt()&quot;&gt;&lt;/fa-surface&gt;
-   &lt;fa-surface fa-background-color=&quot;&#39;red&#39;&quot; fa-click=&quot;flipIt()&quot;&gt;&lt;/fa-surface&gt;
-&lt;/fa-flipper&gt;</code></pre>
-
-
-<pre><code class="lang-javascript">$scope.flipHandler = function() {
-   $famous.find(&#39;fa-flipper&#39;)[0].flip();
-};</code></pre>
-
-
-
 
         </div>
 
