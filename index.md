@@ -67,3 +67,24 @@ layout: home
 
 {% endhighlight %}
 {% endcontentfor %}
+
+{% contentfor code3 %}
+{% highlight bash linenos %}
+
+<fa-surface>
+  <input type="range" ng-model="$parent.repeatedItems" min="0" max="16" />
+</fa-surface>
+<fa-modifier
+  square
+  ng-repeat="modifier in modifiers"
+  fa-animate-enter="enter()"
+  fa-animate-leave="leave()"
+  fa-animate-halt="halt()"
+  fa-transform="transform"
+  fa-opacity="opacity"
+>
+  <fa-surface fa-size="[40, 40]" class="square"></fa-surface>
+</fa-modifier>
+
+{% endhighlight %}
+{% endcontentfor %}

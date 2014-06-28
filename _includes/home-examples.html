@@ -114,7 +114,41 @@
 
     <div class="example-block">
       <div class="description">
-        <h3>Check out the <a href="{{relative}}docs/api/index.html">docs</a> to learn more.</h3>
+        <h3>Animate data structure changes with Famo.us.</h3>
+        <p>
+          All the power of Angular's animation events without ngAnimate.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          {% contentblock code3 %}
+        </div>
+        <div class="col-sm-4">
+          <div fa-app style="height: 260px">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <input type="range" ng-model="$parent.repeatedItems" min="0" max="16" />
+              </fa-surface>
+              <fa-modifier
+                square
+                ng-repeat="modifier in modifiers"
+                fa-animate-enter="enter()"
+                fa-animate-leave="leave()"
+                fa-animate-halt="halt()"
+                fa-transform="transform"
+                fa-opacity="opacity"
+              >
+                <fa-surface fa-size="[40, 40]" class="square"></fa-surface>
+              </fa-modifier>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="description">
+        <h3>Check out the <a href="{{relative}}docs/api">docs</a> to learn more.</h3>
       </div>
     </div>
 
