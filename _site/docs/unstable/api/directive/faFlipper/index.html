@@ -113,6 +113,12 @@
         </li>
         
         <li>
+            <a href="../../../../../docs/unstable/api/directive/faFlexibleLayout/index.html">
+                fa-flexible-layout
+            </a>
+        </li>
+        
+        <li>
             <a href="../../../../../docs/unstable/api/directive/faFlipper/index.html">
                 fa-flipper
             </a>
@@ -232,6 +238,12 @@
         </li>
         
         <li>
+            <a href="../../../../../docs/unstable/api/service/$animate/index.html">
+                $animate
+            </a>
+        </li>
+        
+        <li>
             <a href="../../../../../docs/unstable/api/service/$famousDecorator/index.html">
                 $famousDecorator
             </a>
@@ -291,7 +303,7 @@
 <p>This directive will create a Famo.us Flipper containing the
 specified front and back elements. The provided <code>options</code> object
 will pass directly through to the Famo.us Flipper's
-constructor.  See [https://famo.us/docs/0.2.0/views/Flipper/]</p>
+constructor.  See [https://famo.us/docs/views/Flipper]</p>
 
 <h2 id="usage">Usage</h2>
 
@@ -308,7 +320,7 @@ constructor.  See [https://famo.us/docs/0.2.0/views/Flipper/]</p>
 In the example below, when an <code>fa-surface</code> is clicked, it calls the function <code>flipIt</code>.</p>
 
 
-<p>This function attempts a DOM lookup for an isolate of an <code>fa-flipper</code> element, and calls the <code>.flip()</code> function of <code>fa-flipper</code>. </p>
+<p>This function attempts a DOM lookup for an isolate of an <code>fa-flipper</code> element, and calls the <code>.flip()</code> function of <code>fa-flipper</code>.</p>
 
 
 <pre><code class="lang-html">&lt;fa-flipper&gt;
@@ -317,7 +329,7 @@ In the example below, when an <code>fa-surface</code> is clicked, it calls the f
 &lt;/fa-flipper&gt;</code></pre>
 
 
-<pre><code class="lang-javascript">$scope.flipHandler = function() {
+<pre><code class="lang-javascript">$scope.flipIt = function() {
    $famous.find(&#39;fa-flipper&#39;)[0].flip();
 };</code></pre>
 

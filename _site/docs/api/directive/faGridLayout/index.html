@@ -113,6 +113,12 @@
         </li>
         
         <li>
+            <a href="../../../../docs/unstable/api/directive/faFlexibleLayout/index.html">
+                fa-flexible-layout
+            </a>
+        </li>
+        
+        <li>
             <a href="../../../../docs/unstable/api/directive/faFlipper/index.html">
                 fa-flipper
             </a>
@@ -232,6 +238,12 @@
         </li>
         
         <li>
+            <a href="../../../../docs/unstable/api/service/$animate/index.html">
+                $animate
+            </a>
+        </li>
+        
+        <li>
             <a href="../../../../docs/unstable/api/service/$famousDecorator/index.html">
                 $famousDecorator
             </a>
@@ -291,7 +303,7 @@
 <p>This directive will create a Famo.us GridLayout containing the
 specified child elements. The provided <code>options</code> object
 will pass directly through to the Famo.us GridLayout's
-constructor.  See [https://famo.us/docs/0.1.1/views/GridLayout/]</p>
+constructor.  See [https://famo.us/docs/views/GridLayout]</p>
 
 <h2 id="usage">Usage</h2>
 
@@ -307,7 +319,7 @@ constructor.  See [https://famo.us/docs/0.1.1/views/GridLayout/]</p>
 <p>A Famous Grid Layout divides a context into evenly-sized grid cells.  Pass an option such as <code>dimension</code> by binding an object with the property to <code>fa-options</code>.</p>
 
 
-<p>In the example below, <code>fa-options</code> references <code>myGridLayoutOptions</code> on the scope. </p>
+<p>In the example below, <code>fa-options</code> references <code>myGridLayoutOptions</code> on the scope.</p>
 
 
 <pre><code class="lang-javascript">$scope.myGridLayoutOptions = {
@@ -319,7 +331,7 @@ constructor.  See [https://famo.us/docs/0.1.1/views/GridLayout/]</p>
 
 
 <pre><code class="lang-html">&lt;fa-grid-layout fa-options=&quot;myGridLayoutOptions&quot;&gt;
-   &lt;fa-modifier ng-repeat=&quot;grid in grids&quot; 
+   &lt;fa-modifier ng-repeat=&quot;grid in grids&quot;
                 fa-size=&quot;[100, 100]&quot;&gt;
      &lt;fa-surface fa-background-color=&quot;grid.bgColor&quot;&gt;&lt;/fa-surface&gt;
    &lt;/fa-modifier&gt;
