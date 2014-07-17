@@ -9,11 +9,53 @@
 
     <p class="slogan">
       Famo.us/Angular
-      <button class="download">
+      <button data-toggle="modal" href="#download-modal" class="download">
         <i class="fa fa-download"></i>
         Download
       </button>
     </p>
+
+    <div class="modal" id="download-modal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Download Famo.us/Angular</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-5 text-right">
+                  <strong>Download the starter kit</strong>
+                </div>
+                <div class="col-xs-6 text-left">
+                  <a href="//code.famo.us/famous-angular/latest/famous-angular-starter-kit.zip">
+                    <button class="btn btn-primary">
+                      Version 0.1.0
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+              <p>or</p>
+
+              <div class="row">
+                <div class="col-xs-5 text-right">
+                  <strong>Download with Bower</strong>
+                </div>
+                <div class="col-xs-6 text-left">
+                  <code>bower install famous-angular</code>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <a href="#" data-dismiss="modal" class="btn">Close</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <p class="sub-text">
       The most powerful way to build highly interactive, data-driven, and modular web applications.<br>
     </p>
