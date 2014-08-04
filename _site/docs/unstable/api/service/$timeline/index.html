@@ -12,7 +12,7 @@
       <meta name="robots" content="noindex">
     
 
-    <title>animate - Directive in module famous.angular - Angular Famous</title>
+    <title>$timeline - Service in module scripts - Angular Famous</title>
     
 
 <!--Bower Scripts-->
@@ -295,33 +295,54 @@
 
         <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
           <div class="improve-docs">
-  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-animation.js#L321'>
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/services/timeline.js#L1'>
     Improve this doc
   </a>
 </div>
 
 
-<p>  <br>
-  <strong>This directive is deprecated.</strong></p>
+
 
 <h1 class="api-title">
 
-  animate
+  $timeline
 
 
 
 </h1>
 
 
-<p>This directive is deprecated.  Prefer using the $timeline service.  This element is used to specify the animation of an element in a <a href="api/directive/faAnimation">faAnimation</a> directive</p>
+<p>The timeline service provides support for mapping timeline functions to different values.</p>
 
-<h2 id="usage">Usage</h2>
+<h2 id="example">Example</h2>
 
 
-<pre><code class="html">&lt;fa-animation timeline="functionThatReturnsATimelineValueBetween0And1"&gt;
- &lt;animate targetModSelector="#topMod" field="rotateX" startValue="3.1415" endValue="0" curve="inQuad" timelineLowerBound="0" timelineUpperBound=".25" /&gt;
-&lt;/fa-animation&gt;
-</code></pre>
+<pre><code class="lang-html">&lt;fa-modifier
+  fa-rotate-y=&quot;rRotation(t.get())&quot;
+  fa-translate=&quot;translation(t.get())&quot;
+&gt;
+  ...
+&lt;/fa-modifier&gt;</code></pre>
+
+
+<pre><code class="lang-javascript">var Transitionable = $famous[&#39;famous/transitions/Transitionable&#39;];
+var Easing = $famous[&#39;famous/transitions/Easing&#39;];
+
+$scope.t = new Transitionable(0);
+
+$scope.yRotation = $timeline([
+  [0, 0, Easing.inOutQuad],
+  [0.8, 1.1 * (Math.PI/2), Easing.inOutQuart],
+  [1, Math.PI/2]
+]);
+
+$scope.translation = $timeline([
+  [0, [100, 100, 0], Easing.inOutQuad],
+  [1, [400, 200, 0]]
+]);</code></pre>
+
+
+
 
         </div>
 
