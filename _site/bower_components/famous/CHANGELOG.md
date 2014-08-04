@@ -1,3 +1,59 @@
+## 0.2.2
+
+**famous/core:**
+
+- FIX `Scene` now has support for `align`.
+- UPDATE `requestAnimationFrame` scoped to `window`.
+
+**famous/inputs:**
+
+- FIX `ScrollSync` position type set on `start` instead of `reset` on end.
+- FIX `FastClick` typo fix.
+
+**famous/math:**
+- FIX `Vector` `.put` can be called from a `Vector` instead of only a `register`.
+
+**famous/physics:**
+
+- FIX `Walls` `.forEach` bug.
+
+
+## 0.2.1
+
+**famous/core:**
+
+- FEATURE `Transform` now has `.skewX` and `.skewY` methods
+
+**famous/inputs:**
+
+- ADD `DesktopEmulationMode` is a convenience utility to cancel mouse events
+- UPDATE `ScaleSync` now outputs `center` for the `[x,y]` point between two fingers
+
+**famous/physics:**
+
+- FIX time-stepping bug which caused jittering
+
+**famous/surfaces:**
+
+- FIX `InputSurface` `blur` event
+
+**famous/transitions:**
+
+- FIX `Transitionable` callback bug on `.reset` method
+- FIX `Transitionable` `.delay` bug when `_engineInstance` not defined.
+
+**famous/utilities:**
+
+- FIX `Timer` bug in `debounce` for clearing timers
+
+**famous/views:**
+
+- UPDATE `SequentialView` now has `itemSpacing`
+- FIX `FlexibleLayout` caching bug
+- FIX `Scrollview` `groupScroll` option
+- FIX `ContextualView` `DEFAULT_OPTIONS` inheritance
+
+
 ## 0.2.0
 
 **famous/core:**
@@ -71,10 +127,6 @@
 
 - FIX `NavigationBar` `optionsManager` typo
 
-
-## 0.1.1
-
-- Initial release
 
 ## 0.1.1
 

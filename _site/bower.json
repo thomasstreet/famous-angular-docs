@@ -1,6 +1,6 @@
 {
   "name": "famous-angular-docs",
-  "version": "0.0.5",
+  "version": "0.2.0",
   "homepage": "https://github.com/thomasstreet/famous-angular-docs",
   "authors": [
     "Andre Levi <andre@thomasstreet.com>",
@@ -16,14 +16,11 @@
   ],
   "dependencies": {
     "angular": "~1.2.16",
-    "famous": "~0.2.0",
+    "famous": "0.2.2",
     "famous-angular": "0.1.0",
     "jquery": "~2.1.1",
     "bootstrap": "~3.1.1",
     "requirejs": "~2.1.11",
     "underscore": "~1.6.0"
-  },
-  "resolutions": {
-    "famous": "~0.2.0"
   }
 }

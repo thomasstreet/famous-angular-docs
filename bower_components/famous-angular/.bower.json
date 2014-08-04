@@ -1,21 +1,17 @@
 {
   "name": "famous-angular",
-  "description": "Integrate Famo.us into AngularJS apps and build Famo.us apps using AngularJS tools",
-  "version": "0.0.11",
+  "description": "Bring structure to your Famo.us apps with the power of AngularJS. Famo.us/Angular integrates seamlessly with existing Angular and Famo.us apps.",
+  "version": "0.1.0",
   "license": "MPL v2.0",
   "homepage": "https://github.com/Famous/famous-angular",
   "main": "dist/famous-angular.js",
   "dependencies": {
-    "angular": "1.2.16",
+    "angular": "1.2.18",
     "requirejs": ">=2.1.0",
-    "famous": "~0.2.0"
+    "famous": "0.2.1"
   },
   "devDependencies": {
-    "angular-mocks": "1.2.6",
-    "angular-scenario": "1.2.6"
-  },
-  "resolutions": {
-    "angular": "1.2.16"
+    "angular-mocks": "1.2.18"
   },
   "ignore": [
     "**/.*",
@@ -33,15 +29,17 @@
     "init_submodules.sh",
     "karma.conf.js",
     "karma-e2e.conf.js",
-    "package.json"
+    "package.json",
+    "changelog.js",
+    "validateCommitMsg.js"
   ],
-  "_release": "0.0.11",
+  "_release": "0.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.11",
-    "commit": "75b4c6478cddfd2fefdd906d5877b14435ba4ac0"
+    "tag": "0.1.0",
+    "commit": "b158ff75a5075900762eb41d81741c8422c22c86"
   },
   "_source": "git://github.com/Famous/famous-angular.git",
-  "_target": "~0.0.11",
+  "_target": "0.1.0",
   "_originalSource": "famous-angular"
 }

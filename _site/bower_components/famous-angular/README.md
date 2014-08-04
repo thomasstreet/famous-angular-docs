@@ -1,17 +1,15 @@
 # Famo.us/Angular
 
+Famo.us/Angular is an AngularJS-driven framework for building Famo.us apps.
 
-Famo.us/Angular is a library that brings Famo.us and AngularJS together.  Using F/A, you can:
+Using F/A, you can:
 * Create Famo.us apps using familiar AngularJS tools like controllers, directives, and services.
 * Bring rich Famo.us animations to new or existing AngularJS apps.
 * Use HTML to declare Famo.us UIs, complete with Angular's two-way databinding.
-* Easily embed existing Famo.us apps into AngularJS apps.
+* Easily integrate Famo.us and AngularJS apps.
 
 
 ###Read more on the project page: [Famo.us/Angular](http://famo.us/angular)
-
-
-This library is under active development and is currently in alpha.  The library is at a point where you can create powerful apps, and a lot of the core API is reasonably stabilized, but some things are expected to change as the project moves forward.  Contributors welcome! (see below)
 
 
 ##Running (For using F/A in your Angular app)
@@ -37,6 +35,10 @@ This library is under active development and is currently in alpha.  The library
 * And add an `<fa-app style="height: 200px"><fa-surface fa-background-color="'red'">Hello world</fa-surface></fa-app>` in one of your templates.  If you see 'Hello world' on a red background, you should be good to go.
 **Note: currently, the element that the `<fa-app>` is on must be display: block (like a `<div fa-app>` or a `<p fa-app>`, or just `<fa-app>`) and must have a set height (like `style="height: 200px"` in this example.)  Future versions will not have these requirements.**
 
+####Build off of the starter app
+To get started even faster, try the [famous-angular-starter](https://github.com/thomasstreet/famous-angular-starter) seed project, with everything already in place.  The starter app has a powerful gulp-based workflow, which includes live reloading and Jade/HAML support.
+
+
 
 ##Running (For developing or contributing to the library)
 
@@ -56,7 +58,7 @@ This library is under active development and is currently in alpha.  The library
 
 Npm start will use gulp to concatenate files into famous-angular.js, which is built into the app folder. It will also watch for changes inside app and livereload as necessary.
 
-As configured, you should be able to access the application at localhost:4000.
+Then open http://localhost:4000.
 
 ####To develop the library using the famous-angular-examples submodule
 
@@ -66,13 +68,17 @@ As configured, you should be able to access the application at localhost:4000.
 
 `gulp docs`
 
-####To view and build the docs site
+####To run tests
+Ensure that you have the [karma](http://karma-runner.github.io/0.12/intro/installation.html) command line interface installed.
+'npm install -g karma-cli'
 
-`gulp dev-site`
+`karma start'
+
 
 ##Support
 
 Please submit issues as Github issues or reach out for support on the Famous IRC channel on Freenode
+
 
 ##Contributing
 
@@ -84,6 +90,8 @@ We would love to have community contributions and support!  A few areas where co
 * Bug reports and/or fixes
 * Continuing to wrap Famo.us layouts and views into directives [advanced]
 
-If you want to contribute, please submit a pull request, or contact hello@thomasstreet.com for more information.
+If you want to contribute, please submit a pull request, or contact famous-angular@thomasstreet.com for more information.
+
+Please read the contribution guidelines in [CONTRIBUTING.md](https://github.com/Famous/famous-angular/blob/master/CONTRIBUTING.md)
 
 Famo.us/Angular is being developed by [Thomas Street](http://thomasstreet.com) in partnership with [Famo.us](https://famo.us), along with community support.
