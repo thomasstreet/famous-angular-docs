@@ -12,7 +12,7 @@
       <meta name="robots" content="noindex">
     
 
-    <title>fa-grid-layout - Directive in module famous.angular - Angular Famous</title>
+    <title>fa-canvas-surface - Directive in module famous.angular - Angular Famous</title>
     
 
 <!--Bower Scripts-->
@@ -289,7 +289,7 @@
 
         <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
           <div class="improve-docs">
-  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-grid-layout.js#L1'>
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-canvas-surface.js#L1'>
     Improve this doc
   </a>
 </div>
@@ -299,60 +299,74 @@
 
 <h1 class="api-title">
 
-  fa-grid-layout
+  fa-canvas-surface
 
 
 
 </h1>
 
 
-<p>This directive will create a Famo.us GridLayout containing the
-specified child elements. The provided <code>options</code> object
-will pass directly through to the Famo.us GridLayout's
-constructor.  See [https://famo.us/docs/views/GridLayout]</p>
+<p>This directive creates a Famo.us CanvasSurface.</p>
 
 <h2 id="usage">Usage</h2>
 
 
-<pre><code class="html">&lt;fa-grid-layout fa-options="scopeOptionsObject"&gt;
-  &lt;!-- zero or more render nodes --&gt;
-&lt;/fa-grid-layout&gt;
+<pre><code class="html">&lt;fa-canvas-surface fa-size="[400,400]"&gt;
+&lt;/fa-canvas-surface&gt;
 </code></pre>
+
+<h2 id="api" style="clear:both;">API</h2>
+
+
+
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        faSize
+        
+        
+      </td>
+      <td>
+        
+  <code>String</code>
+      </td>
+      <td>
+        <p>Array that passes width and height to the canvas</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 
 <h2 id="example">Example</h2>
 
 
-<p>A Famous Grid Layout divides a context into evenly-sized grid cells.  Pass an option such as <code>dimension</code> by binding an object with the property to <code>fa-options</code>.</p>
+<p>To use <code>fa-canvas-surface</code>, declare an <code>fa-size</code> attribute with an array containing width and height.</p>
 
 
-<p>In the example below, <code>fa-options</code> references <code>myGridLayoutOptions</code> on the scope.</p>
+<pre><code class="lang-html">&lt;fa-canvas-surface
+           fa-size=&quot;[400,400]&quot;
+           class=&quot;main-canvas&quot;
+           &gt;
+&lt;/fa-canvas-surface&gt;</code></pre>
 
 
-<pre><code class="lang-javascript">$scope.myGridLayoutOptions = {
-   dimensions: [2,2], // specifies number of columns and rows
-};</code></pre>
-
-
-<p>In the example below, <code>fa-size</code> is specified as <code>[100, 100]</code>, so each <code>fa-surface</code> will have these dimensions.</p>
-
-
-<pre><code class="lang-html">&lt;fa-grid-layout fa-options=&quot;myGridLayoutOptions&quot;&gt;
-   &lt;fa-modifier ng-repeat=&quot;grid in grids&quot;
-                fa-size=&quot;[100, 100]&quot;&gt;
-     &lt;fa-surface fa-background-color=&quot;grid.bgColor&quot;&gt;&lt;/fa-surface&gt;
-   &lt;/fa-modifier&gt;
-&lt;/fa-grid-layout&gt;</code></pre>
-
-
-<pre><code class="lang-javascript">$scope.grids = [{bgColor: &quot;orange&quot;}, {bgColor: &quot;red&quot;}, {bgColor: &quot;green&quot;}, {bgColor: &quot;yellow&quot;}];</code></pre>
-
-
-<p>If <code>fa-size</code> is not specified, as in this example below, the fa-surface&#39;s will collectively fill the height and width of its parent modifier/context.</p>
-
-
-<pre><code class="lang-html">&lt;fa-grid-layout fa-options=&quot;myGridLayoutOptions&quot;&gt;
-   &lt;fa-surface ng-repeat=&quot;grid in grids&quot; fa-background-color=&quot;grid.bgColor&quot;&gt;&lt;/fa-surface&gt;
-&lt;/fa-grid-layout&gt;</code></pre>
+<p><code>Fa-canvas-surface</code> accepts classes and faSize, the only two attributes HTML5 canvas requires is width and height.</p>
 
 
 
