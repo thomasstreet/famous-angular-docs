@@ -313,7 +313,7 @@
 </h1>
 
 
-<p>This directive is deprecated.  Prefer using the $timeline service.  This directive is used to animate an element in conjunction with an <a href="../../../api/directive/animate/">animate</a> directive</p>
+<p>This directive is deprecated.  Prefer using the $timeline service.  This directive is used to animate an element in conjunction with an <a href="api/directive/animate">animate</a> directive</p>
 
 <h2 id="usage">Usage</h2>
 
@@ -334,7 +334,7 @@ Any changes to the Transitionable object on the scope will be reflected in the v
 
 
 <pre><code class="lang-javascript">var Transitionable = $famous[&#39;famous/transitions/Transitionable&#39;];
-var Easing = require(&#39;famous/transitions/Easing&#39;);
+var Easing = $famous[&#39;famous/transitions/Easing&#39;];
 
 $scope.boxTransitionable = new Transitionable([0, 0, 0]);
 
