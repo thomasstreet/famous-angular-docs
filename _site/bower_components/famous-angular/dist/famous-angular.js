@@ -1,11 +1,11 @@
 /**
  * famous-angular - Bring structure to your Famo.us apps with the power of AngularJS. Famo.us/Angular integrates seamlessly with existing Angular and Famo.us apps.
- * @version v0.1.0
+ * @version v0.2.0
  * @link https://github.com/Famous/famous-angular
  * @license MPL v2.0
  */
 'use strict';
-
+var ngFameApp = angular.module('famous.angular', []);
 // Put angular bootstrap on hold
 window.name = "NG_DEFER_BOOTSTRAP!" + window.name;
 
@@ -106,11 +106,6 @@ var requirements = [
 "famous/physics/forces/VectorField",
 "famous/physics/integrators/SymplecticEuler"
 ];
-
-//declare the module before the async callback so that
-//it will be accessible to other synchronously loaded angular
-//components
-var ngFameApp = angular.module('famous.angular', []);
 
 require(requirements, function(/*args*/) {
   //capture 'arguments' in a variable that will exist in
@@ -215,7 +210,7 @@ require(requirements, function(/*args*/) {
         return _s;
       }(scopes);
       return isolates;
-    }
+    };
 
     this.$get = function() {
 
@@ -265,7 +260,7 @@ require(requirements, function(/*args*/) {
 
   // To delay Karma's bootstrapping until $famous is ready, fire off a global
   // event to allow karma to know when the $famous provider has been declared.
-  window.dispatchEvent(new Event('$famousModulesLoaded'));
+  window.dispatchEvent(new CustomEvent('$famousModulesLoaded'));
 
 });
 
@@ -406,11 +401,13 @@ angular.module('famous.angular')
         angular.element.prototype[classManipulator] = function(className) {
           originalManipulator.apply(this, arguments);
 
-          // If and only if the current element represents a Famo.us Surface, pass through
+          // If and only if the current element represents a Famo.us Surface,
+          // AND the class is not an empty string, pass through
           // the addClass and removeClass methods to the underlying renderNode.
-          if (isClassable(this)) {
+          if (isClassable(this) && typeof className === 'string' && className.trim() !== '') {
             $famous.getIsolate(this.scope()).renderNode[classManipulator](className);
           }
+          return this;
         };
 
         /**
@@ -554,7 +551,7 @@ angular.module('famous.angular')
       },
       parent: {
       }
-    }
+    };
 
     return {
       //TODO:  patch into _roles and assign the
@@ -621,7 +618,7 @@ angular.module('famous.angular')
           }
 
           // Invoke the callback, if provided
-          unregisterCallback && unregisterCallback();
+          if(unregisterCallback) unregisterCallback();
         });
       },
 
@@ -639,14 +636,15 @@ angular.module('famous.angular')
        * from the sequence
        * @returns {void}
        */
-      sequenceWith: function(scope, addMethod, removeMethod) {
+      sequenceWith: function(scope, addMethod, removeMethod, updateMethod) {
         scope.$on('registerChild', function(evt, isolate) {
           if (evt.targetScope.$id !== scope.$id) {
             addMethod(isolate);
             evt.stopPropagation();
 
             // Attach the remove method to the isolate, so it can be invoked without scope, if it is provided
-            removeMethod && (isolate.removeMethod = removeMethod);
+            if(removeMethod) isolate.removeMethod = removeMethod;
+            if(updateMethod) isolate.updateMethod = updateMethod;
           }
         });
       }
@@ -716,13 +714,140 @@ angular.module('famous.angular')
   });
 
 /**
+ * @ngdoc service
+ * @name $timeline
+ * @function
+ *
+ * @description
+ * The timeline service provides support for mapping timeline functions to different values.
+ *
+ * @example
+ * ```html
+ * <fa-modifier
+ *   fa-rotate-y="rRotation(t.get())"
+ *   fa-translate="translation(t.get())"
+ * >
+ *   ...
+ * </fa-modifier>
+ * ```
+ * ```javascript
+ * var Transitionable = $famous['famous/transitions/Transitionable'];
+ * var Easing = $famous['famous/transitions/Easing'];
+ *
+ * $scope.t = new Transitionable(0);
+ *
+ * $scope.yRotation = $timeline([
+ *   [0, 0, Easing.inOutQuad],
+ *   [0.8, 1.1 * (Math.PI/2), Easing.inOutQuart],
+ *   [1, Math.PI/2]
+ * ]);
+ *
+ * $scope.translation = $timeline([
+ *   [0, [100, 100, 0], Easing.inOutQuad],
+ *   [1, [400, 200, 0]]
+ * ]);
+ *
+ * ```
+ */
+
+
+angular.module('famous.angular')
+  .factory('$timeline', function () {
+
+    // polymorphic add for scalars and vectors
+    var add = function(a, b) {
+      if (typeof a === "number") {
+        return a + b;
+      }
+      else {
+        return a.map(function(x, i) { return x + b[i]; });
+      }
+    };
+
+    // polymorphic subtract for scalars and vectors
+    var subtract = function(a, b) {
+      if (typeof a === "number") {
+        return a - b;
+      }
+      else {
+        return a.map(function(x, i) { return x - b[i]; });
+      }
+    };
+
+    // polymorphic multiply for scalar and vectors
+    var multiply = function(A, b) {
+      // b is a scalar, A is a scalar or a vector
+      if (typeof A === "number") {
+        return A * b;
+      }
+      else {
+        return A.map(function(x) { return x * b; });
+      }
+    };
+
+    var scale = function (f, x1, x2, y1, y2) {
+      // x1 and x2 must be scalars. y1 and y2 can be scalars or vectors
+      return function(x) {
+        var yTranslate = y1;
+        var xTranslate = -x1;
+        var xScale = 1 / (x2 - x1);
+        var yScale = subtract(y2, y1);
+        return add(multiply(yScale, f(xScale * (x + xTranslate))), yTranslate);
+      };
+    };
+
+    return function(points) {
+        //
+        // Takes a list of points, with the curve to follow to the next point.
+        // Any curve value on the last point is ignored.
+        //
+        //  e.g., [[0, 100, Easings.inOutQuad], [1, 500]]
+        //
+        // Returns a piecewise function f:
+        //
+        //
+        //         / y₀,             if x < x₀
+        //         |
+        //         | scaled(curveᵢ,  if xᵢ ≤ x < xᵢ₊₁
+        //         |        xᵢ,
+        //         |        xᵢ,
+        // f(x) = <         yᵢ₊₁,
+        //         |        yᵢ₊₁)(x)
+        //         | for i in 0..segments.length - 1
+        //         |
+        //         \ last x,         otherwise
+        //
+
+        return function(x) {
+          if (x < points[0][0]) {
+            return points[0][1];
+          }
+          for (var i = 0; i < points.length - 1; i++) {
+            if (points[i][0] <= x && x < points[i+1][0]) {
+              var f = scale(points[i][2],
+                            points[i][0],
+                            points[i+1][0],
+                            points[i][1],
+                            points[i+1][1]);
+
+              return f(x);
+            }
+          }
+          return points[points.length-1][1];
+        };
+
+      };
+
+  });
+
+/**
  * @ngdoc directive
  * @name faAnimation
  * @module famous.angular
  * @restrict EA
  * @description
- * This directive is used to animate an element in conjunction with an {@link api/directive/animate animate} directive
- *
+ * This directive is deprecated.  Prefer using the $timeline service.  This directive is used to animate an element in conjunction with an {@link api/directive/animate animate} directive
+ * @deprecated true
  * @usage
  * ```html
  * <fa-animation timeline="functionThatReturnsATimelineValueBetween0And1">
@@ -1031,7 +1156,7 @@ angular.module('famous.angular')
                 }
               }
               if (!isolate.timeline instanceof Function){
-                throw 'timeline must be a reference to a function or duration must be provided';
+                throw new Error('timeline must be a reference to a function or duration must be provided');
               }
 
 
@@ -1040,8 +1165,9 @@ angular.module('famous.angular')
                * @name animate
                * @module famous.angular
                * @restrict E
+               * @deprecated true
                * @description
-               * This element is used to specify the animation of an element in a {@link api/directive/faAnimation faAnimation} directive
+               * This directive is deprecated.  Prefer using the $timeline service.  This element is used to specify the animation of an element in a {@link api/directive/faAnimation faAnimation} directive
                *
                * @usage
                * ```html
@@ -1096,13 +1222,13 @@ angular.module('famous.angular')
                             : 1;
 
                         if (!animate.attributes.startvalue){
-                          throw 'you must provide a start value for the animation';
+                          throw new Error('you must provide a start value for the animation');
                         }
 
                         var startValue = scope.$eval(animate.attributes.startvalue.value);
 
                         if (!animate.attributes.endvalue){
-                          throw 'you must provide an end value for the animation';
+                          throw new Error('you must provide an end value for the animation');
                         }
 
                         var endValue = scope.$eval(animate.attributes.endValue.value);
@@ -1136,10 +1262,10 @@ angular.module('famous.angular')
                           var lower = segments[j].lowerBound;
                           for (var k = 0; k < j; k++) {
                             if (lower < segments[k].upperBound) {
-                              throw "Animate segments have overlapping \
-                                domains for the same field (" + field + "). \
-                                At any point in the timeline, only one <animate> \
-                                can affect a given field on the same modifier."
+                              throw new Error("Animate segments have overlapping" +
+                                "domains for the same field (" + field + ")." + 
+                                "At any point in the timeline, only one <animate>" +
+                                "can affect a given field on the same modifier.");
                             }
                           }
                         }
@@ -1206,11 +1332,11 @@ angular.module('famous.angular')
                           //Support interpolating multiple values, e.g. for a Scale array [x,y,z]
                           if (Array.isArray(relevantSegment.startValue)) {
                             var ret = [];
-                            for (var j = 0; j < relevantSegment.startValue.length; j++) {
+                            for (var k = 0; k < relevantSegment.startValue.length; k++) {
                               ret.push(
-                                relevantSegment.startValue[j] + relevantSegment.curve(normalizedX)
+                                relevantSegment.startValue[k] + relevantSegment.curve(normalizedX)
                                   *
-                                  (relevantSegment.endValue[j] - relevantSegment.startValue[j])
+                                  (relevantSegment.endValue[k] - relevantSegment.startValue[k])
                               );
                             }
                             return ret;
@@ -1281,7 +1407,7 @@ angular.module('famous.angular')
             }, 1);//end setTimeout
           }
 
-        }
+        };
 
       }
     };
@@ -1379,7 +1505,7 @@ angular.module('famous.angular')
             isolate.context = Engine.createContext(element[0].querySelector('.famous-angular-container'));
 
             var _updatePerspective = function(){
-              var val = parseInt(attrs.faPerspective)
+              var val = parseInt(attrs.faPerspective);
               if(val) isolate.context.setPerspective(val);
             };
 
@@ -1434,6 +1560,83 @@ angular.module('famous.angular')
               angular.element(element[0].querySelectorAll('div div')[0]).append(clone);
             });
             isolate.readyToRender = true;
+          }
+        };
+      }
+    };
+  }]);
+
+/**
+ * @ngdoc directive
+ * @name faCanvasSurface
+ * @module famous.angular
+ * @restrict EA
+ * @param {String} faSize  -  Array that passes width and height to the canvas
+ * @description
+ * This directive creates a Famo.us CanvasSurface.
+ * @usage
+ * ```html
+ * <fa-canvas-surface fa-size="[400,400]">
+ * </fa-canvas-surface>
+ * ```
+ @example
+ * To use `fa-canvas-surface`, declare an `fa-size` attribute with an array containing width and height.
+ * ```html
+ * <fa-canvas-surface
+ *            fa-size="[400,400]"
+ *            class="main-canvas"
+ *            >
+ * </fa-canvas-surface>
+ * ```
+ * `Fa-canvas-surface` accepts classes and faSize, the only two attributes HTML5 canvas requires is width and height.
+ */
+angular.module('famous.angular')
+  .directive('faCanvasSurface', ['$famous', '$famousDecorator', function ($famous, $famousDecorator) {
+    return {
+      scope: true,
+      transclude: true,
+      template: '<canvas class="fa-canvas-surface"></canvas>',
+      restrict: 'EA',
+      compile: function(tElem, tAttrs, transclude){
+        return {
+          pre: function(scope, element, attrs){
+            var isolate = $famousDecorator.ensureIsolate(scope);
+
+            var CanvasSurface = $famous['famous/surfaces/CanvasSurface'];
+            var Transform = $famous['famous/core/Transform'];
+            var EventHandler = $famous['famous/core/EventHandler'];
+
+            isolate.renderNode = new CanvasSurface({
+              size: scope.$eval(attrs.faSize)
+            });
+
+            if (attrs.class) {
+              isolate.renderNode.setClasses(attrs['class'].split(' '));
+            }
+          },
+          post: function(scope, element, attrs){
+            var isolate = $famousDecorator.ensureIsolate(scope);
+
+            var updateContent = function() {
+	            isolate.renderNode.setContent(element[0].querySelector('canvas.fa-canvas-surface'));
+            };
+
+            updateContent();
+
+            //boilerplate
+            transclude(scope, function(clone) {
+              angular.element(element[0].querySelectorAll('canvas.fa-canvas-surface')).append(clone);
+            });
+
+            //TODO:  on this and all other render-node-wrapping fa-directives,
+            //       expose an actual RenderNode in isolate.renderNode and
+            //       use that RenderNode's .set() function to add/remove content
+            //       from the scene graph.  This will probably be instead of
+            //       using RenderControllers.
+            $famousDecorator.registerChild(scope, element, isolate, function() {
+              // TODO: hook into RenderController and hide this render node
+            });
+                     
           }
         };
       }
@@ -1568,7 +1771,7 @@ angular.module('famous.angular')
                 isolate.renderNode.add(data.renderNode);
               },
               function(childScopeId) {
-                throw "unimplemented: fa-container-surface does not support removing children";
+                throw new Error('unimplemented: fa-container-surface does not support removing children');
               }
             );
           },
@@ -1735,20 +1938,25 @@ angular.module('famous.angular')
               $famousDecorator.sequenceWith(
                 scope,
                 function(data) {
+                  //TODO:  support fa-index + sorting children instead of just a stack
                   var _childCount = isolate.children.length;
-                  if (_childCount == 0) {
+                  if (_childCount === 0) {
                     isolate.renderNode.setFront(data.renderNode);
-                  } else if (_childCount == 1) {
+                  } else if (_childCount === 1) {
                     isolate.renderNode.setBack(data.renderNode);
                   } else {
-                    throw "fa-flipper accepts only two child elements; more than two have been provided";
+                    throw new Error('fa-flipper accepts only two child elements; more than two have been provided');
                   }
 
                   isolate.children.push(data.renderNode);
                 },
-                // TODO: support removing children
                 function(childScopeId) {
-                  throw "unimplemented: fa-flipper does not support removing children";
+                  //TODO:  support fa-index + sorting children and removing
+                  //       the child at the proper index instead of just popping off a stack
+
+                  //Since children should handle hiding themselves, all we need to do is
+                  //update our children array
+                  isolate.children.splice(isolate.children.length - 1, 1);
                 }
               );
             },
@@ -1837,21 +2045,23 @@ angular.module('famous.angular')
             //watch options and update when changed
             scope.$watch(function(){
               return scope.$eval(attrs.faOptions);
-            }, function(oldVal, newVal){
+            }, function(newVal, oldVal){
               isolate.renderNode.setOptions(newVal);
             }, true);
 
             var updateGridLayout = function () {
-              _children.sort(function (a, b) {
-                return a.index - b.index;
+              scope.$$postDigest(function(){
+                _children.sort(function (a, b) {
+                  return a.index - b.index;
+                });
+                isolate.renderNode.sequenceFrom(function(_children) {
+                  var _ch = [];
+                  angular.forEach(_children, function(c, i) {
+                    _ch[i] = c.renderNode;
+                  });
+                  return _ch;
+                }(_children));
               });
-              isolate.renderNode.sequenceFrom(function(_children) {
-                var _ch = [];
-                angular.forEach(_children, function(c, i) {
-                  _ch[i] = c.renderNode;
-                })
-                return _ch;
-              }(_children));
             };
 
             $famousDecorator.sequenceWith(
@@ -1871,7 +2081,8 @@ angular.module('famous.angular')
                   return _ch;
                 }(_children);
                 updateGridLayout();
-              }
+              },
+              updateGridLayout
             );
 
           },
@@ -1991,12 +2202,12 @@ angular.module('famous.angular')
                 } else if (_numberOfChildren === 3){
                   isolate.renderNode.footer.add(data.renderNode);
                 } else {
-                  throw "fa-header-footer-layout can accept no more than 3 children";
+                  throw new Error('fa-header-footer-layout can accept no more than 3 children');
                 }
               },
               // TODO: support removing children
               function(childScopeId) {
-                throw "unimplemented: fa-header-footer-layout does not support removing children";
+                throw new Error ('unimplemented: fa-header-footer-layout does not support removing children');
               }
             );
 
@@ -2074,6 +2285,8 @@ angular.module('famous.angular')
               true
             );
 
+            //TODO:  duplicate of fa-surface's _propToFaProp function.
+            //       Refactor into a util object/service?
             var _propToFaProp = function (prop) {
               return "fa" + prop.charAt(0).toUpperCase() + prop.slice(1);
             };
@@ -2092,10 +2305,6 @@ angular.module('famous.angular')
                 }
               }
               return baseProperties;
-            };
-
-            var getOrValue = function (x) {
-              return x.get ? x.get() : x;
             };
 
             isolate.renderNode = new ImageSurface({
@@ -2214,6 +2423,7 @@ angular.module('famous.angular')
               return scope.$eval(attrs.faIndex);
             }, function () {
               isolate.index = scope.$eval(attrs.faIndex);
+              if(isolate.updateMethod) isolate.updateMethod();
             });
           }
         };
@@ -2225,19 +2435,19 @@ angular.module('famous.angular')
  * @name faModifier
  * @module famous.angular
  * @restrict EA
- * @param {Array|Function} faRotate  -  Array of numbers or function returning an array of numbers to which this Modifier's rotate should be bound.
- * @param {Number|Function} faRotateX  -  Number or function returning a number to which this Modifier's rotateX should be bound
- * @param {Number|Function} faRotateY  -  Number or function returning a number to which this Modifier's rotateY should be bound
- * @param {Number|Function} faRotateZ  -  Number or function returning a number to which this Modifier's rotateZ should be bound
- * @param {Array|Function} faScale  -  Array of numbers or function returning an array of numbers to which this Modifier's scale should be bound
- * @param {Array|Function} faSkew  -  Array of numbers or function returning an array of numbers to which this Modifier's skew should be bound
- * @param {Array|Function} faAboutOrigin  -  Array of arguments (or a function returning an array of arguments) to pass to Transform.aboutOrigin
- * @param {Number|Function} faPerspective  -  Number or array returning a number to which this modifier's perspective (focusZ) should be bound.
+ * @param {Array|Function|Particle} faRotate  -  Array of numbers or function returning an array of numbers to which this Modifier's rotate should be bound.
+ * @param {Number|Function|Particle} faRotateX  -  Number or function returning a number to which this Modifier's rotateX should be bound
+ * @param {Number|Function|Particle} faRotateY  -  Number or function returning a number to which this Modifier's rotateY should be bound
+ * @param {Number|Function|Particle} faRotateZ  -  Number or function returning a number to which this Modifier's rotateZ should be bound
+ * @param {Array|Function|Particle} faScale  -  Array of numbers or function returning an array of numbers to which this Modifier's scale should be bound
+ * @param {Array|Function|Particle} faSkew  -  Array of numbers or function returning an array of numbers to which this Modifier's skew should be bound
+ * @param {Array|Function|Particle} faAboutOrigin  -  Array of arguments (or a function returning an array of arguments) to pass to Transform.aboutOrigin
+ * @param {Number|Function|Particle} faPerspective  -  Number or array returning a number to which this modifier's perspective (focusZ) should be bound.
  * @param {Transform} faTransform - Manually created Famo.us Transform object (an array) that can be passed to the modifier.  *Will override all other transform attributes.*
- * @param {Number|Function|Transitionable} faOpacity  -  Number or function returning a number to which this Modifier's opacity should be bound
- * @param {Array|Function|Transitionable} faSize  -  Array of numbers (e.g. [100, 500] for the x- and y-sizes) or function returning an array of numbers to which this Modifier's size should be bound
- * @param {Array|Function|Transitionable} faOrigin  -  Array of numbers (e.g. [.5, 0] for the x- and y-origins) or function returning an array of numbers to which this Modifier's origin should be bound
- * @param {Array|Function|Transitionable} faAlign  -  Array of numbers (e.g. [.5, 0] for the x- and y-aligns) or function returning an array of numbers to which this Modifier's align should be bound
+ * @param {Number|Function|Transitionable|Particle} faOpacity  -  Number or function returning a number to which this Modifier's opacity should be bound
+ * @param {Array|Function|Transitionable|Particle} faSize  -  Array of numbers (e.g. [100, 500] for the x- and y-sizes) or function returning an array of numbers to which this Modifier's size should be bound
+ * @param {Array|Function|Transitionable|Particle} faOrigin  -  Array of numbers (e.g. [.5, 0] for the x- and y-origins) or function returning an array of numbers to which this Modifier's origin should be bound
+ * @param {Array|Function|Transitionable|Particle} faAlign  -  Array of numbers (e.g. [.5, 0] for the x- and y-aligns) or function returning an array of numbers to which this Modifier's align should be bound
  * @param {Array.String} faTransformOrder  -  Optional array of strings to specify which transforms to apply and in which order. (e.g. `fa-transform-order="['rotateZ', 'translate', 'scale']"`)  Default behavior is to evaluate all supported transforms and apply them in alphabetical order.
  * @description
  * This directive creates a Famo.us Modifier that will affect all children render nodes.  Its properties can be bound
@@ -2441,18 +2651,23 @@ angular.module('famous.angular')
       restrict: 'EA',
       priority: 2,
       scope: true,
-      compile: function(tElement, tAttrs, transclude){
+      compile: function (tElement, tAttrs, transclude) {
         return {
-          post: function(scope, element, attrs){
+          post: function (scope, element, attrs) {
             var isolate = $famousDecorator.ensureIsolate(scope);
 
-            var RenderNode = $famous['famous/core/RenderNode']
-            var Modifier = $famous['famous/core/Modifier']
-            var Transform = $famous['famous/core/Transform']
+            var RenderNode = $famous['famous/core/RenderNode'];
+            var Modifier = $famous['famous/core/Modifier'];
+            var Transform = $famous['famous/core/Transform'];
+            var Particle = $famous['famous/physics/bodies/Particle'];
 
             var get = function(x) {
               if (x instanceof Function) return x();
               return x.get ? x.get() : x;
+            };
+
+            var _unwrapParticle = function(part){
+              return part.getPosition();
             };
 
             //TODO:  make a stand-alone window-level utility
@@ -2460,17 +2675,21 @@ angular.module('famous.angular')
             /* Copied from angular.js */
             var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
             var MOZ_HACK_REGEXP = /^moz([A-Z])/;
+
             function camelCase(name) {
               return name.
-                replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
+                replace(SPECIAL_CHARS_REGEXP,function (_, separator, letter, offset) {
                   return offset ? letter.toUpperCase() : letter;
                 }).
                 replace(MOZ_HACK_REGEXP, 'Moz$1');
             }
+
             var PREFIX_REGEXP = /^(x[\:\-_]|data[\:\-_])/i;
+
             function directiveNormalize(name) {
               return camelCase(name.replace(PREFIX_REGEXP, ''));
             }
+
             /* end copy from angular.js */
 
             var _transformFields = [
@@ -2486,25 +2705,25 @@ angular.module('famous.angular')
               "translate"
             ];
 
-            attrs.$observe('faTransformOrder', function(){
+            attrs.$observe('faTransformOrder', function () {
               var candidate = scope.$eval(attrs.faTransformOrder);
               if(candidate !== undefined) _transformFields = candidate;
             });
 
             var _parsedTransforms = {};
-            angular.forEach(_transformFields, function(field){
+            angular.forEach(_transformFields, function (field) {
               var attrName = directiveNormalize('fa-' + field);
-              attrs.$observe(attrName, function(){
+              attrs.$observe(attrName, function () {
                 _parsedTransforms[field] = $parse(attrs[attrName]);
-              })
-            })
+              });
+            });
 
 
             var _transformFn = angular.noop;
-            attrs.$observe('faTransform', function(){
+            attrs.$observe('faTransform', function () {
               _transformFn = $parse(attrs.faTransform);
             });
-            isolate.getTransform = function() {
+            isolate.getTransform = function () {
               //if faTransform is provided, return it
               //instead of looping through the other transforms.
               var override = _transformFn(scope);
@@ -2515,65 +2734,70 @@ angular.module('famous.angular')
               }
 
               var transforms = [];
-              angular.forEach(_transformFields, function(field){
+              angular.forEach(_transformFields, function (field) {
                 var candidate = _parsedTransforms[field] ? _parsedTransforms[field](scope) : undefined;
-                if(candidate !== undefined){
+                if (candidate !== undefined) {
                   //TODO:feat Support Transitionables
                   if(candidate instanceof Function) candidate = candidate();
-                  if(candidate instanceof Array) transforms.push(Transform[field].apply(this, candidate))
+                  if(candidate instanceof Array) transforms.push(Transform[field].apply(this, candidate));
+                  else if(candidate instanceof Particle) transforms.push(Transform[field].apply(this, _unwrapParticle(candidate)));
                   else transforms.push(Transform[field].call(this, candidate));
                 }
               });
 
               if(!transforms.length) return undefined;
-              else if (transforms.length === 1) return transforms[0]
+              else if (transforms.length === 1) return transforms[0];
               else return Transform.multiply.apply(this, transforms);
             };
 
             var _alignFn = angular.noop;
-            attrs.$observe('faAlign', function(){
+            attrs.$observe('faAlign', function () {
               _alignFn = $parse(attrs.faAlign);
             });
-            isolate.getAlign = function(){
+            isolate.getAlign = function () {
               var ret = _alignFn(scope);
               if(ret instanceof Function) return ret();
               else if(ret instanceof Object && ret.get !== undefined) return ret.get();
+              else if(ret instanceof Particle) return _unwrapParticle(ret);
               else return ret;
-            }
+            };
 
             var _opacityFn = angular.noop;
-            attrs.$observe('faOpacity', function(){
+            attrs.$observe('faOpacity', function () {
               _opacityFn = $parse(attrs.faOpacity);
             });
-            isolate.getOpacity = function(){
+            isolate.getOpacity = function () {
               var ret = _opacityFn(scope);
               if(ret === undefined) return 1;
               else if(ret instanceof Function) return ret();
               else if(ret instanceof Object && ret.get !== undefined) return ret.get();
+              else if(ret instanceof Particle) return _unwrapParticle(ret);
               else return ret;
-            }
+            };
 
             var _sizeFn = angular.noop;
-            attrs.$observe('faSize', function(){
+            attrs.$observe('faSize', function () {
               _sizeFn = $parse(attrs.faSize);
             });
-            isolate.getSize = function(){
+            isolate.getSize = function () {
               var ret = _sizeFn(scope);
               if(ret instanceof Function) return ret();
               else if(ret instanceof Object && ret.get !== undefined) return ret.get();
+              else if(ret instanceof Particle) return _unwrapParticle(ret);
               else return ret;
-            }
+            };
 
             var _originFn = angular.noop;
-            attrs.$observe('faOrigin', function(){
+            attrs.$observe('faOrigin', function () {
               _originFn = $parse(attrs.faOrigin);
             });
-            isolate.getOrigin = function(){
+            isolate.getOrigin = function () {
               var ret = _originFn(scope);
               if(ret instanceof Function) return ret();
               else if(ret instanceof Object && ret.get !== undefined) return ret.get();
+              else if(ret instanceof Particle) return _unwrapParticle(ret);
               else return ret;
-            }
+            };
 
             isolate.modifier = new Modifier({
               transform: isolate.getTransform,
@@ -2583,13 +2807,13 @@ angular.module('famous.angular')
               align: isolate.getAlign
             });
 
-            isolate.renderNode = new RenderNode().add(isolate.modifier)
+            isolate.renderNode = new RenderNode().add(isolate.modifier);
 
             $famousDecorator.sequenceWith(scope, function(data) {
               isolate.renderNode.add(data.renderNode);
             });
 
-            transclude(scope, function(clone) {
+            transclude(scope, function (clone) {
               element.find('div').append(clone);
             });
 
@@ -2603,11 +2827,36 @@ angular.module('famous.angular')
             // $observe listeners are executed in the compilation phase.
             if(!scope.$$phase && !$rootScope.$$phase) scope.$apply();
           }
-        }
+        };
       }
     };
   }]);
 
+angular.module('famous.angular')
+  .directive('faMouseover', ['$parse', '$famousDecorator', function ($parse, $famousDecorator) {
+    return {
+      restrict: 'A',
+      scope: false,
+      compile: function() {
+        return { 
+          post: function(scope, element, attrs) {
+            var isolate = $famousDecorator.ensureIsolate(scope);
+
+            if (attrs.faMouseover) {
+              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode);
+
+              renderNode.on("mouseover", function(data) {
+                var fn = $parse(attrs.faMouseover);
+                fn(scope, {$event:data});
+                if(!scope.$$phase)
+                  scope.$apply();
+              });
+            }
+          }
+        };
+      }
+    };
+  }]);
 /**
  * @ngdoc directive
  * @name faPipeFrom
@@ -2859,7 +3108,7 @@ angular.module('famous.angular')
               );
             });
           }
-        }
+        };
       }
     };
   }]);
@@ -3115,7 +3364,7 @@ angular.module('famous.angular')
               );
             });
           }
-        }
+        };
       }
     };
   }]);
@@ -3197,7 +3446,7 @@ angular.module('famous.angular')
               var pipeTo = scope.$eval(val);
               if(pipeTo)
                 Engine.pipe(pipeTo);
-            })
+            });
 
             isolate.renderNode = scope.$eval(attrs.faNode);
 
@@ -3216,7 +3465,7 @@ angular.module('famous.angular')
 
             $famousDecorator.registerChild(scope, element, isolate);
           }
-        }
+        };
       }
     };
   }]);
@@ -3433,7 +3682,7 @@ angular.module('famous.angular')
                     var _ch = [];
                     angular.forEach(_children, function(c, i) {
                       _ch[i] = c.renderNode;
-                    })
+                    });
                     return _ch;
                   }(_children)
                 };
@@ -3464,7 +3713,8 @@ angular.module('famous.angular')
                   return _ch;
                 }(_children);
                 updateScrollview();
-              }
+              },
+              updateScrollview
             );
 
           },
@@ -3742,23 +3992,24 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             var Surface = $famous['famous/core/Surface'];
-            var Transform = $famous['famous/core/Transform']
+            var Transform = $famous['famous/core/Transform'];
             var EventHandler = $famous['famous/core/EventHandler'];
 
             //update properties
             //TODO:  is this going to be a bottleneck?
             scope.$watch(
               function(){
-                return isolate.getProperties()
+                return isolate.getProperties();
               },
               function(){
                 if(isolate.renderNode)
                   isolate.renderNode.setProperties(isolate.getProperties());
               },
               true
-            )
+            );
 
-
+            //TODO:  duplicate of fa-image-surface's _propToFaProp function.
+            //       Refactor into a util object/service? 
             var _propToFaProp = function(prop){
               return "fa" + prop.charAt(0).toUpperCase() + prop.slice(1);
             };
@@ -3820,7 +4071,7 @@ angular.module('famous.angular')
               // TODO: hook into RenderController and hide this render node
             });
           }
-        }
+        };
       }
     };
   }]);
@@ -3869,7 +4120,7 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             if (attrs.faTap) {
-              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode)
+              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode);
 
               var _dragging = false;
 
@@ -3885,11 +4136,11 @@ angular.module('famous.angular')
                   if(!scope.$$phase)
                     scope.$apply();
                 }
-                _dragging = false
+                _dragging = false;
               });
             }
           }
-        }
+        };
       }
     };
   }]);
@@ -3974,7 +4225,7 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             if (attrs.faTouchend) {
-              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode)
+              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode);
 
               renderNode.on("touchend", function(data) {
                 var fn = $parse(attrs.faTouchend);
@@ -3985,7 +4236,7 @@ angular.module('famous.angular')
 
             }
           }
-        }
+        };
       }
     };
   }]);
@@ -4073,7 +4324,7 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             if (attrs.faTouchmove) {
-              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode)
+              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode);
 
               renderNode.on("touchmove", function(data) {
                 var fn = $parse(attrs.faTouchmove);
@@ -4083,7 +4334,7 @@ angular.module('famous.angular')
               });
             }
           }
-        }
+        };
       }
     };
   }]);
@@ -4170,7 +4421,7 @@ angular.module('famous.angular')
             var isolate = $famousDecorator.ensureIsolate(scope);
 
             if (attrs.faTouchstart) {
-              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode)
+              var renderNode = (isolate.renderNode._eventInput || isolate.renderNode);
 
               renderNode.on("touchstart", function(data) {
                 var fn = $parse(attrs.faTouchstart);
@@ -4180,7 +4431,7 @@ angular.module('famous.angular')
               });
             }
           }
-        }
+        };
       }
     };
   }]);
@@ -4247,10 +4498,6 @@ angular.module('famous.angular')
 
             isolate.children = [];
 
-            var getOrValue = function(x) {
-              return x.get ? x.get() : x;
-            };
-
             isolate.renderNode = new View({
               size: scope.$eval(attrs.faSize) || [undefined, undefined]
             });
@@ -4270,7 +4517,7 @@ angular.module('famous.angular')
 
             $famousDecorator.registerChild(scope, element, isolate);
           }
-        }
+        };
       }
     };
   }]);

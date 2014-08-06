@@ -10,6 +10,13 @@ Using F/A, you can:
 
 
 ###Read more on the project page: [Famo.us/Angular](http://famo.us/angular)
+###Or download the starter kit: [famous-angular-starter-kit.zip](http://code.famo.us/famous-angular/latest/famous-angular-starter-kit.zip?src=github-readme)
+
+
+##Project Roadmap
+
+[https://www.pivotaltracker.com/n/projects/1119890](https://www.pivotaltracker.com/n/projects/1119890)
+Contact [famous-angular@thomasstreet.com](mailto:famous-angular@thomasstreet.com) if you want to claim tasks or contribute to the roadmap.
 
 
 ##Running (For using F/A in your Angular app)
@@ -53,7 +60,17 @@ To get started even faster, try the [famous-angular-starter](https://github.com/
 
 `npm install -g gulp`
 
+
+
 ####Thereafter:
+Install the frontend dependencies inside of your example folder.
+
+`cd famous-angular-examples`
+
+`bower install`
+
+`cd ..`
+
 `npm start`
 
 Npm start will use gulp to concatenate files into famous-angular.js, which is built into the app folder. It will also watch for changes inside app and livereload as necessary.
