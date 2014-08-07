@@ -337,7 +337,60 @@
 
     <div class="example-block">
       <div class="description">
-        <h3>Check out the <a href="docs/api/index.html">docs</a> to learn more.</h3>
+        <h3>Animate data structure changes with Famo.us.</h3>
+        <p>
+          All the power of Angular's animation events without ngAnimate.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          
+
+<div class="highlight"><pre><code class="bash"><span class="lineno"> 1</span> &lt;fa-surface&gt;
+<span class="lineno"> 2</span>   &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;range&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;$parent.repeatedItems&quot;</span> <span class="nv">min</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nv">max</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> /&gt;
+<span class="lineno"> 3</span> &lt;/fa-surface&gt;
+<span class="lineno"> 4</span> &lt;fa-modifier
+<span class="lineno"> 5</span>   square
+<span class="lineno"> 6</span>   ng-repeat<span class="o">=</span><span class="s2">&quot;modifier in modifiers&quot;</span>
+<span class="lineno"> 7</span>   fa-animate-enter<span class="o">=</span><span class="s2">&quot;enter()&quot;</span>
+<span class="lineno"> 8</span>   fa-animate-leave<span class="o">=</span><span class="s2">&quot;leave()&quot;</span>
+<span class="lineno"> 9</span>   fa-animate-halt<span class="o">=</span><span class="s2">&quot;halt()&quot;</span>
+<span class="lineno">10</span>   fa-transform<span class="o">=</span><span class="s2">&quot;transform&quot;</span>
+<span class="lineno">11</span>   fa-opacity<span class="o">=</span><span class="s2">&quot;opacity&quot;</span>
+<span class="lineno">12</span> &gt;
+<span class="lineno">13</span>   &lt;fa-surface fa-size<span class="o">=</span><span class="s2">&quot;[40, 40]&quot;</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;square&quot;</span>&gt;&lt;/fa-surface&gt;
+<span class="lineno">14</span> &lt;/fa-modifier&gt;</code></pre></div>
+
+
+
+
+        </div>
+        <div class="col-sm-4">
+          <div fa-app style="height: 260px">
+            <div ng-controller="homepageExamplesCtrl">
+              <fa-surface>
+                <input type="range" ng-model="$parent.repeatedItems" min="0" max="16" />
+              </fa-surface>
+              <fa-modifier
+                square
+                ng-repeat="modifier in modifiers"
+                fa-animate-enter="enter()"
+                fa-animate-leave="leave()"
+                fa-animate-halt="halt()"
+                fa-transform="transform"
+                fa-opacity="opacity"
+              >
+                <fa-surface fa-size="[40, 40]" class="square"></fa-surface>
+              </fa-modifier>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="description">
+        <h3>Check out the <a href="docs/api">docs</a> to learn more.</h3>
       </div>
     </div>
 
