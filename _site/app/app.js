@@ -2,7 +2,8 @@ function translateSquare(index) {
   return (index || 0) * 75;
 }
 
-angular.module('controller.homepage', ['famous.angular'])
+angular.module('famous-angular', ['famous.angular'])
+
   .controller('homepageExamplesCtrl', function($scope) {
 
     $scope.options = {
@@ -77,10 +78,3 @@ angular.module('controller.homepage', ['famous.angular'])
       }
     }
   });
-;
-
-
-
-angular.module('famous-angular', ['controller.homepage', 'famous.angular']);
-
-

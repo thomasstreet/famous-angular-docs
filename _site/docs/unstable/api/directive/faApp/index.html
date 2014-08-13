@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="docsApp" ng-controller="DocsController">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -418,7 +418,7 @@
 it creates a Famous context and then adds child elements
 to that context as they get compiled.  Inside of this directive,
 normal HTML content will not get rendered to the screen unless
-it is inside of a <a href="api/directive/faSurface">fa-surface</a> directive.</p>
+it is inside of a <a href="../../../api/directive/faSurface/">fa-surface</a> directive.</p>
 
 <h2 id="usage">Usage</h2>
 
@@ -525,6 +525,10 @@ mixpanel.init("7870a5b65a523c899992a1496ad1352d");</script><!-- end Mixpanel -->
   __ga('send', 'pageview');
 </script>
 
-
+    <script src="../../../../../bower_components/underscore/underscore.js"></script>
+    <script src="../../../../../bower_components/famous/famous-global.min.js"></script>
+    <script src="../../../../../bower_components/angular/angular.min.js"></script>
+    <script src="../../../../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+    <script src="../../../../../js/main.min.js"></script>
   </body>
 </html>

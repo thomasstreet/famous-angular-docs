@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="docsApp" ng-controller="DocsController">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -397,7 +397,7 @@
 
         <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
           <div class="improve-docs">
-  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-input.js#L547'>
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-input.js#L609'>
     Improve this doc
   </a>
 </div>
@@ -419,14 +419,10 @@
 <h2 id="usage">Usage</h2>
 
 
-<pre><code>```html
-</code></pre>
+<pre><code class="html">&lt;ANY ng-focus="expression"&gt;
 
-<p>  &lt;window, input, select, textarea, a
-    ng-focus="">
-  ...
-  &lt;/window, input, select, textarea, a>
-  ```</p>
+&lt;/ANY&gt;
+</code></pre>
 
 <h2 id="api" style="clear:both;">API</h2>
 
@@ -470,7 +466,7 @@ focus. (<a href="guide/expression#-event-">Event object is available as <code>$e
 <h2 id="example">Example</h2>
 
 
-<p>See <a href="ng.directive:ngClick">TODO:ngClick</a></p>
+<p>See <a href="../../../api/directive/ngClick/">ngClick</a></p>
 
 
 
@@ -501,6 +497,10 @@ mixpanel.init("7870a5b65a523c899992a1496ad1352d");</script><!-- end Mixpanel -->
   __ga('send', 'pageview');
 </script>
 
-
+    <script src="../../../../../bower_components/underscore/underscore.js"></script>
+    <script src="../../../../../bower_components/famous/famous-global.min.js"></script>
+    <script src="../../../../../bower_components/angular/angular.min.js"></script>
+    <script src="../../../../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+    <script src="../../../../../js/main.min.js"></script>
   </body>
 </html>

@@ -25,17 +25,11 @@
 
     {% include footer.html %}
 
-    <script src="{{relative}}bower_components/underscore/underscore.js"></script>
-    <script src="{{relative}}bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="{{relative}}bower_components/angular/angular.min.js"></script>
-    <script src="{{relative}}bower_components/requirejs/require.js"></script>
-    <script>
-      require.config({
-        baseUrl: '{{relative}}bower_components'
-      })
-    </script>
-    <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.min.js"></script>
-    <script src="{{relative}}js/main.min.js"></script>
     {% include base_scripts.html %}
+    <script src="{{relative}}bower_components/underscore/underscore.js"></script>
+    <script src="{{relative}}bower_components/famous/famous-global.min.js"></script>
+    <script src="{{relative}}bower_components/angular/angular.min.js"></script>
+    <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.js"></script>
+    <script src="{{relative}}js/main.min.js"></script>
   </body>
 </html>

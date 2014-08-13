@@ -72,14 +72,6 @@ gulp.task('build-jekyll', ['site-styl', 'site-js'], function() {
     .pipe(livereload(server));
 });
 
-
-// First generate the docs, and then run jekyll build to create a new _site
-// with the fresh docs
-gulp.task('build-site', ['docs'], function(done) {
-  return gulp.start('build-jekyll');
-});
-
-
 // Compile .styl for the site submodule
 gulp.task('site-styl', function() {
   var stylus = require('gulp-stylus');
@@ -96,7 +88,7 @@ gulp.task('site-styl', function() {
 // Concat all app/ js files and minify them
 gulp.task('site-js', function() {
   return gulp.src([
-    SITE_DIR + "app/*.js",
+    SITE_DIR + "app/*.js"
   ])
     .pipe(jshint())
     .pipe(concat('main.js'))
