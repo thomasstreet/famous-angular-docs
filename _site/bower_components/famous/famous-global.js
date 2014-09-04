@@ -449,9 +449,10 @@ window.addEventListener('resize', handleResize, false);
 handleResize();
 
 // prevent scrolling via browser
-window.addEventListener('touchmove', function(event) {
+// HACKED for non-appMode use
+/*window.addEventListener('touchmove', function(event) {
     event.preventDefault();
-}, true);
+}, true);*/
 
 /**
  * Add event handler object to set of downstream handlers.

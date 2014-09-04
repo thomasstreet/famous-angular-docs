@@ -1549,7 +1549,9 @@ angular.module('famous.angular')
             var Engine = $famous['famous/core/Engine'];
             var Transform = $famous['famous/core/Transform'];
 
-            element.append('<div class="famous-angular-clipping-container"><div class="famous-angular-container"></div></div>');
+	    Engine.setOptions({appMode: false});            
+
+element.append('<div class="famous-angular-clipping-container"><div class="famous-angular-container"></div></div>');
             isolate.context = Engine.createContext(element[0].querySelector('.famous-angular-container'));
             window.context = isolate.context;
             var _updatePerspective = function(){
