@@ -347,7 +347,7 @@
           
 
 <div class="highlight"><pre><code class="bash"><span class="lineno"> 1</span> &lt;fa-surface&gt;
-<span class="lineno"> 2</span>   &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;range&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;$parent.repeatedItems&quot;</span> <span class="nv">min</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nv">max</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> /&gt;
+<span class="lineno"> 2</span>   &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;range&quot;</span> ng-model<span class="o">=</span><span class="s2">&quot;data.repeatedItems&quot;</span> <span class="nv">min</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nv">max</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> /&gt;
 <span class="lineno"> 3</span> &lt;/fa-surface&gt;
 <span class="lineno"> 4</span> &lt;fa-modifier
 <span class="lineno"> 5</span>   square
@@ -369,7 +369,7 @@
           <div fa-app style="height: 260px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-surface>
-                <input type="range" ng-model="$parent.repeatedItems" min="0" max="16" />
+                <input type="range" ng-model="data.repeatedItems" min="0" max="16" />
               </fa-surface>
               <fa-modifier
                 square

@@ -72,7 +72,7 @@ layout: home
 {% highlight bash linenos %}
 
 <fa-surface>
-  <input type="range" ng-model="$parent.repeatedItems" min="0" max="16" />
+  <input type="range" ng-model="data.repeatedItems" min="0" max="16" />
 </fa-surface>
 <fa-modifier
   square
