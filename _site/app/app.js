@@ -1,4 +1,5 @@
 function translateSquare(index) {
+
   return (index || 0) * 75;
 }
 
@@ -19,9 +20,23 @@ angular.module('famous-angular', ['famous.angular'])
     $scope.repeatedItems = 1;
     $scope.modifiers     = [0, 1, 2];
 
+    $scope.data = {
+      rangeValue: 0
+    };
+
+    $scope.translateX = function(rangeValue) {
+      var sliderWidth = 300;
+      var leftOffset = -20;
+      if (!rangeValue) {
+        return 0 + leftOffset;
+      }
+      return ((Number(rangeValue) / 100) * sliderWidth) + leftOffset;
+    };
+
     $scope.$watch('repeatedItems', function(value) {
       $scope.modifiers = _.range(0, value);
     });
+
   })
   .directive('square', function($famous) {
     var Transform = $famous['famous/core/Transform'];
@@ -39,6 +54,7 @@ angular.module('famous-angular', ['famous.angular'])
           Transform.translate(translateSquare(scope.$index % 4), Math.floor(scope.$index / 4) * 60 + 40, 0),
           flipOut
         ));
+        console.log(transform.get());
 
         var opacity = new Transitionable(0);
 

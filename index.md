@@ -57,10 +57,10 @@ layout: home
 {% highlight bash linenos %}
 
 <fa-surface>
-  <input type="range" ng-model="translateX">
-</fa-surface>
+  <input type="range" ng-model="data.rangeValue">
+ </fa-surface>
 
-<fa-modifier fa-translate="[translateX, 0]">
+<fa-modifier fa-translate="[translateX(data.rangeValue), 40, 0]">
   <fa-surface fa-size="[40, 40]" class="square">
   </fa-surface>
 </fa-modifier>

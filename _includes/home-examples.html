@@ -97,10 +97,10 @@
           <div fa-app style="height: 160px">
             <div ng-controller="homepageExamplesCtrl">
               <fa-surface>
-                <input type="range" ng-model="$parent.translateX" />
+                <input type="range" ng-model="data.rangeValue" style="width: 300px">
                </fa-surface>
-              <fa-modifier fa-translate="[translateX * 2, 40]">
-                <fa-surface fa-size="[40, 40]" class="square">
+              <fa-modifier fa-translate="[translateX(data.rangeValue), 40, 0]">
+              <fa-surface fa-size="[40, 40]" class="square">
                 </fa-surface>
               </fa-modifier>
              </div>
