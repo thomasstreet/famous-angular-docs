@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example10</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
   
 
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-  <script src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="submitExample">
-  
+<body ng-app="faInputExampleApp">
+  <fa-app ng-controller="ClickCtrl" id="app">
+    <fa-modifier fa-size="[300, 100]">
+      <fa-surface fa-background-color="'red'" ng-click="myClickHandler($event)">Click Me!  This has been clicked {{clicked}} times.</fa-surface>
+    </fa-modifier>
+  </fa-app>
 </body>
 </html>

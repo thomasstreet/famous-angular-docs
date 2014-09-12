@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example6</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
   
 
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-  <script src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="">
-   <fa-surface ng-mousemove="count = count + 1" ng-init="count=0" style="cursor: pointer;">
-   Increment (when mouse moves), count: {{count}}
- </fa-surface>
+<body ng-app="faHeaderFooterExampleAppA">
+  <fa-app>
+
+    <fa-header-footer-layout fa-options="{direction: 0, headerSize: 75, footerSize: 75}">
+
+      <!-- header -->
+      <fa-surface fa-background-color="'red'">Header</fa-surface>
+    
+      <!-- content -->
+      <fa-surface fa-background-color="'blue'">Content</fa-surface>
+    
+      <!-- footer -->
+      <fa-surface fa-background-color="'green'">Footer</fa-surface>
+
+    </fa-header-footer-layout>
+
+  </fa-app>
 </body>
 </html>

@@ -4,46 +4,84 @@
 {% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 
 <div>
-  <a ng-click="openPlunkr('{{ relative }}examples/example-example13')" class="btn pull-right">
+  <a ng-click="openPlunkr('{{ relative }}examples/example-example27')" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
-  <div class="runnable-example" path="examples/example-example13"
+  <div class="runnable-example" path="examples/example-example27"
+      
+        module="faModifierExampleApp"
       
   >
 
    
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="index.html"
+      
+        language="html"
+      
+        type="html"
+      
+    >
+      <pre><code>{% raw %}&lt;fa-app ng-controller=&quot;ModifierCtrl&quot;&gt;&#10;  &lt;!-- These properties are bound to properties of $scope.boxObject in the contorller --&gt;&#10;  &lt;fa-modifier fa-origin=&quot;boxObject.origin&quot; fa-size=&quot;boxObject.size&quot;&gt;&#10;      &lt;fa-surface fa-background-color=&quot;&#39;red&#39;&quot;&gt;&lt;/fa-surface&gt;&#10;  &lt;/fa-modifier&gt;&#10;&lt;/fa-app&gt;{% endraw %}</code></pre>
+    </div>
+  
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="script.js"
+      
+        language="js"
+      
+        type="js"
+      
+    >
+      <pre><code>{% raw %}angular.module(&#39;faModifierExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&#39;ModifierCtrl&#39;, [&#39;$scope&#39;, function($scope) {&#10;&#10;    $scope.boxObject = {&#10;       origin: [.4, .4],&#10;       size: [50, 50]&#10;    };&#10;&#10;}]);{% endraw %}</code></pre>
+    </div>
+  
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="style.css"
+      
+        language="css"
+      
+        type="css"
+      
+    >
+      <pre><code>{% raw %}fa-app {&#10;  position: fixed;&#10;  top: 0;&#10;  right: 0;&#10;  bottom: 0;&#10;  left: 0;&#10;}{% endraw %}</code></pre>
+    </div>
+  
 
-    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example13/index.html" name="example-example13"></iframe>
+    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example27/index.html" name="example-example27"></iframe>
   </div>
 </div>
 
 
-xample10"></iframe>
+de></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example25/index.html" name="example-example25"></iframe>
   </div>
 </div>
 
 
-rface ng-keypress=&quot;count = count + 1&quot; ng-init=&quot;count=0&quot;&gt;&#10;  key press count: {{count}}&#10;&lt;/fa-surface&gt;{% endraw %}</code></pre>
+ule(&#39;faIndexExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&#39;IndexCtrl&#39;, [&#39;$scope&#39;, &#39;$famous&#39;, function($scope, $famous) {&#10;&#10;   var EventHandler = $famous[&#39;famous/core/EventHandler&#39;];&#10;   $scope.eventHandler = new EventHandler();&#10;   $scope.list = [{content: &quot;famous&quot;}, {content: &quot;angular&quot;}, {content: &quot;rocks!&quot;}];&#10;  &#10;   $scope.options = {&#10;     scrollView: {&#10;       direction: 0 // displays the fa-views horizontally&#10;     }&#10;   };&#10;&#10;}]);{% endraw %}</code></pre>
+    </div>
+  
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="style.css"
+      
+        language="css"
+      
+        type="css"
+      
+    >
+      <pre><code>{% raw %}fa-app {&#10;  width: 320px;&#10;  height: 320px;&#10;  overflow: hidden;&#10;}&#10;p {&#10;  padding: 8px 8px;&#10;}{% endraw %}</code></pre>
     </div>
   
 
     <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example9/index.html" name="example-example9"></iframe>
-  </div>
-</div>
-
-
-ml" name="example-example6"></iframe>
-  </div>
-</div>
-
-
-
-
-  -webkit-user-select: none;&#10;  -moz-user-select: none;&#10;  -ms-user-select: none;&#10;  user-select: none;&#10;}&#10;fa-surface {&#10;  cursor: pointer;&#10;}{% endraw %}</code></pre>
-    </div>
-  
-
-    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example/index.html" name="example-example"></iframe>
   </div>
 </div>
 

@@ -3,18 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example2</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
   
 
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-  <script src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="">
-   <fa-surface ng-mouseup="count = count + 1" ng-init="count=0" style="cursor: pointer;">
-   Increment (on mouse up), count: {{count}}
- </fa-surface>
+<body ng-app="faFlipperExampleApp">
+  <fa-app ng-controller="FlipperCtrl">
+    <fa-flipper>
+      <fa-modifier fa-size="[200, 200]">
+        <fa-surface fa-background-color="'yellow'" fa-click="flipIt()">Click me to see me flip!</fa-surface>
+      </fa-modifier>  
+      <fa-modifier fa-size="[200, 200]">
+        <fa-surface fa-background-color="'red'" fa-click="flipIt()">Flip me again!</fa-surface>
+      </fa-modifier>  
+    </fa-flipper>
+  </fa-app>
 </body>
 </html>
