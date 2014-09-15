@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-example33</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  
+
+  
+</head>
+<body ng-app="faModifierExampleApp">
+  <fa-app ng-controller="ModifierCtrl">
+    <fa-modifier fa-transform="variousTransforms" fa-size="[100, 100]">
+      <fa-surface fa-background-color="'red'"></fa-surface>
+    </fa-modifier>
+  </fa-app>
+
+  <script>
+    angular.module('faModifierExampleApp', ['famous.angular'])
+        .controller('ModifierCtrl', ['$scope', '$famous', function($scope, $famous) {
+
+          var Transform = $famous['famous/core/Transform'];
+
+          $scope.variousTransforms = function() {
+            var translate = Transform.translate(100, 100, 0);
+            var skew = Transform.skew(0, 0, 0.3);
+            return Transform.multiply(translate, skew);
+          };
+
+      }]);
+  </script>
+</body>
+</html>

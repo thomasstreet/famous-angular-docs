@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-example44</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  
+
+  
+</head>
+<body ng-app="faScrollViewExampleApp">
+  <fa-app ng-controller="ScrollCtrl" style="width: 100%; height: 568px;">
+    <!-- outer scroll view that scrolls horizontally between "main" view and "sidebar" view-->
+    <fa-scroll-view fa-pipe-from="eventHandler" fa-options="options.scrollViewOuter">
+  
+      <!-- sidebar view -->
+      <fa-view fa-index="0">
+        <fa-modifier fa-size="[200, undefined]" id="sideBarMod">
+            <fa-surface fa-pipe-to="eventHandler"
+                        fa-background-color="'blue'"
+                        fa-size="[undefined, undefined]">
+              Sidebar (scroll horizontally to hide)
+            </fa-surface>
+          </fa-modifier>
+      </fa-view>
+  
+      <!-- main view -->
+      <fa-view fa-index="1">
+      <!-- inner scroll view that scrolls vertically-->
+        <fa-scroll-view fa-pipe-from="eventHandler" fa-options="options.scrollViewInner">
+          <fa-view ng-repeat="item in list">
+            <fa-surface fa-pipe-to="eventHandler"
+                        fa-size="[undefined, 200]"
+                        fa-background-color="'red'">
+              {{item.content}}
+            </fa-surface>
+          </fa-view>
+        </fa-scroll-view>
+      </fa-view>
+  
+    </fa-scroll-view>
+  </fa-app>
+
+  <script>
+    angular.module('faScrollViewExampleApp', ['famous.angular'])
+        .controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
+          
+          var EventHandler = $famous['famous/core/EventHandler'];
+          $scope.eventHandler = new EventHandler();
+          $scope.list = [{
+            content: "Awesome content"
+          },{
+            content: "Scroll vertically to see more awesome content"
+          },{
+            content: "Famo.us/angular rocks!"
+            }
+          ];
+          
+          $scope.options = {
+            scrollViewOuter: {
+              direction: 0,
+              paginated: true
+            },
+            scrollViewInner :{
+              direction: 1
+            }
+          };
+
+      }]);
+  </script>
+</body>
+</html>

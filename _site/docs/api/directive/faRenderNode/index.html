@@ -461,28 +461,53 @@ This approach of creating a View and adding renderables to it with the <code>.ad
 <p>In the html view, an <code>fa-render-node</code> is declared, with an <code>fa-node</code> attribute bound to the newly-created View on the scope, resulting in our custom View appearing on the page.</p>
 
 
-<pre><code class="lang-javascript">var View = $famous[&#39;famous/core/View&#39;];
-var Modifier = $famous[&#39;famous/core/Modifier&#39;];
-var Surface = $famous[&#39;famous/core/Surface&#39;];
-var Transform = $famous[&#39;famous/core/Transform&#39;];
-
-$scope.masterView = new View();
-
-var _surf = new Surface({properties: {backgroundColor: &#39;red&#39;}});
-_surf.setContent(&quot;I&#39;m a surface&quot;);
-
-var _mod = new Modifier();
-
-var _width = 320;
-var _height = 568;
-_mod.transformFrom(function(){
-  return Transform.translate(Math.random() * _width, 0, 1);
-});
-
-$scope.masterView.add(_mod).add(_surf);</code></pre>
+<p> 
 
 
-<pre><code class="lang-html">&lt;fa-render-node fa-node=&quot;masterView&quot; id=&quot;render&quot;&gt;&lt;/fa-render-node&gt;</code></pre>
+
+
+<div>
+  <a ng-click="openPlunkr('../../../../examples/example-example40')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example" path="examples/example-example40"
+      
+        module="faRenderNodeExampleApp"
+      
+  >
+
+   
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="index.html"
+      
+        language="html"
+      
+        type="html"
+      
+    >
+      <pre><code>&lt;fa-app ng-controller=&quot;RenderCtrl&quot;&gt;&#10;  &lt;fa-render-node fa-node=&quot;masterView&quot; id=&quot;render&quot;&gt;&lt;/fa-render-node&gt;&#10;&lt;/fa-app&gt;&#10;&#10;&lt;script&gt;&#10;  angular.module(&#39;faRenderNodeExampleApp&#39;, [&#39;famous.angular&#39;])&#10;      .controller(&#39;RenderCtrl&#39;, [&#39;$scope&#39;, &#39;$famous&#39;,function($scope, $famous) {&#10;&#10;        var View = $famous[&#39;famous/core/View&#39;];&#10;        var Modifier = $famous[&#39;famous/core/Modifier&#39;];&#10;        var Surface = $famous[&#39;famous/core/Surface&#39;];&#10;        var Transform = $famous[&#39;famous/core/Transform&#39;];&#10;        &#10;        $scope.masterView = new View();&#10;        &#10;        var _surf = new Surface({properties: {backgroundColor: &#39;red&#39;}});&#10;        _surf.setContent(&quot;I&#39;m a surface&quot;);&#10;        &#10;        var _mod = new Modifier();&#10;        &#10;        var _width = 320;&#10;        var _height = 568;&#10;        _mod.transformFrom(function(){&#10;          return Transform.translate(Math.random() * _width, 0, 1);&#10;        });&#10;        &#10;        $scope.masterView.add(_mod).add(_surf);&#10;&#10;    }]);&#10;&lt;/script&gt;</code></pre>
+    </div>
+  
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="style.css"
+      
+        language="css"
+      
+        type="css"
+      
+    >
+      <pre><code>fa-app {&#10;  position: fixed;&#10;  top: 0;&#10;  right: 0;&#10;  bottom: 0;&#10;  left: 0;&#10;}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="../../../../examples/example-example40/index.html" name="example-example40"></iframe>
+  </div>
+</div>
+
+
+</p>
 
 
 

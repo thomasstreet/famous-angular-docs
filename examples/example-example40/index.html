@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-example40</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  
+
+  
+</head>
+<body ng-app="faRenderNodeExampleApp">
+  <fa-app ng-controller="RenderCtrl">
+    <fa-render-node fa-node="masterView" id="render"></fa-render-node>
+  </fa-app>
+
+  <script>
+    angular.module('faRenderNodeExampleApp', ['famous.angular'])
+        .controller('RenderCtrl', ['$scope', '$famous',function($scope, $famous) {
+
+          var View = $famous['famous/core/View'];
+          var Modifier = $famous['famous/core/Modifier'];
+          var Surface = $famous['famous/core/Surface'];
+          var Transform = $famous['famous/core/Transform'];
+          
+          $scope.masterView = new View();
+          
+          var _surf = new Surface({properties: {backgroundColor: 'red'}});
+          _surf.setContent("I'm a surface");
+          
+          var _mod = new Modifier();
+          
+          var _width = 320;
+          var _height = 568;
+          _mod.transformFrom(function(){
+            return Transform.translate(Math.random() * _width, 0, 1);
+          });
+          
+          $scope.masterView.add(_mod).add(_surf);
+
+      }]);
+  </script>
+</body>
+</html>

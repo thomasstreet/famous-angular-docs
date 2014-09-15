@@ -10,7 +10,6 @@
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
-  <script src="script.js"></script>
   
 
   
@@ -22,5 +21,17 @@
         <fa-surface fa-background-color="'red'"></fa-surface>
     </fa-modifier>
   </fa-app>
+
+  <script>
+    angular.module('faModifierExampleApp', ['famous.angular'])
+        .controller('ModifierCtrl', ['$scope', function($scope) {
+
+          $scope.boxObject = {
+             origin: [.4, .4],
+             size: [50, 50]
+          };
+
+      }]);
+  </script>
 </body>
 </html>

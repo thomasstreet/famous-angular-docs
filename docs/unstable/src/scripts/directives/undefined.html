@@ -4,12 +4,12 @@
 {% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 
 <div>
-  <a ng-click="openPlunkr('{{ relative }}examples/example-example27')" class="btn pull-right">
+  <a ng-click="openPlunkr('{{ relative }}examples/example-example58')" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
-  <div class="runnable-example" path="examples/example-example27"
+  <div class="runnable-example" path="examples/example-example58"
       
-        module="faModifierExampleApp"
+        module="faTouchStartExampleApp"
       
   >
 
@@ -23,19 +23,7 @@
         type="html"
       
     >
-      <pre><code>{% raw %}&lt;fa-app ng-controller=&quot;ModifierCtrl&quot;&gt;&#10;  &lt;!-- These properties are bound to properties of $scope.boxObject in the contorller --&gt;&#10;  &lt;fa-modifier fa-origin=&quot;boxObject.origin&quot; fa-size=&quot;boxObject.size&quot;&gt;&#10;      &lt;fa-surface fa-background-color=&quot;&#39;red&#39;&quot;&gt;&lt;/fa-surface&gt;&#10;  &lt;/fa-modifier&gt;&#10;&lt;/fa-app&gt;{% endraw %}</code></pre>
-    </div>
-  
-    <div ng-non-bindable class="runnable-example-file"
-      
-        name="script.js"
-      
-        language="js"
-      
-        type="js"
-      
-    >
-      <pre><code>{% raw %}angular.module(&#39;faModifierExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&#39;ModifierCtrl&#39;, [&#39;$scope&#39;, function($scope) {&#10;&#10;    $scope.boxObject = {&#10;       origin: [.4, .4],&#10;       size: [50, 50]&#10;    };&#10;&#10;}]);{% endraw %}</code></pre>
+      <pre><code>{% raw %}&lt;fa-app ng-controller=&quot;TouchStartCtrl&quot;&gt;&#10;&#10;  &lt;!-- The fa-view receives the touchstart event from the fa-surface, and calls $scope.touchStart, bound to fa-touchstart on the fa-view. --&gt;&#10;&#10;  &lt;fa-view fa-touchstart=&quot;touchStart($event)&quot; fa-pipe-from=&quot;myEvents&quot;&gt;&#10;    &lt;fa-modifier fa-size=&quot;[200, 100]&quot;&gt;&#10;      &lt;fa-surface fa-pipe-to=&quot;myEvents&quot;&#10;                  fa-background-color=&quot;&#39;orange&#39;&quot;&gt;&#10;        Touch start count: {{touchStartCount}}&#10;      &lt;/fa-surface&gt;&#10;    &lt;/fa-modifier&gt;&#10;  &lt;/fa-view&gt;&#10;&lt;/fa-app&gt;&#10;&#10;&lt;script&gt;&#10;  angular.module(&#39;faTouchStartExampleApp&#39;, [&#39;famous.angular&#39;])&#10;    .controller(&#39;TouchStartCtrl&#39;, [&#39;$scope&#39;, &#39;$famous&#39;, function($scope, $famous) {&#10;        &#10;        var EventHandler = $famous[&#39;famous/core/EventHandler&#39;];&#10;        $scope.myEvents = new EventHandler();&#10;&#10;        $scope.touchStartCount = 0;&#10;        &#10;        $scope.touchStart = function($event) {&#10;          console.log($event);&#10;          $scope.touchStartCount++;&#10;        };&#10;&#10;    }]);&#10;&lt;/script&gt;{% endraw %}</code></pre>
     </div>
   
     <div ng-non-bindable class="runnable-example-file"
@@ -51,21 +39,21 @@
     </div>
   
 
-    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example27/index.html" name="example-example27"></iframe>
+    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example58/index.html" name="example-example58"></iframe>
   </div>
 </div>
 
 
-de></pre>
+;$scope&#39;, &#39;$famous&#39;, function($scope, $famous) {&#10;        &#10;        var EventHandler = $famous[&#39;famous/core/EventHandler&#39;];&#10;        $scope.eventHandler = new EventHandler();&#10;        $scope.list = [{&#10;          content: &quot;Awesome content&quot;&#10;        },{&#10;          content: &quot;Scroll vertically to see more awesome content&quot;&#10;        },{&#10;          content: &quot;Famo.us/angular rocks!&quot;&#10;          }&#10;        ];&#10;        &#10;        $scope.options = {&#10;          scrollViewOuter: {&#10;            direction: 0,&#10;            paginated: true&#10;          },&#10;          scrollViewInner :{&#10;            direction: 1&#10;          }&#10;        };&#10;&#10;    }]);&#10;&lt;/script&gt;{% endraw %}</code></pre>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example25/index.html" name="example-example25"></iframe>
+    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example44/index.html" name="example-example44"></iframe>
   </div>
 </div>
 
 
-ule(&#39;faIndexExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&#39;IndexCtrl&#39;, [&#39;$scope&#39;, &#39;$famous&#39;, function($scope, $famous) {&#10;&#10;   var EventHandler = $famous[&#39;famous/core/EventHandler&#39;];&#10;   $scope.eventHandler = new EventHandler();&#10;   $scope.list = [{content: &quot;famous&quot;}, {content: &quot;angular&quot;}, {content: &quot;rocks!&quot;}];&#10;  &#10;   $scope.options = {&#10;     scrollView: {&#10;       direction: 0 // displays the fa-views horizontally&#10;     }&#10;   };&#10;&#10;}]);{% endraw %}</code></pre>
+ode>{% raw %}angular.module(&#39;faPipeExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&#39;PipeCtrl&#39;, [&#39;$scope&#39;, &#39;$famous&#39;, function($scope, $famous) {&#10;&#10;    // Event Handlers&#10;    var EventHandler = $famous[&#39;famous/core/EventHandler&#39;];&#10;    $scope.mainPipe = new EventHandler();&#10;    $scope.emptyPipe = new EventHandler();&#10;    &#10;    // items in ng-repeated list in each of the 3 Scroll Views&#10;    $scope.list = [];&#10;    for (var i = 0; i &lt; 10; i++) {&#10;      $scope.list.push({});&#10;    };&#10;    &#10;    // 3 inputs in the directional pad corresponding to the 3 scroll views&#10;    $scope.inputList = [{model: &quot;checkBox.A&quot;, letter: &quot;A&quot;},{model: &quot;checkBox.B&quot;, letter: &quot;B&quot;}, {model: &quot;checkBox.C&quot;, letter: &quot;C&quot;}];&#10;    &#10;    // 3 scrollviews&#10;    $scope.scrollViews = [{pipe: &quot;pipes.A&quot;, bgColor: &quot;blue&quot;}, {pipe: &quot;pipes.B&quot;, bgColor: &quot;red&quot;}, {pipe: &quot;pipes.C&quot;, bgColor: &quot;green&quot;}];&#10;    &#10;    // pipes that each of the 3 scroll views is binded to through fa-pipe-from&#10;    $scope.pipes = {&#10;      A: $scope.emptyPipe,&#10;      B: $scope.emptyPipe,&#10;      C: $scope.emptyPipe&#10;    };&#10;    &#10;    // function that is called whenever a checkbox is checked/unchecked that assigns the fa-pipe-from&#10;    $scope.checkBoxChange = function(model, value) {&#10;      if (value !== &quot;false&quot;) {&#10;        $scope.pipes[model] = $scope.mainPipe;&#10;      } else {&#10;        $scope.pipes[model] = $scope.emptyPipe;&#10;      };&#10;    };&#10;}]);{% endraw %}</code></pre>
     </div>
   
     <div ng-non-bindable class="runnable-example-file"
@@ -77,11 +65,11 @@ ule(&#39;faIndexExampleApp&#39;, [&#39;famous.angular&#39;])&#10;  .controller(&
         type="css"
       
     >
-      <pre><code>{% raw %}fa-app {&#10;  width: 320px;&#10;  height: 320px;&#10;  overflow: hidden;&#10;}&#10;p {&#10;  padding: 8px 8px;&#10;}{% endraw %}</code></pre>
+      <pre><code>{% raw %}fa-app {&#10;  position: fixed;&#10;  top: 0;&#10;  right: 0;&#10;  bottom: 0;&#10;  left: 0;&#10;}{% endraw %}</code></pre>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example9/index.html" name="example-example9"></iframe>
+    <iframe class="runnable-example-frame" src="{{ relative }}examples/example-example39/index.html" name="example-example39"></iframe>
   </div>
 </div>
 
