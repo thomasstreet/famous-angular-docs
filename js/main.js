@@ -129,6 +129,12 @@ angular.module('examples', [])
 
 angular.module('famous-angular')
 
+.controller('homepageCtrl', function($scope) {
+
+});
+
+angular.module('famous-angular')
+
 .controller('homepageExamplesCtrl', function($scope) {
 
   $scope.options = {
