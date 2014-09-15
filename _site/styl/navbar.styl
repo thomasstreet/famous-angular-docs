@@ -4,59 +4,53 @@
 * Main header navbar
 ****************************************************************/
 
-.navbar-default
-  font-size: 18px
-  height: $navbar-height
-  background-color: $navbar-color
-  color: $navbar-text-color
-  border-bottom: 0
+#nav-bar
+  //font-family 'Raleway'
+  position fixed
+  width 100%
+  height 100px
+  top 0px
+  left 0px
+  background-color #333
+  color white
+  overflow hidden
+  box-shadow 0px 2px 0px 0px $box-shadow-color
+  z-index 3
 
-  .navbar-brand
-    
+  a
+    text-decoration none
+    color inherit
+
+    &:hover
+      text-decoration underline
+
+  a.nav-bar-item
+    display inline-block
+    vertical-align middle
+    line-height 100px
+    padding 20px
+    height 100%
+    line-height 60px
+    font-size 16px
+    font-weight normal
+
     img
-      height: 50px
-      margin-top: 10px
+      vertical-align middle
 
-  a
-    color: $navbar-link-color !important
+  a.download
+    box-sizing border-box
+    position absolute
+    width 120px
+    margin 25px 20px
+    line-height 30px
+    right 0px
+    vertical-align middle
+    text-align center
+    border none
+    font-size 16px
+    font-weight normal
+    color white
+    background-color $primary-color
+    padding 10px
+    border-radius 5px
 
-    &.selected
-      color: $selected-link-color !important
-
-  .navbar-nav
-    // TODO: Find a better way to center
-    padding-top: 25px
-
-    .btn-group
-      padding-top: 6px
-      padding-left: 15px
-
-      .btn
-        border: 1px solid white 
-        background-color: $navbar-color
-
-      a
-        color: white !important
-        font-size: 16px
-        padding: 8px
-
-        &.famous-link
-          color: $sidebar-color !important
-        
-
-
-// For mobile screens using a horizontal viewport
-@media (max-height: 640px)
-  .navbar-default
-    height: auto
-
-  a
-    &.navbar-brand
-      padding: 5px 0 0 5px
-
-      img
-        margin: 0 !important
-
-  button
-    &.navbar-toggle
-      margin-top: 5px !important
