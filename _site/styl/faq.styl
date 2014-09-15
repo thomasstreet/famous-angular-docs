@@ -1,0 +1,69 @@
+@import 'variables'
+
+/****************************************************************
+* FAQ page
+****************************************************************/
+
+.faq-page
+  background-color: $sidebar-color
+
+  @media (min-width: 1200px)
+    .faq-content
+      width: 800px
+
+  .faq-content
+    margin-top: 50px
+    padding-bottom: 100px
+
+    code
+      background-color: transparent
+
+    .index
+      background-color: white
+      padding: 10px 30px
+      box-shadow: 5px 5px 5px #DDD
+      margin-bottom: 50px
+
+      ul
+        list-style: none
+
+    .answer-block
+      margin-bottom: 75px
+
+      h3
+        color: #428bca
+        // Create an offset for when clicking an anchor tag
+        position: relative
+        border-bottom: 1px solid #CECBCB
+        
+        span
+          position: absolute
+          // Negative offset determined by the navbar height
+          top: -($navbar-height + 20px)
+
+      .answer
+        padding-left: 15px
+
+        ul, ol
+          padding-left: 20px
+
+        // Hack to get inline code snippets with jekyll's higlight plugin
+        .inline
+          display: inline
+          
+          .highlight
+            display: inline
+
+            pre
+              display: inline
+              padding: 0
+              border: 0
+              
+              code
+                display: inline
+                padding: 0
+
+
+    hr
+      margin: 30px 0
+      border-top: 3px solid #eee

@@ -36,17 +36,17 @@ gulp.task('dev', ['build-jekyll'], function() {
   gulp.watch([
 	      // Because .styl compiles into .css, do not watch .css, else you will
 	      // an infinite loop
-	      SITE_DIR + 'styl/**/*.styl',
-	      SITE_DIR + '**/*.html',
-	      SITE_DIR + '**/*.md',
+	      'styl/**/*.styl',
+	      '**/*.html',
+	      '**/*.md',
         // Only watch the js from app/
 	      SITE_DIR + 'app/*.js',
 	      // Do NOT watch the compile _site directory, else the watch will create
 	      // an infinite loop
-	      '!' + SITE_DIR + '_site/**',
-	      '!' + SITE_DIR + 'js/**',
-	      '!' + SITE_DIR + 'bower_components/**',
-	      '!' + SITE_DIR + 'node_modules/**'
+	      '!_site/**',
+	      '!js/**',
+	      '!bower_components/**',
+	      '!node_modules/**'
 	  ],
 	  ['build-jekyll']
 	).on('change',
@@ -76,7 +76,7 @@ gulp.task('build-jekyll', ['site-styl', 'site-js'], function() {
 gulp.task('site-styl', function() {
   var stylus = require('gulp-stylus');
 
-  return gulp.src(SITE_DIR + "styl/*.styl")
+  return gulp.src(SITE_DIR + "styl/**/*.styl")
     .pipe(stylus())
     .pipe(minifycss())
     .pipe(concat('main.css'))

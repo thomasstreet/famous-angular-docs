@@ -1,0 +1,62 @@
+@import 'variables'
+
+/****************************************************************
+* Main header navbar
+****************************************************************/
+
+.navbar-default
+  font-size: 18px
+  height: $navbar-height
+  background-color: $navbar-color
+  color: $navbar-text-color
+  border-bottom: 0
+
+  .navbar-brand
+    
+    img
+      height: 50px
+      margin-top: 10px
+
+  a
+    color: $navbar-link-color !important
+
+    &.selected
+      color: $selected-link-color !important
+
+  .navbar-nav
+    // TODO: Find a better way to center
+    padding-top: 25px
+
+    .btn-group
+      padding-top: 6px
+      padding-left: 15px
+
+      .btn
+        border: 1px solid white 
+        background-color: $navbar-color
+
+      a
+        color: white !important
+        font-size: 16px
+        padding: 8px
+
+        &.famous-link
+          color: $sidebar-color !important
+        
+
+
+// For mobile screens using a horizontal viewport
+@media (max-height: 640px)
+  .navbar-default
+    height: auto
+
+  a
+    &.navbar-brand
+      padding: 5px 0 0 5px
+
+      img
+        margin: 0 !important
+
+  button
+    &.navbar-toggle
+      margin-top: 5px !important
