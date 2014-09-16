@@ -1,18 +1,37 @@
 {% include state-nav.html %}
 
-<div id="state-1">
+<div id="state-1" ng-controller="state1Ctrl">
+  
+  <fa-app style="height: 400px">
 
-  <div class="content">
-    <h1>Visualize your Famo.us scene graph in an HTML hierarchy</h1>
-    <p>Code</p>
-  </div>
+    <fa-surface>
+      <div class="content">
+        <h1>Visualize your Famo.us scene graph in an HTML hierarchy</h1>
+        <p>Code</p>
+      </div>
+    </fa-surface>
 
-  <div class="visual">
-    <div class="container">
-      <div class="header"></div>
-      <div class="side"></div>
-    </div>
-  </div>
+    <fa-modifier fa-origin="[1, 0]" fa-translate="[-50, 0, 0]" fa-size="[400, 250]">
+
+      <fa-surface>
+        <div class="frame"></div>
+      </fa-surface>
+
+      <fa-modifier fa-translate="[10, 50, 0]">
+        <fa-surface>
+          <div class="header"></div>
+        </fa-surface>
+      </fa-modifier>
+
+      <fa-modifier fa-translate="[10, 90, 0]">
+        <fa-surface fa-size="[30, 170]">
+          <div class="side"></div>
+        </fa-surface>
+      </fa-modifier>
+
+    </fa-modifier>
+
+  </fa-app>
 
 </div>
 
