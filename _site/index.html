@@ -66,26 +66,30 @@
   
   <fa-app style="height: 400px">
 
-    <fa-surface>
-      <div class="content">
-        <h1>Visualize your Famo.us scene graph in an HTML hierarchy</h1>
-        <p>Code</p>
-      </div>
-    </fa-surface>
+    <fa-modifier fa-translate="content.translate()">
+      <fa-surface>
+        <div class="content">
+          <h1>Visualize your Famo.us scene graph in an HTML hierarchy</h1>
+          <p>Code</p>
+        </div>
+      </fa-surface>
+    </fa-modifier>
 
     <fa-modifier fa-origin="[1, 0]" fa-translate="[-50, 0, 0]" fa-size="[400, 250]">
 
-      <fa-surface>
-        <div class="frame"></div>
-      </fa-surface>
-
-      <fa-modifier fa-translate="[10, 50, 0]">
+      <fa-modifier fa-translate="frame.translate()">
         <fa-surface>
+          <div class="frame"></div>
+        </fa-surface>
+      </fa-modifier>
+
+      <fa-modifier fa-translate="header.translate()">
+        <fa-surface fa-size="[380, 30]">
           <div class="header"></div>
         </fa-surface>
       </fa-modifier>
 
-      <fa-modifier fa-translate="[10, 90, 0]">
+      <fa-modifier fa-translate="sidenav.translate()">
         <fa-surface fa-size="[30, 170]">
           <div class="side"></div>
         </fa-surface>
@@ -140,6 +144,7 @@ mixpanel.init("7870a5b65a523c899992a1496ad1352d");</script><!-- end Mixpanel -->
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/famous/famous-global.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/famous-angular/dist/famous-angular.js"></script>
     <script src="js/main.min.js"></script>
   </body>

@@ -1,1 +1,4 @@
-angular.module('famous-angular', ['famous.angular']);
+angular.module('famous-angular', [
+  'famous.angular',
+  'ui.router'
+]);
