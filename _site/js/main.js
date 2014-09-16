@@ -7,7 +7,13 @@ angular.module('famous-angular', [
   $stateProvider
     .state('intro', {
       url: '',
-      templateUrl: 'templates/state-1.html'
+      templateUrl: 'templates/state-intro.html',
+      controller: 'state1Ctrl'
+    })
+    .state('1', {
+      url: '1',
+      templateUrl: 'templates/state-1.html',
+      controller: 'state1Ctrl'
     })
 })
 
