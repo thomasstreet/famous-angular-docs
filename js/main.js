@@ -1,22 +1,7 @@
 angular.module('famous-angular', [
   'famous.angular',
   'ui.router'
-])
-
-.config(function($stateProvider) {
-  $stateProvider
-    .state('intro', {
-      url: '',
-      templateUrl: 'templates/state-intro.html',
-    })
-    .state('1', {
-      url: '1',
-      templateUrl: 'templates/state-1.html',
-      controller: 'state1Ctrl'
-    })
-})
-
-;
+]);
 
 angular.module('docsApp', ['examples', 'bootstrap', 'bootstrapPrettify'])
 
@@ -193,6 +178,23 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('intro', {
+      url: 'intro',
+      templateUrl: 'templates/state-intro.html',
+    })
+    .state('1', {
+      url: '1',
+      templateUrl: 'templates/state-1.html',
+      controller: 'state1Ctrl'
+    });
+})
+
+;
+
+angular.module('famous-angular')
+
 .directive('square', function($famous) {
   var Transform = $famous['famous/core/Transform'];
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -256,28 +258,21 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($scope, $famous, $timeline) {
+.controller('state1Ctrl', function($scope, $famous, $timeline, scroll) {
+
+  $('#state-1').css('opacity', 1);
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
-  $scope.scroll = new Transitionable(0);
-
-  $scope.translate = $timeline([
-    [0, [0, 0, 0], Easing.inOutQuart],
-    [200, [1000, 0, 0]]
-  ]);
-
-  window.onscroll = function(e) {
-    var scroll = window.pageYOffset;
-    $scope.scroll.set(scroll);
-  };
+  $scope.scroll = scroll;
+  console.log(scroll.get());
 
   $scope.content = {
     translate: function() {
       return $timeline([
         [0, [-1000, 0, 0], Easing.inOutQuart],
-        [200, [0, 0, 0]]
+        [30, [0, 0, 0]]
       ])($scope.scroll.get());
     }
   };
@@ -285,8 +280,8 @@ angular.module('famous-angular')
   $scope.frame = {
     translate: function() {
       return $timeline([
-        [150, [0, -1000, 0], Easing.inOutQuart],
-        [200, [0, 0, 0]]
+        [30, [0, -1000, 0], Easing.inOutQuart],
+        [50, [0, 0, 0]]
       ])($scope.scroll.get());
     }
   };
@@ -294,8 +289,8 @@ angular.module('famous-angular')
   $scope.header = {
     translate: function() {
       return $timeline([
-        [200, [0, -1000, 0], Easing.inOutQuart],
-        [250, [10, 50, 0]]
+        [50, [0, -1000, 0], Easing.inOutQuart],
+        [70, [10, 50, 0]]
       ])($scope.scroll.get());
     }
   };
@@ -303,8 +298,8 @@ angular.module('famous-angular')
   $scope.sidenav = {
     translate: function() {
       return $timeline([
-        [250, [0, 1000, 0], Easing.inOutQuart],
-        [300, [10, 90, 0]]
+        [70, [0, 1000, 0], Easing.inOutQuart],
+        [99, [10, 90, 0]]
       ])($scope.scroll.get());
     }
   };
@@ -313,28 +308,50 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.run(function($rootScope) {
+.run(function($rootScope, scroll) {
   $rootScope.bodyHeight = 5000;
 })
 
-.factory('scroll', function($rootScope, $famous, $timeline) {
+.factory('scroll', function($rootScope, $famous, $timeline, $state) {
+  console.log('scroll loaded');
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   var scroll = 0;
+  var rangePerState = 100;
+  var stateCount = 7;
 
-  window.onscroll = function(e) {
-    scroll = window.pageYOffset;
-  };
+  window.onscroll = onscrollHandler;
+
+  $state.go('intro');
+  onscrollHandler();
+
+  function onscrollHandler() {
+    var pageYOffset = window.pageYOffset;
+    var scrollMax = $rootScope.bodyHeight;
+
+    // Scale the scroll range to a simple 0-1000 range
+    scroll = $timeline([
+      [0, 0, function(x) { return x }],
+      [scrollMax, (stateCount - 1) * rangePerState]
+    ])(pageYOffset);
+
+    determineState(scroll);
+  }
+
+  function determineState(scroll) {
+    if (scroll < 100) {
+      $('#state-1').css('opacity', 0);
+      $state.go('intro');
+    } else if (scroll < 200) {
+      $state.go('1');
+    }
+  }
 
   return {
     get: function() {
-      // Scale the scroll range to a simple 0-1000 range
-      return $timeline([
-        [0, 0],
-        [$rootScope.bodyHeight, 1000]
-      ])(scroll);
+      // Only return values in a range of [0, rangePerState]
+      return scroll % rangePerState;
     }
   };
-
 });
