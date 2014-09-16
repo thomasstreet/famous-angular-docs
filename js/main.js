@@ -8,7 +8,6 @@ angular.module('famous-angular', [
     .state('intro', {
       url: '',
       templateUrl: 'templates/state-intro.html',
-      controller: 'state1Ctrl'
     })
     .state('1', {
       url: '1',
@@ -307,6 +306,34 @@ angular.module('famous-angular')
         [250, [0, 1000, 0], Easing.inOutQuart],
         [300, [10, 90, 0]]
       ])($scope.scroll.get());
+    }
+  };
+
+});
+
+angular.module('famous-angular')
+
+.run(function($rootScope) {
+  $rootScope.bodyHeight = 5000;
+})
+
+.factory('scroll', function($rootScope, $famous, $timeline) {
+  var Transitionable = $famous['famous/transitions/Transitionable'];
+  var Easing = $famous['famous/transitions/Easing'];
+
+  var scroll = 0;
+
+  window.onscroll = function(e) {
+    scroll = window.pageYOffset;
+  };
+
+  return {
+    get: function() {
+      // Scale the scroll range to a simple 0-1000 range
+      return $timeline([
+        [0, 0],
+        [$rootScope.bodyHeight, 1000]
+      ])(scroll);
     }
   };
 

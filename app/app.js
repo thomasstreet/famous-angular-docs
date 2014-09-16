@@ -8,7 +8,6 @@ angular.module('famous-angular', [
     .state('intro', {
       url: '',
       templateUrl: 'templates/state-intro.html',
-      controller: 'state1Ctrl'
     })
     .state('1', {
       url: '1',
