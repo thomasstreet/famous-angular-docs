@@ -1,0 +1,23 @@
+include state-nav
+
+#state-1(ng-controller='state1Ctrl')
+  fa-app(style='height: 400px;')
+
+    fa-modifier(fa-translate='content.translate()')
+      fa-surface
+        .content
+          h1 Visualize your Famo.us scene graph in an HTML hierarchy
+          p Code
+
+    fa-modifier(fa-origin='[1, 0]', fa-translate='[-50, 0, 0]', fa-size='[400, 250]')
+      fa-modifier(fa-translate='frame.translate()')
+        fa-surface
+          .frame
+      fa-modifier(fa-translate='header.translate()')
+        fa-surface(fa-size='[380, 30]')
+          .header
+      fa-modifier(fa-translate='sidenav.translate()')
+        fa-surface(fa-size='[30, 170]')
+          .side
+
+include state-footer

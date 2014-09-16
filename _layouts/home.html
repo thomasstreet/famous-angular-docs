@@ -19,10 +19,8 @@
     {% include nav_links.html %}
 
     <div id="viewport" ng-controller="homepageCtrl">
-      {% include state-1.html %}
+      <div ui-view>
     </div>
-
-    {% include footer.html %}
 
     {% include base_scripts.html %}
     <script src="{{relative}}bower_components/underscore/underscore.js"></script>

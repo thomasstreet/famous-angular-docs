@@ -10,6 +10,7 @@ var LIVERELOAD_PORT = 35729;
 
 // Load plugins
 var gulp = require('gulp'),
+  jade = require('gulp-jade'),
   autoprefixer = require('gulp-autoprefixer'),
   minifycss = require('gulp-minify-css'),
   jshint = require('gulp-jshint'),
@@ -37,6 +38,7 @@ gulp.task('dev', ['build-jekyll'], function() {
 	      // Because .styl compiles into .css, do not watch .css, else you will
 	      // an infinite loop
 	      'styl/**/*.styl',
+	      'jade/**/*.jade',
 	      '**/*.html',
 	      '**/*.md',
         // Only watch the js from app/
@@ -44,6 +46,7 @@ gulp.task('dev', ['build-jekyll'], function() {
 	      // Do NOT watch the compile _site directory, else the watch will create
 	      // an infinite loop
 	      '!_site/**',
+	      '!templates/**',
 	      '!js/**',
 	      '!bower_components/**',
 	      '!node_modules/**'
@@ -61,7 +64,7 @@ gulp.task('dev', ['build-jekyll'], function() {
 
 
 // jekyll build the docs site
-gulp.task('build-jekyll', ['site-styl', 'site-js'], function() {
+gulp.task('build-jekyll', ['site-jade', 'site-styl', 'site-js'], function() {
   var jekyllCommand = 'jekyll build --source ' + SITE_DIR +  ' --destination ' + SITE_DIR + '_site/';
   // gulp-exec bugfix:
   // Need to call gulp.src('') exactly, before using .pipe(exec())
@@ -71,6 +74,17 @@ gulp.task('build-jekyll', ['site-styl', 'site-js'], function() {
     .pipe(wait(1500))
     .pipe(livereload(server));
 });
+
+
+// Compile .styl for the site submodule
+gulp.task('site-jade', function() {
+  var stylus = require('gulp-jade');
+
+  return gulp.src(SITE_DIR + "jade/**/*.jade")
+    .pipe(jade())
+    .pipe(gulp.dest(SITE_DIR + "templates/"));
+});
+
 
 // Compile .styl for the site submodule
 gulp.task('site-styl', function() {
