@@ -18,7 +18,9 @@
 
     {% include nav_links.html %}
 
-    {% include viewport-home.html %}
+    <div id="viewport" ng-controller="homepageCtrl">
+      {% include state-1.html %}
+    </div>
 
     {% include footer.html %}
 

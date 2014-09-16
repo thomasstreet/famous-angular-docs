@@ -14,6 +14,58 @@
   -ms-filter "progid:DXImageTransform.Microsoft.gradient(startColorstr='#0C090D', endColorstr='#1D1721' ,GradientType=0)"
   background linear-gradient(0deg, rgba(12, 9, 13, 1) 0.05%, rgba(29, 23, 33, 1) 100%)
 
+/***********************************************************************
+  State Nav and Footer
+***********************************************************************/
+
+  .state-nav
+    margin-bottom 50px
+
+    a
+      color #5C4554
+      cursor pointer
+      margin 0 12px
+
+      &:hover
+        text-decoration none
+
+      &.active
+        color #10A0E6
+
+  .state-footer
+    position absolute
+    bottom 20px
+    left 0
+    right 0
+    margin-left auto
+    margin-right auto
+    text-align center
+    font-size 13px
+
+    .links
+
+      a
+        color #EBF0F0 
+        cursor pointer
+        margin 0 12px
+
+        &:hover
+          text-decoration none
+
+    .divider
+      margin 0 auto 20px
+      width 100px
+      height 1px
+      background -moz-linear-gradient(0% 50% 0deg,rgba(16, 160, 230, 1) 0%,rgba(110, 50, 249, 1) 50.15%,rgba(218, 38, 46, 1) 100%)
+      background -webkit-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(110, 50, 249, 1) 50.15%, rgba(218, 38, 46, 1) 100%)
+      background -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0,rgba(16, 160, 230, 1) ),color-stop(0.5015,rgba(110, 50, 249, 1) ),color-stop(1,rgba(218, 38, 46, 1) ))
+      background -o-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(110, 50, 249, 1) 50.15%, rgba(218, 38, 46, 1) 100%)
+      background -ms-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(110, 50, 249, 1) 50.15%, rgba(218, 38, 46, 1) 100%)
+
+/***********************************************************************
+  Intro State
+***********************************************************************/
+
   #intro
     .logo
       margin-bottom 20px
@@ -56,15 +108,23 @@
       background -o-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(218, 38, 46, 1) 100%)
       background -ms-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(218, 38, 46, 1) 100%)
 
-  .slides
 
-    a
-      color #5C4554
-      cursor pointer
-      margin 0 12px
+/***********************************************************************
+  State 1
+***********************************************************************/
 
-      &:hover
-        text-decoration none
+#state-1
 
-      &.active
-        color #10A0E6
+  .content
+    display inline-block
+    width 50%
+
+    h1
+      font-weight bold
+      font-size 34px
+      line-height 50px
+      color #FFFFFF
+
+  .visual
+    display inline-block
+    width 49%
