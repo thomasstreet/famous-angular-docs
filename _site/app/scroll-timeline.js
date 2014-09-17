@@ -5,33 +5,31 @@ angular.module('famous-angular')
 })
 
 .factory('scroll', function($rootScope, $famous, $timeline, $state) {
-  var Transitionable = $famous['famous/transitions/Transitionable'];
-  var Easing = $famous['famous/transitions/Easing'];
-
-  var scroll = 0;
   var rangePerState = 100;
   var stateCount = 7;
 
   window.onscroll = onscrollHandler;
   onscrollHandler();
 
+  var t = 0;
+
   function onscrollHandler() {
     var pageYOffset = window.pageYOffset;
     var scrollMax = $rootScope.bodyHeight;
 
-    // Scale the scroll range to a simple 0-1000 range
-    scroll = $timeline([
+    // Scale the scroll range to a simple timeline of [0, n * 100]
+    t = $timeline([
       [0, 0, function(x) { return x }],
       [scrollMax, (stateCount - 1) * rangePerState]
     ])(pageYOffset);
 
-    determineState(scroll);
+    determineState(t);
   }
 
-  function determineState(scroll) {
-    if (scroll < 100) {
+  function determineState(t) {
+    if (t < 100) {
       $state.go('intro');
-    } else if (scroll < 200) {
+    } else if (t < 200) {
       $state.go('1');
     }
   }
@@ -39,7 +37,7 @@ angular.module('famous-angular')
   return {
     get: function() {
       // Only return values in a range of [0, rangePerState]
-      return scroll % rangePerState;
+      return t % rangePerState;
     }
   };
 });

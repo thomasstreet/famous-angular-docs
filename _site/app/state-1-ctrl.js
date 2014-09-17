@@ -1,26 +1,28 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($scope, $famous, $timeline, scroll) {
+.controller('state1Ctrl', function($scope, $famous, $timeline) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
-  $scope.scroll = scroll;
+  var t = new Transitionable(0);
 
-  $scope.enter = function() {
-    return 300;
+  $scope.enter = function($done) {
+    t.delay(600);
+    t.set(1, {duration: 4000}, $done);
   };
 
-  $scope.leave = function() {
-    return 300;
+  $scope.leave = function($done) {
+    t.halt();
+    t.set(0, {duration: 600}, $done);
   };
 
   $scope.content = {
     translate: function() {
       return $timeline([
         [0, [-1000, 0, 0], Easing.inOutQuart],
-        [30, [0, 0, 0]]
-      ])($scope.scroll.get());
+        [0.2, [0, 0, 0]]
+      ])(t.get());
     }
   };
 
@@ -28,45 +30,45 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [30, [0, 1000, 0], Easing.inOutQuart],
-          [50, [0, 100, 0]]
-        ])($scope.scroll.get());
+          [0.3, [0, 1000, 0], Easing.inOutQuart],
+          [0.5, [0, 100, 0]]
+        ])(t.get());
       }
     },
 
     header: {
       translate: function() {
         return $timeline([
-          [50, [0, 1000, 0], Easing.inOutQuart],
-          [70, [0, 120, 0]]
-        ])($scope.scroll.get());
+          [0.4, [0, 1000, 0], Easing.inOutQuart],
+          [0.6, [0, 120, 0]]
+        ])(t.get());
       }
     },
 
     sidenav: {
       translate: function() {
         return $timeline([
-          [70, [0, -1000, 0], Easing.inOutQuart],
-          [80, [0, 140, 0]]
-        ])($scope.scroll.get());
+          [0.5, [0, -1000, 0], Easing.inOutQuart],
+          [0.7, [0, 140, 0]]
+        ])(t.get());
       }
     },
 
     container: {
       translate: function() {
         return $timeline([
-          [80, [-1000, 0, 0], Easing.inOutQuart],
-          [90, [0, 160, 0]]
-        ])($scope.scroll.get());
+          [0.6, [-1000, 0, 0], Easing.inOutQuart],
+          [0.8, [0, 160, 0]]
+        ])(t.get());
       }
     },
 
     content: {
       translate: function() {
         return $timeline([
-          [90, [-1000, 0, 0], Easing.inOutQuart],
-          [99, [0, 180, 0]]
-        ])($scope.scroll.get());
+          [0.7, [-1000, 0, 0], Easing.inOutQuart],
+          [0.9, [0, 180, 0]]
+        ])(t.get());
       }
     }
   };
@@ -76,36 +78,36 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [30, [0, -1000, 0], Easing.inOutQuart],
-          [50, [0, 0, 0]]
-        ])($scope.scroll.get());
+          [0.3, [0, -1000, 0], Easing.inOutQuart],
+          [0.5, [0, 0, 0]]
+        ])(t.get());
       }
     },
 
     header: {
       translate: function() {
         return $timeline([
-          [50, [0, -1000, 0], Easing.inOutQuart],
-          [70, [10, 50, 0]]
-        ])($scope.scroll.get());
+          [0.4, [0, -1000, 0], Easing.inOutQuart],
+          [0.6, [10, 50, 0]]
+        ])(t.get());
       }
     },
 
     sidenav: {
       translate: function() {
         return $timeline([
-          [70, [0, 1000, 0], Easing.inOutQuart],
-          [80, [10, 90, 0]]
-        ])($scope.scroll.get());
+          [0.5, [0, 1000, 0], function(x) { return x }],
+          [0.7, [10, 90, 0]]
+        ])(t.get());
       }
     },
 
     container: {
       translate: function() {
         return $timeline([
-          [80, [1000, 90, 0], Easing.inOutQuart],
-          [90, [70, 90, 0]]
-        ])($scope.scroll.get());
+          [0.6, [1000, 90, 0], function(x) { return x }],
+          [0.8, [70, 90, 0]]
+        ])(t.get());
       }
     },
 
@@ -115,15 +117,15 @@ angular.module('famous-angular')
       },
       opacity: function() {
         return $timeline([
-          [93, 0, Easing.inOutQuart],
-          [99, 1]
-        ])($scope.scroll.get());
+          [0.8, 0, Easing.inOutQuart],
+          [1, 1]
+        ])(t.get());
       },
       scale: function() {
         return $timeline([
-          [90, [0.1, 0.1], Easing.inOutQuart],
-          [99, [1, 1]]
-        ])($scope.scroll.get());
+          [0.7, [0.1, 0.1], Easing.inOutQuart],
+          [1, [1, 1]]
+        ])(t.get());
       }
     }
   };

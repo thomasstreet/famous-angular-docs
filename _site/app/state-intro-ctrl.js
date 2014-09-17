@@ -4,18 +4,20 @@ angular.module('famous-angular')
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
-  var opacity = new Transitionable(0);
+  var t = new Transitionable(0);
 
   $scope.opacity = function() {
-    return opacity.get();
+    return t.get();
   };
 
   $scope.enter = function($done) {
-    opacity.set(1, {duration: 600}, $done);
+    t.delay(600);
+    t.set(1, {duration: 600}, $done);
   };
 
   $scope.leave = function($done) {
-    opacity.set(0, {duration: 400}, $done);
+    t.halt();
+    t.set(0, {duration: 600}, $done);
   };
 
 });
