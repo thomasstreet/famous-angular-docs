@@ -10,15 +10,12 @@ angular.module('famous-angular')
     return opacity.get();
   };
 
-  $scope.testEnter = function($done) {
-    // NEVER GETS CALLED!
-    console.log('enter');
-    $scope.opacity.set(1, {duration: 1000});
-    return 1000;
+  $scope.enter = function($done) {
+    opacity.set(1, {duration: 600}, $done);
   };
 
   $scope.leave = function($done) {
-    $scope.opacity.set(0, {duration: 1000}, $done);
+    opacity.set(0, {duration: 400}, $done);
   };
 
 });

@@ -2,12 +2,18 @@ angular.module('famous-angular')
 
 .controller('state1Ctrl', function($scope, $famous, $timeline, scroll) {
 
-  $('#state-1').css('opacity', 1);
-
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   $scope.scroll = scroll;
+
+  $scope.enter = function() {
+    return 300;
+  };
+
+  $scope.leave = function() {
+    return 300;
+  };
 
   $scope.content = {
     translate: function() {

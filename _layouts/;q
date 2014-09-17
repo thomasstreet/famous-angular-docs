@@ -19,8 +19,8 @@
     {% include nav_links.html %}
 
     <div id="viewport">
-      <fa-app style='height: 100%;' id="state-1">
-        <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+      <fa-app style='height: 100%;'>
+        <ui-view></ui-view>
       </fa-app>
     </div>
 

@@ -1,20 +1,17 @@
-fa-app
-  fa-modifier(
-    fa-opacity='opacity()'
-    fa-animate-enter='testEnter()'
-    fa-animate-leave='leave($done)'
-  )
-    fa-surface
-      #intro
-        img.logo(src='img/famous-angular-white-logo.png')
-        h1
-          | Famo.us/
-          span.angular-text Angular
-        p Write your Famo.us apps the way you write your Angular apps.
-        .divider
-        .links
-          a Download
-          a Star on Github
-          a Docs
-        .links
-          a(ui-sref='1') Learn about Famo.us/Angular
+fa-modifier(
+  fa-opacity='opacity'
+)
+  fa-surface
+    #state-intro
+      img.logo(src='img/famous-angular-white-logo.png')
+      h1
+        | Famo.us/
+        span.angular-text Angular
+      p Write your Famo.us apps the way you write your Angular apps.
+      .divider
+      .links
+        a Download
+        a Star on Github
+        a Docs
+      .links
+        a(ui-sref='1') Learn about Famo.us/Angular

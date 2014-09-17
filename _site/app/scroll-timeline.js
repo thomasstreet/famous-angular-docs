@@ -5,7 +5,6 @@ angular.module('famous-angular')
 })
 
 .factory('scroll', function($rootScope, $famous, $timeline, $state) {
-  console.log('scroll loaded');
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
@@ -31,7 +30,6 @@ angular.module('famous-angular')
 
   function determineState(scroll) {
     if (scroll < 100) {
-      $('#state-1').css('opacity', 0);
       $state.go('intro');
     } else if (scroll < 200) {
       $state.go('1');

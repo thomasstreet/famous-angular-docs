@@ -196,6 +196,52 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
+.run(function($rootScope, scroll) {
+  $rootScope.bodyHeight = 5000;
+})
+
+.factory('scroll', function($rootScope, $famous, $timeline, $state) {
+  var Transitionable = $famous['famous/transitions/Transitionable'];
+  var Easing = $famous['famous/transitions/Easing'];
+
+  var scroll = 0;
+  var rangePerState = 100;
+  var stateCount = 7;
+
+  window.onscroll = onscrollHandler;
+  onscrollHandler();
+
+  function onscrollHandler() {
+    var pageYOffset = window.pageYOffset;
+    var scrollMax = $rootScope.bodyHeight;
+
+    // Scale the scroll range to a simple 0-1000 range
+    scroll = $timeline([
+      [0, 0, function(x) { return x }],
+      [scrollMax, (stateCount - 1) * rangePerState]
+    ])(pageYOffset);
+
+    determineState(scroll);
+  }
+
+  function determineState(scroll) {
+    if (scroll < 100) {
+      $state.go('intro');
+    } else if (scroll < 200) {
+      $state.go('1');
+    }
+  }
+
+  return {
+    get: function() {
+      // Only return values in a range of [0, rangePerState]
+      return scroll % rangePerState;
+    }
+  };
+});
+
+angular.module('famous-angular')
+
 .directive('square', function($famous) {
   var Transform = $famous['famous/core/Transform'];
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -261,12 +307,18 @@ angular.module('famous-angular')
 
 .controller('state1Ctrl', function($scope, $famous, $timeline, scroll) {
 
-  $('#state-1').css('opacity', 1);
-
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   $scope.scroll = scroll;
+
+  $scope.enter = function() {
+    return 300;
+  };
+
+  $scope.leave = function() {
+    return 300;
+  };
 
   $scope.content = {
     translate: function() {
@@ -395,63 +447,12 @@ angular.module('famous-angular')
     return opacity.get();
   };
 
-  $scope.testEnter = function($done) {
-    // NEVER GETS CALLED!
-    console.log('enter');
-    $scope.opacity.set(1, {duration: 1000});
-    return 1000;
+  $scope.enter = function($done) {
+    opacity.set(1, {duration: 600}, $done);
   };
 
   $scope.leave = function($done) {
-    $scope.opacity.set(0, {duration: 1000}, $done);
+    opacity.set(0, {duration: 400}, $done);
   };
 
-});
-
-angular.module('famous-angular')
-
-.run(function($rootScope, scroll) {
-  $rootScope.bodyHeight = 5000;
-})
-
-.factory('scroll', function($rootScope, $famous, $timeline, $state) {
-  console.log('scroll loaded');
-  var Transitionable = $famous['famous/transitions/Transitionable'];
-  var Easing = $famous['famous/transitions/Easing'];
-
-  var scroll = 0;
-  var rangePerState = 100;
-  var stateCount = 7;
-
-  window.onscroll = onscrollHandler;
-  onscrollHandler();
-
-  function onscrollHandler() {
-    var pageYOffset = window.pageYOffset;
-    var scrollMax = $rootScope.bodyHeight;
-
-    // Scale the scroll range to a simple 0-1000 range
-    scroll = $timeline([
-      [0, 0, function(x) { return x }],
-      [scrollMax, (stateCount - 1) * rangePerState]
-    ])(pageYOffset);
-
-    determineState(scroll);
-  }
-
-  function determineState(scroll) {
-    if (scroll < 100) {
-      $('#state-1').css('opacity', 0);
-      $state.go('intro');
-    } else if (scroll < 200) {
-      $state.go('1');
-    }
-  }
-
-  return {
-    get: function() {
-      // Only return values in a range of [0, rangePerState]
-      return scroll % rangePerState;
-    }
-  };
 });
