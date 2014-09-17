@@ -33,6 +33,12 @@ angular.module('famous-angular')
       $state.go('1');
     } else if (t < 300) {
       $state.go('2');
+    } else if (t < 400) {
+      $state.go('3');
+    } else if (t < 500) {
+      $state.go('4');
+    } else if (t <= 600) {
+      $state.go('5');
     }
   }
 

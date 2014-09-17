@@ -1,0 +1,60 @@
+include state-nav
+
+fa-modifier(
+  fa-origin='[0, 0.3]'
+  fa-translate='[0, -25, 0]'
+)
+  fa-modifier(fa-translate='content.translate()')
+    fa-surface(fa-size="[500, true]")
+      .content
+        h1 Visualize your Famo.us scene graph in an HTML hierarchy
+
+  fa-modifier(fa-translate='code.frame.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='code.header.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='code.sidenav.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='code.container.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='code.content.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+
+fa-modifier(fa-origin='[1, 0.3]', fa-translate='[-50, 0, 0]', fa-size='[400, 250]')
+  fa-modifier(fa-translate='example.frame.translate()')
+    fa-surface
+      .example-frame
+  fa-modifier(fa-translate='example.header.translate()')
+    fa-surface(fa-size='[380, 30]')
+      .example-header
+  fa-modifier(fa-translate='example.sidenav.translate()')
+    fa-surface(fa-size='[50, 170]')
+      .example-sidenav
+  fa-modifier(fa-translate='example.container.translate()')
+    fa-surface(fa-size='[320, 170]')
+      .example-container
+  fa-modifier(
+    fa-translate='example.content.translate()'
+    fa-opacity='example.content.opacity()'
+    fa-scale='example.content.scale()'
+  )
+    fa-surface(fa-size='[280, 130]')
+      .example-content
+      .example-content(
+        style="left: 35%;"
+      )
+      .example-content(
+        style="left: 70%;"
+      )
+
+include state-footer

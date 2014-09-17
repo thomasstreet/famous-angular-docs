@@ -25,6 +25,30 @@ angular.module('famous-angular')
       data: {
         leaveAnimationDuration: 600
       }
+    })
+    .state('3', {
+      url: '3',
+      templateUrl: 'templates/state-3.html',
+      controller: 'state3Ctrl',
+      data: {
+        leaveAnimationDuration: 1200
+      }
+    })
+    .state('4', {
+      url: '4',
+      templateUrl: 'templates/state-4.html',
+      controller: 'state4Ctrl',
+      data: {
+        leaveAnimationDuration: 600
+      }
+    })
+    .state('5', {
+      url: '5',
+      templateUrl: 'templates/state-5.html',
+      controller: 'state5Ctrl',
+      data: {
+        leaveAnimationDuration: 1200
+      }
     });
 })
 
