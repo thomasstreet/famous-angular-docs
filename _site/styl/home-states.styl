@@ -1,3 +1,5 @@
+@import 'variables'
+
 #viewport
   box-sizing border-box
   position fixed
@@ -22,14 +24,18 @@
     margin-bottom 50px
 
     a
+      transition $color-transition
       color #5C4554
       cursor pointer
       margin 0 12px
 
       &:hover
         text-decoration none
+        transition $color-transition
+        color #10A0E6
 
       &.active
+        transition $color-transition
         color #10A0E6
 
   .state-footer
