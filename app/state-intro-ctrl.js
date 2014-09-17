@@ -19,7 +19,7 @@ angular.module('famous-angular')
   $scope.opacity = function() {
     return $timeline([
       [0, 0, Easing.inOutQuart],
-      [1, 1]
+      [0.5, 1]
     ])(t.get());
   };
 
