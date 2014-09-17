@@ -18,8 +18,55 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.example = {
+  $scope.code = {
+    frame: {
+      translate: function() {
+        return $timeline([
+          [30, [0, 1000, 0], Easing.inOutQuart],
+          [50, [0, 100, 0]]
+        ])($scope.scroll.get());
+      }
+    },
 
+    header: {
+      translate: function() {
+        return $timeline([
+          [50, [0, 1000, 0], Easing.inOutQuart],
+          [70, [0, 120, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    sidenav: {
+      translate: function() {
+        return $timeline([
+          [70, [0, -1000, 0], Easing.inOutQuart],
+          [80, [0, 140, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    container: {
+      translate: function() {
+        return $timeline([
+          [80, [-1000, 0, 0], Easing.inOutQuart],
+          [90, [0, 160, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    content: {
+      translate: function() {
+        return $timeline([
+          [90, [-1000, 0, 0], Easing.inOutQuart],
+          [99, [0, 180, 0]]
+        ])($scope.scroll.get());
+      }
+    }
+  };
+
+
+  $scope.example = {
     frame: {
       translate: function() {
         return $timeline([
@@ -73,7 +120,6 @@ angular.module('famous-angular')
         ])($scope.scroll.get());
       }
     }
-  
   };
 
 });

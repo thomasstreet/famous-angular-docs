@@ -4,10 +4,30 @@ include state-nav
   fa-app(style='height: 400px;')
 
     fa-modifier(fa-translate='content.translate()')
-      fa-surface(fa-size="[500, 300]")
+      fa-surface(fa-size="[500, true]")
         .content
           h1 Visualize your Famo.us scene graph in an HTML hierarchy
-          p Code
+
+    fa-modifier(fa-translate='code.frame.translate()')
+      fa-surface(fa-size="[500, true]")
+        .code
+          p fa-surface
+    fa-modifier(fa-translate='code.header.translate()')
+      fa-surface(fa-size="[500, true]")
+        .code
+          p fa-surface
+    fa-modifier(fa-translate='code.sidenav.translate()')
+      fa-surface(fa-size="[500, true]")
+        .code
+          p fa-surface
+    fa-modifier(fa-translate='code.container.translate()')
+      fa-surface(fa-size="[500, true]")
+        .code
+          p fa-surface
+    fa-modifier(fa-translate='code.content.translate()')
+      fa-surface(fa-size="[500, true]")
+        .code
+          p fa-surface
 
     fa-modifier(fa-origin='[1, 0]', fa-translate='[-50, 0, 0]', fa-size='[400, 250]')
       fa-modifier(fa-translate='example.frame.translate()')
