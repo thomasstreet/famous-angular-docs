@@ -261,6 +261,8 @@ angular.module('famous-angular')
       $state.go('intro');
     } else if (t < 200) {
       $state.go('1');
+    } else if (t < 300) {
+      $state.go('2');
     }
   }
 
@@ -352,6 +354,13 @@ angular.module('famous-angular')
   $scope.leave = function($done) {
     t.halt();
     t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+  };
+
+  $scope.opacity = function() {
+    return $timeline([
+      [0, 0, Easing.inOutQuart],
+      [1, 1]
+    ])(t.get());
   };
 
   $scope.content = {

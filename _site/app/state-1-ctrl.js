@@ -17,6 +17,13 @@ angular.module('famous-angular')
     t.set(0, {duration: $state.current.data.leaveDuration}, $done);
   };
 
+  $scope.opacity = function() {
+    return $timeline([
+      [0, 0, Easing.inOutQuart],
+      [1, 1]
+    ])(t.get());
+  };
+
   $scope.content = {
     translate: function() {
       return $timeline([

@@ -31,6 +31,8 @@ angular.module('famous-angular')
       $state.go('intro');
     } else if (t < 200) {
       $state.go('1');
+    } else if (t < 300) {
+      $state.go('2');
     }
   }
 
