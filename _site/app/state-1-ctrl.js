@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($scope, $famous, $timeline) {
+.controller('state1Ctrl', function($scope, $famous, $timeline, $state, prevState) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -8,13 +8,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(600);
+    t.delay(prevState.leaveAnimationDuration());
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: 600}, $done);
+    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
   };
 
   $scope.content = {
