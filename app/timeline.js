@@ -14,8 +14,6 @@ angular.module('famous-angular')
   var stateCount = 7;
 
   window.onscroll = onscrollHandler;
-
-  $state.go('intro');
   onscrollHandler();
 
   function onscrollHandler() {

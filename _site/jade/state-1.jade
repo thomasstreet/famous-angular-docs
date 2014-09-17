@@ -4,20 +4,36 @@ include state-nav
   fa-app(style='height: 400px;')
 
     fa-modifier(fa-translate='content.translate()')
-      fa-surface
+      fa-surface(fa-size="[500, 300]")
         .content
           h1 Visualize your Famo.us scene graph in an HTML hierarchy
           p Code
 
     fa-modifier(fa-origin='[1, 0]', fa-translate='[-50, 0, 0]', fa-size='[400, 250]')
-      fa-modifier(fa-translate='frame.translate()')
+      fa-modifier(fa-translate='example.frame.translate()')
         fa-surface
-          .frame
-      fa-modifier(fa-translate='header.translate()')
+          .example-frame
+      fa-modifier(fa-translate='example.header.translate()')
         fa-surface(fa-size='[380, 30]')
-          .header
-      fa-modifier(fa-translate='sidenav.translate()')
-        fa-surface(fa-size='[30, 170]')
-          .side
+          .example-header
+      fa-modifier(fa-translate='example.sidenav.translate()')
+        fa-surface(fa-size='[50, 170]')
+          .example-sidenav
+      fa-modifier(fa-translate='example.container.translate()')
+        fa-surface(fa-size='[320, 170]')
+          .example-container
+      fa-modifier(
+        fa-translate='example.content.translate()'
+        fa-opacity='example.content.opacity()'
+        fa-scale='example.content.scale()'
+      )
+        fa-surface(fa-size='[280, 130]')
+          .example-content
+          .example-content(
+            style="left: 35%;"
+          )
+          .example-content(
+            style="left: 70%;"
+          )
 
 include state-footer

@@ -276,31 +276,62 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.frame = {
-    translate: function() {
-      return $timeline([
-        [30, [0, -1000, 0], Easing.inOutQuart],
-        [50, [0, 0, 0]]
-      ])($scope.scroll.get());
-    }
-  };
+  $scope.example = {
 
-  $scope.header = {
-    translate: function() {
-      return $timeline([
-        [50, [0, -1000, 0], Easing.inOutQuart],
-        [70, [10, 50, 0]]
-      ])($scope.scroll.get());
-    }
-  };
+    frame: {
+      translate: function() {
+        return $timeline([
+          [30, [0, -1000, 0], Easing.inOutQuart],
+          [50, [0, 0, 0]]
+        ])($scope.scroll.get());
+      }
+    },
 
-  $scope.sidenav = {
-    translate: function() {
-      return $timeline([
-        [70, [0, 1000, 0], Easing.inOutQuart],
-        [99, [10, 90, 0]]
-      ])($scope.scroll.get());
+    header: {
+      translate: function() {
+        return $timeline([
+          [50, [0, -1000, 0], Easing.inOutQuart],
+          [70, [10, 50, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    sidenav: {
+      translate: function() {
+        return $timeline([
+          [70, [0, 1000, 0], Easing.inOutQuart],
+          [80, [10, 90, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    container: {
+      translate: function() {
+        return $timeline([
+          [80, [1000, 90, 0], Easing.inOutQuart],
+          [90, [70, 90, 0]]
+        ])($scope.scroll.get());
+      }
+    },
+
+    content: {
+      translate: function() {
+        return [90, 110, 0];
+      },
+      opacity: function() {
+        return $timeline([
+          [93, 0, Easing.inOutQuart],
+          [99, 1]
+        ])($scope.scroll.get());
+      },
+      scale: function() {
+        return $timeline([
+          [90, [0.1, 0.1], Easing.inOutQuart],
+          [99, [1, 1]]
+        ])($scope.scroll.get());
+      }
     }
+  
   };
 
 });
@@ -344,8 +375,6 @@ angular.module('famous-angular')
   var stateCount = 7;
 
   window.onscroll = onscrollHandler;
-
-  $state.go('intro');
   onscrollHandler();
 
   function onscrollHandler() {
