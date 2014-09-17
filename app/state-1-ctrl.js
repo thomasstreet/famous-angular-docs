@@ -8,7 +8,6 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   $scope.scroll = scroll;
-  console.log(scroll.get());
 
   $scope.content = {
     translate: function() {
