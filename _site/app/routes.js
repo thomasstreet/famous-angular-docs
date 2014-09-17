@@ -7,7 +7,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-intro.html',
       controller: 'stateIntroCtrl',
       data: {
-        leaveAnimationDuration: 400
+        leaveAnimationDuration: 400,
+        cssClass: 'state-intro'
       }
     })
     .state('1', {
@@ -15,7 +16,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-1.html',
       controller: 'state1Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-1'
       }
     })
     .state('2', {
@@ -23,7 +25,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-2.html',
       controller: 'state2Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-2'
       }
     })
     .state('3', {
@@ -31,7 +34,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-3.html',
       controller: 'state3Ctrl',
       data: {
-        leaveAnimationDuration: 1200
+        leaveAnimationDuration: 1200,
+        cssClass: 'state-3'
       }
     })
     .state('4', {
@@ -39,7 +43,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-4.html',
       controller: 'state4Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-4'
       }
     })
     .state('5', {
@@ -47,7 +52,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-5.html',
       controller: 'state5Ctrl',
       data: {
-        leaveAnimationDuration: 1200
+        leaveAnimationDuration: 1200,
+        cssClass: 'state-5'
       }
     });
 })

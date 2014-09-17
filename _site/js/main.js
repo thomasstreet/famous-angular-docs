@@ -178,25 +178,6 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.factory('prevState', function($rootScope) {
-  var prevState;
-
-  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-    prevState = fromState;
-  });
-
-  return {
-    leaveAnimationDuration: function() {
-      if (!prevState || !prevState.data) {
-        return 0;
-      }
-      return prevState.data.leaveAnimationDuration;
-    }
-  }
-});
-
-angular.module('famous-angular')
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('intro', {
@@ -204,7 +185,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-intro.html',
       controller: 'stateIntroCtrl',
       data: {
-        leaveAnimationDuration: 400
+        leaveAnimationDuration: 400,
+        cssClass: 'state-intro'
       }
     })
     .state('1', {
@@ -212,7 +194,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-1.html',
       controller: 'state1Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-1'
       }
     })
     .state('2', {
@@ -220,7 +203,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-2.html',
       controller: 'state2Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-2'
       }
     })
     .state('3', {
@@ -228,7 +212,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-3.html',
       controller: 'state3Ctrl',
       data: {
-        leaveAnimationDuration: 1200
+        leaveAnimationDuration: 1200,
+        cssClass: 'state-3'
       }
     })
     .state('4', {
@@ -236,7 +221,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-4.html',
       controller: 'state4Ctrl',
       data: {
-        leaveAnimationDuration: 600
+        leaveAnimationDuration: 600,
+        cssClass: 'state-4'
       }
     })
     .state('5', {
@@ -244,7 +230,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-5.html',
       controller: 'state5Ctrl',
       data: {
-        leaveAnimationDuration: 1200
+        leaveAnimationDuration: 1200,
+        cssClass: 'state-5'
       }
     });
 })
@@ -369,7 +356,7 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('state1Ctrl', function($scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -377,13 +364,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
+    t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.opacity = function() {
@@ -510,7 +497,7 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state2Ctrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('state2Ctrl', function($scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -518,13 +505,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
+    t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.content = {
@@ -644,7 +631,7 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state3Ctrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('state3Ctrl', function($scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -652,13 +639,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
+    t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.content = {
@@ -778,7 +765,7 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state4Ctrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('state4Ctrl', function($scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -786,13 +773,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
+    t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.content = {
@@ -912,7 +899,7 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('state5Ctrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('state5Ctrl', function($scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -920,13 +907,13 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
+    t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.content = {
@@ -1046,20 +1033,20 @@ angular.module('famous-angular')
 
 angular.module('famous-angular')
 
-.controller('stateIntroCtrl', function($scope, $famous, $timeline, $state, prevState) {
+.controller('stateIntroCtrl', function($scope, $famous, $timeline, stateTransitions) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(prevState.leaveAnimationDuration());
-    t.set(1, {duration: 600}, $done);
+    t.delay(stateTransitions.enterDelay);
+    t.set(1, {duration: 4000}, $done);
   };
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.opacity = function() {
@@ -1069,4 +1056,28 @@ angular.module('famous-angular')
     ])(t.get());
   };
 
+});
+
+angular.module('famous-angular')
+
+.factory('stateTransitions', function($rootScope, $state) {
+  var prevState;
+
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    prevState = fromState;
+  });
+
+  return function() {
+    return {
+      enterDelay: function() {
+        if (!prevState || !prevState.data) {
+          return 0;
+        }
+        return prevState.data.leaveAnimationDuration;
+      },
+      leaveDuration: function() {
+        return $state.current.data.leaveAnimationDuration;
+      }
+    }
+  }
 });
