@@ -6,10 +6,6 @@ angular.module('famous-angular')
 
   var t = new Transitionable(0);
 
-  $scope.opacity = function() {
-    return t.get();
-  };
-
   $scope.enter = function($done) {
     t.delay(prevState.leaveAnimationDuration());
     t.set(1, {duration: 600}, $done);
@@ -18,6 +14,13 @@ angular.module('famous-angular')
   $scope.leave = function($done) {
     t.halt();
     t.set(0, {duration: $state.current.data.leaveDuration}, $done);
+  };
+
+  $scope.opacity = function() {
+    return $timeline([
+      [0, 0, Easing.inOutQuart],
+      [1, 1]
+    ])(t.get());
   };
 
 });

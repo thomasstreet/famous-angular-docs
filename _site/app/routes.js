@@ -17,6 +17,14 @@ angular.module('famous-angular')
       data: {
         leaveAnimationDuration: 600
       }
+    })
+    .state('2', {
+      url: '2',
+      templateUrl: 'templates/state-2.html',
+      controller: 'state2Ctrl',
+      data: {
+        leaveAnimationDuration: 600
+      }
     });
 })
 
