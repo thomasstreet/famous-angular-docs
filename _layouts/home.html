@@ -19,7 +19,9 @@
     {% include nav_links.html %}
 
     <div id="viewport" ng-controller="homepageCtrl">
-      <div ui-view>
+      <fa-app style='height: 100%;' id="state-1">
+        <ui-view></ui-view>
+      </fa-app>
     </div>
 
     {% include base_scripts.html %}
