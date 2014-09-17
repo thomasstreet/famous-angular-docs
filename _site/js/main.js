@@ -183,6 +183,7 @@ angular.module('famous-angular')
     .state('intro', {
       url: 'intro',
       templateUrl: 'templates/state-intro.html',
+      controller: 'stateIntroCtrl'
     })
     .state('1', {
       url: '1',
@@ -397,7 +398,8 @@ angular.module('famous-angular')
   $scope.testEnter = function($done) {
     // NEVER GETS CALLED!
     console.log('enter');
-    $scope.opacity.set(1, {duration: 1000}, $done);
+    $scope.opacity.set(1, {duration: 1000});
+    return 1000;
   };
 
   $scope.leave = function($done) {

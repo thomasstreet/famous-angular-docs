@@ -13,7 +13,8 @@ angular.module('famous-angular')
   $scope.testEnter = function($done) {
     // NEVER GETS CALLED!
     console.log('enter');
-    $scope.opacity.set(1, {duration: 1000}, $done);
+    $scope.opacity.set(1, {duration: 1000});
+    return 1000;
   };
 
   $scope.leave = function($done) {

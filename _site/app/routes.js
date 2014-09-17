@@ -5,6 +5,7 @@ angular.module('famous-angular')
     .state('intro', {
       url: 'intro',
       templateUrl: 'templates/state-intro.html',
+      controller: 'stateIntroCtrl'
     })
     .state('1', {
       url: '1',
