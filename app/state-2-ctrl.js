@@ -18,13 +18,23 @@ angular.module('famous-angular')
   };
 
   $scope.data = {
-    name: 'Angular'
+    name: 'Angular',
+    t: 0
+  };
+
+  $scope.rotate = function() {
+    var rotate = $timeline([
+      [0, 0, function(x) { return x }],
+      [99, 0.78]
+    ])($scope.data.t);
+    console.log($scope.data.t, rotate);
+    return rotate;
   };
 
   $scope.content = {
     translate: function() {
       return $timeline([
-        [0, [-1000, 0, 0], Easing.inOutQuart],
+        [0, [1000, 0, 0], Easing.inOutQuart],
         [0.2, [0, 0, 0]]
       ])(t.get());
     }

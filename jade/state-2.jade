@@ -4,31 +4,36 @@ fa-modifier(
   fa-origin='[0, 0.3]'
   fa-translate='[0, 0, 0]'
 )
-  fa-modifier(fa-translate='nametag.body.translate()')
-    fa-surface(
-      fa-size='[410, 250]'
-    )
-      .nametag-body
-  fa-modifier(fa-translate='nametag.heading.translate()')
-    fa-surface(
-      fa-size='[410, true]'
-    )
-      .nametag-heading
-        .hello
-          | HELLO
-        .intro
-          | my name is
-  fa-modifier(fa-translate='nametag.stripe.translate()')
-    fa-surface(
-      fa-size='[410, 140]'
-    )
-      .nametag-stripe
-  fa-modifier(fa-translate='nametag.name.translate()')
-    fa-surface(
-      fa-size='[410, true]'
-    )
-      .nametag-name
-        | {{data.name}}
+
+  fa-modifier(
+    fa-rotate-y='rotate()'
+  )
+    fa-modifier(fa-translate='nametag.body.translate()')
+      fa-surface(
+        fa-size='[410, 250]'
+      )
+        .nametag-body
+    fa-modifier(fa-translate='nametag.heading.translate()')
+      fa-surface(
+        fa-size='[410, true]'
+      )
+        .nametag-heading
+          .hello
+            | HELLO
+          .intro
+            | my name is
+    fa-modifier(fa-translate='nametag.stripe.translate()')
+      fa-surface(
+        fa-size='[410, 140]'
+      )
+        .nametag-stripe
+    fa-modifier(fa-translate='nametag.name.translate()')
+      fa-surface(
+        fa-size='[410, true]'
+      )
+        .nametag-name
+          | {{data.name}}
+
   fa-modifier(fa-translate='nametag.inputText.translate()')
     fa-surface(
       fa-size='[200, true]'

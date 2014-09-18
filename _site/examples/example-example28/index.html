@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-example28</title>
+  <link href="../../bower_components/famous-angular/dist/famous-angular.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  
+
+  
+</head>
+<body ng-app="faModifierExampleApp">
+  <fa-app ng-controller="ModifierCtrl">
+    <fa-modifier fa-origin="genBoxOrigin" fa-size="[200, 200]">
+      <fa-surface fa-background-color="'red'"></fa-surface>
+    </fa-modifier>
+  </fa-app>
+
+  <script>
+    angular.module('faModifierExampleApp', ['famous.angular'])
+        .controller('ModifierCtrl', ['$scope', function($scope) {
+
+          $scope.getX = function() {
+            return .2;
+          };
+          $scope.getY = function() {
+            return .3;
+          }
+          $scope.genBoxOrigin = function() {
+            return [$scope.getX(), $scope.getY()];
+          };
+
+      }]);
+  </script>
+</body>
+</html>
