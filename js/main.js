@@ -571,6 +571,13 @@ angular.module('famous-angular')
 
 
   $scope.nametag = {
+    translate: function() {
+      return $timeline([
+        [0, [-1000, 0, 0], Easing.inOutQuart],
+        [0.2, [0, 0, 0]]
+      ])(t.get());
+    },
+
     body: {
       translate: function() {
         return [0, 0, 0];
