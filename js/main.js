@@ -806,117 +806,71 @@ angular.module('famous-angular')
     t.set(0, {duration: stateTransitions.leaveDuration}, $done);
   };
 
-  $scope.content = {
+  $scope.heading = {
     translate: function() {
       return $timeline([
-        [0, [-1000, 0, 0], Easing.inOutQuart],
+        [0, [-1500, 0, 0], Easing.inOutQuart],
         [0.2, [0, 0, 0]]
       ])(t.get());
     }
   };
 
-  $scope.code = {
-    frame: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, 1000, 0], Easing.inOutQuart],
-          [0.5, [0, 100, 0]]
-        ])(t.get());
-      }
-    },
 
-    header: {
-      translate: function() {
-        return $timeline([
-          [0.4, [0, 1000, 0], Easing.inOutQuart],
-          [0.6, [0, 120, 0]]
-        ])(t.get());
-      }
-    },
-
-    sidenav: {
-      translate: function() {
-        return $timeline([
-          [0.5, [0, -1000, 0], Easing.inOutQuart],
-          [0.7, [0, 140, 0]]
-        ])(t.get());
-      }
-    },
-
-    container: {
-      translate: function() {
-        return $timeline([
-          [0.6, [-1000, 0, 0], Easing.inOutQuart],
-          [0.8, [0, 160, 0]]
-        ])(t.get());
-      }
-    },
-
-    content: {
-      translate: function() {
-        return $timeline([
-          [0.7, [-1000, 0, 0], Easing.inOutQuart],
-          [0.9, [0, 180, 0]]
-        ])(t.get());
-      }
-    }
+  $scope.routing = {
+   image: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [95, 190, 0]]
+       ])(t.get());
+     }
+   }, 
+   text: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [150, 330, 0]]
+       ])(t.get());
+     }
+   }, 
   };
 
+  $scope.dependency = {
+   image: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [435, 160, 0]]
+       ])(t.get());
+     }
+   }, 
+   text: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [410, 330, 0]]
+       ])(t.get());
+     }
+   }, 
+  };
 
-  $scope.example = {
-    frame: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, -1000, 0], Easing.inOutQuart],
-          [0.5, [0, 0, 0]]
-        ])(t.get());
-      }
-    },
-
-    header: {
-      translate: function() {
-        return $timeline([
-          [0.4, [0, -1000, 0], Easing.inOutQuart],
-          [0.6, [10, 50, 0]]
-        ])(t.get());
-      }
-    },
-
-    sidenav: {
-      translate: function() {
-        return $timeline([
-          [0.5, [0, 1000, 0], function(x) { return x }],
-          [0.7, [10, 90, 0]]
-        ])(t.get());
-      }
-    },
-
-    container: {
-      translate: function() {
-        return $timeline([
-          [0.6, [1000, 90, 0], function(x) { return x }],
-          [0.8, [70, 90, 0]]
-        ])(t.get());
-      }
-    },
-
-    content: {
-      translate: function() {
-        return [90, 110, 0];
-      },
-      opacity: function() {
-        return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
-      },
-      scale: function() {
-        return $timeline([
-          [0.7, [0.1, 0.1], Easing.inOutQuart],
-          [1, [1, 1]]
-        ])(t.get());
-      }
-    }
+  $scope.modules = {
+   image: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [790, 180, 0]]
+       ])(t.get());
+     }
+   }, 
+   text: {
+     translate: function() {
+       return $timeline([
+         [0, [-1000, 0, 0], Easing.inOutQuart],
+         [0.2, [830, 330, 0]]
+       ])(t.get());
+     }
+   }, 
   };
 
 });
