@@ -1,21 +1,62 @@
 include state-nav
 
-fa-modifier(fa-origin='[0, 0.3]', fa-translate='[-50, 0, 0]', fa-size='[400, 250]')
-  fa-modifier(fa-translate='example.frame.translate()')
-    fa-surface
-      .example-frame
+fa-modifier(
+  fa-origin='[0, 0.3]'
+  fa-translate='[0, 0, 0]'
+)
+  fa-modifier(fa-translate='nametag.body.translate()')
+    fa-surface(
+      fa-size='[410, 250]'
+    )
+      .nametag-body
+  fa-modifier(fa-translate='nametag.heading.translate()')
+    fa-surface(
+      fa-size='[410, true]'
+    )
+      .nametag-heading
+        .hello
+          | HELLO
+        .intro
+          | my name is
+  fa-modifier(fa-translate='nametag.stripe.translate()')
+    fa-surface(
+      fa-size='[410, 140]'
+    )
+      .nametag-stripe
+  fa-modifier(fa-translate='nametag.name.translate()')
+    fa-surface(
+      fa-size='[410, true]'
+    )
+      .nametag-name
+        | {{data.name}}
+  fa-modifier(fa-translate='nametag.inputText.translate()')
+    fa-surface(
+      fa-size='[200, true]'
+    )
+      input(type='text' ng-model='data.name').input-name
+      div.input-label
+        | text input
+  fa-modifier(fa-translate='nametag.inputRange.translate()')
+    fa-surface(
+      fa-size='[200, true]'
+    )
+      div.input-animation-container
+        input(type='range' ng-model='data.t').input-animation
+      div.input-label
+        | Animation
+
 
 fa-modifier(
   fa-origin='[1, 0.3]'
-  fa-translate='[0, -25, 0]'
+  fa-translate='[0, -50, 0]'
 )
   fa-modifier(fa-translate='content.translate()')
-    fa-surface(fa-size="[500, true]")
+    fa-surface(fa-size="[550, true]")
       .content
         h1 Combine Data-binding with Famo.us surfaces and modifiers 
 
   fa-modifier(fa-translate='code.frame.translate()')
-    fa-surface(fa-size="[500, true]")
+    fa-surface(fa-size="[550, true]")
       .code
         p fa-surface
 

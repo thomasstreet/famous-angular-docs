@@ -21,36 +21,80 @@
     font-size 14px
     line-height 25px
 
-  .example-frame
-    margin-top 20px
-    position relative
-    padding 10px
-    width 400px
-    height 250px
-    border 2px solid white
+  .nametag-body
+    position absolute
+    background #FD971F
+    width 100%
+    height 100%
+    border-radius 10px
+
+  .nametag-heading
+    text-align center
+
+    .hello
+      font-family Lato
+      font-weight bold
+      font-size 44px
+      line-height 25px
+      letter-spacing 6.6px
+      color #FFFFFF
+
+    .intro
+      font-family Lato
+      font-weight bold
+      font-size 16px
+      line-height 41px
+      letter-spacing 0.96px
+      color #FFFFFF
+
+  .nametag-stripe
+    position absolute
+    background white
+    width 100%
+    height 100%
+
+  .nametag-name
+    text-align center
+    font-family 'Just Me Again Down Here'
+    font-size 133px
+    color black
+    line-height 120px
+    white-space nowrap
+
+  .input-name
+    border 0
     border-radius 3px
-    border-top 20px solid white
-
-  .example-header
-    position absolute
-    height 100%
+    font-family Lato
+    font-weight bold
+    font-size 20px
+    line-height 45px
+    padding 0 15px
     width 100%
-    border solid 3px #F92672
 
-  .example-sidenav
-    position absolute
-    height 100%
+    &:focus
+      outline-width 0
+
+  .input-animation-container
+    background white
+    border-radius 3px
     width 100%
-    border solid 3px #AE81FF
+    height 45px
+    padding-top 15px
 
-  .example-container
-    position absolute
-    height 100%
-    width 100%
-    border solid 3px #FD971F 
+  .input-animation
+    border 0
+    border-radius 3px
+    padding 0 15px
+    margin auto
+    height 15px
+    width 80%
 
-  .example-content
-    position absolute
-    height 100%
-    width 30%
-    border solid 3px #66D9EF 
+    &:focus
+      outline-width 0
+
+  .input-label
+    font-family Lato
+    font-size 11px
+    line-height 30px
+    color white
+    text-transform uppercase

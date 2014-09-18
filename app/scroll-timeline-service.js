@@ -27,6 +27,10 @@ angular.module('famous-angular')
   }
 
   function determineState(t) {
+    $state.go('2');
+    return;
+
+
     if (t < 100) {
       $state.go('intro');
     } else if (t < 200) {
