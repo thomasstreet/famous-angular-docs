@@ -5,33 +5,38 @@ fa-modifier(
   fa-translate='nametag.translate()'
 )
   fa-modifier(
-    fa-rotate-y='rotate()'
+    fa-size='[410, 250]'
   )
-    fa-modifier(fa-translate='nametag.body.translate()')
-      fa-surface(
-        fa-size='[410, 250]'
-      )
-        .nametag-body
-    fa-modifier(fa-translate='nametag.heading.translate()')
-      fa-surface(
-        fa-size='[410, true]'
-      )
-        .nametag-heading
-          .hello
-            | HELLO
-          .intro
-            | my name is
-    fa-modifier(fa-translate='nametag.stripe.translate()')
-      fa-surface(
-        fa-size='[410, 140]'
-      )
-        .nametag-stripe
-    fa-modifier(fa-translate='nametag.name.translate()')
-      fa-surface(
-        fa-size='[410, true]'
-      )
-        .nametag-name
-          | {{data.name}}
+    fa-modifier(
+      fa-rotate-y='rotate()'
+      fa-rotate-x='rotate()'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-modifier(fa-translate='nametag.body.translate()')
+        fa-surface(
+          fa-size='[410, 250]'
+        )
+          .nametag-body
+      fa-modifier(fa-translate='nametag.heading.translate()')
+        fa-surface(
+          fa-size='[410, true]'
+        )
+          .nametag-heading
+            .hello
+              | HELLO
+            .intro
+              | my name is
+      fa-modifier(fa-translate='nametag.stripe.translate()')
+        fa-surface(
+          fa-size='[410, 140]'
+        )
+          .nametag-stripe
+      fa-modifier(fa-translate='nametag.name.translate()')
+        fa-surface(
+          fa-size='[410, true]'
+        )
+          .nametag-name
+            | {{data.name}}
 
   fa-modifier(fa-translate='nametag.inputText.translate()')
     fa-surface(
@@ -45,7 +50,7 @@ fa-modifier(
       fa-size='[200, true]'
     )
       div.input-animation-container
-        input(type='range' ng-model='data.t').input-animation
+        input(type='range' min="1" ng-model='data.t').input-animation
       div.input-label
         | Animation
 

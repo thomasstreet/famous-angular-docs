@@ -536,15 +536,14 @@ angular.module('famous-angular')
 
   $scope.data = {
     name: 'Angular',
-    t: 0
+    t: 1
   };
 
   $scope.rotate = function() {
     var rotate = $timeline([
       [0, 0, function(x) { return x }],
-      [99, 0.78]
-    ])($scope.data.t);
-    console.log($scope.data.t, rotate);
+      [100, 2 * Math.PI]
+    ])(parseInt($scope.data.t));
     return rotate;
   };
 
@@ -580,7 +579,7 @@ angular.module('famous-angular')
 
     body: {
       translate: function() {
-        return [0, 0, 0];
+        return [0, 0, 1];
       },
       opacity: function() {
         return $timeline([
@@ -592,7 +591,7 @@ angular.module('famous-angular')
 
     heading: {
       translate: function() {
-        return [0, -35, 0];
+        return [0, -70, 2];
       },
       opacity: function() {
         return $timeline([
@@ -604,7 +603,7 @@ angular.module('famous-angular')
 
     stripe: {
       translate: function() {
-        return [0, 55, 0];
+        return [0, 35, 3];
       },
       opacity: function() {
         return $timeline([
@@ -616,7 +615,7 @@ angular.module('famous-angular')
 
     name: {
       translate: function() {
-        return [0, 55, 0];
+        return [0, 25, 4];
       },
       opacity: function() {
         return $timeline([
