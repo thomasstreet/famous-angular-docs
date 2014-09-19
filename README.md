@@ -16,6 +16,6 @@ Famo.us/Angular Docs
   4. Run <code>gulp dev</code> and visit <code>localhost:4000</code> 
 </p>
 <p>
-  5. ![alt tag](http://i.imgur.com/3sRm90k.gif) 
+  5.  
 </p>
-
+![alt tag](http://i.imgur.com/3sRm90k.gif)
