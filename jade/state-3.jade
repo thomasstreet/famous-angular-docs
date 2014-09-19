@@ -14,12 +14,26 @@ fa-modifier(
       .code
         p fa-surface
 
-fa-modifier(fa-origin='[1, 0.1]', fa-translate='[0, 0, 0]', fa-size='[400, 250]')
+fa-modifier(fa-origin='[1, 0.1]', fa-translate='[0, 0, 0]', fa-size='[405, 250]')
+
+  fa-modifier(
+    ng-repeat='cat in cats'
+    fa-translate='catTile.translate($index)'
+  )
+    fa-surface(
+      fa-size='[200, 75]'
+    ).cat-tile
+      .left-col
+        .cat-face
+      .right-col
+        .cat-name Raven Kidd
+        .cat-location Seattle, WA
+
   fa-modifier(fa-translate='inputRange.translate()')
     fa-surface(
       fa-size='[undefined, true]'
     )
       div.repeat-slider-container
-        input(type='range' min="1" ng-model='data.repeatCount').repeat-slider
+        input(type='range' min="1" max="8" ng-model='data.repeatCount').repeat-slider
 
 include state-footer

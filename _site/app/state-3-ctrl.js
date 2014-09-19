@@ -30,13 +30,33 @@ angular.module('famous-angular')
     translate: function() {
       return $timeline([
         [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 300, 0]]
+        [0.2, [0, 320, 0]]
       ])(t.get());
     }
   };
 
   $scope.data = {
     repeatCount: 1
+  };
+
+  $scope.cats = [{}];
+
+  $scope.$watch('data.repeatCount', function(newVal, oldVal) {
+    if (newVal) {
+      $scope.cats = [];
+      for (var i = 0; i < Number(newVal); i++) {
+        $scope.cats.push({});
+      }
+    }
+  });
+
+  $scope.catTile = {
+    translate: function($index) {
+      return $timeline([
+        [0.2, [0, 1000, 0], Easing.inOutQuart],
+        [0.3, [$index >= 4 ? 205 : 0, ($index % 4) * 80, 0]]
+      ])(t.get());
+    }
   };
 
   $scope.code = {
