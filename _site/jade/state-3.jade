@@ -18,7 +18,10 @@ fa-modifier(fa-origin='[1, 0.1]', fa-translate='[-50, 30, 0]', fa-size='[405, 25
 
   fa-modifier(
     ng-repeat='cat in cats'
-    fa-translate='catTile.translate($index)'
+    fa-translate='catTile.translate(cat.t, $index)'
+    fa-animate-enter='catEnter(cat.t, $done)'
+    fa-animate-leave='catLeave(cat.t, $done)'
+    fa-opacity='catTile.opacity(cat.t, $index)'
   )
     fa-surface(
       fa-size='[200, 75]'
@@ -34,6 +37,6 @@ fa-modifier(fa-origin='[1, 0.1]', fa-translate='[-50, 30, 0]', fa-size='[405, 25
       fa-size='[undefined, true]'
     )
       div.repeat-slider-container
-        input(type='range' min="1" max="8" ng-model='data.repeatCount').repeat-slider
+        input(type='range' min="0" max="8" ng-model='data.repeatCount').repeat-slider
 
 include state-footer
