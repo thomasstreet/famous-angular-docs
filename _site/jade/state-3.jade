@@ -1,7 +1,7 @@
 include state-nav
 
 fa-modifier(
-  fa-origin='[0, 0.1]'
+  fa-translate='[50, 40, 0]'
 )
   fa-modifier(fa-translate='content.translate()')
     fa-surface(fa-size="[500, true]")
@@ -14,7 +14,7 @@ fa-modifier(
       .code
         p fa-surface
 
-fa-modifier(fa-origin='[1, 0.1]', fa-translate='[0, 0, 0]', fa-size='[405, 250]')
+fa-modifier(fa-origin='[1, 0.1]', fa-translate='[-50, 30, 0]', fa-size='[405, 250]')
 
   fa-modifier(
     ng-repeat='cat in cats'
@@ -24,10 +24,10 @@ fa-modifier(fa-origin='[1, 0.1]', fa-translate='[0, 0, 0]', fa-size='[405, 250]'
       fa-size='[200, 75]'
     ).cat-tile
       .left-col
-        .cat-face
+        img(ng-src="{{cat.picture}}").cat-picture
       .right-col
-        .cat-name Raven Kidd
-        .cat-location Seattle, WA
+        .cat-name {{cat.name}}
+        .cat-location {{cat.location}}
 
   fa-modifier(fa-translate='inputRange.translate()')
     fa-surface(
