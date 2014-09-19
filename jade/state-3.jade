@@ -18,19 +18,24 @@ fa-modifier(fa-origin='[1, 0.1]', fa-translate='[-50, 30, 0]', fa-size='[405, 25
 
   fa-modifier(
     ng-repeat='cat in cats'
-    fa-translate='catTile.translate(cat.t, $index)'
+    fa-size='[200, 75]'
     fa-animate-enter='catEnter(cat.t, $done)'
     fa-animate-leave='catLeave(cat.t, $done)'
+    fa-translate='catTile.translate(cat.t, $index)'
     fa-opacity='catTile.opacity(cat.t, $index)'
+    fa-origin="[0, 0]"
   )
-    fa-surface(
-      fa-size='[200, 75]'
-    ).cat-tile
-      .left-col
-        img(ng-src="{{cat.picture}}").cat-picture
-      .right-col
-        .cat-name {{cat.name}}
-        .cat-location {{cat.location}}
+    fa-modifier(
+      fa-rotate-x='catTile.rotateX(cat.t, $index)'
+    )
+      fa-surface(
+        fa-size='[200, 75]'
+      ).cat-tile
+        .left-col
+          img(ng-src="{{cat.picture}}").cat-picture
+        .right-col
+          .cat-name {{cat.name}}
+          .cat-location {{cat.location}}
 
   fa-modifier(fa-translate='inputRange.translate()')
     fa-surface(

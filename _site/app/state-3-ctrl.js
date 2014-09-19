@@ -64,13 +64,23 @@ angular.module('famous-angular')
       var x = $index >= 4 ? 205 : 0;
       var y = ($index % 4) * 80;
       var z = 0;
+      return [x, y, z];
       return $timeline([
         [0.2, [x >= 4 ? x + 60 : x - 60, y, z], Easing.inQuart],
         [1, [x, y, z]]
       ])(catT.get());
     },
     opacity: function(catT, $index) {
+      return 1;
       return catT.get();
+    },
+    rotateX: function(catT, $index) {
+      return $timeline([
+        [0, -Math.PI / 2, Easing.outElastic],
+        //[0, -Math.PI / 2, function(x) { return x; }],
+        [1, 0, Easing.inQuart],
+        [2, -Math.PI / 2]
+      ])(catT.get());
     }
   };
 
@@ -81,15 +91,19 @@ angular.module('famous-angular')
         return;
       }
       $scope.data.repeatCount++;
-    }, 50);
+    }, 100);
   }, 2000);
 
   $scope.catEnter = function(t, $done) {
-    t.set(1, { duration: 300 }, $done);
+    t.set(1, { duration: 1500 }, $done);
   };
 
   $scope.catLeave = function(t, $done) {
-    t.set(0, { duration: 300 }, $done);
+    t.halt();
+    t.set(2, { duration: 100 }, function() {
+      t.set(0, { duration: 1 });
+      $done();
+    });
   };
 
   var catData = [
@@ -138,7 +152,7 @@ angular.module('famous-angular')
     {
       picture: 'img/cats/cat8.png',
       name: 'Maggie',
-      location: 'Orlando, FL',
+      location: 'Sarasota, FL',
       t: new Transitionable(0)
     }
   ];

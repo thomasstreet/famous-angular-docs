@@ -16,7 +16,7 @@
     {% include nav_links.html %}
 
     <div id="viewport">
-      <fa-app style='height: 100%;' class="{{ "{{stateClasses" }} }}">
+      <fa-app style='height: 100%;' class="{{ "{{stateClasses" }} }} fa-app">
         <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
       </fa-app>
     </div>
