@@ -21,7 +21,7 @@ angular.module('famous-angular')
 
   function getTimelineFromScroll() {
     var pageYOffset = window.pageYOffset;
-    var scrollMax = $rootScope.bodyHeight;
+    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
     // Scale the scroll range to a simple timeline of [0, n * 100]
     t = $timeline([
