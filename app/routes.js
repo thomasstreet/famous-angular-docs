@@ -57,7 +57,7 @@ angular.module('famous-angular')
       }
     });
 
-    $urlRouterProvider.otherwise('intro');
+    //$urlRouterProvider.otherwise('intro');
 })
 
 

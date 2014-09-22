@@ -14,9 +14,15 @@ angular.module('famous-angular')
     { max: 600, name: '5' }
   ];
 
+  var initialPageLoad = true;
+
   window.onscroll = function() {
-    var t = getTimelineFromScroll();
-    determineState(t);
+    // Initial routing from page laod will set the scroll position, but 
+    // don't want to execute handler for that scrollTo()
+    if (!initialPageLoad) {
+      var t = getTimelineFromScroll();
+      determineState(t);
+    }
   };
 
   function getTimelineFromScroll() {
@@ -42,14 +48,22 @@ angular.module('famous-angular')
     }
   }
 
-  window.$state = $state;
-  
   $rootScope.$on('$stateChangeSuccess', function(e) {
+    if (initialPageLoad) {
+      determineScrollPositionFromState();
+      initialPageLoad = false;
+    }
+  });
+
+
+  function determineScrollPositionFromState() {
     var newState = $state.current;
 
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
       if (newState.name === state.name) {
+
+        // Set the scroll to slightly past the beginning of state range
         var beginningOfStateRange = state.max - rangePerState + 5;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
@@ -63,7 +77,6 @@ angular.module('famous-angular')
         break;
       }
     }
-
-  });
+  }
 
 });
