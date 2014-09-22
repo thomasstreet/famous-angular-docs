@@ -5,12 +5,21 @@ angular.module('famous-angular')
 
   var rangePerState = 100;
   var stateCount = 7;
+  var scrollStates = [
+    { max: 100, name: 'intro' },
+    { max: 200, name: '1' },
+    { max: 300, name: '2' },
+    { max: 400, name: '3' },
+    { max: 500, name: '4' },
+    { max: 600, name: '5' }
+  ];
 
-  window.onscroll = onscrollHandler;
+  window.onscroll = function() {
+    var t = getTimelineFromScroll();
+    determineState(t);
+  };
 
-  var t = 0;
-
-  function onscrollHandler() {
+  function getTimelineFromScroll() {
     var pageYOffset = window.pageYOffset;
     var scrollMax = $rootScope.bodyHeight;
 
@@ -20,23 +29,33 @@ angular.module('famous-angular')
       [scrollMax, (stateCount - 1) * rangePerState]
     ])(pageYOffset);
 
-    determineState(t);
+    return t;
   }
 
   function determineState(t) {
-
-    if (t < 100) {
-      $state.go('intro');
-    } else if (t < 200) {
-      $state.go('1');
-    } else if (t < 300) {
-      $state.go('2');
-    } else if (t < 400) {
-      $state.go('3');
-    } else if (t < 500) {
-      $state.go('4');
-    } else if (t <= 600) {
-      $state.go('5');
+    for (var i = 0; i < scrollStates.length; i++) {
+      var state = scrollStates[i];
+      if (t < state.max) {
+        $state.go(state.name);
+        break;
+      }
     }
   }
+  
+  //$rootScope.$on('$stateChangeSuccess', function(e) {
+    //var newState = $state.current;
+
+    //for (var i = 0; i < scrollStates.length; i++) {
+      //var state = scrollStates[i];
+      //if (newState.name === state.name) {
+        //console.log(state.name);
+        //var beginningOfStateRange = state.max - (rangePerState / 2);
+        //window.scrollTo(0, beginningOfStateRange);
+        //break;
+      //}
+    //}
+
+    //console.log(window.pageYOffset);
+  //});
+
 });
