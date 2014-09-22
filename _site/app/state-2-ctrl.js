@@ -24,7 +24,7 @@ angular.module('famous-angular')
 
   $scope.rotate = function() {
     var rotate = $timeline([
-      [0, 0, function(x) { return x }],
+      [1, 0, function(x) { return x }],
       [100, 2 * Math.PI]
     ])(parseInt($scope.data.t));
     return rotate;
@@ -110,7 +110,7 @@ angular.module('famous-angular')
 
     inputRange: {
       translate: function() {
-        return [0, 230, 0];
+        return [0, 230, 5];
       },
       opacity: function() {
         return $timeline([
@@ -122,7 +122,7 @@ angular.module('famous-angular')
 
     inputText: {
       translate: function() {
-        return [210, 230, 0];
+        return [310, 230, 5];
       },
       opacity: function() {
         return $timeline([
