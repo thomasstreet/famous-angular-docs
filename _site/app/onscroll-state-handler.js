@@ -41,21 +41,29 @@ angular.module('famous-angular')
       }
     }
   }
+
+  window.$state = $state;
   
-  //$rootScope.$on('$stateChangeSuccess', function(e) {
-    //var newState = $state.current;
+  $rootScope.$on('$stateChangeSuccess', function(e) {
+    var newState = $state.current;
 
-    //for (var i = 0; i < scrollStates.length; i++) {
-      //var state = scrollStates[i];
-      //if (newState.name === state.name) {
-        //console.log(state.name);
-        //var beginningOfStateRange = state.max - (rangePerState / 2);
-        //window.scrollTo(0, beginningOfStateRange);
-        //break;
-      //}
-    //}
+    for (var i = 0; i < scrollStates.length; i++) {
+      var state = scrollStates[i];
+      if (newState.name === state.name) {
+        var beginningOfStateRange = state.max - rangePerState + 5;
 
-    //console.log(window.pageYOffset);
-  //});
+        var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+
+        var newScrollY = $timeline([
+          [0, 0, function(x) { return x }],
+          [(stateCount - 1) * rangePerState, scrollMax]
+        ])(beginningOfStateRange);
+
+        window.scrollTo(0, newScrollY);
+        break;
+      }
+    }
+
+  });
 
 });
