@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
 .controller('state1Ctrl', function($scope, $famous, $timeline, stateTransitions) {
+  console.log('state1');
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];

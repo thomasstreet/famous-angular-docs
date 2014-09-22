@@ -1,15 +1,12 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, scroll) {
+.run(function($rootScope, $famous, $timeline, $state) {
   $rootScope.bodyHeight = 5000;
-})
 
-.factory('scroll', function($rootScope, $famous, $timeline, $state) {
   var rangePerState = 100;
   var stateCount = 7;
 
   window.onscroll = onscrollHandler;
-  onscrollHandler();
 
   var t = 0;
 
@@ -42,11 +39,4 @@ angular.module('famous-angular')
       $state.go('5');
     }
   }
-
-  return {
-    get: function() {
-      // Only return values in a range of [0, rangePerState]
-      return t % rangePerState;
-    }
-  };
 });

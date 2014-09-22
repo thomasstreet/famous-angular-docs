@@ -3,7 +3,7 @@ angular.module('famous-angular')
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('intro', {
-      url: 'intro',
+      url: '/intro',
       templateUrl: 'templates/state-intro.html',
       controller: 'stateIntroCtrl',
       data: {
@@ -12,7 +12,7 @@ angular.module('famous-angular')
       }
     })
     .state('1', {
-      url: '1',
+      url: '/1',
       templateUrl: 'templates/state-1.html',
       controller: 'state1Ctrl',
       data: {
@@ -21,7 +21,7 @@ angular.module('famous-angular')
       }
     })
     .state('2', {
-      url: '2',
+      url: '/2',
       templateUrl: 'templates/state-2.html',
       controller: 'state2Ctrl',
       data: {
@@ -30,7 +30,7 @@ angular.module('famous-angular')
       }
     })
     .state('3', {
-      url: '3',
+      url: '/3',
       templateUrl: 'templates/state-3.html',
       controller: 'state3Ctrl',
       data: {
@@ -39,7 +39,7 @@ angular.module('famous-angular')
       }
     })
     .state('4', {
-      url: '4',
+      url: '/4',
       templateUrl: 'templates/state-4.html',
       controller: 'state4Ctrl',
       data: {
@@ -48,7 +48,7 @@ angular.module('famous-angular')
       }
     })
     .state('5', {
-      url: '5',
+      url: '/5',
       templateUrl: 'templates/state-5.html',
       controller: 'state5Ctrl',
       data: {
@@ -56,6 +56,8 @@ angular.module('famous-angular')
         cssClass: 'state-5'
       }
     });
+
+    $urlRouterProvider.otherwise('intro');
 })
 
 
