@@ -95,7 +95,7 @@ angular.module('famous-angular')
       translate: function() {
         return $timeline([
           [0.4, [0, -1000, 0], Easing.inOutQuart],
-          [0.6, [10, 50, 0]]
+          [0.6, [20, 65, 0]]
         ])(t.get());
       }
     },
@@ -104,7 +104,7 @@ angular.module('famous-angular')
       translate: function() {
         return $timeline([
           [0.5, [0, 1000, 0], function(x) { return x }],
-          [0.7, [10, 90, 0]]
+          [0.7, [20, 135, 0]]
         ])(t.get());
       }
     },
@@ -113,14 +113,14 @@ angular.module('famous-angular')
       translate: function() {
         return $timeline([
           [0.6, [1000, 90, 0], function(x) { return x }],
-          [0.8, [70, 90, 0]]
+          [0.8, [110, 135, 0]]
         ])(t.get());
       }
     },
 
     content: {
       translate: function() {
-        return [90, 110, 0];
+        return [135, 160, 0];
       },
       opacity: function() {
         return $timeline([
