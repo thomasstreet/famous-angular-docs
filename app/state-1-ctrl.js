@@ -27,7 +27,7 @@ angular.module('famous-angular')
   $scope.content = {
     translate: function() {
       return $timeline([
-        [0, [-1000, 0, 0], Easing.inOutQuart],
+        [0, [-2000, 0, 0], Easing.inOutQuart],
         [0.2, [0, 0, 0]]
       ])(t.get());
     }
@@ -37,7 +37,7 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [0.3, [0, 1000, 0], Easing.inOutQuart],
+          [0.3, [0, 2000, 0], Easing.inOutQuart],
           [0.5, [0, 100, 0]]
         ])(t.get());
       }
@@ -46,7 +46,7 @@ angular.module('famous-angular')
     header: {
       translate: function() {
         return $timeline([
-          [0.4, [0, 1000, 0], Easing.inOutQuart],
+          [0.4, [0, 2000, 0], Easing.inOutQuart],
           [0.6, [0, 120, 0]]
         ])(t.get());
       }
@@ -55,7 +55,7 @@ angular.module('famous-angular')
     sidenav: {
       translate: function() {
         return $timeline([
-          [0.5, [0, -1000, 0], Easing.inOutQuart],
+          [0.5, [0, -2000, 0], Easing.inOutQuart],
           [0.7, [0, 140, 0]]
         ])(t.get());
       }
@@ -64,7 +64,7 @@ angular.module('famous-angular')
     container: {
       translate: function() {
         return $timeline([
-          [0.6, [-1000, 0, 0], Easing.inOutQuart],
+          [0.6, [-2000, 0, 0], Easing.inOutQuart],
           [0.8, [0, 160, 0]]
         ])(t.get());
       }
@@ -73,7 +73,7 @@ angular.module('famous-angular')
     content: {
       translate: function() {
         return $timeline([
-          [0.7, [-1000, 0, 0], Easing.inOutQuart],
+          [0.7, [-2000, 0, 0], Easing.inOutQuart],
           [0.9, [0, 180, 0]]
         ])(t.get());
       }
@@ -85,7 +85,7 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [0.3, [0, -1000, 0], Easing.inOutQuart],
+          [0.3, [0, -2000, 0], Easing.inOutQuart],
           [0.5, [0, 0, 0]]
         ])(t.get());
       }
@@ -94,7 +94,7 @@ angular.module('famous-angular')
     header: {
       translate: function() {
         return $timeline([
-          [0.4, [0, -1000, 0], Easing.inOutQuart],
+          [0.4, [0, -2000, 0], Easing.inOutQuart],
           [0.6, [20, 65, 0]]
         ])(t.get());
       }
@@ -103,7 +103,7 @@ angular.module('famous-angular')
     sidenav: {
       translate: function() {
         return $timeline([
-          [0.5, [0, 1000, 0], function(x) { return x }],
+          [0.5, [0, 2000, 0], function(x) { return x }],
           [0.7, [20, 135, 0]]
         ])(t.get());
       }
@@ -112,7 +112,7 @@ angular.module('famous-angular')
     container: {
       translate: function() {
         return $timeline([
-          [0.6, [1000, 90, 0], function(x) { return x }],
+          [0.6, [2000, 90, 0], function(x) { return x }],
           [0.8, [110, 135, 0]]
         ])(t.get());
       }

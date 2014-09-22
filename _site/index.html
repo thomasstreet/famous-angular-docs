@@ -41,7 +41,9 @@
 
     <div id="viewport">
       <fa-app style='height: 100%;' class="{{stateClasses }} fa-app">
-        <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+        <fa-modifier fa-scale="[1, 1]">
+          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+        </fa-modifier>
       </fa-app>
     </div>
 
