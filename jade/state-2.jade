@@ -1,11 +1,10 @@
 include state-nav
 
 fa-modifier(
-  fa-origin='[0, 0.3]'
   fa-translate='nametag.translate()'
 )
   fa-modifier(
-    fa-size='[410, 250]'
+    fa-size='[620, 375]'
   )
     fa-modifier(
       fa-rotate-y='rotate()'
@@ -14,12 +13,12 @@ fa-modifier(
     )
       fa-modifier(fa-translate='nametag.body.translate()')
         fa-surface(
-          fa-size='[410, 250]'
+          fa-size='[620, 375]'
         )
           .nametag-body
       fa-modifier(fa-translate='nametag.heading.translate()')
         fa-surface(
-          fa-size='[410, true]'
+          fa-size='[620, true]'
         )
           .nametag-heading
             .hello
@@ -28,12 +27,12 @@ fa-modifier(
               | my name is
       fa-modifier(fa-translate='nametag.stripe.translate()')
         fa-surface(
-          fa-size='[410, 140]'
+          fa-size='[620, 210]'
         )
           .nametag-stripe
       fa-modifier(fa-translate='nametag.name.translate()')
         fa-surface(
-          fa-size='[410, true]'
+          fa-size='[620, true]'
         )
           .nametag-name
             | {{data.name}}
@@ -56,15 +55,14 @@ fa-modifier(
 
 
 fa-modifier(
-  fa-origin='[1, 0.3]'
-  fa-translate='[0, -50, 0]'
+  fa-translate='[960, 140, 0]'
 )
   fa-modifier(fa-translate='content.translate()')
-    fa-surface(fa-size="[550, true]")
+    fa-surface(fa-size="[750, true]")
       h1.heading Combine Data-binding with Famo.us surfaces and modifiers 
 
   fa-modifier(fa-translate='code.frame.translate()')
-    fa-surface(fa-size="[550, true]")
+    fa-surface(fa-size="[700, true]")
       .code
         p fa-surface
 

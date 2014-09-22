@@ -48,7 +48,6 @@ angular.module('famous-angular')
         ])(t.get());
       }
     },
-
   };
 
 
@@ -56,7 +55,7 @@ angular.module('famous-angular')
     translate: function() {
       return $timeline([
         [0, [-1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
+        [0.2, [250, 150, 0]]
       ])(t.get());
     },
 
@@ -74,7 +73,7 @@ angular.module('famous-angular')
 
     heading: {
       translate: function() {
-        return [0, -70, 2];
+        return [0, -115, 2];
       },
       opacity: function() {
         return $timeline([
@@ -86,7 +85,7 @@ angular.module('famous-angular')
 
     stripe: {
       translate: function() {
-        return [0, 35, 3];
+        return [0, 55, 3];
       },
       opacity: function() {
         return $timeline([
@@ -98,7 +97,7 @@ angular.module('famous-angular')
 
     name: {
       translate: function() {
-        return [0, 25, 4];
+        return [0, 35, 4];
       },
       opacity: function() {
         return $timeline([
@@ -110,7 +109,7 @@ angular.module('famous-angular')
 
     inputRange: {
       translate: function() {
-        return [0, 230, 5];
+        return [0, 410, 9999];
       },
       opacity: function() {
         return $timeline([
@@ -122,7 +121,7 @@ angular.module('famous-angular')
 
     inputText: {
       translate: function() {
-        return [310, 230, 5];
+        return [320, 410, 9999];
       },
       opacity: function() {
         return $timeline([
