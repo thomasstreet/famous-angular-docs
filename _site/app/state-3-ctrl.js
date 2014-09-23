@@ -6,6 +6,21 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
+
+  var tile = {
+    width: 300,
+    height: 115,
+    margin: {
+      left: 10,
+      bottom: 10
+    },
+    countPerColumn: 4,
+    columnCount: 2
+  };
+  $scope.tile = tile;
+
+/*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
     t.delay(stateTransitions.enterDelay);
@@ -15,6 +30,13 @@ angular.module('famous-angular')
   $scope.leave = function($done) {
     t.halt();
     t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+  };
+
+/*--------------------------------------------------------------*/
+
+  $scope.faAppHeight = function() {
+    var totalHeight = tile.height + tile.margin.bottom;
+    return (totalHeight * tile.countPerColumn) + $scope.repeatSlider.height;
   };
 
   $scope.content = {
@@ -35,14 +57,20 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.inputRange = {
+  $scope.repeatSlider = {
+    width: (tile.width * tile.columnCount) + tile.margin.left,
+    height: 60,
     translate: function() {
+      var totalTileHeight = tile.height + tile.margin.bottom;
+      var heightOfAllTiles = totalTileHeight * tile.countPerColumn;
       return $timeline([
         [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 320, 0]]
-      ])(t.get());
-    }
+        [0.2, [30, heightOfAllTiles, 0]]
+      ]);
+    }()
   };
+
+/*--------------------------------------------------------------*/
 
   $scope.data = {
     repeatCount: 0
@@ -61,29 +89,24 @@ angular.module('famous-angular')
 
   $scope.catTile = {
     translate: function(catT, $index) {
-      var x = $index >= 4 ? 205 : 0;
-      var y = ($index % 4) * 80;
+      var totalWidth = tile.width + tile.margin.left;
+      var x = $index >= tile.countPerColumn ? totalWidth : 0;
+
+      var totalHeight = tile.height + tile.margin.bottom;
+      var y = ($index % tile.countPerColumn) * totalHeight;
+
       var z = 0;
+
       return [x, y, z];
-      return $timeline([
-        [0.2, [x >= 4 ? x + 60 : x - 60, y, z], Easing.inQuart],
-        [1, [x, y, z]]
-      ])(catT.get());
     },
-    opacity: function(catT, $index) {
-      return 1;
-      return catT.get();
-    },
-    rotateX: function(catT, $index) {
-      return $timeline([
-        [0, -Math.PI / 2, Easing.outElastic],
-        //[0, -Math.PI / 2, function(x) { return x; }],
-        [1, 0, Easing.inQuart],
-        [2, -Math.PI / 2]
-      ])(catT.get());
-    }
+    rotateX: $timeline([
+      [0, -Math.PI / 2, Easing.outElastic],
+      [0.99, 0, Easing.inQuart],
+      [1.99, -Math.PI / 2]
+    ])
   };
 
+  // Automatically go through the slides
   setTimeout(function() {
     var repeatAutoplay = $interval(function() {
       if ($scope.data.repeatCount + 1 >= 9) {
@@ -105,6 +128,8 @@ angular.module('famous-angular')
       $done();
     });
   };
+
+/*--------------------------------------------------------------*/
 
   var catData = [
     {
