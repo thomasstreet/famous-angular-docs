@@ -45,13 +45,13 @@ angular.module('famous-angular')
    image: {
      translate: $timeline([
        [0, [-1000, 0, 0], Easing.inOutQuart],
-       [0.2, [740, 310, 0]]
+       [0.2, [760, 310, 0]]
      ])
    }, 
    text: {
      translate: $timeline([
        [0, [-1000, 0, 0], Easing.inOutQuart],
-       [0.2, [740, 630, 0]]
+       [0.2, [760, 630, 0]]
      ])
    }, 
   };
@@ -60,13 +60,13 @@ angular.module('famous-angular')
    image: {
      translate: $timeline([
        [0, [-1000, 0, 0], Easing.inOutQuart],
-       [0.2, [1290, 330, 0]]
+       [0.2, [1320, 330, 0]]
      ])
    }, 
    text: {
      translate: $timeline([
        [0, [-1000, 0, 0], Easing.inOutQuart],
-       [0.2, [1400, 630, 0]]
+       [0.2, [1430, 630, 0]]
      ])
    }, 
   };
