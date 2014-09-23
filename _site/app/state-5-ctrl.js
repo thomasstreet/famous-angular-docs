@@ -6,6 +6,7 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
 
   $scope.enter = function($done) {
     t.delay(stateTransitions.enterDelay);
@@ -18,39 +19,30 @@ angular.module('famous-angular')
   };
 
   $scope.webframe = {
-    translate: function() {
-      return $timeline([
-        [0, [0, 1000, 0], Easing.inOutQuart],
-        [0.2, [0, 30, 0]]
-      ])(t.get());
-    },
+    translate: $timeline([
+      [0, [0, 1000, 0], Easing.inOutQuart],
+      [0.2, [250, 180, 0]]
+    ]),
     banner: {
-      translate: function() {
-        return $timeline([
-          [0, [0, 1000, 0], Easing.inOutQuart],
-          [0.2, [53, 88, 0]]
-        ])(t.get());
-      }
+      translate:$timeline([
+        [0, [0, 1000, 0], Easing.inOutQuart],
+        [0.2, [84, 110, 0]]
+      ])
     }
   };
 
   $scope.content = {
-    translate: function() {
-      return $timeline([
-        [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
-      ])(t.get());
-    }
+    translate: $timeline([
+      [0, [1000, 0, 0], Easing.inOutQuart],
+      [0.2, [1170, 170, 0]]
+    ])
   };
 
   $scope.code = {
-    translate: function() {
-      return $timeline([
-        [0.3, [0, 1000, 0], Easing.inOutQuart],
-        [0.5, [0, 120, 0]]
-      ])(t.get());
-    }
+    translate: $timeline([
+      [0.3, [0, 1000, 0], Easing.inOutQuart],
+      [0.5, [0, 150, 0]]
+    ])
   };
-
 
 });

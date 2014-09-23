@@ -1,28 +1,21 @@
 include state-nav
 
 fa-modifier(
-  fa-origin='[0, 0.1]'
-  fa-translate='webframe.translate()'
-  fa-size='[400, 250]'
+  fa-translate='webframe.translate(t.get())'
 )
   fa-surface(fa-size="[true, true]")
-    img(src="img/webframe_x3.png" width="500px")
+    img(src="img/webframe_x3.png" width="800px")
+  fa-modifier(
+    fa-translate='webframe.banner.translate(t.get())'
+    fa-size='[632, 236]'
+  )
+    fa-surface(fa-background-color="'red'")
 
-fa-modifier(
-  fa-origin='[0, 0.1]'
-  fa-translate='webframe.banner.translate()'
-  fa-size='[394, 148]'
-)
-  fa-surface(fa-background-color="'red'")
+fa-modifier(fa-translate='content.translate(t.get())')
+  fa-surface(fa-size="[500, true]")
+    h1.heading Use HTML, CSS, and Famo.us all together
 
-fa-modifier(
-  fa-origin='[1, 0.1]'
-)
-  fa-modifier(fa-translate='content.translate()')
-    fa-surface(fa-size="[500, true]")
-      h1.heading Use HTML, CSS, and Famo.us all together
-
-  fa-modifier(fa-translate='code.translate()')
+  fa-modifier(fa-translate='code.translate(t.get())')
     fa-surface(fa-size="[500, true]")
       .code
         pre

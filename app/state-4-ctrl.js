@@ -20,7 +20,7 @@ angular.module('famous-angular')
 
   $scope.heading = {
     translate: $timeline([
-      [0, [-1500, 0, 0], Easing.inOutQuart],
+      [0, [-2500, 0, 0], Easing.inOutQuart],
       [0.2, [0, 0, 0]]
     ])
   };

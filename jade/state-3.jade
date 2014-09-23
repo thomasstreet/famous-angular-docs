@@ -22,7 +22,7 @@ fa-modifier(
     fa-app.set-perspective
 
       // Give a left padding so that the flapping animation is not cut off
-      fa-modifier(fa-translate='[30, 0, 0]')
+      fa-modifier(fa-translate='[tileGrid.margin.left, 0, 0]')
 
         fa-modifier(
           ng-repeat='cat in cats'
