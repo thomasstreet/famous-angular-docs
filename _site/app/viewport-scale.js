@@ -1,16 +1,30 @@
 angular.module('famous-angular')
 
 .run(function($rootScope) {
-    var RESOLUTION = {
-      WIDTH: 1920,
-      HEIGHT: 1080
-    };
-
     var NAVBAR = {
       HEIGHT: 100
     };
 
-    $rootScope.viewportScale = function() {
+    var RESOLUTION = {
+      WIDTH: 1920,
+      HEIGHT: 1080 - NAVBAR.HEIGHT
+    };
+
+    setLeftOffset();
+    window.onresize = setLeftOffset;
+
+    // Set the left offset based upon the scale amount, to re-center the fa-app
+    function setLeftOffset() {
+      var scale = getViewportScale();
+
+      var leftOffset = (window.innerWidth / 2) - (scale * RESOLUTION.WIDTH / 2);
+    
+      $('#fa-app').css('-webkit-transform', 'scale(' + scale + ', ' + scale + ')');
+      $('#fa-app').css('-webkit-transform-origin', '0 0');
+      $('#fa-app').css('left', Math.floor(leftOffset));
+    }
+
+    function getViewportScale() {
       var xScale, yScale;
 
       var viewport = {
@@ -32,20 +46,8 @@ angular.module('famous-angular')
         xScale = 1;
       }
 
-      // Use whichever scale is smaller
       var smallestScale = xScale < yScale ? xScale : yScale;
 
-      return [smallestScale, smallestScale];
+      return smallestScale;
     };
-
-    // Set the left offset based upon the scale amount, to re-center the fa-app
-    function setLeftOffset() {
-      var scale = $rootScope.viewportScale()[0];
-
-      var leftOffset = ((1 - scale) / 2) * window.innerWidth;
-    
-      $('#fa-app').css('left', leftOffset);
-    }
-
-    setLeftOffset();
 });
