@@ -720,27 +720,34 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $scope.catTileGrid = {
+    translate: $timeline([
+      [0, [1500, 0, 0], Easing.inOutQuart],
+      [0.2, [950, 120, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0, Easing.inOutQuart],
+      [0.2, 1]
+    ])
+  };
+
   $scope.faAppHeight = function() {
     var totalHeight = tile.height + tile.margin.bottom;
     return (totalHeight * tile.countPerColumn) + $scope.repeatSlider.height;
   };
 
   $scope.content = {
-    translate: function() {
-      return $timeline([
-        [0, [-1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
-      ])(t.get());
-    }
+    translate: $timeline([
+      [0, [-1000, 0, 0], Easing.inOutQuart],
+      [0.2, [0, 0, 0]]
+    ])
   };
 
   $scope.code = {
-    translate: function() {
-      return $timeline([
-        [0.2, [0, 1000, 0], Easing.inOutQuart],
-        [0.3, [0, 100, 0]]
-      ])(t.get());
-    }
+    translate: $timeline([
+      [0.2, [0, 1000, 0], Easing.inOutQuart],
+      [0.3, [0, 100, 0]]
+    ])
   };
 
   $scope.repeatSlider = {
