@@ -878,6 +878,7 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
 
   $scope.enter = function($done) {
     t.delay(stateTransitions.enterDelay);
@@ -890,69 +891,55 @@ angular.module('famous-angular')
   };
 
   $scope.heading = {
-    translate: function() {
-      return $timeline([
-        [0, [-1500, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
-      ])(t.get());
-    }
+    translate: $timeline([
+      [0, [-1500, 0, 0], Easing.inOutQuart],
+      [0.2, [0, 0, 0]]
+    ])
   };
 
 
   $scope.routing = {
    image: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [95, 190, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [180, 350, 0]]
+     ])
    }, 
    text: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [150, 330, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [310, 630, 0]]
+     ])
    }, 
   };
 
   $scope.dependency = {
    image: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [440, 160, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [740, 310, 0]]
+     ])
    }, 
    text: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [410, 330, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [740, 630, 0]]
+     ])
    }, 
   };
 
   $scope.modules = {
    image: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [790, 180, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [1290, 330, 0]]
+     ])
    }, 
    text: {
-     translate: function() {
-       return $timeline([
-         [0, [-1000, 0, 0], Easing.inOutQuart],
-         [0.2, [830, 330, 0]]
-       ])(t.get());
-     }
+     translate: $timeline([
+       [0, [-1000, 0, 0], Easing.inOutQuart],
+       [0.2, [1400, 630, 0]]
+     ])
    }, 
   };
 

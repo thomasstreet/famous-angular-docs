@@ -1,22 +1,22 @@
 include state-nav
 
 fa-modifier(
-  fa-origin='[0.5, 0.1]'
+  fa-origin='[0.5, 0.15]'
 )
-  fa-modifier(fa-translate='heading.translate()')
+  fa-modifier(fa-translate='heading.translate(t.get())')
     fa-surface(fa-size="[true, true]")
       h1.heading Organize your Famo.us apps with Angular’s MVC structure 
 
 fa-modifier(
-  fa-translate='routing.image.translate()'
+  fa-translate='routing.image.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface
     .column-image
-      img(src='img/routing_x3.png' width='200px')
+      img(src='img/routing_x3.png' width='400px')
 
 fa-modifier(
-  fa-translate='routing.text.translate()'
+  fa-translate='routing.text.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface.column
@@ -26,15 +26,15 @@ fa-modifier(
       | Learn More
 
 fa-modifier(
-  fa-translate='dependency.image.translate()'
+  fa-translate='dependency.image.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface
     .column-image
-      img(src='img/depdency_x3.png' width='200px')
+      img(src='img/depdency_x3.png' width='400px')
 
 fa-modifier(
-  fa-translate='dependency.text.translate()'
+  fa-translate='dependency.text.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface.column
@@ -44,15 +44,15 @@ fa-modifier(
       | Learn More
 
 fa-modifier(
-  fa-translate='modules.image.translate()'
+  fa-translate='modules.image.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface
     .column-image
-      img(src='img/modules_x3.png' width='180px')
+      img(src='img/modules_x3.png' width='380px')
 
 fa-modifier(
-  fa-translate='modules.text.translate()'
+  fa-translate='modules.text.translate(t.get())'
   fa-size='[true, true]'
 )
   fa-surface.column
