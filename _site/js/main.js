@@ -132,10 +132,9 @@ angular.module('examples', [])
 
 angular.module('famous-angular')
 
-.run(function($rootScope) {
+.controller('homepageCtrl', function($scope, $famous, $timeline) {
 
-  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-
+  $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
     // Make sure that fa-app contains the class for both the previous state
     // and current state, to ensure the correct CSS namespacing when
     // transitioning between views with fa-animate-enter/leave
@@ -144,14 +143,31 @@ angular.module('famous-angular')
       (fromState && fromState.data) ? fromState.data.cssClass : ''
     ].join(' ');
 
-    $rootScope.stateClasses = classes;
+    $scope.stateClasses = classes;
   });
 
-});
+/*--------------------------------------------------------------*/
 
-angular.module('famous-angular')
+  var Transitionable = $famous['famous/transitions/Transitionable'];
+  var Easing = $famous['famous/transitions/Easing'];
 
-.controller('homepageCtrl', function($scope) {
+  $scope.navTimeline = new Transitionable(0);
+
+  $scope.navbar = {
+    opacity: $timeline([
+      [0, 0],
+      [1, 1]
+    ])
+  };
+
+  $scope.footer = {
+    translate: $timeline([
+      [0, [0, -340, 0], Easing.inOutQuad],
+      [0.5, [0, -40, 0]],
+      [1.7, [0, -40, 0]],
+      [2, [0, -340, 0]]
+    ])
+  };
 
 });
 
@@ -431,6 +447,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
+    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -576,6 +593,7 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
+    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -733,6 +751,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
+    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -912,6 +931,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
+    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -989,6 +1009,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
+    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -1136,13 +1157,12 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    $scope.$parent.navTimeline.set(0, {duration: 1000});
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
 
   $scope.opacity = function() {

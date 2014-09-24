@@ -7,13 +7,12 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    $scope.$parent.navTimeline.set(0, {duration: 1000});
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
 
   $scope.opacity = function() {
