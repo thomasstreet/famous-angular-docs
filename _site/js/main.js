@@ -1165,7 +1165,7 @@ angular.module('famous-angular')
 
 
   function enterDelay() {
-    if (!prevState || !prevState.data) {
+    if (!prevState) {
       return 0;
     }
     return prevState.data.leaveAnimationDuration;
@@ -1183,7 +1183,7 @@ angular.module('famous-angular')
 
   function getEnterInitialT() {
     if (!prevState) {
-      return 0
+      return 0;
     }
 
     var currentIndex = $state.current.data.index;
@@ -1241,8 +1241,21 @@ angular.module('famous-angular')
 
       var leftOffset = (window.innerWidth / 2) - (scale * RESOLUTION.WIDTH / 2);
     
-      $('#fa-app').css('-webkit-transform', 'scale(' + scale + ', ' + scale + ')');
-      $('#fa-app').css('-webkit-transform-origin', '0 0');
+      //$('#fa-app').css('-webkit-transform', 'scale(' + scale + ', ' + scale + ')');
+      $('#fa-app').css({
+        '-webkit-transform' : 'scale(' + scale + ', ' + scale + ')',
+        '-moz-transform'    : 'scale(' + scale + ', ' + scale + ')',
+        '-ms-transform'     : 'scale(' + scale + ', ' + scale + ')',
+        '-o-transform'      : 'scale(' + scale + ', ' + scale + ')',
+        'transform'         : 'scale(' + scale + ', ' + scale + ')' 
+      });
+      $('#fa-app').css({
+        '-webkit-transform-origin' : '0 0',
+        '-moz-transform-origin'    : '0 0',
+        '-ms-transform-origin'     : '0 0',
+        '-o-transform-origin'      : '0 0',
+        'transform-origin'         : '0 0' 
+      });
       $('#fa-app').css('left', Math.floor(leftOffset));
     }
 

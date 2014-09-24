@@ -9,7 +9,7 @@ angular.module('famous-angular')
 
 
   function enterDelay() {
-    if (!prevState || !prevState.data) {
+    if (!prevState) {
       return 0;
     }
     return prevState.data.leaveAnimationDuration;
@@ -27,7 +27,7 @@ angular.module('famous-angular')
 
   function getEnterInitialT() {
     if (!prevState) {
-      return 0
+      return 0;
     }
 
     var currentIndex = $state.current.data.index;
