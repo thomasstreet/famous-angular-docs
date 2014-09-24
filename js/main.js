@@ -576,13 +576,11 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
 
   $scope.data = {
@@ -735,13 +733,11 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
 
 /*--------------------------------------------------------------*/
@@ -913,15 +909,17 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+/*--------------------------------------------------------------*/
+
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
+
+/*--------------------------------------------------------------*/
 
   $scope.heading = {
     translate: $timeline([
@@ -988,15 +986,17 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+/*--------------------------------------------------------------*/
+
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
+
+/*--------------------------------------------------------------*/
 
   $scope.webframe = {
     translate: $timeline([
@@ -1163,6 +1163,7 @@ angular.module('famous-angular')
     prevState = fromState;
   });
 
+
   function enterDelay() {
     if (!prevState || !prevState.data) {
       return 0;
@@ -1170,21 +1171,35 @@ angular.module('famous-angular')
     return prevState.data.leaveAnimationDuration;
   }
 
+  function enterDuration() {
+    return $state.current.data.enterAnimationDuration;
+  }
+
+
   function leaveDuration() {
     return $state.current.data.leaveAnimationDuration;
   }
 
+
   function getEnterInitialT() {
-    return 0;
+    if (!prevState) {
+      return 0
+    }
+
+    var currentIndex = $state.current.data.index;
+    var prevIndex = prevState.data.index;
+
+    return currentIndex > prevIndex ? 0 : 2;
   }
 
-  function getEnterEndT() {
-    return 1;
-  }
 
   function getLeaveT() {
-    return 2;
+    var currentIndex = $state.current.data.index;
+    var prevIndex = prevState.data.index;
+
+    return currentIndex > prevIndex ? 2 : 0;
   }
+
 
   return {
     enter: function(t, $done) {
@@ -1193,9 +1208,8 @@ angular.module('famous-angular')
 
       t.delay(enterDelay());
 
-      var endT = getEnterEndT();
-      var enterDuration = 3000;
-      t.set(endT, { duration: enterDuration }, $done);
+      // Always set to 1, regardless of transition direction
+      t.set(1, { duration: enterDuration() }, $done);
     },
     leave: function(t, $done) {
       t.halt();

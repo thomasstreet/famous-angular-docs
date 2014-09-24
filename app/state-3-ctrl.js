@@ -30,13 +30,11 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    stateTransitions.leave(t, $done);
   };
 
 /*--------------------------------------------------------------*/
