@@ -29,6 +29,10 @@ angular.module('famous-angular')
   };
 
   $scope.footer = {
+    opacity: $timeline([
+      [0, 0],
+      [1, 1]
+    ]),
     translate: $timeline([
       [0, [0, -340, 0], Easing.inOutQuad],
       [0.5, [0, -40, 0]],
