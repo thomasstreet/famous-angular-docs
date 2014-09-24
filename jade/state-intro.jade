@@ -77,6 +77,20 @@ fa-modifier(
           div.octicon.octicon-file-text
 
   fa-modifier(
+    fa-translate='builtBy.translate(t.get())'
+    fa-opacity='builtBy.opacity(t.get())'
+  )
+    fa-surface(
+      fa-size="[true, true]"
+    ).built-by
+      | built by 
+      span.link
+        a(href='http://thomasstreet.com/') Thomas Street
+      |  for 
+      span.link
+        a(href='http://famo.us/') Famo.us
+
+  fa-modifier(
     fa-translate='scrollMessage.translate(t.get())'
     fa-opacity='scrollMessage.opacity(t.get())'
   )
@@ -99,17 +113,3 @@ fa-modifier(
       )
         a(ui-sref='1')
           img(src='img/downarrow.svg' height='35px')
-
-  fa-modifier(
-    fa-translate='builtBy.translate(t.get())'
-    fa-opacity='builtBy.opacity(t.get())'
-  )
-    fa-surface(
-      fa-size="[true, true]"
-    ).built-by
-      | built by 
-      span.link
-        a(href='http://thomasstreet.com/') Thomas Street
-      |  for 
-      span.link
-        a(href='http://famo.us/') Famo.us

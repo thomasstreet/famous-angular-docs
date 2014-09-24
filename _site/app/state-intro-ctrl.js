@@ -145,6 +145,21 @@ angular.module('famous-angular')
     }
   };
 
+  $scope.builtBy = {
+    translate: $timeline([
+      [0, [0, -200, 0], Easing.inOutQuart],
+      [0.2, [0, 685, 0]],
+      [1.6, [0, 685, 0], Easing.outQuad],
+      [2, [0, -200, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 1, Easing.inCubic],
+      [1.8, 1, Easing.inOutQuart],
+      [2, 0]
+    ])
+  };
+
   $scope.scrollMessage = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
@@ -170,21 +185,6 @@ angular.module('famous-angular')
       [0.2, [0, 885, 0]],
       [1.6, [0, 885, 0], Easing.outQuad],
       [2, [0, 755, 1000]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
-    ])
-  };
-
-  $scope.builtBy = {
-    translate: $timeline([
-      [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 685, 0]],
-      [1.6, [0, 685, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
     ]),
     opacity: $timeline([
       [0, 0],
