@@ -416,6 +416,8 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+/*--------------------------------------------------------------*/
+
   $scope.enter = function($done) {
     t.delay(stateTransitions.enterDelay);
     t.set(1, {duration: 4000}, $done);
@@ -426,6 +428,8 @@ angular.module('famous-angular')
     t.set(2, {duration: stateTransitions.leaveDuration}, $done);
   };
 
+/*--------------------------------------------------------------*/
+
   $scope.opacity = function() {
     return $timeline([
       [0, 0, Easing.inOutQuart],
@@ -435,7 +439,7 @@ angular.module('famous-angular')
     ])(t.get());
   };
 
-  console.log(Easing);
+/*--------------------------------------------------------------*/
 
   $scope.heading = {
     translate: function(timeValue) {
@@ -460,56 +464,8 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.code = {
-    frame: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, 2000, 0], Easing.inOutQuart],
-          [0.5, [0, 100, 0]]
-        ])(t.get());
-      }
-    },
-
-    header: {
-      translate: function() {
-        return $timeline([
-          [0.4, [0, 2000, 0], Easing.inOutQuart],
-          [0.6, [0, 120, 0]]
-        ])(t.get());
-      }
-    },
-
-    sidenav: {
-      translate: function() {
-        return $timeline([
-          [0.5, [0, -2000, 0], Easing.inOutQuart],
-          [0.7, [0, 140, 0]]
-        ])(t.get());
-      }
-    },
-
-    container: {
-      translate: function() {
-        return $timeline([
-          [0.6, [-2000, 0, 0], Easing.inOutQuart],
-          [0.8, [0, 160, 0]]
-        ])(t.get());
-      }
-    },
-
-    content: {
-      translate: function() {
-        return $timeline([
-          [0.7, [-2000, 0, 0], Easing.inOutQuart],
-          [0.9, [0, 180, 0]]
-        ])(t.get());
-      }
-    }
-  };
-
-
-  $scope.example = {
-    frame: {
+  $scope.frame = {
+    visual: {
       translate: function() {
         return $timeline([
           [0.3, [0, -20, -100], Easing.inOutQuart],
@@ -517,8 +473,18 @@ angular.module('famous-angular')
         ])(t.get());
       }
     },
+    code: {
+      translate: function() {
+        return $timeline([
+          [0.3, [0, 2000, 0], Easing.inOutQuart],
+          [0.5, [0, 100, 0]]
+        ])(t.get());
+      }
+    }
+  };
 
-    header: {
+  $scope.header = {
+    visual: {
       translate: function() {
         return $timeline([
           [0.4, [0, -2000, 0], Easing.inOutQuart],
@@ -526,8 +492,18 @@ angular.module('famous-angular')
         ])(t.get());
       }
     },
+    code: {
+      translate: function() {
+        return $timeline([
+          [0.4, [0, 2000, 0], Easing.inOutQuart],
+          [0.6, [0, 120, 0]]
+        ])(t.get());
+      }
+    },
+  };
 
-    sidenav: {
+  $scope.sidenav = {
+    visual: {
       translate: function() {
         return $timeline([
           [0.5, [0, 2000, 0], function(x) { return x }],
@@ -535,8 +511,26 @@ angular.module('famous-angular')
         ])(t.get());
       }
     },
+    code: {
+      translate: function() {
+        return $timeline([
+          [0.5, [0, -2000, 0], Easing.inOutQuart],
+          [0.7, [0, 140, 0]]
+        ])(t.get());
+      }
+    },
+  };
 
-    container: {
+  $scope.container = {
+    code: {
+      translate: function() {
+        return $timeline([
+          [0.6, [-2000, 0, 0], Easing.inOutQuart],
+          [0.8, [0, 160, 0]]
+        ])(t.get());
+      }
+    },
+    visual: {
       translate: function() {
         return $timeline([
           [0.6, [2000, 90, 0], function(x) { return x }],
@@ -544,8 +538,11 @@ angular.module('famous-angular')
         ])(t.get());
       }
     },
+  };
 
-    content: {
+
+  $scope.content = {
+    visual: {
       translate: function() {
         return [135, 160, 0];
       },
@@ -559,6 +556,14 @@ angular.module('famous-angular')
         return $timeline([
           [0.7, [0.1, 0.1], Easing.inOutQuart],
           [1, [1, 1]]
+        ])(t.get());
+      }
+    },
+    code: {
+      translate: function() {
+        return $timeline([
+          [0.7, [-2000, 0, 0], Easing.inOutQuart],
+          [0.9, [0, 180, 0]]
         ])(t.get());
       }
     }
