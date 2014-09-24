@@ -43,8 +43,8 @@ angular.module('famous-angular')
 
       var z = $timeline([
         [0, -400, Easing.inQuad],
-        [0.2, 0, function(x) { return x; }],
-        [1.6, 0, function(x) { return x; }],
+        [0.2, 0],
+        [1.6, 0, Easing.outQuad],
         [2, 400]
       ])(timeValue);
 

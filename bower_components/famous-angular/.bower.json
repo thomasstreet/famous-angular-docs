@@ -1,13 +1,16 @@
 {
   "name": "famous-angular",
   "description": "Bring structure to your Famo.us apps with the power of AngularJS. Famo.us/Angular integrates seamlessly with existing Angular and Famo.us apps.",
-  "version": "0.3.0",
   "license": "MPL v2.0",
   "homepage": "https://github.com/Famous/famous-angular",
-  "main": "dist/famous-angular.js",
+  "main": [
+    "dist/famous-angular.js",
+    "dist/famous-angular.css"
+  ],
   "dependencies": {
     "angular": "1.2.22",
-    "famous": "http://code.famo.us/famous/global/0.2.2/famous-global-0.2.2.tar.gz"
+    "famous": "http://code.famo.us/famous/global/0.2.2/famous-global-0.2.2.tar.gz",
+    "famous-angular-bower": "https://code.famo.us/famous-angular/bower/famous-angular-bower.tar.gz"
   },
   "devDependencies": {
     "angular-mocks": "1.2.22"
@@ -32,13 +35,12 @@
     "changelog.js",
     "validateCommitMsg.js"
   ],
-  "_release": "0.3.0",
+  "_release": "8ea7d8b263",
   "_resolution": {
-    "type": "version",
-    "tag": "0.3.0",
-    "commit": "8b4a0515ee174d6fc4ccada484700fcba906dfce"
+    "type": "commit",
+    "commit": "8ea7d8b263d442e8b045e62cfaa44e77ae859f9f"
   },
-  "_source": "git://github.com/Famous/famous-angular.git",
-  "_target": "0.3.0",
-  "_originalSource": "famous-angular"
+  "_source": "https://github.com/Famous/famous-angular.git",
+  "_target": "8ea7d8b263d442e8b045e62cfaa44e77ae859f9f",
+  "_originalSource": "https://github.com/Famous/famous-angular.git"
 }
