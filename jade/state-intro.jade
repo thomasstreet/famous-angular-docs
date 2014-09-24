@@ -33,19 +33,19 @@ fa-modifier(
       fa-size="[true, true]"
     )
       p Write your Famo.us apps the way you write your Angular apps.
-      .divider
+      .intro-divider
 
 
   fa-modifier(
-    fa-translate='buttons.docs.translate(t.get())'
-    fa-opacity='buttons.docs.opacity(t.get())'
+    fa-translate='buttons.download.translate(t.get())'
+    fa-opacity='buttons.download.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     )
       .links
         a(href='docs/api/index.html')
-          | Docs
+          | Download
           div.octicon.octicon-cloud-download
   fa-modifier(
     fa-translate='buttons.github.translate(t.get())'
@@ -56,7 +56,7 @@ fa-modifier(
     )
       .links
         a(href='https://github.com/Famous/famous-angular')
-          | Star on Github
+          | On Github
           div.octicon.octicon-mark-github
       .stars-forks
         .left
@@ -66,8 +66,8 @@ fa-modifier(
           span.octicon.octicon-repo-forked
           | {{forks}} 
   fa-modifier(
-    fa-translate='buttons.download.translate(t.get())'
-    fa-opacity='buttons.download.opacity(t.get())'
+    fa-translate='buttons.docs.translate(t.get())'
+    fa-opacity='buttons.docs.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
