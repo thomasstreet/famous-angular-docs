@@ -87,45 +87,46 @@ angular.module('famous-angular')
   $scope.buttons = {
     download: {
       translate: $timeline([
-        [0, [0, -200, 0], Easing.inOutQuart],
-        [0.2, [0, -200, 0], Easing.inOutQuart],
+        [0, [0, 490, 0], Easing.inOutQuart],
+        [0.2, [0, 490, 0], Easing.inOutQuart],
         [0.4, [-300, 490, 0]],
         [1.6, [-300, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.3, 1, Easing.inCubic],
+        [0.2, 0],
+        [0.4, 1, Easing.inCubic],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
     },
     github: {
       translate: $timeline([
-        [0, [0, -200, 0], Easing.inOutQuart],
-        [0.2, [0, -200, 0], Easing.inOutQuart],
-        [0.4, [0, 490, 0]],
+        [0, [0, 200, 0], Easing.inOutQuart],
+        [0.2, [0, 490, 0]],
         [1.6, [0, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.3, 1, Easing.inCubic],
+        [0.2, 1, Easing.inCubic],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
     },
     docs: {
       translate: $timeline([
-        [0, [0, -200, 0], Easing.inOutQuart],
-        [0.2, [0, -200, 0], Easing.inOutQuart],
+        [0, [0, 490, 0], Easing.inOutQuart],
+        [0.2, [0, 490, 0], Easing.inOutQuart],
         [0.4, [300, 490, 0]],
         [1.6, [300, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.3, 1, Easing.inCubic],
+        [0.2, 0],
+        [0.4, 1, Easing.inCubic],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
