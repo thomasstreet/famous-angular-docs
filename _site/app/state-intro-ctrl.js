@@ -91,7 +91,7 @@ angular.module('famous-angular')
         [0.2, [0, -200, 0], Easing.inOutQuart],
         [0.4, [-300, 490, 0]],
         [1.6, [-300, 490, 0], Easing.outQuad],
-        [2, [0, -200, 0]]
+        [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -106,7 +106,7 @@ angular.module('famous-angular')
         [0.2, [0, -200, 0], Easing.inOutQuart],
         [0.4, [0, 490, 0]],
         [1.6, [0, 490, 0], Easing.outQuad],
-        [2, [0, -200, 0]]
+        [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -121,7 +121,7 @@ angular.module('famous-angular')
         [0.2, [0, -200, 0], Easing.inOutQuart],
         [0.4, [300, 490, 0]],
         [1.6, [300, 490, 0], Easing.outQuad],
-        [2, [0, -200, 0]]
+        [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -152,7 +152,7 @@ angular.module('famous-angular')
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 650, 0]],
       [1.6, [0, 650, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
+      [2, [0, -200, 1000]]
     ]),
     opacity: $timeline([
       [0, 0],
@@ -167,7 +167,7 @@ angular.module('famous-angular')
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 775, 0]],
       [1.6, [0, 775, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
+      [2, [0, 755, 1000]]
     ]),
     opacity: $timeline([
       [0, 0],
