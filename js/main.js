@@ -759,7 +759,7 @@ angular.module('famous-angular')
 
   $scope.faAppHeight = function() {
     var totalHeight = tile.height + tile.margin.bottom;
-    return (totalHeight * tile.countPerColumn) + $scope.repeatSlider.height;
+    return (totalHeight * tile.countPerColumn);
   };
 
   $scope.content = {

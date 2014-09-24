@@ -15,10 +15,11 @@ fa-modifier(
 
 fa-modifier(
   fa-translate='catTileGrid.translate(t.get())'
-  fa-size='[640, faAppHeight()]'
   fa-opacity='catTileGrid.opacity(t.get())'
 )
-  fa-surface
+  fa-surface(
+    fa-size='[640, faAppHeight()]'
+  )
     fa-app.set-perspective
 
       // Give a left padding so that the flapping animation is not cut off
