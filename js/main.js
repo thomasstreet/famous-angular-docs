@@ -414,6 +414,7 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
 
   $scope.enter = function($done) {
     t.delay(stateTransitions.enterDelay);
@@ -422,22 +423,40 @@ angular.module('famous-angular')
 
   $scope.leave = function($done) {
     t.halt();
-    t.set(0, {duration: stateTransitions.leaveDuration}, $done);
+    t.set(2, {duration: stateTransitions.leaveDuration}, $done);
   };
 
   $scope.opacity = function() {
     return $timeline([
       [0, 0, Easing.inOutQuart],
-      [1, 1]
+      [0.2, 1, Easing.inOutQuart],
+      [1.8, 1, Easing.inOutQuart],
+      [2, 0]
     ])(t.get());
   };
 
-  $scope.content = {
-    translate: function() {
-      return $timeline([
-        [0, [-2000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
-      ])(t.get());
+  console.log(Easing);
+
+  $scope.heading = {
+    translate: function(timeValue) {
+      var x = $timeline([
+        [0, 40, Easing.inQuad],
+        [0.2, 0]
+      ])(timeValue);
+
+      var y = $timeline([
+        [0, 40, Easing.inQuad],
+        [0.2, 0]
+      ])(timeValue);
+
+      var z = $timeline([
+        [0, -400, Easing.inQuad],
+        [0.2, 0, function(x) { return x; }],
+        [1.6, 0, function(x) { return x; }],
+        [2, 400]
+      ])(timeValue);
+
+      return [x, y, z];
     }
   };
 
@@ -493,7 +512,7 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [0.3, [0, -2000, 0], Easing.inOutQuart],
+          [0.3, [0, -20, -100], Easing.inOutQuart],
           [0.5, [0, 0, 0]]
         ])(t.get());
       }
