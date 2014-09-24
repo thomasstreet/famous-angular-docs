@@ -14,60 +14,92 @@ fa-modifier(
 
 
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='heading.translate(t.get())'
+    fa-opacity='heading.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     )
-    h1
-      | Famo.us/
-      span.angular-text Angular
+      h1
+        | Famo.us/
+        span.angular-text Angular
 
 
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='tagline.translate(t.get())'
+    fa-opacity='tagline.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     )
-    p Write your Famo.us apps the way you write your Angular apps.
-    .divider
+      p Write your Famo.us apps the way you write your Angular apps.
+      .divider
 
 
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='buttons.download.translate(t.get())'
+    fa-opacity='buttons.download.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     ).links
         a Download
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='buttons.github.translate(t.get())'
+    fa-opacity='buttons.github.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     ).links
-        a Star on Github
+        a(href='https://github.com/Famous/famous-angular') Star on Github
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='buttons.docs.translate(t.get())'
+    fa-opacity='buttons.docs.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     ).links
-      a Docs
-
+      a(href='docs/api/index.html') Docs
 
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='starsForks.translate(t.get())'
+    fa-opacity='starsForks.opacity(t.get())'
+  )
+    fa-surface(
+      fa-size="[true, true]"
+    ).stars-forks
+      | Stars: {{stars}} Forks: {{forks}}
+
+  fa-modifier(
+    fa-translate='scrollMessage.translate(t.get())'
+    fa-opacity='scrollMessage.opacity(t.get())'
+  )
+    fa-surface(
+      fa-size="[true, true]"
+    ).scroll-message
+      .scroll-to SCROLL TO
+      a(ui-sref='1') see it in action
+
+  fa-modifier(
+    fa-translate='downArrow.translate(t.get())'
+    fa-opacity='downArrow.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
     )
-    .links
-      a(ui-sref='1') Learn about Famo.us/Angular
+      a(ui-sref='1')
+        img(src='img/downarrow.svg' height='35px')
+
+  fa-modifier(
+    fa-translate='builtBy.translate(t.get())'
+    fa-opacity='builtBy.opacity(t.get())'
+  )
+    fa-surface(
+      fa-size="[true, true]"
+    ).built-by
+      | built by 
+      span.link
+        a(href='http://thomasstreet.com/') Thomas Street
+      |  for 
+      span.link
+        a(href='http://famo.us/') Famo.us
