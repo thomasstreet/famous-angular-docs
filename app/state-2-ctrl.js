@@ -107,7 +107,7 @@ angular.module('famous-angular')
 
     inputRange: {
       translate: function() {
-        return [0, 410, 9999];
+        return [0, 410, 5];
       },
       opacity: function() {
         return $timeline([
@@ -119,7 +119,7 @@ angular.module('famous-angular')
 
     inputText: {
       translate: function() {
-        return [320, 410, 9999];
+        return [320, 410, 5];
       },
       opacity: function() {
         return $timeline([
