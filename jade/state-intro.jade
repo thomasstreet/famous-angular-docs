@@ -37,15 +37,16 @@ fa-modifier(
 
 
   fa-modifier(
-    fa-translate='buttons.download.translate(t.get())'
-    fa-opacity='buttons.download.opacity(t.get())'
+    fa-translate='buttons.docs.translate(t.get())'
+    fa-opacity='buttons.docs.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
-    ).links
-        a 
+    )
+      .links
+        a(href='docs/api/index.html')
           | Docs
-          div.octicon.octicon-file-text
+          div.octicon.octicon-cloud-download
   fa-modifier(
     fa-translate='buttons.github.translate(t.get())'
     fa-opacity='buttons.github.opacity(t.get())'
@@ -64,18 +65,16 @@ fa-modifier(
         .right
           span.octicon.octicon-repo-forked
           | {{forks}} 
-
   fa-modifier(
-    fa-translate='buttons.docs.translate(t.get())'
-    fa-opacity='buttons.docs.opacity(t.get())'
+    fa-translate='buttons.download.translate(t.get())'
+    fa-opacity='buttons.download.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
-    )
-      .links
-        a(href='docs/api/index.html')
+    ).links
+        a 
           | Docs
-          div.octicon.octicon-cloud-download
+          div.octicon.octicon-file-text
 
   fa-modifier(
     fa-translate='scrollMessage.translate(t.get())'
