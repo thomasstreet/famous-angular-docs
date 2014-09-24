@@ -1276,8 +1276,8 @@ angular.module('famous-angular')
     },
     github: {
       translate: $timeline([
-        [0, [0, 200, 0], Easing.inOutQuart],
-        [0.2, [0, 490, 0]],
+        [0, [0, -200, 0], Easing.inOutQuart],
+        [0.3, [0, 490, 0]],
         [1.6, [0, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
@@ -1306,26 +1306,11 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.starsForks = {
-    translate: $timeline([
-      [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 600, 0]],
-      [1.6, [0, 600, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
-    ])
-  };
-
   $scope.scrollMessage = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 650, 0]],
-      [1.6, [0, 650, 0], Easing.outQuad],
+      [0.2, [0, 690, 0]],
+      [1.6, [0, 690, 0], Easing.outQuad],
       [2, [0, -200, 1000]]
     ]),
     opacity: $timeline([
@@ -1339,8 +1324,8 @@ angular.module('famous-angular')
   $scope.downArrow = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 775, 0]],
-      [1.6, [0, 775, 0], Easing.outQuad],
+      [0.2, [0, 805, 0]],
+      [1.6, [0, 805, 0], Easing.outQuad],
       [2, [0, 755, 1000]]
     ]),
     opacity: $timeline([
@@ -1354,8 +1339,8 @@ angular.module('famous-angular')
   $scope.builtBy = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 870, 0]],
-      [1.6, [0, 870, 0], Easing.outQuad],
+      [0.2, [0, 910, 0]],
+      [1.6, [0, 910, 0], Easing.outQuad],
       [2, [0, -200, 0]]
     ]),
     opacity: $timeline([

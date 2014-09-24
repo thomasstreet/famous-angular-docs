@@ -43,32 +43,39 @@ fa-modifier(
     fa-surface(
       fa-size="[true, true]"
     ).links
-        a Download
+        a 
+          | Docs
+          div.octicon.octicon-file-text
   fa-modifier(
     fa-translate='buttons.github.translate(t.get())'
     fa-opacity='buttons.github.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
-    ).links
-        a(href='https://github.com/Famous/famous-angular') Star on Github
+    )
+      .links
+        a(href='https://github.com/Famous/famous-angular')
+          | Star on Github
+          div.octicon.octicon-mark-github
+      .stars-forks
+        .left
+          span.octicon.octicon-star
+          | {{stars}} 
+        .right
+          span.octicon.octicon-repo-forked
+          | {{forks}} 
+
   fa-modifier(
     fa-translate='buttons.docs.translate(t.get())'
     fa-opacity='buttons.docs.opacity(t.get())'
   )
     fa-surface(
       fa-size="[true, true]"
-    ).links
-      a(href='docs/api/index.html') Docs
-
-  fa-modifier(
-    fa-translate='starsForks.translate(t.get())'
-    fa-opacity='starsForks.opacity(t.get())'
-  )
-    fa-surface(
-      fa-size="[true, true]"
-    ).stars-forks
-      | Stars: {{stars}} Forks: {{forks}}
+    )
+      .links
+        a(href='docs/api/index.html')
+          | Docs
+          div.octicon.octicon-cloud-download
 
   fa-modifier(
     fa-translate='scrollMessage.translate(t.get())'

@@ -9,7 +9,6 @@
 
   a:hover
     text-decoration none
-    
 
   .logo
     margin-bottom 20px
@@ -30,6 +29,7 @@
     margin-bottom 55px
 
   .links
+    margin-bottom 20px
 
     a
       display block
@@ -42,6 +42,26 @@
       line-height 36px
       color #1B1F1F 
       margin 0 20px
+      transition margin-top 0.3s ease, height 0.3s ease, background-color 0.3s ease
+
+      .octicon
+        display block
+        font-size 40px
+        margin-top 20px
+        opacity 0
+        transition opacity 0.3s ease
+
+    &:hover
+      a
+        margin-top -20px
+        height 135px
+        background-color #10A0E6
+        color #1B1E1E
+        transition margin-top 0.3s ease, height 0.3s ease, background-color 0.3s ease
+
+        .octicon
+          opacity 1
+          transition opacity 0.3s ease
 
   .divider
     width 150px
@@ -54,20 +74,36 @@
     background -ms-linear-gradient(0deg, rgba(16, 160, 230, 1) 0%, rgba(218, 38, 46, 1) 100%)
 
   .stars-forks
+    font-family 'octicons'
     color white
     font-size 24px
+
+    .left
+      display inline-block
+      margin-right 30px
+
+    .right
+      display inline-block
+
+    .octicon
+      font-size 26px
+      margin-right 10px
 
   .scroll-message
     .scroll-to
       color #5C4554
-      font-size 22px
+      font-size 20px
 
     a
       font-size 48px
       font-weight lighter
+      color #10A0E6
+
+      a:hover
+        color #10A0E6
 
   .built-by
-    font-size 26px
+    font-size 22px
     color #5C4554
 
     .link
