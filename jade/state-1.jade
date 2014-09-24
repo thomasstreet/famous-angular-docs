@@ -33,7 +33,10 @@ fa-modifier(
   fa-translate='[1000, 150, 0]'
   fa-size='[600, 375]'
 )
-  fa-modifier(fa-translate='frame.visual.translate()')
+  fa-modifier(
+    fa-translate='frame.visual.translate(t.get())'
+    fa-opacity='frame.visual.opacity(t.get())'
+  )
     fa-surface
       .example-frame
   fa-modifier(fa-translate='header.visual.translate()')

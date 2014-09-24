@@ -166,10 +166,10 @@ angular.module('famous-angular')
       [1, 1]
     ]),
     translate: $timeline([
-      [0, [0, -340, 0], Easing.inOutQuad],
+      [0, [0, -40, -200], Easing.inOutQuad],
       [0.5, [0, -40, 0]],
       [1.7, [0, -40, 0]],
-      [2, [0, -340, 0]]
+      [2, [0, -40, 200]]
     ])
   };
 
@@ -498,12 +498,19 @@ angular.module('famous-angular')
 
   $scope.frame = {
     visual: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, -20, -100], Easing.inOutQuart],
-          [0.5, [0, 0, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.3, [0, -20, -100], Easing.inOutQuart],
+        [0.5, [0, 0, 0]],
+        [1.5, [0, 0, 0]],
+        [2, [0, 0, 200]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.3, 0],
+        [0.5, 1],
+        [1.5, 1],
+        [2, 0]
+      ])
     },
     code: {
       translate: function() {

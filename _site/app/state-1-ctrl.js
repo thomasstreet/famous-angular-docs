@@ -41,12 +41,19 @@ angular.module('famous-angular')
 
   $scope.frame = {
     visual: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, -20, -100], Easing.inOutQuart],
-          [0.5, [0, 0, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.3, [0, -20, -100], Easing.inOutQuart],
+        [0.5, [0, 0, 0]],
+        [1.5, [0, 0, 0]],
+        [2, [0, 0, 200]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.3, 0],
+        [0.5, 1],
+        [1.5, 1],
+        [2, 0]
+      ])
     },
     code: {
       translate: function() {

@@ -34,10 +34,10 @@ angular.module('famous-angular')
       [1, 1]
     ]),
     translate: $timeline([
-      [0, [0, -340, 0], Easing.inOutQuad],
+      [0, [0, -40, -200], Easing.inOutQuad],
       [0.5, [0, -40, 0]],
       [1.7, [0, -40, 0]],
-      [2, [0, -340, 0]]
+      [2, [0, -40, 200]]
     ])
   };
 
