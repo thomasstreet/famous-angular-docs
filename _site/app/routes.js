@@ -9,7 +9,7 @@ angular.module('famous-angular')
       data: {
         index: 0,
         enterAnimationDuration: 3000,
-        leaveAnimationDuration: 400,
+        leaveAnimationDuration: 600,
         cssClass: 'state-intro'
       }
     })

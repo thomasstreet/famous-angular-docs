@@ -49,8 +49,8 @@ angular.module('famous-angular')
   }
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
+    determineScrollPositionFromState();
     if (initialPageLoad) {
-      determineScrollPositionFromState();
       initialPageLoad = false;
     }
   });
@@ -63,8 +63,8 @@ angular.module('famous-angular')
       var state = scrollStates[i];
       if (newState.name === state.name) {
 
-        // Set the scroll to slightly past the beginning of state range
-        var beginningOfStateRange = state.max - rangePerState + 5;
+        // Set the scroll to half past the beginning of state range
+        var beginningOfStateRange = state.max - rangePerState + 50;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
@@ -74,6 +74,7 @@ angular.module('famous-angular')
         ])(beginningOfStateRange);
 
         window.scrollTo(0, newScrollY);
+        console.log(window.pageYOffset);
         break;
       }
     }

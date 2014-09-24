@@ -169,6 +169,14 @@ angular.module('famous-angular')
     ])
   };
 
+  $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    if (toState.data.index === 0) {
+      $scope.navTimeline.set(0, {duration: 500});
+    } else {
+      $scope.navTimeline.set(1, {duration: 1000});
+    }
+  });
+
 });
 
 angular.module('famous-angular')
@@ -262,8 +270,8 @@ angular.module('famous-angular')
   }
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
+    determineScrollPositionFromState();
     if (initialPageLoad) {
-      determineScrollPositionFromState();
       initialPageLoad = false;
     }
   });
@@ -276,8 +284,8 @@ angular.module('famous-angular')
       var state = scrollStates[i];
       if (newState.name === state.name) {
 
-        // Set the scroll to slightly past the beginning of state range
-        var beginningOfStateRange = state.max - rangePerState + 5;
+        // Set the scroll to half past the beginning of state range
+        var beginningOfStateRange = state.max - rangePerState + 50;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
@@ -287,6 +295,7 @@ angular.module('famous-angular')
         ])(beginningOfStateRange);
 
         window.scrollTo(0, newScrollY);
+        console.log(window.pageYOffset);
         break;
       }
     }
@@ -305,7 +314,7 @@ angular.module('famous-angular')
       data: {
         index: 0,
         enterAnimationDuration: 3000,
-        leaveAnimationDuration: 400,
+        leaveAnimationDuration: 600,
         cssClass: 'state-intro'
       }
     })
@@ -447,7 +456,6 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -593,7 +601,6 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -751,7 +758,6 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -931,7 +937,6 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -1009,7 +1014,6 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -1155,9 +1159,9 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(0, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -1165,12 +1169,12 @@ angular.module('famous-angular')
     stateTransitions.leave(t, $done);
   };
 
-  $scope.opacity = function() {
-    return $timeline([
-      [0, 0, Easing.inOutQuart],
-      [0.5, 1]
-    ])(t.get());
-  };
+  $scope.opacity = $timeline([
+    [0, 0, Easing.inOutQuart],
+    [0.5, 1],
+    [1, 1, Easing.inOutQuart],
+    [2, 0]
+  ]);
 
 });
 
@@ -1179,7 +1183,7 @@ angular.module('famous-angular')
 .factory('stateTransitions', function($rootScope, $state) {
   var prevState;
 
-  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+  $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     prevState = fromState;
   });
 

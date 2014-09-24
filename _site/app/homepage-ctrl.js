@@ -37,4 +37,12 @@ angular.module('famous-angular')
     ])
   };
 
+  $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    if (toState.data.index === 0) {
+      $scope.navTimeline.set(0, {duration: 500});
+    } else {
+      $scope.navTimeline.set(1, {duration: 1000});
+    }
+  });
+
 });

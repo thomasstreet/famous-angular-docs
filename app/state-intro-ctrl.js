@@ -5,9 +5,9 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(0, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 
@@ -15,11 +15,11 @@ angular.module('famous-angular')
     stateTransitions.leave(t, $done);
   };
 
-  $scope.opacity = function() {
-    return $timeline([
-      [0, 0, Easing.inOutQuart],
-      [0.5, 1]
-    ])(t.get());
-  };
+  $scope.opacity = $timeline([
+    [0, 0, Easing.inOutQuart],
+    [0.5, 1],
+    [1, 1, Easing.inOutQuart],
+    [2, 0]
+  ]);
 
 });

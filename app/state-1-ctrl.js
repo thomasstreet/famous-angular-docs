@@ -11,7 +11,6 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    $scope.$parent.navTimeline.set(1, {duration: 1000});
     stateTransitions.enter(t, $done);
   };
 

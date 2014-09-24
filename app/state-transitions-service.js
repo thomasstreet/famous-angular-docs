@@ -3,7 +3,7 @@ angular.module('famous-angular')
 .factory('stateTransitions', function($rootScope, $state) {
   var prevState;
 
-  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+  $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     prevState = fromState;
   });
 
