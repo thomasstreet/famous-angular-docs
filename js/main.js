@@ -174,6 +174,8 @@ angular.module('famous-angular')
   };
 
   $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    $scope.navTimeline.halt();
+
     var delay = getDelay(fromState);
     $scope.navTimeline.delay(delay);
 
