@@ -1,64 +1,64 @@
 include state-nav
 
 fa-modifier(
-  fa-opacity='opacity()'
+  fa-translate='[250, 150, 0]'
 )
   fa-modifier(
-    fa-translate='[250, 150, 0]'
+    fa-translate='heading.translate(t.get())'
+    fa-opacity='heading.opacity(t.get())'
   )
-    fa-modifier(fa-translate='heading.translate(t.get())')
-      fa-surface(fa-size="[750, true]")
-        h1.heading Visualize your Famo.us scene graph in an HTML hierarchy
+    fa-surface(fa-size="[750, true]")
+      h1.heading Visualize your Famo.us scene graph in an HTML hierarchy
 
-    fa-modifier(fa-translate='frame.code.translate()')
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
-    fa-modifier(fa-translate='header.code.translate()')
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
-    fa-modifier(fa-translate='sidenav.code.translate()')
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
-    fa-modifier(fa-translate='container.code.translate()')
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
-    fa-modifier(fa-translate='content.code.translate()')
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
+  fa-modifier(fa-translate='frame.code.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='header.code.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='sidenav.code.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='container.code.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
+  fa-modifier(fa-translate='content.code.translate()')
+    fa-surface(fa-size="[500, true]")
+      .code
+        p fa-surface
 
+fa-modifier(
+  fa-translate='[1000, 150, 0]'
+  fa-size='[600, 375]'
+)
+  fa-modifier(fa-translate='frame.visual.translate()')
+    fa-surface
+      .example-frame
+  fa-modifier(fa-translate='header.visual.translate()')
+    fa-surface(fa-size='[560, 55]')
+      .example-header
+  fa-modifier(fa-translate='sidenav.visual.translate()')
+    fa-surface(fa-size='[75, 245]')
+      .example-sidenav
+  fa-modifier(fa-translate='container.visual.translate()')
+    fa-surface(fa-size='[470, 245]')
+      .example-container
   fa-modifier(
-    fa-translate='[1000, 150, 0]'
-    fa-size='[600, 375]'
+    fa-translate='content.visual.translate()'
+    fa-opacity='content.visual.opacity()'
+    fa-scale='content.visual.scale()'
   )
-    fa-modifier(fa-translate='frame.visual.translate()')
-      fa-surface
-        .example-frame
-    fa-modifier(fa-translate='header.visual.translate()')
-      fa-surface(fa-size='[560, 55]')
-        .example-header
-    fa-modifier(fa-translate='sidenav.visual.translate()')
-      fa-surface(fa-size='[75, 245]')
-        .example-sidenav
-    fa-modifier(fa-translate='container.visual.translate()')
-      fa-surface(fa-size='[470, 245]')
-        .example-container
-    fa-modifier(
-      fa-translate='content.visual.translate()'
-      fa-opacity='content.visual.opacity()'
-      fa-scale='content.visual.scale()'
-    )
-      fa-surface(fa-size='[420, 195]')
-        .example-content
-        .example-content(
-          style="left: 35%;"
-        )
-        .example-content(
-          style="left: 70%;"
-        )
+    fa-surface(fa-size='[420, 195]')
+      .example-content
+      .example-content(
+        style="left: 35%;"
+      )
+      .example-content(
+        style="left: 70%;"
+      )
 
 include state-footer

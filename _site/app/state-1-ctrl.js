@@ -11,49 +11,32 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(2, {duration: stateTransitions.leaveDuration}, $done);
-  };
-
-/*--------------------------------------------------------------*/
-
-  $scope.opacity = function() {
-    return $timeline([
-      [0, 0, Easing.inOutQuart],
-      [0.2, 1, Easing.inOutQuart],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
-    ])(t.get());
+    stateTransitions.leave(t, $done);
   };
 
 /*--------------------------------------------------------------*/
 
   $scope.heading = {
     translate: function(timeValue) {
-      var x = $timeline([
-        [0, 40, Easing.inQuad],
-        [0.2, 0]
-      ])(timeValue);
-
-      var y = $timeline([
-        [0, 40, Easing.inQuad],
-        [0.2, 0]
-      ])(timeValue);
-
       var z = $timeline([
-        [0, -400, Easing.inQuad],
+        [0, -200, Easing.inOutQuart],
         [0.2, 0],
         [1.6, 0, Easing.outQuad],
         [2, 400]
       ])(timeValue);
 
-      return [x, y, z];
-    }
+      return [0, 0, z];
+    },
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 1, Easing.inCubic],
+      [1.8, 1, Easing.inOutQuart],
+      [2, 0]
+    ])
   };
 
   $scope.frame = {

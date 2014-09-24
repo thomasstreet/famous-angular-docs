@@ -287,6 +287,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-intro.html',
       controller: 'stateIntroCtrl',
       data: {
+        index: 0,
+        enterAnimationDuration: 3000,
         leaveAnimationDuration: 400,
         cssClass: 'state-intro'
       }
@@ -296,6 +298,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-1.html',
       controller: 'state1Ctrl',
       data: {
+        index: 1,
+        enterAnimationDuration: 4000,
         leaveAnimationDuration: 600,
         cssClass: 'state-1'
       }
@@ -305,6 +309,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-2.html',
       controller: 'state2Ctrl',
       data: {
+        index: 2,
+        enterAnimationDuration: 4000,
         leaveAnimationDuration: 600,
         cssClass: 'state-2'
       }
@@ -314,6 +320,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-3.html',
       controller: 'state3Ctrl',
       data: {
+        index: 3,
+        enterAnimationDuration: 4000,
         leaveAnimationDuration: 1200,
         cssClass: 'state-3'
       }
@@ -323,6 +331,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-4.html',
       controller: 'state4Ctrl',
       data: {
+        index: 4,
+        enterAnimationDuration: 4000,
         leaveAnimationDuration: 600,
         cssClass: 'state-4'
       }
@@ -332,6 +342,8 @@ angular.module('famous-angular')
       templateUrl: 'templates/state-5.html',
       controller: 'state5Ctrl',
       data: {
+        index: 5,
+        enterAnimationDuration: 4000,
         leaveAnimationDuration: 1200,
         cssClass: 'state-5'
       }
@@ -419,49 +431,32 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    t.delay(stateTransitions.enterDelay);
-    t.set(1, {duration: 4000}, $done);
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
-    t.halt();
-    t.set(2, {duration: stateTransitions.leaveDuration}, $done);
-  };
-
-/*--------------------------------------------------------------*/
-
-  $scope.opacity = function() {
-    return $timeline([
-      [0, 0, Easing.inOutQuart],
-      [0.2, 1, Easing.inOutQuart],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
-    ])(t.get());
+    stateTransitions.leave(t, $done);
   };
 
 /*--------------------------------------------------------------*/
 
   $scope.heading = {
     translate: function(timeValue) {
-      var x = $timeline([
-        [0, 40, Easing.inQuad],
-        [0.2, 0]
-      ])(timeValue);
-
-      var y = $timeline([
-        [0, 40, Easing.inQuad],
-        [0.2, 0]
-      ])(timeValue);
-
       var z = $timeline([
-        [0, -400, Easing.inQuad],
+        [0, -200, Easing.inOutQuart],
         [0.2, 0],
         [1.6, 0, Easing.outQuad],
         [2, 400]
       ])(timeValue);
 
-      return [x, y, z];
-    }
+      return [0, 0, z];
+    },
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 1, Easing.inCubic],
+      [1.8, 1, Easing.inOutQuart],
+      [2, 0]
+    ])
   };
 
   $scope.frame = {
@@ -1168,17 +1163,45 @@ angular.module('famous-angular')
     prevState = fromState;
   });
 
-  return function() {
-    return {
-      enterDelay: function() {
-        if (!prevState || !prevState.data) {
-          return 0;
-        }
-        return prevState.data.leaveAnimationDuration;
-      },
-      leaveDuration: function() {
-        return $state.current.data.leaveAnimationDuration;
-      }
+  function enterDelay() {
+    if (!prevState || !prevState.data) {
+      return 0;
+    }
+    return prevState.data.leaveAnimationDuration;
+  }
+
+  function leaveDuration() {
+    return $state.current.data.leaveAnimationDuration;
+  }
+
+  function getEnterInitialT() {
+    return 0;
+  }
+
+  function getEnterEndT() {
+    return 1;
+  }
+
+  function getLeaveT() {
+    return 2;
+  }
+
+  return {
+    enter: function(t, $done) {
+      var initialT = getEnterInitialT();
+      t.set(initialT, { duration: 0 });
+
+      t.delay(enterDelay());
+
+      var endT = getEnterEndT();
+      var enterDuration = 3000;
+      t.set(endT, { duration: enterDuration }, $done);
+    },
+    leave: function(t, $done) {
+      t.halt();
+
+      var leaveT = getLeaveT();
+      t.set(leaveT, { duration: leaveDuration() }, $done);
     }
   }
 });
