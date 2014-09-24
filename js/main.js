@@ -1180,6 +1180,18 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+  $scope.arrowAnimation = new Transitionable(0);
+
+  window.set = function() {
+    $scope.arrowAnimation.set(1, {duration: 1000}, function() {
+      $scope.arrowAnimation.set(0, {duration: 0}, function() {
+        setTimeout(window.set, 1000);
+      });
+    });
+  };
+
+  //window.set();
+
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
@@ -1309,8 +1321,8 @@ angular.module('famous-angular')
   $scope.scrollMessage = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 690, 0]],
-      [1.6, [0, 690, 0], Easing.outQuad],
+      [0.2, [0, 770, 0]],
+      [1.6, [0, 770, 0], Easing.outQuad],
       [2, [0, -200, 1000]]
     ]),
     opacity: $timeline([
@@ -1322,10 +1334,14 @@ angular.module('famous-angular')
   };
 
   $scope.downArrow = {
+    animation: $timeline([
+      [0, [0, 0, 0], Easing.outBounce],
+      [1, [0, 30, 0]],
+    ]),
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 805, 0]],
-      [1.6, [0, 805, 0], Easing.outQuad],
+      [0.2, [0, 885, 0]],
+      [1.6, [0, 885, 0], Easing.outQuad],
       [2, [0, 755, 1000]]
     ]),
     opacity: $timeline([
@@ -1339,8 +1355,8 @@ angular.module('famous-angular')
   $scope.builtBy = {
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 910, 0]],
-      [1.6, [0, 910, 0], Easing.outQuad],
+      [0.2, [0, 685, 0]],
+      [1.6, [0, 685, 0], Easing.outQuad],
       [2, [0, -200, 0]]
     ]),
     opacity: $timeline([
