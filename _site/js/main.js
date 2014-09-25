@@ -646,7 +646,7 @@ angular.module('famous-angular')
     translate: function() {
       return $timeline([
         [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [990, 180, 0]]
+        [0.2, [1020, 180, 0]]
       ])(t.get());
     }
   };
