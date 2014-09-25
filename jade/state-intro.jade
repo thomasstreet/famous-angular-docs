@@ -50,21 +50,25 @@ fa-modifier(
   fa-modifier(
     fa-translate='buttons.github.translate(t.get())'
     fa-opacity='buttons.github.opacity(t.get())'
+    fa-z-index='1'
   )
-    fa-surface(
-      fa-size="[true, true]"
+    fa-modifier(
+      fa-rotate-x='buttons.github.rotateX(t.get())'
     )
-      .links
-        a(href='https://github.com/Famous/famous-angular')
-          | On Github
-          div.octicon.octicon-mark-github
-      .stars-forks
-        .left
-          span.octicon.octicon-star
-          | {{stars}} 
-        .right
-          span.octicon.octicon-repo-forked
-          | {{forks}} 
+      fa-surface(
+        fa-size="[true, true]"
+      )
+        .links
+          a(href='https://github.com/Famous/famous-angular')
+            | On Github
+            div.octicon.octicon-mark-github
+        .stars-forks
+          .left
+            span.octicon.octicon-star
+            | {{stars}} 
+          .right
+            span.octicon.octicon-repo-forked
+            | {{forks}} 
   fa-modifier(
     fa-translate='buttons.docs.translate(t.get())'
     fa-opacity='buttons.docs.opacity(t.get())'

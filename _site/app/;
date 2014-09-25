@@ -104,23 +104,23 @@ angular.module('famous-angular')
     download: {
       translate: $timeline([
         [0, [0, 490, 0]],
-        [0.5, [0, 490, 0], Easing.inOutQuart],
-        [0.7, [-300, 490, 0]],
+        [0.4, [0, 490, 0], Easing.inOutQuart],
+        [0.6, [-300, 490, 0]],
         [1.6, [-300, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.5, 0],
-        [0.7, 1],
+        [0.4, 0],
+        [0.6, 1],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
     },
     github: {
       rotateX: $timeline([
-        [0, -Math.PI / 2],
-        [0.3, -Math.PI / 2, Easing.outElastic],
+        [0, -Math.PI / 6],
+        [0.3, -Math.PI / 6, Easing.outElastic],
         [1, 0],
         [1.5, 0, Easing.inOutQuart],
         [2, Math.PI]
@@ -135,7 +135,7 @@ angular.module('famous-angular')
       opacity: $timeline([
         [0, 0],
         [0.3, 0, Easing.inCubic],
-        [0.4, 1],
+        [0.5, 1],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
@@ -143,15 +143,15 @@ angular.module('famous-angular')
     docs: {
       translate: $timeline([
         [0, [0, 490, 0]],
-        [0.5, [0, 490, 0], Easing.inOutQuart],
-        [0.7, [300, 490, 0]],
+        [0.4, [0, 490, 0], Easing.inOutQuart],
+        [0.6, [300, 490, 0]],
         [1.6, [300, 490, 0], Easing.outQuad],
         [2, [0, -200, 500]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.5, 0],
-        [0.7, 1, Easing.inCubic],
+        [0.4, 0],
+        [0.6, 1, Easing.inCubic],
         [1.8, 1, Easing.inOutQuart],
         [2, 0]
       ])
