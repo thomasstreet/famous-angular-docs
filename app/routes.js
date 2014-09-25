@@ -67,6 +67,17 @@ angular.module('famous-angular')
         leaveAnimationDuration: 1200,
         cssClass: 'state-5'
       }
+    })
+    .state('end', {
+      url: '/end',
+      templateUrl: 'templates/state-end.html',
+      controller: 'stateEndCtrl',
+      data: {
+        index: 6,
+        enterAnimationDuration: 4000,
+        leaveAnimationDuration: 1200,
+        cssClass: 'state-end'
+      }
     });
 
     $urlRouterProvider.otherwise('intro');

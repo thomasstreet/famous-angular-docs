@@ -34,10 +34,10 @@ angular.module('famous-angular')
       [1, 1]
     ]),
     translate: $timeline([
-      [0, [0, -40, -200], Easing.inOutQuad],
+      [0, [0, -40, -200], Easing.inQuad],
       [0.5, [0, -40, 0]],
-      [1.7, [0, -40, 0]],
-      [2, [0, -40, 200]]
+      [1, [0, -40, 0], Easing.inCubic],
+      [2, [0, -760, 0]]
     ])
   };
 
@@ -49,8 +49,11 @@ angular.module('famous-angular')
 
     if (toState.data.index === 0) {
       $scope.navTimeline.set(0, {duration: 500});
+    } else if (toState.data.index === 6) {
+      $scope.navTimeline.set(1, {duration: 0});
+      $scope.navTimeline.set(2, {duration: 500});
     } else {
-      $scope.navTimeline.set(1, {duration: 1000});
+      $scope.navTimeline.set(1, {duration: 500});
     }
   });
 
