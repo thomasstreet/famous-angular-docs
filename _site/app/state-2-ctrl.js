@@ -32,7 +32,7 @@ angular.module('famous-angular')
     translate: function() {
       return $timeline([
         [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [0, 0, 0]]
+        [0.2, [990, 180, 0]]
       ])(t.get());
     }
   };
@@ -42,7 +42,7 @@ angular.module('famous-angular')
       translate: function() {
         return $timeline([
           [0.3, [0, 1000, 0], Easing.inOutQuart],
-          [0.5, [0, 100, 0]]
+          [0.5, [0, 150, 0]]
         ])(t.get());
       }
     },
@@ -53,7 +53,7 @@ angular.module('famous-angular')
     translate: function() {
       return $timeline([
         [0, [-1000, 0, 0], Easing.inOutQuart],
-        [0.2, [250, 150, 0]]
+        [0.2, [250, 190, 0]]
       ])(t.get());
     },
 
