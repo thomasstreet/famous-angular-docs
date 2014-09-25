@@ -52,12 +52,17 @@
 
       a
         color #EBF0F0 
+        transition $color-transition
         cursor pointer
         margin 0 24px
         font-size 22px
 
         &:hover
           text-decoration none
+
+        &.active
+          color #10A0E6
+          transition $color-transition
 
         .octicon
           margin-right 15px
