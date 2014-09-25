@@ -30,7 +30,7 @@ angular.module('famous-angular')
   $scope.heading = {
     translate: function(timeValue) {
       var z = $timeline([
-        [0, -200, Easing.inOutQuart],
+        [0, -200, Easing.outQuad],
         [0.2, 0],
         [1.6, 0, Easing.outQuad],
         [2, 400]
@@ -49,7 +49,7 @@ angular.module('famous-angular')
   $scope.frame = {
     visual: {
       translate: $timeline([
-        [0.3, [0, -20, -100], Easing.inOutQuart],
+        [0.3, [0, -20, -100], Easing.outQuad],
         [0.5, [0, 0, 0]],
         [1.5, [0, 0, 0]],
         [2, [0, 0, 200]]

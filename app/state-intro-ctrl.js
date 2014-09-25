@@ -14,6 +14,9 @@ angular.module('famous-angular')
       // In the callback after enter animation is complete, animate the
       // down arrow
       animateArrow();
+      setTimeout(function() {
+        animateArrow();
+      }, 1700);
       $done();
     });
   };
