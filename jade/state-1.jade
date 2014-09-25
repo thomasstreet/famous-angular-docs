@@ -1,5 +1,5 @@
 fa-modifier(
-  fa-translate='[250, 150, 0]'
+  fa-translate='content.translate(t.get())'
 )
   fa-modifier(
     fa-translate='heading.translate(t.get())'
@@ -24,13 +24,13 @@ fa-modifier(
     fa-surface(fa-size="[500, true]")
       .code
         | fa-surface
-  fa-modifier(fa-translate='content.code.translate()')
+  fa-modifier(fa-translate='frameContent.code.translate()')
     fa-surface(fa-size="[500, true]")
       .code
         | fa-surface
 
 fa-modifier(
-  fa-translate='[1000, 150, 0]'
+  fa-translate='[1050, 190, 0]'
   fa-size='[600, 375]'
 )
   fa-modifier(
@@ -49,9 +49,9 @@ fa-modifier(
     fa-surface(fa-size='[470, 245]')
       .example-container
   fa-modifier(
-    fa-translate='content.visual.translate()'
-    fa-opacity='content.visual.opacity()'
-    fa-scale='content.visual.scale()'
+    fa-translate='frameContent.visual.translate()'
+    fa-opacity='frameContent.visual.opacity()'
+    fa-scale='frameContent.visual.scale()'
   )
     fa-surface(fa-size='[420, 195]')
       .example-content

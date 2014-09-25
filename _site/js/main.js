@@ -479,6 +479,13 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $scope.content = {
+    translate: $timeline([
+      [0, [0, 0, 0], Easing.inOutQuart],
+      [0.2, [220, 190, 0]],
+    ]),
+  };
+
   $scope.heading = {
     translate: function(timeValue) {
       var z = $timeline([
@@ -582,7 +589,7 @@ angular.module('famous-angular')
   };
 
 
-  $scope.content = {
+  $scope.frameContent = {
     visual: {
       translate: function() {
         return [135, 160, 0];
