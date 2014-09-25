@@ -222,8 +222,9 @@ angular.module('famous-angular')
   var loopAnimation;
 
   function animateArrow() {
+    console.log('animate');
+    $scope.arrowAnimation.set(0, {duration: 0});
     $scope.arrowAnimation.set(1700, {duration: 1700}, function() {
-      $scope.arrowAnimation.set(0, {duration: 0});
       if (loopAnimation) {
         animateArrow();
       }
