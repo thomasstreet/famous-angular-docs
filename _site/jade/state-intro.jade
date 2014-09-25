@@ -100,6 +100,8 @@ fa-modifier(
   )
     fa-surface(
       fa-size="[true, true]"
+      ng-mouseover="startArrowAnimation()"
+      ng-mouseleave="endArrowAnimation()"
     ).scroll-message
       a(ui-sref='1')
         .scroll-to SCROLL TO
@@ -110,10 +112,13 @@ fa-modifier(
     fa-opacity='downArrow.opacity(t.get())'
   )
     fa-modifier(
-      fa-translate='downArrow.animation(arrowAnimation.get())'
+      fa-translate='downArrow.animation.translate(arrowAnimation.get())'
+      fa-opacity='downArrow.animation.opacity(arrowAnimation.get())'
     )
       fa-surface(
         fa-size="[true, true]"
+        ng-mouseover="startArrowAnimation()"
+        ng-mouseleave="endArrowAnimation()"
       )
         a(ui-sref='1')
           img(src='img/downarrow.svg' height='35px')

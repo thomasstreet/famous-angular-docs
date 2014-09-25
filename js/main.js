@@ -1182,22 +1182,15 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
-  $scope.arrowAnimation = new Transitionable(0);
-
-  window.set = function() {
-    $scope.arrowAnimation.set(1, {duration: 1000}, function() {
-      $scope.arrowAnimation.set(0, {duration: 0}, function() {
-        setTimeout(window.set, 1000);
-      });
-    });
-  };
-
-  //window.set();
-
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      // In the callback after enter animation is complete, animate the
+      // down arrow
+      animateArrow();
+      $done();
+    });
   };
 
   $scope.leave = function($done) {
@@ -1364,10 +1357,22 @@ angular.module('famous-angular')
   };
 
   $scope.downArrow = {
-    animation: $timeline([
-      [0, [0, 0, 0], Easing.outBounce],
-      [1, [0, 30, 0]],
-    ]),
+    animation: {
+      translate: $timeline([
+        [0, [0, 0, 0], Easing.outQuad],
+        [300, [0, 30, 0]],
+        [301, [0, -25, 0], Easing.inQuad],
+        [600, [0, 0, 0]],
+        [1700, [0, 0, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 1, Easing.outQuad],
+        [300, 0],
+        [301, 0, Easing.outQuad],
+        [600, 1],
+        [1700, 1]
+      ])
+    },
     translate: $timeline([
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 885, 0]],
@@ -1380,6 +1385,34 @@ angular.module('famous-angular')
       [1.8, 1, Easing.inOutQuart],
       [2, 0]
     ])
+  };
+
+/*--------------------------------------------------------------*/
+
+  $scope.arrowAnimation = new Transitionable(0);
+
+  var loopAnimation;
+
+  function animateArrow() {
+    $scope.arrowAnimation.set(1700, {duration: 1700}, function() {
+      $scope.arrowAnimation.set(0, {duration: 0});
+      if (loopAnimation) {
+        animateArrow();
+      }
+    });
+  }
+
+  $scope.startArrowAnimation = function() {
+    if (loopAnimation) {
+      return;
+    }
+
+    loopAnimation = true;
+    animateArrow();
+  };
+
+  $scope.endArrowAnimation = function() {
+    loopAnimation = false;
   };
 
 });
