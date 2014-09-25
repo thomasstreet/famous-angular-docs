@@ -249,7 +249,8 @@ angular.module('famous-angular')
     { max: 300, name: '2' },
     { max: 400, name: '3' },
     { max: 500, name: '4' },
-    { max: 600, name: '5' }
+    { max: 600, name: '5' },
+    { max: 700, name: 'end' }
   ];
 
   var initialPageLoad = true;
@@ -270,7 +271,7 @@ angular.module('famous-angular')
     // Scale the scroll range to a simple timeline of [0, n * 100]
     t = $timeline([
       [0, 0, function(x) { return x }],
-      [scrollMax, (stateCount - 1) * rangePerState]
+      [scrollMax, stateCount * rangePerState]
     ])(pageYOffset);
 
     return t;
