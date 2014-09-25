@@ -53,6 +53,13 @@ angular.module('famous-angular')
       $scope.navTimeline.set(1, {duration: 0});
       $scope.navTimeline.set(2, {duration: 500});
     } else {
+
+      // If transition from 'end' state to any other state, halt() the delay()
+      // set
+      if (fromState.data && fromState.data.index === 6) {
+        $scope.navTimeline.halt();
+      }
+
       $scope.navTimeline.set(1, {duration: 500});
     }
   });

@@ -74,7 +74,9 @@ angular.module('famous-angular')
           [(stateCount - 1) * rangePerState, scrollMax]
         ])(beginningOfStateRange);
 
-        window.scrollTo(0, newScrollY);
+        // Disable for now
+        //window.scrollTo(0, newScrollY);
+
         console.log(window.pageYOffset);
         break;
       }
