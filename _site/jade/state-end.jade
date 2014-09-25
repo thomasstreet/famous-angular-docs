@@ -4,10 +4,59 @@ fa-modifier(
 )
 
   fa-modifier(
-    fa-translate='logo.translate(t.get())'
-    fa-opacity='logo.opacity(t.get())'
+    fa-translate='container.translate(t.get())'
+    fa-opacity='container.opacity(t.get())'
+  )
+    fa-surface(
+      fa-size="[1400, 500]"
+    ).download-container
+      .download-container-divider
+
+  fa-modifier(
+    fa-translate="download.text.translate(t.get())"
+    fa-opacity="download.text.opacity(t.get())"
+  )
+    fa-surface(
+      fa-size="[true, true]"
+    ).download-text
+      div
+        | Download the Starter Kit
+      .horizontal-divider.center
+
+  fa-modifier(
+    fa-translate="download.button.translate(t.get())"
+    fa-opacity="download.button.opacity(t.get())"
+  )
+    fa-surface(
+      fa-size="[225, 225]"
+    ).download-button
+      div.octicon.octicon-cloud-download
+
+  fa-modifier(
+    fa-translate="cdn.translate(t.get())"
+    fa-opacity="cdn.opacity(t.get())"
   )
     fa-surface(
       fa-size="[true, true]"
     )
-      img.logo(src='img/famous-angular-white-logo_x3.png' height="123px")
+      .download-text
+        | Start using Famo.us/Angular
+      .horizontal-divider
+      .cdn-option
+        .icons
+          span.pill-button
+            | CDN
+          .circle.octicon.octicon-check
+          .option-label Minified
+          .circle.octicon.octicon-check.unchecked
+          .option-label Unminified
+        .info
+          .line https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.js
+          .line https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.js
+          .line.required Both files are required
+      .cdn-option
+        .icons
+          span.pill-button
+            | BOWER
+        .info
+          | bower install famous-angular

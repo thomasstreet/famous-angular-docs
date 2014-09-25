@@ -1,0 +1,105 @@
+@import 'variables'
+
+/***********************************************************************
+  State End
+***********************************************************************/
+
+.state-end
+
+  .download-container
+    position absolute
+    height 100%
+    width 100%
+    border-radius 10px
+    border 2px solid #5C4554
+
+    .download-container-divider
+      position absolute
+      height 100%
+      width 1px
+      border-right 2px solid #5C4554
+      left 34%
+
+  .download-text
+    color #AE81FF
+    font-family Lato
+    font-size 26px
+
+  .horizontal-divider
+    height 1px
+    width 100px
+    border-bottom 2px solid #5C4554
+    margin-top 30px
+    margin-bottom 40px
+
+    &.center
+      margin-left auto
+      margin-right auto
+
+  .download-button
+    background white
+    border-radius 10px
+    position absolute
+    height 100%
+    width 100%
+    text-align center
+    padding-top 50px
+
+    .octicon
+      font-size 110px
+
+  .cdn-option
+    margin-bottom 40px
+
+    .icons
+      margin-bottom 10px
+
+      .pill-button
+        display inline-block
+        vertical-align middle
+        background white
+        border-radius 10px
+        padding 8px 13px
+        font-size 22px
+        letter-spacing 1.2px
+        text-transform uppercase
+        color black
+
+      .circle
+        vertical-align middle
+        display inline-block
+        border-radius 999px
+        border 3px solid inherit
+        height 45px
+        width 45px
+        margin-left 50px
+        font-size 40px
+
+        &.octicon
+          padding-top 1px
+          background #AE81FF
+          border-color #AE81FF
+          color black
+          text-align center
+
+        &.unchecked
+          border-color gray
+
+      .option-label
+        margin-left 20px
+        font-weight 400
+        vertical-align middle
+        display inline-block
+        color gray
+        font-size 30px
+
+    .info
+      font-size 26px
+      color white
+
+      .line
+        margin-bottom 5px
+
+      .required
+        text-transform uppercase
+        color #F92672
