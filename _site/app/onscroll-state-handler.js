@@ -75,7 +75,7 @@ angular.module('famous-angular')
         ])(beginningOfStateRange);
 
         // Disable for now
-        //window.scrollTo(0, newScrollY);
+        window.scrollTo(0, newScrollY);
 
         console.log(window.pageYOffset);
         break;
