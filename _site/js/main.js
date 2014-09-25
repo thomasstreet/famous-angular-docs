@@ -791,7 +791,7 @@ angular.module('famous-angular')
   $scope.catTileGrid = {
     translate: $timeline([
       [0, [1500, 0, 0], Easing.inOutQuart],
-      [0.2, [950, 120, 0]]
+      [0.2, [980, 180, 0]]
     ]),
     opacity: $timeline([
       [0, 0, Easing.inOutQuart],
@@ -807,14 +807,14 @@ angular.module('famous-angular')
   $scope.content = {
     translate: $timeline([
       [0, [-1000, 0, 0], Easing.inOutQuart],
-      [0.2, [0, 0, 0]]
+      [0.2, [250, 160, 0]]
     ])
   };
 
   $scope.code = {
     translate: $timeline([
       [0.2, [0, 1000, 0], Easing.inOutQuart],
-      [0.3, [0, 100, 0]]
+      [0.3, [0, 150, 0]]
     ])
   };
 
