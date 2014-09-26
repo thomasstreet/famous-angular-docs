@@ -27,15 +27,6 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.opacity = $timeline([
-    [0, 0, Easing.inOutQuart],
-    [0.5, 1],
-    [1, 1, Easing.inOutQuart],
-    [2, 0]
-  ]);
-
-/*--------------------------------------------------------------*/
-
   $http({
     method: 'GET',
     url: 'https://api.github.com/repos/famous/famous-angular'
@@ -48,16 +39,17 @@ angular.module('famous-angular')
 
   $scope.logo = {
     translate: $timeline([
-      [0, [0, 200, 0], Easing.inOutQuart],
-      [0.2, [0, 80, 0]],
-      [1.6, [0, 80, 0], Easing.outQuad],
-      [2, [0, 80, 150]]
+      [0, [0, 300, 0], Easing.outCubic],
+      [0.5, [0, 80, 0]],
+      [1, [0, 80, 0], Easing.outQuad],
+      [2, [0, 80, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.2, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      //[0, 0],
+      [0.5, 1],
+      [1, 1],
+      [1.5, 0]
     ])
   };
 
@@ -65,34 +57,34 @@ angular.module('famous-angular')
   $scope.heading = {
     translate: $timeline([
       [0, [0, 400, 0]],
-      [0.1, [0, 400, 0], Easing.inOutQuart],
-      [0.3, [0, 210, 0]],
-      [1.6, [0, 210, 0], Easing.outQuad],
-      [2, [0, 210, 150]]
+      [0.05, [0, 400, 0], Easing.outCubic],
+      [0.55, [0, 210, 0]],
+      [1, [0, 210, 0], Easing.outQuad],
+      [2, [0, 210, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.1, 0, Easing.inCubic],
-      [0.3, 1],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.05, 0],
+      [0.55, 1],
+      [1, 1],
+      [1.5, 0]
     ])
   };
 
   $scope.tagline = {
     translate: $timeline([
-      [0, [0, 500, 0]],
-      [0.2, [0, 500, 0], Easing.inOutQuart],
-      [0.4, [0, 350, 0]],
-      [1.6, [0, 350, 0], Easing.outQuad],
-      [2, [0, 350, 150]]
+      [0, [0, 600, 0]],
+      [0.1, [0, 600, 0], Easing.outCubic],
+      [0.6, [0, 350, 0]],
+      [1, [0, 350, 0], Easing.outQuad],
+      [2, [0, 350, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.2, 0],
-      [0.4, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.1, 0],
+      [0.6, 1, Easing.inCubic],
+      [1, 1, Easing.inOutQuart],
+      [1.5, 0]
     ])
   };
 
@@ -100,94 +92,92 @@ angular.module('famous-angular')
     download: {
       translate: $timeline([
         [0, [0, 490, 0]],
-        [0.5, [0, 490, 0], Easing.inOutQuart],
-        [0.7, [-300, 490, 0]],
-        [1.6, [-300, 490, 0], Easing.outQuad],
-        [2, [-300, 490, 150]]
+        [0.7, [0, 490, 0], Easing.inOutQuart],
+        [1, [-300, 490, 0], Easing.outQuad],
+        [2, [-300, 490, 100]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.5, 0],
-        [0.7, 1],
-        [1.6, 1, Easing.inQuad],
-        [1.9, 0]
+        [0.7, 0],
+        [1, 1],
+        [1.5, 0]
       ])
     },
     github: {
       rotateX: $timeline([
         [0, -Math.PI / 2],
-        [0.3, -Math.PI / 2, Easing.outElastic],
+        [0.5, -Math.PI / 2, Easing.outBack],
         [1, 0],
-        [1.5, 0, Easing.inOutQuart],
-        [2, 0]
       ]),
       translate: $timeline([
-        [0, [0, 490, 0]],
-        [0.3, [0, 490, 0], Easing.inOutQuart],
-        //[0.5, [0, 490, 0]],
-        [1.6, [0, 490, 0], Easing.outQuad],
-        [1.9, [0, 490, 150]],
+        [0, [0, 690, 1]],
+        [0.15, [0, 690, 1], Easing.inOutQuart],
+        [0.65, [0, 490, 1]],
+        [1, [0, 490, 1], Easing.outQuad],
+        [2, [0, 490, 100]],
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.3, 0, Easing.inCubic],
-        [0.4, 1],
-        [1.6, 1, Easing.inQuad],
-        [1.9, 0]
+        [0.15, 0],
+        [0.65, 1],
+        [1, 1],
+        [1.5, 0]
       ])
     },
     docs: {
       translate: $timeline([
         [0, [0, 490, 0]],
-        [0.5, [0, 490, 0], Easing.inOutQuart],
-        [0.7, [300, 490, 0]],
-        [1.6, [300, 490, 0], Easing.outQuad],
-        [2, [300, 490, 150]],
+        [0.7, [0, 490, 0], Easing.inOutQuart],
+        [1, [300, 490, 0], Easing.outQuad],
+        [2, [300, 490, 100]],
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.5, 0],
-        [0.7, 1],
-        [1.6, 1, Easing.inQuad],
-        [2, 0]
+        [0.7, 0],
+        [1, 1],
+        [1.5, 0]
       ])
     }
   };
 
   $scope.builtBy = {
     translate: $timeline([
-      [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 685, 0]],
-      [1.6, [0, 685, 0], Easing.outQuad],
-      [2, [0, 685, 150]]
+      [0, [0, 885, 0], Easing.inOutQuart],
+      [0.2, [0, 885, 0], Easing.outQuad],
+      [0.7, [0, 685, 0]],
+      [1, [0, 685, 0], Easing.outQuad],
+      [2, [0, 685, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.6, 1, Easing.inQuad],
-      [2, 0]
+      [0.2, 0],
+      [0.7, 1],
+      [1, 1],
+      [1.5, 0]
     ])
   };
 
   $scope.scrollMessage = {
     translate: $timeline([
-      [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 770, 0]],
-      [1.6, [0, 770, 0], Easing.outQuad],
-      [2, [0, 770, 150]]
+      [0, [0, 670, 0]],
+      [0.45, [0, 670, 0], Easing.inOutQuart],
+      [0.95, [0, 770, 0]],
+      [1, [0, 770, 0], Easing.outQuad],
+      [2, [0, 770, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.75, 0],
+      [0.95, 1],
+      [1, 1],
+      [1.5, 0]
     ])
   };
 
   $scope.downArrow = {
     animation: {
       translate: $timeline([
-        [0, [0, 0, 0], Easing.outQuad],
+        [0, [0, 0, 0], Easing.inOutQuart],
         [300, [0, 30, 0]],
         [301, [0, -25, 0], Easing.inQuad],
         [600, [0, 0, 0]],
@@ -202,16 +192,16 @@ angular.module('famous-angular')
       ])
     },
     translate: $timeline([
-      [0, [0, -200, 0], Easing.inOutQuart],
-      [0.2, [0, 885, 0]],
-      [1.6, [0, 885, 0], Easing.outQuad],
-      [2, [0, 855, 150]]
+      [0, [0, 785, 0]],
+      [0.5, [0, 785, 0], Easing.inOutQuart],
+      [1, [0, 885, 0], Easing.outQuad],
+      [2, [0, 855, 100]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.6, 0],
+      [1, 1],
+      [1.5, 0]
     ])
   };
 

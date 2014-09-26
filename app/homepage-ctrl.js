@@ -34,39 +34,48 @@ angular.module('famous-angular')
       [1, 1]
     ]),
     translate: $timeline([
-      [0, [0, -40, -200], Easing.inQuad],
-      [0.5, [0, -40, 0]],
+      [0, [0, -40, 0]],
       [1, [0, -40, 0], Easing.inOutQuart],
       [2, [0, -770, 0]]
     ])
   };
 
   $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+
     $scope.navTimeline.halt();
 
     var delay = getDelay(fromState);
     $scope.navTimeline.delay(delay);
 
-    if (toState.data.index === 0) {
-      $scope.navTimeline.set(0, {duration: 500});
-    } else if (toState.data.index === 6) {
-      $scope.navTimeline.set(1, {duration: 0});
-      $scope.navTimeline.set(2, {duration: 500});
-    } else {
-
-      // If transition from 'end' state to any other state, halt() the delay()
-      // set
-      if (fromState.data && fromState.data.index === 6) {
-        $scope.navTimeline.halt();
-      }
-
-      $scope.navTimeline.set(1, {duration: 500});
+    if (goingToIntroState()) {
+      $scope.navTimeline.set(0, {duration: 300});
+      return;
+    } 
+    
+    if (goingToEndState()) {
+      $scope.navTimeline.set(1, {duration: 0}, function() {
+        $scope.navTimeline.set(2, {duration: 500});
+      });
+      return;
     }
-  });
 
-  function getDelay(prevState) {
-    if (!prevState.data) return 0;
-    return prevState.data.leaveAnimationDuration;
-  }
+    // Must be a state between 1 - 5, so always show sidebar
+    $scope.navTimeline.set(1, {duration: 300});
+    return;
+
+    function getDelay(prevState) {
+      if (!prevState.data) return 0;
+      return prevState.data.leaveAnimationDuration;
+    }
+
+    function goingToIntroState() {
+      return toState.data.index === 0;
+    }
+
+    function goingToEndState() {
+      return toState.data.index === 6;
+    }
+
+  });
 
 });

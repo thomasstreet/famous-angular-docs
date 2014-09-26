@@ -1,6 +1,10 @@
 angular.module('famous-angular')
 
 .factory('stateTransitions', function($rootScope, $state) {
+  // Need to give dead time between animations, so that the compilation
+  // of a new view will stop stutter frame rate
+  var DEAD_TIME_BETWEEN_ANIMATIONS = 100;
+
   var prevState;
 
   $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
@@ -57,13 +61,15 @@ angular.module('famous-angular')
       var initialT = getEnterInitialT();
       t.set(initialT, { duration: 0 });
 
-      t.delay(enterDelay());
+      t.delay(enterDelay() + DEAD_TIME_BETWEEN_ANIMATIONS);
 
       // Always set to 1, regardless of transition direction
       t.set(1, { duration: enterDuration() }, $done);
     },
     leave: function(t, $done) {
       t.halt();
+
+      t.delay(DEAD_TIME_BETWEEN_ANIMATIONS);
 
       var leaveT = getLeaveT();
       t.set(leaveT, { duration: leaveDuration() }, $done);
