@@ -3,8 +3,6 @@ var SITE_DIR = './';
 var EXPRESS_PORT = 4000;
 var EXPRESS_DOCS_ROOT = __dirname + '/' + SITE_DIR + '_site';
 
-console.log(EXPRESS_DOCS_ROOT);
-
 var LIVERELOAD_PORT = 35729;
 
 
@@ -82,7 +80,7 @@ gulp.task('site-jade', function() {
 
   return gulp.src(SITE_DIR + "jade/**/*.jade")
     .pipe(jade())
-    .pipe(gulp.dest(SITE_DIR + "templates/"));
+    .pipe(gulp.dest(SITE_DIR + "build/templates/"));
 });
 
 
@@ -95,7 +93,7 @@ gulp.task('site-styl', function() {
     .pipe(minifycss())
     .pipe(concat('main.css'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(SITE_DIR + "css/"));
+    .pipe(gulp.dest(SITE_DIR + "build/"));
 });
 
 
@@ -110,7 +108,7 @@ gulp.task('site-js', function() {
     .pipe(ngmin())
     .pipe(uglify({ mangle: false }))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(SITE_DIR + "js/"));
+    .pipe(gulp.dest(SITE_DIR + "build/"));
 });
 
 
