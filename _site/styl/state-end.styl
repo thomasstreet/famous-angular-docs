@@ -71,33 +71,49 @@
         text-transform uppercase
         color black
 
-      .circle
-        vertical-align middle
+
+      .minify-option
+        cursor pointer
         display inline-block
-        border-radius 999px
-        border 3px solid inherit
-        height 40px
-        width 40px
-        margin-left 50px
-        font-size 30px
-
-        &.octicon
-          padding-top 2px
-          background #AE81FF
-          border-color #AE81FF
-          color black
-          text-align center
-
-        &.unchecked
-          border-color gray
-
-      .option-label
-        margin-left 20px
-        font-weight 400
         vertical-align middle
-        display inline-block
-        color gray
-        font-size 30px
+         
+        .circle
+          vertical-align middle
+          display inline-block
+          border-radius 999px
+          border 3px solid inherit
+          height 40px
+          width 40px
+          margin-left 50px
+          font-size 30px
+
+          &.octicon
+            padding-top 2px
+            background black
+            border-color gray
+            color black
+            text-align center
+            transition border-color 0.2s ease, background 0.2s ease
+
+        .option-label
+          margin-left 20px
+          font-weight 400
+          vertical-align middle
+          display inline-block
+          color gray
+          font-size 30px
+          transition color 0.2s ease
+
+        &.active
+          .circle
+            &.octicon
+              border-color #AE81FF
+              background #AE81FF
+              transition border-color 0.2s ease, background 0.2s ease
+
+          .option-label
+            color #AE81FF
+            transition color 0.2s ease
 
     .info
       font-size 26px

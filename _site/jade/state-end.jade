@@ -33,31 +33,39 @@ fa-modifier(
       a(href='http://code.famo.us/famous-angular/latest/famous-angular-starter-kit.zip?src=project-page-modal').download-button
         .octicon.octicon-cloud-download
 
-  fa-modifier(
-    fa-translate="cdn.translate(t.get())"
-    fa-opacity="cdn.opacity(t.get())"
+fa-modifier(
+  fa-translate="cdn.translate(t.get())"
+  fa-opacity="cdn.opacity(t.get())"
+)
+  fa-surface(
+    fa-size="[true, true]"
   )
-    fa-surface(
-      fa-size="[true, true]"
-    )
-      .download-text
-        | Start using Famo.us/Angular
-      .horizontal-divider
-      .cdn-option
-        .icons
-          span.pill-button
-            | CDN
+    .download-text
+      | Start using Famo.us/Angular
+    .horizontal-divider
+    .cdn-option
+      .icons
+        span.pill-button
+          | CDN
+        .minify-option(
+          ng-class="{ 'active': minified}"
+          ng-click="toggleMinified()"
+        )
           .circle.octicon.octicon-check
           .option-label Minified
-          .circle.unchecked
+        .minify-option(
+          ng-class="{ 'active': !minified}"
+          ng-click="toggleMinified()"
+        )
+          .circle.octicon.octicon-check
           .option-label Unminified
-        .info
-          .line https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.js
-          .line https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.css
-          .line.required Both files are required
-      .cdn-option
-        .icons
-          span.pill-button
-            | BOWER
-        .info
-          | bower install famous-angular
+      .info
+        .line {{jsCDN()}}
+        .line {{cssCDN()}}
+        .line.required Both files are required
+    .cdn-option
+      .icons
+        span.pill-button
+          | BOWER
+      .info
+        | bower install famous-angular

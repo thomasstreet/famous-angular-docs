@@ -7,6 +7,32 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+  $scope.minified = true;
+
+  $scope.toggleMinified = function() {
+    $scope.minified = !$scope.minified;
+  };
+
+  $scope.jsCDN = function() {
+    console.log($scope.minified);
+    return $scope.minified ? js.minified : js.unminified;
+  };
+
+  $scope.cssCDN = function() {
+    return $scope.minified ? css.minified : css.unminified;
+  };
+
+  var js = {
+    minified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.js',
+    unminified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.js'
+  };
+
+  var css = {
+    minified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.css',
+    unminified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.css'
+  };
+
+
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
@@ -81,14 +107,15 @@ angular.module('famous-angular')
 
   $scope.cdn = {
     translate: $timeline([
-      [0, [0, 200, 0], Easing.inOutQuart],
-      [0.2, [235, 350, 0]],
-      [1.6, [235, 350, 0], Easing.outQuad],
+      [0, [785, 200, 0], Easing.inOutQuart],
+      [0.2, [785, 350, 0]],
+      [1.6, [785, 350, 0], Easing.outQuad],
       [2, [0, 200, 200]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.2, 1, Easing.inCubic],
+      [0.2, 0, Easing.outCubic],
+      [0.4, 1],
       [1.8, 1, Easing.inOutQuart],
       [2, 0]
     ])
