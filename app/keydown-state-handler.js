@@ -35,6 +35,7 @@ angular.module('famous-angular')
         return state;
       }
     }
+    return null;
   }
 
 });

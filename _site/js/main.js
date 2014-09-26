@@ -280,6 +280,7 @@ angular.module('famous-angular')
         return state;
       }
     }
+    return null;
   }
 
 });
@@ -360,7 +361,6 @@ angular.module('famous-angular')
           [(stateCount) * rangePerState, scrollMax]
         ])(beginningOfStateRange);
 
-        // Disable for now
         window.scrollTo(0, newScrollY);
 
         break;
@@ -454,7 +454,6 @@ angular.module('famous-angular')
 
     $urlRouterProvider.otherwise('intro');
 })
-
 
 ;
 
@@ -1601,6 +1600,7 @@ angular.module('famous-angular')
   }
 
   $scope.startArrowAnimation = function() {
+    // Don't start a new loop if already looping
     if (loopAnimation) {
       return;
     }

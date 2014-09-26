@@ -83,5 +83,4 @@ angular.module('famous-angular')
     $urlRouterProvider.otherwise('intro');
 })
 
-
 ;

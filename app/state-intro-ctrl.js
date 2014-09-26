@@ -231,6 +231,7 @@ angular.module('famous-angular')
   }
 
   $scope.startArrowAnimation = function() {
+    // Don't start a new loop if already looping
     if (loopAnimation) {
       return;
     }
