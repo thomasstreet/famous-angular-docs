@@ -36,7 +36,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, -40, -200], Easing.inQuad],
       [0.5, [0, -40, 0]],
-      [1, [0, -40, 0], Easing.inCubic],
+      [1, [0, -40, 0], Easing.inOutQuart],
       [2, [0, -770, 0]]
     ])
   };

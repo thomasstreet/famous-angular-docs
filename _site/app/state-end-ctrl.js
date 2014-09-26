@@ -14,7 +14,6 @@ angular.module('famous-angular')
   };
 
   $scope.jsCDN = function() {
-    console.log($scope.minified);
     return $scope.minified ? js.minified : js.unminified;
   };
 
