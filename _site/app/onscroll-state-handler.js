@@ -30,7 +30,7 @@ angular.module('famous-angular')
     var pageYOffset = window.pageYOffset;
     var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
-    // Scale the scroll range to a simple timeline of [0, n * 100]
+    // Scale the scroll range to a simple timeline range
     t = $timeline([
       [0, 0, function(x) { return x }],
       [scrollMax, stateCount * rangePerState]
@@ -75,9 +75,8 @@ angular.module('famous-angular')
         ])(beginningOfStateRange);
 
         // Disable for now
-        window.scrollTo(0, newScrollY);
+        //window.scrollTo(0, newScrollY);
 
-        console.log(window.pageYOffset);
         break;
       }
     }
