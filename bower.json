@@ -20,7 +20,7 @@
     "famous-angular": "https://github.com/Famous/famous-angular.git#8ea7d8b263d442e8b045e62cfaa44e77ae859f9f",
     "jquery": "~2.1.1",
     "bootstrap": "~3.1.1",
-    "underscore": "~1.6.0",
-    "angular-ui-router": "~0.2.11"
+    "angular-ui-router": "~0.2.11",
+    "lodash": "~2.4.1
   }
 }
