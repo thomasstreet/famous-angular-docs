@@ -19,9 +19,9 @@
 
     <div id="viewport" ng-controller="homepageCtrl">
       <fa-app style='height: 980px; width: 1920px;' class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="200">
-        <ng-include src="'templates/state-nav.html'"></ng-include>
+        <ng-include src="'build/templates/state-nav.html'"></ng-include>
         <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
-        <ng-include src="'templates/state-footer.html'"></ng-include>
+        <ng-include src="'build/templates/state-footer.html'"></ng-include>
       </fa-app>
     </div>
 
@@ -31,6 +31,6 @@
     <script src="{{relative}}bower_components/angular/angular.min.js"></script>
     <script src="{{relative}}bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.js"></script>
-    <script src="{{relative}}js/main.min.js"></script>
+    <script src="{{relative}}build/main.min.js"></script>
   </body>
 </html>

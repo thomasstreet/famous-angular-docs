@@ -15,7 +15,12 @@ angular.module('famous-angular')
     return prevState.data.leaveAnimationDuration;
   }
 
+
   function enterDuration() {
+    if (!comingFromLowerIndex()) {
+      return $state.current.data.leaveAnimationDuration;
+    }
+
     return $state.current.data.enterAnimationDuration;
   }
 
@@ -26,22 +31,24 @@ angular.module('famous-angular')
 
 
   function getEnterInitialT() {
-    if (!prevState) {
-      return 0;
-    }
-
-    var currentIndex = $state.current.data.index;
-    var prevIndex = prevState.data.index;
-
-    return currentIndex > prevIndex ? 0 : 2;
+    return comingFromLowerIndex() ? 0 : 2;
   }
 
 
   function getLeaveT() {
+    return comingFromLowerIndex() ? 2 : 0;
+  }
+
+
+  function comingFromLowerIndex() {
+    if (!prevState) {
+      return true;
+    }
+
     var currentIndex = $state.current.data.index;
     var prevIndex = prevState.data.index;
-
-    return currentIndex > prevIndex ? 2 : 0;
+  
+    return prevIndex < currentIndex;
   }
 
 
