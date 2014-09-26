@@ -1420,7 +1420,7 @@ angular.module('famous-angular')
       [0, [0, 200, 0], Easing.inOutQuart],
       [0.2, [0, 80, 0]],
       [1.6, [0, 80, 0], Easing.outQuad],
-      [2, [0, 200, 200]]
+      [2, [0, 80, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
@@ -1437,7 +1437,7 @@ angular.module('famous-angular')
       [0.1, [0, 400, 0], Easing.inOutQuart],
       [0.3, [0, 210, 0]],
       [1.6, [0, 210, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
+      [2, [0, 210, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
@@ -1454,7 +1454,7 @@ angular.module('famous-angular')
       [0.2, [0, 500, 0], Easing.inOutQuart],
       [0.4, [0, 350, 0]],
       [1.6, [0, 350, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
+      [2, [0, 350, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
@@ -1472,14 +1472,14 @@ angular.module('famous-angular')
         [0.5, [0, 490, 0], Easing.inOutQuart],
         [0.7, [-300, 490, 0]],
         [1.6, [-300, 490, 0], Easing.outQuad],
-        [2, [0, -200, 500]]
+        [2, [-300, 490, 150]]
       ]),
       opacity: $timeline([
         [0, 0],
         [0.5, 0],
         [0.7, 1],
-        [1.8, 1, Easing.inOutQuart],
-        [2, 0]
+        [1.6, 1, Easing.inQuad],
+        [1.9, 0]
       ])
     },
     github: {
@@ -1488,21 +1488,21 @@ angular.module('famous-angular')
         [0.3, -Math.PI / 2, Easing.outElastic],
         [1, 0],
         [1.5, 0, Easing.inOutQuart],
-        [2, Math.PI]
+        [2, 0]
       ]),
       translate: $timeline([
         [0, [0, 490, 0]],
         [0.3, [0, 490, 0], Easing.inOutQuart],
         //[0.5, [0, 490, 0]],
         [1.6, [0, 490, 0], Easing.outQuad],
-        [2, [0, -200, 500]]
+        [1.9, [0, 490, 150]],
       ]),
       opacity: $timeline([
         [0, 0],
         [0.3, 0, Easing.inCubic],
         [0.4, 1],
-        [1.8, 1, Easing.inOutQuart],
-        [2, 0]
+        [1.6, 1, Easing.inQuad],
+        [1.9, 0]
       ])
     },
     docs: {
@@ -1511,13 +1511,13 @@ angular.module('famous-angular')
         [0.5, [0, 490, 0], Easing.inOutQuart],
         [0.7, [300, 490, 0]],
         [1.6, [300, 490, 0], Easing.outQuad],
-        [2, [0, -200, 500]]
+        [2, [300, 490, 150]],
       ]),
       opacity: $timeline([
         [0, 0],
         [0.5, 0],
-        [0.7, 1, Easing.inCubic],
-        [1.8, 1, Easing.inOutQuart],
+        [0.7, 1],
+        [1.6, 1, Easing.inQuad],
         [2, 0]
       ])
     }
@@ -1528,12 +1528,12 @@ angular.module('famous-angular')
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 685, 0]],
       [1.6, [0, 685, 0], Easing.outQuad],
-      [2, [0, -200, 0]]
+      [2, [0, 685, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
       [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
+      [1.6, 1, Easing.inQuad],
       [2, 0]
     ])
   };
@@ -1543,7 +1543,7 @@ angular.module('famous-angular')
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 770, 0]],
       [1.6, [0, 770, 0], Easing.outQuad],
-      [2, [0, -200, 1000]]
+      [2, [0, 770, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
@@ -1574,7 +1574,7 @@ angular.module('famous-angular')
       [0, [0, -200, 0], Easing.inOutQuart],
       [0.2, [0, 885, 0]],
       [1.6, [0, 885, 0], Easing.outQuad],
-      [2, [0, 755, 1000]]
+      [2, [0, 855, 150]]
     ]),
     opacity: $timeline([
       [0, 0],
