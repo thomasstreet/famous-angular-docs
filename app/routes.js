@@ -8,8 +8,8 @@ angular.module('famous-angular')
       controller: 'stateIntroCtrl',
       data: {
         index: 0,
-        enterAnimationDuration: 3000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 400,
         cssClass: 'state-intro'
       }
     })

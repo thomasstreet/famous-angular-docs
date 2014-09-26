@@ -41,7 +41,6 @@ angular.module('famous-angular')
   };
 
   $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-    var animationDuration = 500;
 
     $scope.navTimeline.halt();
 
@@ -49,19 +48,19 @@ angular.module('famous-angular')
     $scope.navTimeline.delay(delay);
 
     if (goingToIntroState()) {
-      $scope.navTimeline.set(0, {duration: animationDuration});
+      $scope.navTimeline.set(0, {duration: 300});
       return;
     } 
     
     if (goingToEndState()) {
       $scope.navTimeline.set(1, {duration: 0}, function() {
-        $scope.navTimeline.set(2, {duration: animationDuration});
+        $scope.navTimeline.set(2, {duration: 500});
       });
       return;
     }
 
     // Must be a state between 1 - 5, so always show sidebar
-    $scope.navTimeline.set(1, {duration: animationDuration});
+    $scope.navTimeline.set(1, {duration: 300});
     return;
 
     function getDelay(prevState) {
