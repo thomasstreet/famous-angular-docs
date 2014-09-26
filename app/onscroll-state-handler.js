@@ -17,12 +17,14 @@ angular.module('famous-angular')
 
   var initialPageLoad = true;
 
+  var throttledGo = _.throttle($state.go.bind($state), 1000);
+
   window.onscroll = function() {
     // Initial routing from page laod will set the scroll position, but 
     // don't want to execute handler for that scrollTo()
     if (!initialPageLoad) {
       var t = getTimelineFromScroll();
-      determineState(t);
+      throttledGo(determineState(t));
     }
   };
 
@@ -43,8 +45,8 @@ angular.module('famous-angular')
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
       if (t < state.max) {
-        $state.go(state.name);
-        break;
+        console.log("going to", state.name);
+        return state.name;
       }
     }
   }
