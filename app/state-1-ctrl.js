@@ -22,22 +22,17 @@ angular.module('famous-angular')
 
   $scope.content = {
     translate: $timeline([
-      [0, [0, 0, 0], Easing.inOutQuart],
-      [0.2, [220, 190, 0]],
+      [0, [220, 190, 0]],
     ])
   };
 
   $scope.heading = {
-    translate: function(timeValue) {
-      var z = $timeline([
-        [0, -200, Easing.outQuad],
-        [0.2, 0],
-        [1.6, 0, Easing.outQuad],
-        [2, 400]
-      ])(timeValue);
-
-      return [0, 0, z];
-    },
+    translate: $timeline([
+      [0, [0, 0, -200], Easing.outQuad],
+      [0.2, [0, 0, 0]],
+      [1.6, [0, 0, 0], Easing.outQuad],
+      [2, [0, 0, 400]]
+    ]),
     opacity: $timeline([
       [0, 0],
       [0.3, 1, Easing.inCubic],

@@ -30,8 +30,8 @@ angular.module('famous-angular')
       controller: 'state2Ctrl',
       data: {
         index: 2,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-2'
       }
     })
@@ -41,8 +41,8 @@ angular.module('famous-angular')
       controller: 'state3Ctrl',
       data: {
         index: 3,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 1200,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-3'
       }
     })
@@ -52,8 +52,8 @@ angular.module('famous-angular')
       controller: 'state4Ctrl',
       data: {
         index: 4,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-4'
       }
     })
@@ -63,8 +63,8 @@ angular.module('famous-angular')
       controller: 'state5Ctrl',
       data: {
         index: 5,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-5'
       }
     })
@@ -74,8 +74,8 @@ angular.module('famous-angular')
       controller: 'stateEndCtrl',
       data: {
         index: 6,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-end'
       }
     });
