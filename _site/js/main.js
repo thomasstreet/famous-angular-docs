@@ -253,7 +253,6 @@ angular.module('famous-angular')
     // If key is left, go back a state
     if (key === 37) {
       var desiredIndex = $state.current.data.index - 1;
-      console.log($state.current.data.index, desiredIndex);
       goToStateWithIndex(desiredIndex);
     }
 
@@ -358,11 +357,11 @@ angular.module('famous-angular')
 
         var newScrollY = $timeline([
           [0, 0, function(x) { return x }],
-          [(stateCount - 1) * rangePerState, scrollMax]
+          [(stateCount) * rangePerState, scrollMax]
         ])(beginningOfStateRange);
 
         // Disable for now
-        //window.scrollTo(0, newScrollY);
+        window.scrollTo(0, newScrollY);
 
         break;
       }

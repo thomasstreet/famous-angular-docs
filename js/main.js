@@ -357,11 +357,11 @@ angular.module('famous-angular')
 
         var newScrollY = $timeline([
           [0, 0, function(x) { return x }],
-          [(stateCount - 1) * rangePerState, scrollMax]
+          [(stateCount) * rangePerState, scrollMax]
         ])(beginningOfStateRange);
 
         // Disable for now
-        //window.scrollTo(0, newScrollY);
+        window.scrollTo(0, newScrollY);
 
         break;
       }

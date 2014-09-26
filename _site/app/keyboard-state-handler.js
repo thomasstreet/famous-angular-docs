@@ -8,7 +8,6 @@ angular.module('famous-angular')
     // If key is left, go back a state
     if (key === 37) {
       var desiredIndex = $state.current.data.index - 1;
-      console.log($state.current.data.index, desiredIndex);
       goToStateWithIndex(desiredIndex);
     }
 

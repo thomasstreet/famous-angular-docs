@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="docsApp" ng-controller="DocsController">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Famous Angular.">
+<meta name="keywords" content="angular,angularjs,famo.us,famous,phonegap,html5,threejs,famous-angular">
+
+
+    <title>ng-mouseenter - Directive in module scripts - Angular Famous</title>
+    
+
+<!--Bower Scripts-->
+<!--<link rel="stylesheet" href="/bower_components/famous/core/famous.css">-->
+<link rel="stylesheet" href="../../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../css/default.css">
+<link rel="stylesheet" href="../../../../css/fonts.css">
+
+<link href="../../../../css/main.min.css" rel="stylesheet">
+
+ <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+
+
+
+  </head>
+
+  <body class="docs docs-page docs-api">
+
+    <div id="nav-bar">
+  <a href="http://famo.us" class="nav-bar-item"><img src="img/famous_logo_white.svg" alt="φ"></a>
+  <a href="http://famo.us/university" class="nav-bar-item">Famo.us University</a><a href="http://famo.us/demos" class="nav-bar-item">Demos</a>
+  <a href="http://famo.us/angular" class="nav-bar-item">Famo.us/Angular</a><a href="http://famo.us/help" class="nav-bar-item">Help</a>
+  <a href="http://famo.us/blog" class="nav-bar-item">Blog</a>
+  <a href="http://code.famo.us/famous-starter-kit/famous-starter-kit.zip?source=top" class="download">Download</a>
+</div>
+
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-sm-3 col-xs-12 side-nav">
+
+          <ul class="nav left-menu active-menu">
+            
+    
+
+
+  <!-- Directives -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Directives
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faAnimation/index.html">
+                fa-animation
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/animate/index.html">
+                animate
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faApp/index.html">
+                fa-app
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faCanvasSurface/index.html">
+                fa-canvas-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faClick/index.html">
+                fa-click
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faContainerSurface/index.html">
+                fa-container-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faDraggable/index.html">
+                fa-draggable
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faFlexibleLayout/index.html">
+                fa-flexible-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faFlipper/index.html">
+                fa-flipper
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faGridLayout/index.html">
+                fa-grid-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faHeaderFooterLayout/index.html">
+                fa-header-footer-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faImageSurface/index.html">
+                fa-image-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faIndex/index.html">
+                fa-index
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngClick/index.html">
+                ng-click
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngDblclick/index.html">
+                ng-dblclick
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMousedown/index.html">
+                ng-mousedown
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMouseup/index.html">
+                ng-mouseup
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMouseover/index.html">
+                ng-mouseover
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMouseenter/index.html">
+                ng-mouseenter
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMouseleave/index.html">
+                ng-mouseleave
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngMousemove/index.html">
+                ng-mousemove
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngKeydown/index.html">
+                ng-keydown
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngKeyup/index.html">
+                ng-keyup
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngKeypress/index.html">
+                ng-keypress
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngSubmit/index.html">
+                ng-submit
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngFocus/index.html">
+                ng-focus
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngBlur/index.html">
+                ng-blur
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngCopy/index.html">
+                ng-copy
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngCut/index.html">
+                ng-cut
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/ngPaste/index.html">
+                ng-paste
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faModifier/index.html">
+                fa-modifier
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faOptions/index.html">
+                fa-options
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faPipeFrom/index.html">
+                fa-pipe-from
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faPipeTo/index.html">
+                fa-pipe-to
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faRenderNode/index.html">
+                fa-render-node
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faScrollView/index.html">
+                fa-scroll-view
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faSequentialLayout/index.html">
+                fa-sequential-layout
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faSurface/index.html">
+                fa-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faTap/index.html">
+                fa-tap
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faTouchend/index.html">
+                fa-touchend
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faTouchmove/index.html">
+                fa-touchmove
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faTouchstart/index.html">
+                fa-touchstart
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faVideoSurface/index.html">
+                fa-video-surface
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/directive/faView/index.html">
+                fa-view
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Services
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/service/$famous/index.html">
+                $famous
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/service/$animate/index.html">
+                $animate
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/service/$famousDecorator/index.html">
+                $famousDecorator
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/service/$famousPipe/index.html">
+                $famousPipe
+            </a>
+        </li>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/service/$timeline/index.html">
+                $timeline
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+  <!-- Side Menus -->
+  <li class="menu-section">
+    <a href="#" class="api-section">
+       Providers
+    </a>
+    <ul>
+        
+        <li>
+            <a href="../../../../docs/unstable/api/provider/$famousProvider/index.html">
+                $famousProvider
+            </a>
+        </li>
+        
+    </ul>
+  </li>
+
+
+
+          </ul>
+
+        </div>
+
+        <div class="col-sm-offset-3 col-sm-9 col-xs-12 main-content">
+          <div class="improve-docs">
+  <a href='https://github.com/Famous/famous-angular/edit/master/src/scripts/directives/fa-input.js#L421'>
+    Improve this doc
+  </a>
+</div>
+
+
+
+
+<h1 class="api-title">
+
+  ng-mouseenter
+
+
+
+</h1>
+
+
+<p>Specify custom behavior on mouseenter event on a fa-surface.</p>
+
+<h2 id="usage">Usage</h2>
+
+
+<pre><code class="html">&lt;ANY ng-mouseenter="expression"&gt;
+
+&lt;/ANY&gt;
+</code></pre>
+
+<h2 id="api" style="clear:both;">API</h2>
+
+
+
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        ngMouseenter
+        
+        
+      </td>
+      <td>
+        
+  <code>expression</code>
+      </td>
+      <td>
+        <p><a href="guide/expression">Expression</a> to evaluate upon
+mouseenter. (<a href="guide/expression#-event-">Event object is available as <code>$event</code></a>)</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+<h2 id="example">Example</h2>
+
+
+<p>
+
+
+
+
+<div>
+  <a ng-click="openPlunkr('../../../../examples/example-example15')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example" path="examples/example-example15"
+      
+  >
+
+   
+    <div ng-non-bindable class="runnable-example-file"
+      
+        name="index.html"
+      
+        language="html"
+      
+        type="html"
+      
+    >
+      <pre><code> &lt;fa-surface ng-mouseenter=&quot;count = count + 1&quot; ng-init=&quot;count=0&quot; style=&quot;cursor: pointer;&quot;&gt;&#10;  Increment (when mouse enters), count: {{count}}&#10;&lt;/fa-surface&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="../../../../examples/example-example15/index.html" name="example-example15"></iframe>
+  </div>
+</div>
+
+
+</p>
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    
+
+<script src="../../../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("7870a5b65a523c899992a1496ad1352d");</script><!-- end Mixpanel -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','__ga');
+
+  __ga('create', 'UA-34653957-3', 'famo.us-angular');
+  __ga('send', 'pageview');
+</script>
+
+    <script src="../../../../bower_components/underscore/underscore.js"></script>
+    <script src="../../../../bower_components/famous/famous-global.min.js"></script>
+    <script src="../../../../bower_components/angular/angular.min.js"></script>
+    <script src="../../../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+    <script src="../../../../js/main.min.js"></script>
+  </body>
+</html>
