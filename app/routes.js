@@ -19,8 +19,8 @@ angular.module('famous-angular')
       controller: 'state1Ctrl',
       data: {
         index: 1,
-        enterAnimationDuration: 4000,
-        leaveAnimationDuration: 600,
+        enterAnimationDuration: 1000,
+        leaveAnimationDuration: 300,
         cssClass: 'state-1'
       }
     })

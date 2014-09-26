@@ -24,7 +24,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, 0, 0], Easing.inOutQuart],
       [0.2, [220, 190, 0]],
-    ]),
+    ])
   };
 
   $scope.heading = {
@@ -63,69 +63,55 @@ angular.module('famous-angular')
       ])
     },
     code: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, 2000, 0], Easing.inOutQuart],
-          [0.5, [0, 100, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.3, [0, 2000, 0], Easing.inOutQuart],
+        [0.5, [0, 100, 0]]
+      ])
     }
   };
 
   $scope.header = {
     visual: {
-      translate: function() {
-        return $timeline([
-          [0.4, [0, -2000, 0], Easing.inOutQuart],
-          [0.6, [20, 65, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.4, [0, -2000, 0], Easing.inOutQuart],
+        [0.6, [20, 65, 0]]
+      ])
     },
     code: {
-      translate: function() {
-        return $timeline([
-          [0.4, [0, 2000, 0], Easing.inOutQuart],
-          [0.6, [0, 120, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.4, [0, 2000, 0], Easing.inOutQuart],
+        [0.6, [0, 120, 0]]
+      ])
     },
   };
 
   $scope.sidenav = {
     visual: {
-      translate: function() {
-        return $timeline([
-          [0.5, [0, 2000, 0], function(x) { return x }],
-          [0.7, [20, 135, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.5, [0, 2000, 0], function(x) { return x }],
+        [0.7, [20, 135, 0]]
+      ])
     },
     code: {
-      translate: function() {
-        return $timeline([
-          [0.5, [0, -2000, 0], Easing.inOutQuart],
-          [0.7, [0, 140, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.5, [0, -2000, 0], Easing.inOutQuart],
+        [0.7, [0, 140, 0]]
+      ])
     },
   };
 
   $scope.container = {
     code: {
-      translate: function() {
-        return $timeline([
-          [0.6, [-2000, 0, 0], Easing.inOutQuart],
-          [0.8, [0, 160, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.6, [-2000, 0, 0], Easing.inOutQuart],
+        [0.8, [0, 160, 0]]
+      ])
     },
     visual: {
-      translate: function() {
-        return $timeline([
-          [0.6, [2000, 90, 0], function(x) { return x }],
-          [0.8, [110, 135, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.6, [2000, 90, 0], function(x) { return x }],
+        [0.8, [110, 135, 0]]
+      ])
     },
   };
 
@@ -135,26 +121,20 @@ angular.module('famous-angular')
       translate: function() {
         return [135, 160, 0];
       },
-      opacity: function() {
-        return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
-      },
-      scale: function() {
-        return $timeline([
-          [0.7, [0.1, 0.1], Easing.inOutQuart],
-          [1, [1, 1]]
-        ])(t.get());
-      }
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ]),
+      scale: $timeline([
+        [0.7, [0.1, 0.1], Easing.inOutQuart],
+        [1, [1, 1]]
+      ])
     },
     code: {
-      translate: function() {
-        return $timeline([
-          [0.7, [-2000, 0, 0], Easing.inOutQuart],
-          [0.9, [0, 180, 0]]
-        ])(t.get());
-      }
+      translate: $timeline([
+        [0.7, [-2000, 0, 0], Easing.inOutQuart],
+        [0.9, [0, 180, 0]]
+      ])
     }
   };
 
