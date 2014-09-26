@@ -104,7 +104,7 @@ gulp.task('site-js', function() {
   ])
     .pipe(jshint())
     .pipe(concat('main.js'))
-    .pipe(gulp.dest(SITE_DIR + "js/"))
+    .pipe(gulp.dest(SITE_DIR + "build/"))
     .pipe(ngmin())
     .pipe(uglify({ mangle: false }))
     .pipe(rename({suffix: '.min'}))
