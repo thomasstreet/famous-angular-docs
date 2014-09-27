@@ -30,13 +30,13 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, 0, -200], Easing.outQuad],
       [0.2, [0, 0, 0]],
-      [1.6, [0, 0, 0], Easing.outQuad],
+      [1, [0, 0, 0], Easing.outQuad],
       [2, [0, 0, 400]]
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.3, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
+      [0.2, 1],
+      [1, 1, Easing.inOutQuart],
       [2, 0]
     ])
   };
@@ -44,47 +44,91 @@ angular.module('famous-angular')
   $scope.frame = {
     visual: {
       translate: $timeline([
-        [0.3, [0, -20, -100], Easing.outQuad],
-        [0.5, [0, 0, 0]],
-        [1.5, [0, 0, 0]],
+        [0.2, [0, -20, -100], Easing.outQuad],
+        [0.6, [0, 0, 0]],
+        [1, [0, 0, 0], Easing.inQuad],
         [2, [0, 0, 200]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.3, 0],
-        [0.5, 1],
-        [1.5, 1],
+        [0.2, 0],
+        [0.6, 1],
+        [1, 1],
         [2, 0]
       ])
     },
     code: {
       translate: $timeline([
-        [0.3, [0, 2000, 0], Easing.inOutQuart],
-        [0.5, [0, 100, 0]]
+        [0.2, [0, 250, 0], Easing.outQuad],
+        [0.6, [0, 150, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.2, 0],
+        [0.6, 1],
+        [1, 1],
+        [2, 0]
       ])
     }
   };
 
   $scope.header = {
     visual: {
+      scale: $timeline([
+        [0, [0.1, 0.1]],
+        [0.35, [0.1, 0.1], Easing.inOutQuart],
+        [0.75, [1, 1]],
+      ]),
       translate: $timeline([
-        [0.4, [0, -2000, 0], Easing.inOutQuart],
-        [0.6, [20, 65, 0]]
+        [0, [20, 65, -0]],
+        [0.35, [20, 65, 0], Easing.inOutQuart],
+        [0.75, [20, 65, 0]],
+        [1, [20, 65, 0], Easing.inQuad],
+        [2, [20, 65, 200]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.35, 0],
+        [0.75, 1],
+        [1, 1],
+        [2, 0]
       ])
     },
     code: {
       translate: $timeline([
-        [0.4, [0, 2000, 0], Easing.inOutQuart],
-        [0.6, [0, 120, 0]]
+        [0.35, [0, 400, 0], Easing.outQuad],
+        [0.75, [0, 300, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.35, 0],
+        [0.75, 1],
+        [1, 1],
+        [2, 0]
       ])
     },
   };
 
   $scope.sidenav = {
     visual: {
+      scale: $timeline([
+        [0, [0.1, 0.1]],
+        [0.50, [0.1, 0.1], Easing.inOutQuart],
+        [0.90, [1, 1]],
+      ]),
       translate: $timeline([
-        [0.5, [0, 2000, 0], function(x) { return x }],
-        [0.7, [20, 135, 0]]
+        [0, [20, 135, -0]],
+        [0.50, [20, 135, 0], Easing.inOutQuart],
+        [0.90, [20, 135, 0]],
+        [1, [20, 135, 0], Easing.inQuad],
+        [2, [20, 135, 200]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.50, 0],
+        [0.90, 1],
+        [1, 1],
+        [2, 0]
       ])
     },
     code: {

@@ -8,11 +8,17 @@ fa-modifier(
     fa-surface(fa-size="[750, true]")
       h1.heading Visualize your Famo.us scene graph in an HTML hierarchy
 
-  fa-modifier(fa-translate='frame.code.translate(t.get())')
+  fa-modifier(
+    fa-translate='frame.code.translate(t.get())'
+    fa-opacity='frame.code.opacity(t.get())'
+  )
     fa-surface(fa-size="[500, true]")
       .code
         | fa-surface
-  fa-modifier(fa-translate='header.code.translate(t.get())')
+  fa-modifier(
+    fa-translate='header.code.translate(t.get())'
+    fa-opacity='header.code.opacity(t.get())'
+  )
     fa-surface(fa-size="[500, true]")
       .code
         | fa-surface
@@ -39,15 +45,39 @@ fa-modifier(
   )
     fa-surface
       .example-frame
-  fa-modifier(fa-translate='header.visual.translate(t.get())')
-    fa-surface(fa-size='[560, 55]')
-      .example-header
-  fa-modifier(fa-translate='sidenav.visual.translate(t.get())')
-    fa-surface(fa-size='[75, 245]')
-      .example-sidenav
-  fa-modifier(fa-translate='container.visual.translate(t.get())')
+
+  fa-modifier(
+    fa-translate='header.visual.translate(t.get())'
+    fa-opacity='header.visual.opacity(t.get())'
+    fa-size='[560, 55]'
+    fa-align='[0, 0]'
+  )
+    fa-modifier(
+      fa-scale='header.visual.scale(t.get())'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-surface()
+        .example-header
+
+  fa-modifier(
+    fa-translate='sidenav.visual.translate(t.get())'
+    fa-opacity='sidenav.visual.opacity(t.get())'
+    fa-size='[75, 245]'
+    fa-align='[0, 0]'
+  )
+    fa-modifier(
+      fa-scale='sidenav.visual.scale(t.get())'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-surface()
+        .example-sidenav
+
+  fa-modifier(
+    fa-translate='container.visual.translate(t.get())'
+  )
     fa-surface(fa-size='[470, 245]')
       .example-container
+
   fa-modifier(
     fa-translate='frameContent.visual.translate(t.get())'
     fa-opacity='frameContent.visual.opacity(t.get())'
