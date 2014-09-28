@@ -144,7 +144,7 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.5, [0, -2000, 0], Easing.inOutQuart],
+        [0.5, [0, 200, 0], Easing.inOutQuart],
         [0.7, [0, 140, 0]]
       ])
     },
@@ -172,7 +172,7 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.6, [-2000, 0, 0], Easing.inOutQuart],
+        [0.6, [0, 200, 0], Easing.inOutQuart],
         [0.8, [0, 160, 0]]
       ])
     }
@@ -239,7 +239,7 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.7, [-2000, 0, 0], Easing.inOutQuart],
+        [0.7, [0, 250, 0], Easing.inOutQuart],
         [0.9, [0, 180, 0]]
       ])
     }
