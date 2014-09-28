@@ -50,8 +50,8 @@ angular.module('famous-angular')
     ]),
     banner: {
       translate:$timeline([
-        [0, [84, 110, -150], Easing.inOutQuart],
-        [0.2, [84, 110, 0]]
+        [0, [84, 110, 2], Easing.inOutQuart],
+        [0.2, [84, 110, 2]]
       ])
     }
   };
