@@ -22,8 +22,6 @@ angular.module('famous-angular')
   };
 
   $scope.leave = function($done) {
-    $scope.showHeroBlock = false;
-    $scope.$digest();
     stateTransitions.leave(t, $done);
   };
 
