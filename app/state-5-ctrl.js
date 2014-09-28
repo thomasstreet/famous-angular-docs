@@ -8,13 +8,22 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
+  $scope.heroBlockOpacity = new Transitionable(0);
+
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      $done();
+      $scope.showHeroBlock = true;
+      $scope.heroBlockOpacity.set(1, {duration: 500, curve: Easing.inCubic});
+      $scope.$digest();
+    });
   };
 
   $scope.leave = function($done) {
+    $scope.showHeroBlock = false;
+    $scope.$digest();
     stateTransitions.leave(t, $done);
   };
 
@@ -25,7 +34,8 @@ angular.module('famous-angular')
       [2, [0, 0, 75]],
     ]),
     opacity: $timeline([
-      [0, 1],
+      [0, 0],
+      [0.1, 1],
       [1, 1],
       [2, 0],
     ])
@@ -35,12 +45,12 @@ angular.module('famous-angular')
 
   $scope.webframe = {
     translate: $timeline([
-      [0, [0, 1000, 0], Easing.inOutQuart],
+      [0, [250, 180, -150], Easing.inOutQuart],
       [0.2, [250, 180, 0]]
     ]),
     banner: {
       translate:$timeline([
-        [0, [0, 1000, 0], Easing.inOutQuart],
+        [0, [84, 110, -150], Easing.inOutQuart],
         [0.2, [84, 110, 0]]
       ])
     }
@@ -48,14 +58,14 @@ angular.module('famous-angular')
 
   $scope.content = {
     translate: $timeline([
-      [0, [1000, 0, 0], Easing.inOutQuart],
+      [0, [1170, 170, -150], Easing.inOutQuart],
       [0.2, [1170, 170, 0]]
     ])
   };
 
   $scope.code = {
     translate: $timeline([
-      [0.3, [0, 1000, 0], Easing.inOutQuart],
+      [0.3, [0, 150, -150], Easing.inOutQuart],
       [0.5, [0, 150, 0]]
     ])
   };

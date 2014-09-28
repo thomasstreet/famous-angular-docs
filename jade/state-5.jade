@@ -7,9 +7,12 @@ fa-modifier(
   )
     fa-surface(fa-size="[true, true]")
       img(src="img/webframe_x3.png" width="800px")
+
     fa-modifier(
       fa-translate='webframe.banner.translate(t.get())'
       fa-size='[632, 236]'
+      fa-opacity='heroBlockOpacity'
+      ng-if='showHeroBlock'
     )
       fa-surface
         include state-5-hero
