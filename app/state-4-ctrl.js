@@ -65,8 +65,8 @@ angular.module('famous-angular')
    }, 
    text: {
      translate: $timeline([
-       [0, [-1000, 0, 0], Easing.inOutQuart],
-       [0.2, [760, 630, 0]]
+       [0, [750, 0, -150], Easing.inOutQuart],
+       [0.2, [750, 630, 0]]
      ])
    }, 
   };
