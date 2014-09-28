@@ -89,6 +89,7 @@ gulp.task('site-styl', function() {
 
   return gulp.src(SITE_DIR + "styl/**/*.styl")
     .pipe(stylus())
+    .pipe(autoprefixer())
     .pipe(minifycss())
     .pipe(concat('main.css'))
     .pipe(rename({suffix: '.min'}))
