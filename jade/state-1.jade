@@ -1,125 +1,134 @@
 fa-modifier(
-  fa-translate='content.translate(t.get())'
+  fa-translate='entireView.translate(t.get())'
+  fa-opacity='entireView.opacity(t.get())'
 )
   fa-modifier(
-    fa-translate='heading.translate(t.get())'
-    fa-opacity='heading.opacity(t.get())'
-  )
-    fa-surface(fa-size="[750, true]")
-      h1.heading Visualize your Famo.us scene graph in an HTML hierarchy
-
-  fa-modifier(
-    fa-translate='frame.code.translate(t.get())'
-    fa-opacity='frame.code.opacity(t.get())'
-  )
-    fa-surface(fa-size="[500, true]")
-      .code
-        | fa-surface
-  fa-modifier(
-    fa-translate='header.code.translate(t.get())'
-    fa-opacity='header.code.opacity(t.get())'
-  )
-    fa-surface(fa-size="[500, true]")
-      .code
-        | fa-surface
-  fa-modifier(fa-translate='sidenav.code.translate(t.get())')
-    fa-surface(fa-size="[500, true]")
-      .code
-        | fa-surface
-  fa-modifier(fa-translate='container.code.translate(t.get())')
-    fa-surface(fa-size="[500, true]")
-      .code
-        | fa-surface
-  fa-modifier(fa-translate='frameContent.code.translate(t.get())')
-    fa-surface(fa-size="[500, true]")
-      .code
-        | fa-surface
-
-fa-modifier(
-  fa-translate='[1050, 190, 0]'
-  fa-size='[600, 375]'
-)
-  fa-modifier(
-    fa-translate='frame.visual.translate(t.get())'
-    fa-opacity='frame.visual.opacity(t.get())'
-  )
-    fa-surface
-      .example-frame
-
-  fa-modifier(
-    fa-translate='header.visual.translate(t.get())'
-    fa-opacity='header.visual.opacity(t.get())'
-    fa-size='[560, 55]'
-    fa-align='[0, 0]'
+    fa-translate='leftColumn.translate(t.get())'
   )
     fa-modifier(
-      fa-scale='header.visual.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='heading.translate(t.get())'
+      fa-opacity='heading.opacity(t.get())'
     )
-      fa-surface()
-        .example-header
+      fa-surface(fa-size="[750, true]")
+        h1.heading Visualize your Famo.us scene graph in an HTML hierarchy
+
+    fa-modifier(
+      fa-translate='frame.code.translate(t.get())'
+      fa-opacity='frame.code.opacity(t.get())'
+    )
+      fa-surface(fa-size="[500, true]")
+        .code
+          | fa-modifier
+          | fa-surface
+    fa-modifier(
+      fa-translate='header.code.translate(t.get())'
+      fa-opacity='header.code.opacity(t.get())'
+    )
+      fa-surface(fa-size="[500, true]")
+        .code
+          | fa-modifier
+          | fa-surface
+    fa-modifier(fa-translate='sidenav.code.translate(t.get())')
+      fa-surface(fa-size="[500, true]")
+        .code
+          | fa-modifier
+          | fa-surface
+    fa-modifier(fa-translate='container.code.translate(t.get())')
+      fa-surface(fa-size="[500, true]")
+        .code
+          | fa-modifier
+          | fa-surface
+    fa-modifier(fa-translate='frameContent.code.translate(t.get())')
+      fa-surface(fa-size="[500, true]")
+        .code
+          | fa-modifier
+          | fa-surface
 
   fa-modifier(
-    fa-translate='sidenav.visual.translate(t.get())'
-    fa-opacity='sidenav.visual.opacity(t.get())'
-    fa-size='[75, 245]'
-    fa-align='[0, 0]'
+    fa-translate='rightColumn.translate(t.get())'
+    fa-size='[600, 375]'
   )
     fa-modifier(
-      fa-scale='sidenav.visual.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='frame.visual.translate(t.get())'
+      fa-opacity='frame.visual.opacity(t.get())'
     )
-      fa-surface()
-        .example-sidenav
+      fa-surface
+        .example-frame
 
-  fa-modifier(
-    fa-translate='container.visual.translate(t.get())'
-    fa-opacity='container.visual.opacity(t.get())'
-    fa-size='[470, 245]' 
-    fa-align='[0, 0]'
-  )
     fa-modifier(
-      fa-scale='container.visual.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='header.visual.translate(t.get())'
+      fa-opacity='header.visual.opacity(t.get())'
+      fa-size='[560, 55]'
+      fa-align='[0, 0]'
     )
-      fa-surface()
-        .example-container
+      fa-modifier(
+        fa-scale='header.visual.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-header
 
-  fa-modifier(
-    fa-translate='frameContent.visual.box1.translate(t.get())'
-    fa-opacity='frameContent.visual.box1.opacity(t.get())'
-    fa-size='[125, 195]' 
-    fa-align='[0, 0]'
-  )
     fa-modifier(
-      fa-scale='frameContent.visual.box1.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='sidenav.visual.translate(t.get())'
+      fa-opacity='sidenav.visual.opacity(t.get())'
+      fa-size='[75, 245]'
+      fa-align='[0, 0]'
     )
-      fa-surface()
-        .example-content
+      fa-modifier(
+        fa-scale='sidenav.visual.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-sidenav
 
-  fa-modifier(
-    fa-translate='frameContent.visual.box2.translate(t.get())'
-    fa-opacity='frameContent.visual.box2.opacity(t.get())'
-    fa-size='[125, 195]' 
-    fa-align='[0, 0]'
-  )
     fa-modifier(
-      fa-scale='frameContent.visual.box2.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='container.visual.translate(t.get())'
+      fa-opacity='container.visual.opacity(t.get())'
+      fa-size='[470, 245]' 
+      fa-align='[0, 0]'
     )
-      fa-surface()
-        .example-content
+      fa-modifier(
+        fa-scale='container.visual.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-container
 
-  fa-modifier(
-    fa-translate='frameContent.visual.box3.translate(t.get())'
-    fa-opacity='frameContent.visual.box3.opacity(t.get())'
-    fa-size='[125, 195]' 
-    fa-align='[0, 0]'
-  )
     fa-modifier(
-      fa-scale='frameContent.visual.box3.scale(t.get())'
-      fa-origin='[0.5, 0.5]'
+      fa-translate='frameContent.visual.box1.translate(t.get())'
+      fa-opacity='frameContent.visual.box1.opacity(t.get())'
+      fa-size='[125, 195]' 
+      fa-align='[0, 0]'
     )
-      fa-surface()
-        .example-content
+      fa-modifier(
+        fa-scale='frameContent.visual.box1.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-content
+
+    fa-modifier(
+      fa-translate='frameContent.visual.box2.translate(t.get())'
+      fa-opacity='frameContent.visual.box2.opacity(t.get())'
+      fa-size='[125, 195]' 
+      fa-align='[0, 0]'
+    )
+      fa-modifier(
+        fa-scale='frameContent.visual.box2.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-content
+
+    fa-modifier(
+      fa-translate='frameContent.visual.box3.translate(t.get())'
+      fa-opacity='frameContent.visual.box3.opacity(t.get())'
+      fa-size='[125, 195]' 
+      fa-align='[0, 0]'
+    )
+      fa-modifier(
+        fa-scale='frameContent.visual.box3.scale(t.get())'
+        fa-origin='[0.5, 0.5]'
+      )
+        fa-surface()
+          .example-content
