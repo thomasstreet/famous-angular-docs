@@ -52,7 +52,7 @@ angular.module('famous-angular')
       controller: 'state4Ctrl',
       data: {
         index: 4,
-        enterAnimationDuration: 1000,
+        enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
         cssClass: 'state-4'
       }

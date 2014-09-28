@@ -5,12 +5,16 @@ fa-modifier(
   fa-modifier(
     fa-origin='[0.5, 0.15]'
   )
-    fa-modifier(fa-translate='heading.translate(t.get())')
+    fa-modifier(
+      fa-translate='heading.translate(t.get())'
+      fa-opacity='heading.opacity(t.get())'
+    )
       fa-surface(fa-size="[true, true]")
         h1.heading Organize your Famo.us apps with Angular’s MVC structure 
 
   fa-modifier(
     fa-translate='routing.image.translate(t.get())'
+    fa-opacity='routing.image.opacity(t.get())'
     fa-size='[true, true]'
   )
     fa-surface
@@ -20,15 +24,21 @@ fa-modifier(
   fa-modifier(
     fa-translate='routing.text.translate(t.get())'
     fa-size='[true, true]'
+    fa-align='[0, 0]'
   )
-    fa-surface.column
-      .column-label
-        | Routing
-      .learn-more
-        | Learn More
+    fa-modifier(
+      fa-scale='routing.text.scale(t.get())'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-surface.column
+        .column-label
+          | Routing
+        .learn-more
+          | Learn More
 
   fa-modifier(
     fa-translate='dependency.image.translate(t.get())'
+    fa-opacity='dependency.image.opacity(t.get())'
     fa-size='[true, true]'
   )
     fa-surface
@@ -47,6 +57,7 @@ fa-modifier(
 
   fa-modifier(
     fa-translate='modules.image.translate(t.get())'
+    fa-opacity='modules.image.opacity(t.get())'
     fa-size='[true, true]'
   )
     fa-surface
