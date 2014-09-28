@@ -40,12 +40,11 @@ gulp.task('dev', ['build-jekyll'], function() {
 	      '**/*.html',
 	      '**/*.md',
         // Only watch the js from app/
-	      SITE_DIR + 'app/*.js',
+	      'app/**/*.js',
 	      // Do NOT watch the compile _site directory, else the watch will create
 	      // an infinite loop
 	      '!_site/**',
-	      '!templates/**',
-	      '!js/**',
+	      '!build/**',
 	      '!bower_components/**',
 	      '!node_modules/**'
 	  ],
