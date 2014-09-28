@@ -76,7 +76,7 @@ angular.module('famous-angular')
     frame: {
       translate: function() {
         return $timeline([
-          [0.3, [0, 1000, 0], Easing.inOutQuart],
+          [0.3, [0, 200, 0], Easing.outBounce],
           [0.5, [0, 150, 0]]
         ])(t.get());
       }

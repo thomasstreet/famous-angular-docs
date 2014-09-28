@@ -25,7 +25,8 @@ angular.module('famous-angular')
       [2, [0, 0, 75]],
     ]),
     opacity: $timeline([
-      [0, 1],
+      [0, 0],
+      [0.3, 1],
       [1, 1],
       [2, 0],
     ])

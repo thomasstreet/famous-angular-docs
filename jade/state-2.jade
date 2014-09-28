@@ -17,28 +17,27 @@ fa-modifier(
         fa-modifier(fa-translate='nametag.body.translate()')
           fa-surface(
             fa-size='[620, 375]'
-          )
-            .nametag-body
+          ).nametag-body.nametag
+            
         fa-modifier(fa-translate='nametag.heading.translate()')
           fa-surface(
             fa-size='[620, true]'
-          )
-            .nametag-heading
-              .hello
-                | HELLO
-              .intro
-                | my name is
+          ).nametag-heading.nametag
+            .hello
+              | HELLO
+            .intro
+              | my name is
+
         fa-modifier(fa-translate='nametag.stripe.translate()')
           fa-surface(
             fa-size='[620, 210]'
-          )
-            .nametag-stripe
+          ).nametag-stripe.nametag
+            
         fa-modifier(fa-translate='nametag.name.translate()')
           fa-surface(
             fa-size='[620, true]'
-          ).clip-overflow
-            .nametag-name
-              | {{data.name}}
+          ).clip-overflow.nametag-name.nametag
+            | {{data.name}}
 
     fa-modifier(fa-translate='nametag.inputText.translate()')
       fa-surface(

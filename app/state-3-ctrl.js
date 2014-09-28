@@ -44,7 +44,8 @@ angular.module('famous-angular')
       [2, [0, 0, 75]],
     ]),
     opacity: $timeline([
-      [0, 1],
+      [0, 0],
+      [0.3, 1],
       [1, 1],
       [2, 0],
     ])
@@ -89,7 +90,7 @@ angular.module('famous-angular')
       var totalTileHeight = tile.height + tile.margin.bottom;
       var heightOfAllTiles = totalTileHeight * tile.countPerColumn;
       return $timeline([
-        [0, [tileGrid.margin.left, heightOfAllTiles + 100, 0], Easing.inOutQuart],
+        [0, [tileGrid.margin.left, heightOfAllTiles + 100, 0], Easing.outBounce],
         [0.2, [tileGrid.margin.left, heightOfAllTiles, 0]]
       ]);
     }()
