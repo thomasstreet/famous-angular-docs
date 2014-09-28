@@ -18,6 +18,19 @@ angular.module('famous-angular')
     stateTransitions.leave(t, $done);
   };
 
+  $scope.entireView = {
+    translate: $timeline([
+      [0, [0, 0, 0]],
+      [1, [0, 0, 0], Easing.inQuart],
+      [2, [0, 0, 75]],
+    ]),
+    opacity: $timeline([
+      [0, 1],
+      [1, 1],
+      [2, 0],
+    ])
+  };
+
 /*--------------------------------------------------------------*/
 
   $scope.heading = {

@@ -6,6 +6,14 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
+  $scope.t = t;
+
+  $scope.data = {
+    name: 'Angular',
+    t: 1
+  };
+
+/*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
     stateTransitions.enter(t, $done);
@@ -15,10 +23,44 @@ angular.module('famous-angular')
     stateTransitions.leave(t, $done);
   };
 
-  $scope.data = {
-    name: 'Angular',
-    t: 1
+  $scope.entireView = {
+    translate: $timeline([
+      [0, [0, 0, 0]],
+      [1, [0, 0, 0], Easing.inQuart],
+      [2, [0, 0, 75]],
+    ]),
+    opacity: $timeline([
+      [0, 1],
+      [1, 1],
+      [2, 0],
+    ])
   };
+
+/*--------------------------------------------------------------*/
+
+  $scope.leftColumn = {
+    translate: $timeline([
+      [0, [250, 190, -150], Easing.outQuart],
+      [0.3, [250, 190, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 1]
+    ])
+  };
+
+  $scope.rightColumn = {
+    translate: $timeline([
+      [0, [1020, 180, -150], Easing.outQuart],
+      [0.3, [1020, 180, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 1]
+    ])
+  };
+
+/*--------------------------------------------------------------*/
 
   $scope.rotate = function() {
     var rotate = $timeline([
@@ -28,14 +70,7 @@ angular.module('famous-angular')
     return rotate;
   };
 
-  $scope.content = {
-    translate: function() {
-      return $timeline([
-        [0, [1000, 0, 0], Easing.inOutQuart],
-        [0.2, [1020, 180, 0]]
-      ])(t.get());
-    }
-  };
+/*--------------------------------------------------------------*/
 
   $scope.code = {
     frame: {
@@ -50,13 +85,6 @@ angular.module('famous-angular')
 
 
   $scope.nametag = {
-    translate: function() {
-      return $timeline([
-        [0, [-1000, 0, 0], Easing.inOutQuart],
-        [0.2, [250, 190, 0]]
-      ])(t.get());
-    },
-
     body: {
       translate: function() {
         return [0, 0, 1];

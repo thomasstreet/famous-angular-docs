@@ -1,60 +1,64 @@
 fa-modifier(
-  fa-origin='[0.5, 0.15]'
+  fa-translate='entireView.translate(t.get())'
+  fa-opacity='entireView.opacity(t.get())'
 )
-  fa-modifier(fa-translate='heading.translate(t.get())')
-    fa-surface(fa-size="[true, true]")
-      h1.heading Organize your Famo.us apps with Angular’s MVC structure 
+  fa-modifier(
+    fa-origin='[0.5, 0.15]'
+  )
+    fa-modifier(fa-translate='heading.translate(t.get())')
+      fa-surface(fa-size="[true, true]")
+        h1.heading Organize your Famo.us apps with Angular’s MVC structure 
 
-fa-modifier(
-  fa-translate='routing.image.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface
-    .column-image
-      img(src='img/routing_x3.png' width='400px')
+  fa-modifier(
+    fa-translate='routing.image.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface
+      .column-image
+        img(src='img/routing_x3.png' width='400px')
 
-fa-modifier(
-  fa-translate='routing.text.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface.column
-    .column-label
-      | Routing
-    .learn-more
-      | Learn More
+  fa-modifier(
+    fa-translate='routing.text.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface.column
+      .column-label
+        | Routing
+      .learn-more
+        | Learn More
 
-fa-modifier(
-  fa-translate='dependency.image.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface
-    .column-image
-      img(src='img/depdency_x3.png' width='400px')
+  fa-modifier(
+    fa-translate='dependency.image.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface
+      .column-image
+        img(src='img/depdency_x3.png' width='400px')
 
-fa-modifier(
-  fa-translate='dependency.text.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface.column
-    .column-label
-      | Dependency Injection
-    .learn-more
-      | Learn More
+  fa-modifier(
+    fa-translate='dependency.text.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface.column
+      .column-label
+        | Dependency Injection
+      .learn-more
+        | Learn More
 
-fa-modifier(
-  fa-translate='modules.image.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface
-    .column-image
-      img(src='img/modules_x3.png' width='380px')
+  fa-modifier(
+    fa-translate='modules.image.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface
+      .column-image
+        img(src='img/modules_x3.png' width='380px')
 
-fa-modifier(
-  fa-translate='modules.text.translate(t.get())'
-  fa-size='[true, true]'
-)
-  fa-surface.column
-    .column-label
-      | Modules
-    .learn-more
-      | Learn More
+  fa-modifier(
+    fa-translate='modules.text.translate(t.get())'
+    fa-size='[true, true]'
+  )
+    fa-surface.column
+      .column-label
+        | Modules
+      .learn-more
+        | Learn More

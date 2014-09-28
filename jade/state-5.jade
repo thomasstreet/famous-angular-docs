@@ -1,35 +1,39 @@
 fa-modifier(
-  fa-translate='webframe.translate(t.get())'
+  fa-translate='entireView.translate(t.get())'
+  fa-opacity='entireView.opacity(t.get())'
 )
-  fa-surface(fa-size="[true, true]")
-    img(src="img/webframe_x3.png" width="800px")
   fa-modifier(
-    fa-translate='webframe.banner.translate(t.get())'
-    fa-size='[632, 236]'
+    fa-translate='webframe.translate(t.get())'
   )
-    fa-surface
-      include state-5-hero
+    fa-surface(fa-size="[true, true]")
+      img(src="img/webframe_x3.png" width="800px")
+    fa-modifier(
+      fa-translate='webframe.banner.translate(t.get())'
+      fa-size='[632, 236]'
+    )
+      fa-surface
+        include state-5-hero
 
-fa-modifier(fa-translate='content.translate(t.get())')
-  fa-surface(fa-size="[500, true]")
-    h1.heading Use HTML, CSS, and Famo.us all together
-
-  fa-modifier(fa-translate='code.translate(t.get())')
+  fa-modifier(fa-translate='content.translate(t.get())')
     fa-surface(fa-size="[500, true]")
-      .code
-        pre
-          code
-            |&lt;body&gt;
-            |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
-            | 
-            |   &lt;fa-app id=&quot;banner&quot;&gt;
-            |     &lt;fa-modifier&gt;
-            |       &lt;fa-surface&gt;
-            |         ...
-            |       &lt;/fa-surface&gt;
-            |     &lt;/fa-modifier&gt;
-            |   &lt;/fa-app&gt;
-            | 
-            |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
-            |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
-            |&lt;/body&gt;
+      h1.heading Use HTML, CSS, and Famo.us all together
+
+    fa-modifier(fa-translate='code.translate(t.get())')
+      fa-surface(fa-size="[500, true]")
+        .code
+          pre
+            code
+              |&lt;body&gt;
+              |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
+              | 
+              |   &lt;fa-app id=&quot;banner&quot;&gt;
+              |     &lt;fa-modifier&gt;
+              |       &lt;fa-surface&gt;
+              |         ...
+              |       &lt;/fa-surface&gt;
+              |     &lt;/fa-modifier&gt;
+              |   &lt;/fa-app&gt;
+              | 
+              |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
+              |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
+              |&lt;/body&gt;
