@@ -76,19 +76,19 @@ angular.module('famous-angular')
     visual: {
       scale: $timeline([
         [0, [0.3, 0.3]],
-        [0.25, [0.3, 0.3], Easing.outBack],
+        [0.30, [0.3, 0.3], Easing.outBack],
         [0.50, [1, 1]],
       ]),
       translate: $timeline([
         [0, [20, 65, -0]],
-        [0.25, [20, 65, 0], Easing.inOutQuart],
+        [0.30, [20, 65, 0], Easing.inOutQuart],
         [0.50, [20, 65, 0]],
         [1, [20, 65, 0], Easing.inQuad],
         [2, [20, 65, 200]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.25, 0],
+        [0.30, 0],
         [0.50, 1],
         [1, 1],
         [2, 0]
@@ -113,19 +113,19 @@ angular.module('famous-angular')
     visual: {
       scale: $timeline([
         [0, [0.3, 0.3]],
-        [0.35, [0.3, 0.3], Easing.outBack],
+        [0.40, [0.3, 0.3], Easing.outBack],
         [0.60, [1, 1]],
       ]),
       translate: $timeline([
         [0, [20, 135, -0]],
-        [0.35, [20, 135, 0], Easing.inOutQuart],
+        [0.40, [20, 135, 0], Easing.inOutQuart],
         [0.60, [20, 135, 0]],
         [1, [20, 135, 0], Easing.inQuad],
         [2, [20, 135, 200]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.35, 0],
+        [0.40, 0],
         [0.60, 1],
         [1, 1],
         [2, 0]
@@ -143,19 +143,19 @@ angular.module('famous-angular')
     visual: {
       scale: $timeline([
         [0, [0.3, 0.3]],
-        [0.45, [0.3, 0.3], Easing.outBack],
+        [0.50, [0.3, 0.3], Easing.outBack],
         [0.70, [1, 1]],
       ]),
       translate: $timeline([
         [0, [110, 135, -0]],
-        [0.45, [110, 135, 0], Easing.inOutQuart],
+        [0.50, [110, 135, 0], Easing.inOutQuart],
         [0.70, [110, 135, 0]],
         [1, [110, 135, 0], Easing.inQuad],
         [2, [110, 135, 200]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.45, 0],
+        [0.50, 0],
         [0.70, 1],
         [1, 1],
         [2, 0]
@@ -174,20 +174,20 @@ angular.module('famous-angular')
     visual: {
       box1: {
         scale: $timeline([
-          [0, [0.3, 0.3]],
-          [0.55, [0.3, 0.3], Easing.outBack],
+          [0, [0.5, 0.5]],
+          [0.60, [0.5, 0.5], Easing.outBack],
           [0.8, [1, 1]],
         ]),
         translate: $timeline([
           [0, [135, 160, 0]],
-          [0.55, [135, 160, 0], Easing.inOutQuart],
+          [0.60, [135, 160, 0], Easing.inOutQuart],
           [0.80, [135, 160, 0]],
           [1, [135, 160, 0], Easing.inQuad],
           [2, [130, 160, 200]]
         ]),
         opacity: $timeline([
           [0, 0],
-          [0.55, 0],
+          [0.60, 0],
           [0.80, 1],
           [1, 1],
           [2, 0]
@@ -195,20 +195,20 @@ angular.module('famous-angular')
       },
       box2: {
         scale: $timeline([
-          [0, [0.3, 0.3]],
-          [0.60, [0.3, 0.3], Easing.outBack],
+          [0, [0.5, 0.5]],
+          [0.65, [0.5, 0.5], Easing.outBack],
           [0.85, [1, 1]],
         ]),
         translate: $timeline([
           [0, [283, 160, 0]],
-          [0.60, [283, 160, 0], Easing.inOutQuart],
+          [0.65, [283, 160, 0], Easing.inOutQuart],
           [0.85, [283, 160, 0]],
           [1, [283, 160, 0], Easing.inQuad],
           [2, [283, 160, 200]]
         ]),
         opacity: $timeline([
           [0, 0],
-          [0.60, 0],
+          [0.65, 0],
           [0.85, 1],
           [1, 1],
           [2, 0]
@@ -216,20 +216,20 @@ angular.module('famous-angular')
       },
       box3: {
         scale: $timeline([
-          [0, [0.3, 0.3]],
-          [0.65, [0.3, 0.3], Easing.outBack],
+          [0, [0.5, 0.5]],
+          [0.70, [0.5, 0.5], Easing.outBack],
           [1, [1, 1]],
         ]),
         translate: $timeline([
           [0, [430, 160, 0]],
-          [0.65, [430, 160, 0], Easing.inOutQuart],
+          [0.70, [430, 160, 0], Easing.inOutQuart],
           //[1, [430, 160, 0]],
           [1, [430, 160, 0], Easing.inQuad],
           [2, [430, 160, 200]]
         ]),
         opacity: $timeline([
           [0, 0],
-          [0.65, 0],
+          [0.70, 0],
           [1, 1],
           //[1, 1],
           [2, 0]
