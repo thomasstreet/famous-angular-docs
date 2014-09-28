@@ -3,7 +3,7 @@ angular.module('famous-angular')
 .factory('stateTransitions', function($rootScope, $state) {
   // Need to give dead time between animations, so that the compilation
   // of a new view will stop stutter frame rate
-  var DEAD_TIME_BETWEEN_ANIMATIONS = 100;
+  var DEAD_TIME_BETWEEN_ANIMATIONS = 300;
 
   var prevState;
 
