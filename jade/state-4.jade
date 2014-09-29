@@ -23,6 +23,7 @@ fa-modifier(
 
   fa-modifier(
     fa-translate='routing.text.translate(t.get())'
+    fa-opacity='routing.text.opacity(t.get())'
     fa-size='[true, true]'
     fa-align='[0, 0]'
   )
@@ -43,17 +44,23 @@ fa-modifier(
   )
     fa-surface
       .column-image
-        img(src='img/depdency_x3.png' width='400px')
+        img(src='img/dependency_x3.png' width='400px')
 
   fa-modifier(
     fa-translate='dependency.text.translate(t.get())'
-    fa-size='[430, true]'
+    fa-opacity='dependency.text.opacity(t.get())'
+    fa-size='[true, true]'
+    fa-align='[0, 0]'
   )
-    fa-surface.column
-      .column-label
-        | Dependency Injection
-      .learn-more
-        | Learn More
+    fa-modifier(
+      fa-scale='dependency.text.scale(t.get())'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-surface.column
+        .column-label
+          | Dependency Injection
+        .learn-more
+          | Learn More
 
   fa-modifier(
     fa-translate='modules.image.translate(t.get())'
@@ -66,10 +73,16 @@ fa-modifier(
 
   fa-modifier(
     fa-translate='modules.text.translate(t.get())'
+    fa-opacity='modules.text.opacity(t.get())'
     fa-size='[true, true]'
+    fa-align='[0, 0]'
   )
-    fa-surface.column
-      .column-label
-        | Modules
-      .learn-more
-        | Learn More
+    fa-modifier(
+      fa-scale='modules.text.scale(t.get())'
+      fa-origin='[0.5, 0.5]'
+    )
+      fa-surface.column
+        .column-label
+          | Modules
+        .learn-more
+          | Learn More
