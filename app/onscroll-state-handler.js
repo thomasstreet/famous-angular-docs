@@ -17,13 +17,33 @@ angular.module('famous-angular')
 
   var initialPageLoad = true;
 
-  window.onscroll = function() {
+  var throttledGo = _.throttle($state.go.bind($state), 1000);
+
+  window.onscroll = function(e) {
     // Initial routing from page laod will set the scroll position, but 
     // don't want to execute handler for that scrollTo()
-    if (!initialPageLoad) {
-      var t = getTimelineFromScroll();
-      determineState(t);
+
+    if (initialPageLoad) return;
+
+    var t = getTimelineFromScroll();
+
+
+    var compare = function(a, b) {
+      if (a == b) return 0;
+      return a > b ? 1 : -1
     }
+
+    var stateIndex = function(s) {
+      return _.findIndex(scrollStates, {name: s});
+    };
+
+    var currentState = stateIndex($state.current.name);
+    var reachedState = stateIndex(determineState(t));
+    var direction = compare(reachedState, currentState);
+    var nextState = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
+
+    throttledGo(scrollStates[nextState].name);
+
   };
 
   function getTimelineFromScroll() {
@@ -43,10 +63,10 @@ angular.module('famous-angular')
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
       if (t < state.max) {
-        $state.go(state.name);
-        break;
+        return state.name;
       }
     }
+    return "end";
   }
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
