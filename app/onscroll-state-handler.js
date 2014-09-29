@@ -62,7 +62,7 @@ angular.module('famous-angular')
   function determineState(t) {
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
-      if (t < state.max) {
+      if (t <= state.max) {
         return state.name;
       }
     }
@@ -85,7 +85,8 @@ angular.module('famous-angular')
       if (newState.name === state.name) {
 
         // Set the scroll to half past the beginning of state range
-        var beginningOfStateRange = state.max - rangePerState + 50;
+        var halfOfRange = rangePerState / 2;
+        var beginningOfStateRange = state.max - rangePerState + halfOfRange;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
