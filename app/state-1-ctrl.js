@@ -13,7 +13,12 @@ angular.module('famous-angular')
     translate: $timeline([
       [1, [0, 0, -15]],
       [50, [0, 0, 0]],
-      [100, [0, 0, 15]],
+      [100, [0, 0, 100]],
+    ]),
+    opacity: $timeline([
+      [1, 0, Easing.outQuad],
+      [50, 1, Easing.inQuad],
+      [100, 0],
     ])
   };
 
