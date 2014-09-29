@@ -37,11 +37,24 @@ angular.module('famous-angular')
     stateTransitions.leave(t, $done);
   };
 
+  $scope.entireView = {
+    translate: $timeline([
+      [0, [0, 0, 0]],
+      [1, [0, 0, 0], Easing.inQuart],
+      [2, [0, 0, 75]],
+    ]),
+    opacity: $timeline([
+      [0, 1],
+      [1, 1],
+      [2, 0],
+    ])
+  };
+
 /*--------------------------------------------------------------*/
 
   $scope.catTileGrid = {
     translate: $timeline([
-      [0, [1500, 0, 0], Easing.inOutQuart],
+      [0, [980, 180, 0], Easing.inOutQuart],
       [0.2, [980, 180, 0]]
     ]),
     opacity: $timeline([
@@ -57,14 +70,14 @@ angular.module('famous-angular')
 
   $scope.content = {
     translate: $timeline([
-      [0, [-1000, 0, 0], Easing.inOutQuart],
+      [0, [250, 200, 0], Easing.inOutQuart],
       [0.2, [250, 160, 0]]
     ])
   };
 
   $scope.code = {
     translate: $timeline([
-      [0.2, [0, 1000, 0], Easing.inOutQuart],
+      [0.2, [0, 200, 0], Easing.inOutQuart],
       [0.3, [0, 150, 0]]
     ])
   };
@@ -76,7 +89,7 @@ angular.module('famous-angular')
       var totalTileHeight = tile.height + tile.margin.bottom;
       var heightOfAllTiles = totalTileHeight * tile.countPerColumn;
       return $timeline([
-        [0, [1000, 0, 0], Easing.inOutQuart],
+        [0, [tileGrid.margin.left, heightOfAllTiles + 100, 0], Easing.inOutQuart],
         [0.2, [tileGrid.margin.left, heightOfAllTiles, 0]]
       ]);
     }()
