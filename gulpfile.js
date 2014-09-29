@@ -100,7 +100,7 @@ gulp.task('site-styl', function() {
 // Concat all app/ js files and minify them
 gulp.task('site-js', function() {
   return gulp.src([
-    SITE_DIR + "app/*.js"
+    "app/**/*.js"
   ])
     .pipe(jshint())
     .pipe(concat('main.js'))

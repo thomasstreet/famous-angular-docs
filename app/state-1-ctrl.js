@@ -1,12 +1,44 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($scope, $famous, $timeline, stateTransitions) {
+.controller('state1Ctrl', function($rootScope, $scope, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
   $scope.t = t;
+
+  $scope.grav = new Transitionable(50);
+  $scope.gravity =  {
+    translate: $timeline([
+      [1, [0, 0, -15]],
+      [50, [0, 0, 0]],
+      [100, [0, 0, 15]],
+    ])
+  };
+
+  var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+  var scrollRange = scrollMax / 7;
+
+  $(window).bind('scroll', function(e) {
+    var offset = $timeline([
+      [scrollRange , 1],
+      [scrollRange + scrollRange, 100]
+    ])(window.pageYOffset);
+
+    //var offset = window.pageYOffset > previous ? 2 : -1;
+    //previous = window.pageYOffset;
+
+    $scope.grav.halt();
+    $scope.grav.set(offset, { duration: 0 });
+  });
+
+  //$(window).bind('scrollend', function(e) {
+    //$scope.grav.halt();
+    //$scope.grav.set(50, {duration: 1000, curve: Easing.outElastic});
+    ////window.scrollTo(0, scrollRange + scrollRange / 2);
+
+  //});
 
 /*--------------------------------------------------------------*/
 
@@ -15,13 +47,14 @@ angular.module('famous-angular')
   };
 
   $scope.leave = function($done) {
+    console.log('view leave');
     stateTransitions.leave(t, $done);
   };
 
   $scope.entireView = {
     translate: $timeline([
       [0, [0, 0, 0]],
-      [1, [0, 0, 0], Easing.inQuart],
+      [1, [0, 0, 0], Easing.outQuad],
       [2, [0, 0, 75]],
     ]),
     opacity: $timeline([
