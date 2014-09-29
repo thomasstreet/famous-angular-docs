@@ -49,8 +49,8 @@ angular.module('famous-angular')
   $scope.routing = {
    text: {
      translate: $timeline([
-       [0, [330, 830, 0], Easing.outBack],
-       [0.25, [330, 830, 0], Easing.outBack],
+       [0, [330, 1030, 0], Easing.outBack],
+       [0.25, [330, 1030, 0], Easing.outBack],
        [0.55, [330, 680, 0]]
      ]),
      scale: $timeline([
@@ -81,46 +81,26 @@ angular.module('famous-angular')
   $scope.dependency = {
    text: {
      translate: $timeline([
-       [0, [950, 830, 0], Easing.outBack],
-       [0.25, [950, 830, 0], Easing.outBack],
-       [0.55, [950, 680, 0]]
+       [0, [950, 1030, 0], Easing.outBack],
+       [0.30, [950, 1030, 0], Easing.outBack],
+       [0.60, [950, 680, 0]]
      ]),
      scale: $timeline([
        [0, [0.2, 0.2], Easing.outBack],
-       [0.25, [0.2, 0.2], Easing.outBack],
-       [0.55, [1, 1]]
+       [0.30, [0.2, 0.2], Easing.outBack],
+       [0.60, [1, 1]]
      ]),
      opacity: $timeline([
        [0, 0],
-       [0.25, 0],
-       [0.55, 1]
+       [0.30, 0],
+       [0.60, 1]
      ])
    }, 
    image: {
      translate: $timeline([
        [0, [750, 600, 0], Easing.outBack],
-       [0.3, [750, 600, 0], Easing.outBack],
-       [0.6, [750, 310, 0]]
-     ]),
-     opacity: $timeline([
-       [0, 0],
-       [0.3, 0],
-       [0.6, 1]
-     ])
-   }, 
-  };
-
-  $scope.modules = {
-   text: {
-     translate: $timeline([
-       [0, [1510, 830, 0], Easing.outBack],
-       [0.35, [1510, 830, 0], Easing.outBack],
-       [0.65, [1510, 680, 0]]
-     ]),
-     scale: $timeline([
-       [0, [0.2, 0.2], Easing.outBack],
-       [0.35, [0.2, 0.2], Easing.outBack],
-       [0.65, [1, 1]]
+       [0.35, [750, 600, 0], Easing.outBack],
+       [0.65, [750, 310, 0]]
      ]),
      opacity: $timeline([
        [0, 0],
@@ -128,16 +108,36 @@ angular.module('famous-angular')
        [0.65, 1]
      ])
    }, 
-   image: {
+  };
+
+  $scope.modules = {
+   text: {
      translate: $timeline([
-       [0, [1320, 630, 0], Easing.outBack],
-       [0.4, [1320, 630, 0], Easing.outBack],
-       [0.7, [1320, 330, 0]]
+       [0, [1510, 1030, 0], Easing.outBack],
+       [0.45, [1510, 1030, 0], Easing.outBack],
+       [0.75, [1510, 680, 0]]
+     ]),
+     scale: $timeline([
+       [0, [0.2, 0.2], Easing.outBack],
+       [0.45, [0.2, 0.2], Easing.outBack],
+       [0.75, [1, 1]]
      ]),
      opacity: $timeline([
        [0, 0],
-       [0.4, 0],
-       [0.7, 1]
+       [0.45, 0],
+       [0.75, 1]
+     ])
+   }, 
+   image: {
+     translate: $timeline([
+       [0, [1320, 630, 0], Easing.outBack],
+       [0.5, [1320, 630, 0], Easing.outBack],
+       [0.8, [1320, 330, 0]]
+     ]),
+     opacity: $timeline([
+       [0, 0],
+       [0.5, 0],
+       [0.8, 1]
      ])
    }, 
   };
