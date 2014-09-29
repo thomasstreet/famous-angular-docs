@@ -11,8 +11,8 @@ angular.module('famous-angular')
   $scope.grav = new Transitionable(50);
   $scope.gravity =  {
     translate: $timeline([
-      [1, [0, 0, -15]],
-      [50, [0, 0, 0]],
+      [1, [0, 0, -15], Easing.outQuad],
+      [50, [0, 0, 0], Easing.inQuad],
       [100, [0, 0, 100]],
     ]),
     opacity: $timeline([
@@ -31,19 +31,9 @@ angular.module('famous-angular')
       [scrollRange + scrollRange, 100]
     ])(window.pageYOffset);
 
-    //var offset = window.pageYOffset > previous ? 2 : -1;
-    //previous = window.pageYOffset;
-
     $scope.grav.halt();
     $scope.grav.set(offset, { duration: 0 });
   });
-
-  //$(window).bind('scrollend', function(e) {
-    //$scope.grav.halt();
-    //$scope.grav.set(50, {duration: 1000, curve: Easing.outElastic});
-    ////window.scrollTo(0, scrollRange + scrollRange / 2);
-
-  //});
 
 /*--------------------------------------------------------------*/
 
