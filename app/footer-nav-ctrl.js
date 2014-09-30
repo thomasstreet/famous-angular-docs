@@ -24,7 +24,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, -40, 0]],
       [1, [0, -40, 0], Easing.outBack],
-      [2, [0, -770, 0], Easing.inOutQuad],
+      [2, [0, -770, 0], Easing.outBounce],
       [3, [0, -40, 0]]
     ])
   };
@@ -56,7 +56,7 @@ angular.module('famous-angular')
       $scope.navTimeline.halt();
       $scope.navTimeline.delay(100);
 
-      $scope.navTimeline.set(3, {duration: 500}, function() {
+      $scope.navTimeline.set(3, {duration: 700}, function() {
         $scope.navTimeline.set(1, {duration: 0});
       });
       return;

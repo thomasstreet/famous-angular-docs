@@ -75,7 +75,7 @@ angular.module('famous-angular')
       data: {
         index: 6,
         enterAnimationDuration: 500,
-        leaveAnimationDuration: 300,
+        leaveAnimationDuration: 700,
         cssClass: 'state-end'
       }
     });
