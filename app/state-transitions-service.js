@@ -72,7 +72,6 @@ angular.module('famous-angular')
       t.delay(DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS);
 
       var leaveT = getLeaveT();
-      console.log('start leave');
       t.set(leaveT, { duration: leaveDuration() }, $done);
     }
   }

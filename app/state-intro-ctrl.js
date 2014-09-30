@@ -28,8 +28,8 @@ angular.module('famous-angular')
   $scope.entireView = {
     translate: $timeline([
       [0, [0, 0, 0]],
-      [1, [0, 0, 0], Easing.outQuad],
-      [2, [0, 0, 150]],
+      [1, [0, 0, 0], Easing.inCubic],
+      [2, [0, 0, 200]],
     ]),
     opacity: $timeline([
       [0, 1],

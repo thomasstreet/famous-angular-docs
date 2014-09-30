@@ -34,7 +34,7 @@ angular.module('famous-angular')
    function playAnimation() {
      animationInterval = $interval(function() {
        if ($scope.data.t + 1 > 100) {
-         $interval.cancel(repeatAutoplay);
+         $interval.cancel(animationInterval);
          return;
        }
        $scope.data.t++;

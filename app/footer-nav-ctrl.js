@@ -32,7 +32,8 @@ angular.module('famous-angular')
 
     $scope.navTimeline.halt();
 
-    var delay = getDelay(fromState);
+    var delay = getDelay(fromState) + 300;
+
     $scope.navTimeline.delay(delay);
 
     if (goingToIntroState()) {

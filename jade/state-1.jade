@@ -32,17 +32,26 @@ fa-modifier(
           .code
             | fa-modifier
             | fa-surface
-      fa-modifier(fa-translate='sidenav.code.translate(t.get())')
+      fa-modifier(
+        fa-translate='sidenav.code.translate(t.get())'
+        fa-opacity='sidenav.code.opacity(t.get())'
+      )
         fa-surface(fa-size="[500, true]")
           .code
             | fa-modifier
             | fa-surface
-      fa-modifier(fa-translate='container.code.translate(t.get())')
+      fa-modifier(
+        fa-translate='container.code.translate(t.get())'
+        fa-opacity='container.code.opacity(t.get())'
+      )
         fa-surface(fa-size="[500, true]")
           .code
             | fa-modifier
             | fa-surface
-      fa-modifier(fa-translate='frameContent.code.translate(t.get())')
+      fa-modifier(
+        fa-translate='frameContent.code.translate(t.get())'
+        fa-opacity='frameContent.code.opacity(t.get())'
+      )
         fa-surface(fa-size="[500, true]")
           .code
             | fa-modifier

@@ -175,6 +175,12 @@ angular.module('famous-angular')
       translate: $timeline([
         [0.5, [0, 200, 0], Easing.inOutQuart],
         [0.7, [0, 140, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.35, 0],
+        [0.75, 1],
+        [1, 1],
       ])
     },
   };
@@ -203,6 +209,12 @@ angular.module('famous-angular')
       translate: $timeline([
         [0.6, [0, 200, 0], Easing.inOutQuart],
         [0.8, [0, 160, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.35, 0],
+        [0.75, 1],
+        [1, 1],
       ])
     }
   };
@@ -270,6 +282,12 @@ angular.module('famous-angular')
       translate: $timeline([
         [0.7, [0, 250, 0], Easing.inOutQuart],
         [0.9, [0, 180, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.35, 0],
+        [0.75, 1],
+        [1, 1],
       ])
     }
   };
