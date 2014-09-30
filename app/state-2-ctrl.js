@@ -19,7 +19,7 @@ angular.module('famous-angular')
     stateTransitions.enter(t, function() {
       setTimeout(function() {
         playAnimation();
-      }, 500);
+      }, 300);
       $done();
     });
   };

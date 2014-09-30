@@ -8,17 +8,19 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
-  $scope.heroBlockOpacity = new Transitionable(0);
-
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, function() {
-      $done();
+
+    // Don't initialize hero block at the state5Ctrl invocation, else there
+    // will be dropped frames.  Init hero block after main state5 view has
+    // been compiled
+    setTimeout(function() {
       $scope.showHeroBlock = true;
-      $scope.heroBlockOpacity.set(1, {duration: 500, curve: Easing.inCubic});
       $scope.$digest();
-    });
+    }, 500);
+
+    stateTransitions.enter(t, $done);
   };
 
   $scope.leave = function($done) {
@@ -43,29 +45,83 @@ angular.module('famous-angular')
 
   $scope.webframe = {
     translate: $timeline([
-      [0, [250, 180, -150], Easing.inOutQuart],
-      [0.2, [250, 180, 0]]
+      [0.3, [250, 580, 0], Easing.outBack],
+      [0.6, [250, 180, 0]]
     ]),
-    banner: {
-      translate:$timeline([
-        [0, [84, 110, 2], Easing.inOutQuart],
-        [0.2, [84, 110, 2]]
-      ])
-    }
+    opacity: $timeline([
+      [0, 0],
+      [0.3, 0],
+      [0.5, 1],
+    ])
   };
 
-  $scope.content = {
+  $scope.heroBlock = {
+    translate: $timeline([
+      [0, [84, 110, 2], Easing.inOutQuart],
+      [0.2, [84, 110, 2]]
+    ]),
+    opacity: $timeline([
+      [0, 0],
+      [0.8, 0],
+      [1, 1],
+    ])
+  };
+
+/*--------------------------------------------------------------*/
+
+  $scope.rightColumn = {
     translate: $timeline([
       [0, [1170, 170, -150], Easing.inOutQuart],
       [0.2, [1170, 170, 0]]
     ])
   };
 
-  $scope.code = {
+  $scope.heading = {
     translate: $timeline([
-      [0.3, [0, 150, -150], Easing.inOutQuart],
-      [0.5, [0, 150, 0]]
+      [0, [0, 0, -150], Easing.outQuart],
+      [0.2, [0, 0, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0, Easing.outQuart],
+      [0.2, 1]
     ])
+  };
+
+  $scope.code = {
+    top: {
+      translate: $timeline([
+        [0.2, [0, 150, 0], Easing.inOutQuart],
+        [0.4, [0, 150, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.2, 0],
+        [0.4, 1]
+      ])
+    },
+    middle: {
+      translate: $timeline([
+        [0.8, [-100, 250, 0], Easing.outQuart],
+        [1, [0, 250, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.8, 0],
+        [1, 1]
+      ])
+    },
+    bottom: {
+      translate: $timeline([
+        [0, [0, 240, 0], Easing.inOutQuart],
+        [0.6, [0, 240, 0], Easing.inOutQuart],
+        [0.8, [0, 510, 0]]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [0.2, 0],
+        [0.4, 1]
+      ])
+    }
   };
 
 });
