@@ -23,11 +23,16 @@ angular.module('famous-angular')
   };
 
   $scope.leave = function($done) {
+    if (animationInterval) {
+      $interval.cancel(animationInterval);
+    }
     stateTransitions.leave(t, $done);
   };
 
+  var animationInterval;
+
    function playAnimation() {
-     var repeatAutoplay = $interval(function() {
+     animationInterval = $interval(function() {
        if ($scope.data.t + 1 > 100) {
          $interval.cancel(repeatAutoplay);
          return;
@@ -40,7 +45,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, 0, 0]],
       [1, [0, 0, 0], Easing.inQuart],
-      [2, [0, 0, 75]],
+      [2, [0, 0, 150]],
     ]),
     opacity: $timeline([
       [0, 1],
@@ -53,7 +58,7 @@ angular.module('famous-angular')
 
   $scope.leftColumn = {
     translate: $timeline([
-      [0, [250, 190, -150], Easing.outQuart],
+      [0, [250, 190, 0], Easing.outQuart],
       [0.3, [250, 190, 0]]
     ]),
     opacity: $timeline([
@@ -64,7 +69,7 @@ angular.module('famous-angular')
 
   $scope.rightColumn = {
     translate: $timeline([
-      [0, [1020, 180, -150], Easing.outQuart],
+      [0, [1020, 180, 0], Easing.outQuart],
       [0.3, [1020, 180, 0]]
     ]),
     opacity: $timeline([
