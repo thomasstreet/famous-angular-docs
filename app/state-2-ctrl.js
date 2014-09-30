@@ -19,7 +19,7 @@ angular.module('famous-angular')
     stateTransitions.enter(t, function() {
       setTimeout(function() {
         playAnimation();
-      }, 300);
+      }, 100);
       $done();
     });
   };
@@ -128,12 +128,12 @@ angular.module('famous-angular')
       }
     },
     translate: $timeline([
-      [0.7, [0, 400, 0], Easing.outBack],
-      [1, [0, 0, 0]]
+      [0.6, [0, 400, 0], Easing.outBack],
+      [0.9, [0, 0, 0]]
     ]),
     opacity: $timeline([
-      [0.7, 0, Easing.inQuad],
-      [0.9, 1]
+      [0.6, 0, Easing.inQuad],
+      [0.8, 1]
     ])
   };
 
@@ -149,10 +149,6 @@ angular.module('famous-angular')
           [100, [0, 0, 1]]
         ])(sliderT);
       },
-      opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
-      ])
     },
 
     heading: {
@@ -164,10 +160,6 @@ angular.module('famous-angular')
           [100, [0, -115, 2]]
         ])(sliderT);
       },
-      opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
-      ])
     },
 
     stripe: {
@@ -179,10 +171,6 @@ angular.module('famous-angular')
           [100, [0, 55, 3]]
         ])(sliderT);
       },
-      opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
-      ])
     },
 
     name: {
@@ -194,31 +182,27 @@ angular.module('famous-angular')
           [100, [0, 35, 4]]
         ])(sliderT);
       },
-      opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
-      ])
     },
 
     inputRange: {
       translate: $timeline([
-        [0.40, [-150, 410, 5], Easing.outCubic],
-        [0.70, [0, 410, 5]]
+        [0.30, [-100, 410, 5], Easing.outCubic],
+        [0.60, [0, 410, 5]]
       ]),
       opacity: $timeline([
-        [0.40, 0],
-        [0.70, 1]
+        [0.30, 0],
+        [0.60, 1]
       ])
     },
 
     inputText: {
       translate: $timeline([
-        [0.50, [470, 410, 5], Easing.outCubic],
-        [0.90, [320, 410, 5]]
+        [0.40, [420, 410, 5], Easing.outCubic],
+        [0.70, [320, 410, 5]]
       ]),
       opacity: $timeline([
-        [0.50, 0],
-        [0.90, 1]
+        [0.40, 0],
+        [0.70, 1]
       ])
     }
 
