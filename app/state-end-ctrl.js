@@ -44,12 +44,20 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.opacity = $timeline([
-    [0, 0, Easing.inOutQuart],
-    [0.5, 1],
-    [1, 1, Easing.inOutQuart],
-    [2, 0]
-  ]);
+  $scope.entireView = {
+    opacity: $timeline([
+      [0, 0, Easing.inOutQuart],
+      [0.5, 1],
+      [1, 1, Easing.inOutQuart],
+      [2, 0]
+    ]),
+    translate: $timeline([
+      [0, [0, 1300, 0], Easing.outBack],
+      [1, [0, 0, 0], Easing.inOutQuart],
+      [2, [0, 1300, 0]]
+    ])
+  };
+
 
 /*--------------------------------------------------------------*/
 
@@ -59,8 +67,9 @@ angular.module('famous-angular')
       [0.5, [0, 310, 0]],
     ]),
     opacity: $timeline([
-      [0.2, 0],
-      [0.5, 1, Easing.inCubic],
+      [0, 1],
+      //[0.2, 0],
+      //[0.5, 1, Easing.inCubic],
     ])
   };
 
@@ -73,9 +82,10 @@ angular.module('famous-angular')
         [0.6, [-465, 350, 1]],
       ]),
       opacity: $timeline([
-        [0, 0],
-        [0.3, 0, Easing.inCubic],
-        [0.6, 1],
+        [0, 1],
+        //[0, 0],
+        //[0.3, 0, Easing.inCubic],
+        //[0.6, 1],
       ])
     },
     button: {
@@ -85,9 +95,10 @@ angular.module('famous-angular')
         [0.7, [-465, 460, 2]],
       ]),
       opacity: $timeline([
-        [0, 0],
-        [0.4, 0, Easing.inCubic],
-        [0.7, 1],
+        [0, 1],
+        //[0, 0],
+        //[0.4, 0, Easing.inCubic],
+        //[0.7, 1],
       ])
     }
   };
@@ -99,9 +110,10 @@ angular.module('famous-angular')
       [0.8, [785, 350, 2]],
     ]),
     opacity: $timeline([
-      [0, 0],
-      [0.5, 0, Easing.outCubic],
-      [0.8, 1],
+      [0, 1],
+      //[0, 0],
+      //[0.5, 0, Easing.outCubic],
+      //[0.8, 1],
     ])
   };
 

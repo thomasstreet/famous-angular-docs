@@ -56,7 +56,7 @@ angular.module('famous-angular')
       $scope.navTimeline.halt();
       $scope.navTimeline.delay(100);
 
-      $scope.navTimeline.set(3, {duration: 400}, function() {
+      $scope.navTimeline.set(3, {duration: 500}, function() {
         $scope.navTimeline.set(1, {duration: 0});
       });
       return;

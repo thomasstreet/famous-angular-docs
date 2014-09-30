@@ -69,12 +69,12 @@ angular.module('famous-angular')
       }
     })
     .state('end', {
-      url: '/end',
+      url: '/download',
       templateUrl: 'build/templates/state-end.html',
       controller: 'stateEndCtrl',
       data: {
         index: 6,
-        enterAnimationDuration: 1000,
+        enterAnimationDuration: 500,
         leaveAnimationDuration: 300,
         cssClass: 'state-end'
       }
