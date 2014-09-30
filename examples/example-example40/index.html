@@ -14,34 +14,30 @@
 
   
 </head>
-<body ng-app="faRenderNodeExampleApp">
-  <fa-app ng-controller="RenderCtrl">
-    <fa-render-node fa-node="masterView" id="render"></fa-render-node>
+<body ng-app="faPipeExampleApp">
+  <fa-app ng-controller="PipeCtrl">
+    <!-- fa-scroll-view receives all events from $scope.myEventHandler, and decides how to handle them -->
+    <fa-scroll-view fa-pipe-from="myEventHandler">
+        <fa-view ng-repeat="view in views">
+          <fa-modifier fa-size="[undefined, 160]">
+          <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.myEventHandler -->
+             <fa-surface fa-background-color="view.color"
+                          fa-pipe-to="myEventHandler">
+             </fa-surface>
+            </fa-modifier>
+        </fa-view>
+    </fa-scroll-view>
   </fa-app>
 
   <script>
-    angular.module('faRenderNodeExampleApp', ['famous.angular'])
-        .controller('RenderCtrl', ['$scope', '$famous',function($scope, $famous) {
+    angular.module('faPipeExampleApp', ['famous.angular'])
+        .controller('PipeCtrl', ['$scope', '$famous', function($scope, $famous) {
+          
+          var EventHandler = $famous['famous/core/EventHandler'];
 
-          var View = $famous['famous/core/View'];
-          var Modifier = $famous['famous/core/Modifier'];
-          var Surface = $famous['famous/core/Surface'];
-          var Transform = $famous['famous/core/Transform'];
-          
-          $scope.masterView = new View();
-          
-          var _surf = new Surface({properties: {backgroundColor: 'red'}});
-          _surf.setContent("I'm a surface");
-          
-          var _mod = new Modifier();
-          
-          var _width = 320;
-          var _height = 568;
-          _mod.transformFrom(function(){
-            return Transform.translate(Math.random() * _width, 0, 1);
-          });
-          
-          $scope.masterView.add(_mod).add(_surf);
+          $scope.views = [{color: 'red'}, {color: 'blue'}, {color: 'green'}, {color: 'yellow'}, {color: 'orange'}];
+
+          $scope.myEventHandler = new EventHandler();
 
       }]);
   </script>

@@ -1,9 +1,6 @@
 {
   "name": "example-example46",
   "files": [
-    "index.html",
-    "helloWorld.html",
-    "script.js",
-    "style.css"
+    "index.html"
   ]
 }

@@ -2,6 +2,7 @@
   "name": "example-example42",
   "files": [
     "index.html",
+    "script.js",
     "style.css"
   ]
 }

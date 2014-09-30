@@ -3,6 +3,7 @@ angular.module('faPipeExampleApp', ['famous.angular'])
 
       // Event Handlers
       var EventHandler = $famous['famous/core/EventHandler'];
+      
       $scope.mainPipe = new EventHandler();
       $scope.emptyPipe = new EventHandler();
       
@@ -15,22 +16,25 @@ angular.module('faPipeExampleApp', ['famous.angular'])
       // 3 inputs in the directional pad corresponding to the 3 scroll views
       $scope.inputList = [{model: "checkBox.A", letter: "A"},{model: "checkBox.B", letter: "B"}, {model: "checkBox.C", letter: "C"}];
       
-      // 3 scrollviews
-      $scope.scrollViews = [{pipe: "pipes.A", bgColor: "blue"}, {pipe: "pipes.B", bgColor: "red"}, {pipe: "pipes.C", bgColor: "green"}];
-      
       // pipes that each of the 3 scroll views is binded to through fa-pipe-from
       $scope.pipes = {
         A: $scope.emptyPipe,
         B: $scope.emptyPipe,
         C: $scope.emptyPipe
       };
+
+      // 3 scrollviews
+      $scope.scrollViews = [{pipe: $scope.pipes.A, bgColor: "blue"}, {pipe: $scope.pipes.B, bgColor: "red"}, {pipe: $scope.pipes.C, bgColor: "green"}];
       
       // function that is called whenever a checkbox is checked/unchecked that assigns the fa-pipe-from
-      $scope.checkBoxChange = function(model, value) {
-        if (value !== "false") {
-          $scope.pipes[model] = $scope.mainPipe;
+      $scope.checkBoxChange = function(index, model, value) {
+        if (value == 'true') {
+          console.log($scope.pipes[model], + " is now pointing to mainPipe");
+          $scope.scrollViews[index].pipe = $scope.mainPipe;
+        
         } else {
-          $scope.pipes[model] = $scope.emptyPipe;
-        };
+          console.log($scope.pipes[model] + " is now pointing to emptyPipe");
+          $scope.scrollViews[index].pipe = $scope.emptyPipe;
+        }
       };
   }]);

@@ -14,20 +14,26 @@
 
   
 </head>
-<body ng-app="faSurfaceExampleApp">
-  <fa-app ng-controller="SurfaceCtrl">
-    <fa-modifier fa-size="sizeForBoxFunction">
-      <fa-surface fa-background-color="'red'"></fa-surface>
-    </fa-modifier>
+<body ng-app="faSequentialExampleApp">
+  <fa-app ng-controller="SequentialCtrl">
+    <fa-sequential-layout fa-options="sequentialOptions">
+     <fa-view ng-repeat="view in sequence">
+       <fa-modifier fa-size="[undefined, 100]">
+         <fa-surface fa-background-color="view.bgColor"></fa-surface>
+       </fa-modifier>
+     </fa-view>
+    </fa-sequential-layout>
   </fa-app>
 
   <script>
-    angular.module('faSurfaceExampleApp', ['famous.angular'])
-      .controller('SurfaceCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faSequentialExampleApp', ['famous.angular'])
+        .controller('SequentialCtrl', ['$scope', '$famous', function($scope, $famous) {
           
-          $scope.sizeForBoxFunction = function() {
-             return [75, 75];
+          $scope.sequentialOptions = {
+            direction: 1, // vertical = 1 (default), horizontal = 0
           };
+
+          $scope.sequence = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
 
       }]);
   </script>

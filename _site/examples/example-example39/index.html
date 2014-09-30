@@ -21,7 +21,7 @@
     <fa-view>
       <!-- scroll view used as a directional pad input, receives events from mainPipe-->
       <fa-scroll-view fa-pipe-from="mainPipe">
-        <fa-modifier fa-translate="[0, 0, 15]" fa-size="[320, 50]">
+        <fa-modifier fa-translate="[0, 0, 15]" fa-size="[300, 50]">
           <fa-view>
             <fa-modifier>
               <!-- mousewheel events will be piped to mainPipe -->
@@ -33,7 +33,7 @@
                     <input type="checkbox"
                            ng-model="input.model" 
                            name="scrollPipeTo" 
-                           ng-change="checkBoxChange(input.letter, input.model)"
+                           ng-change="checkBoxChange($index, input.letter, input.model)"
                            ng-true-value="true"
                            ng-false-value="false">
                   </span>

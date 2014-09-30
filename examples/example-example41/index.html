@@ -14,30 +14,43 @@
 
   
 </head>
-<body ng-app="faScrollViewExampleApp">
-  <fa-app ng-controller="ScrollCtrl">
-    <!-- fa-scroll-view receives all events from $scope.myEventHandler, and decides how to handle them -->
-    <fa-scroll-view fa-pipe-from="myEventHandler">
-        <fa-view ng-repeat="view in views">
-          <fa-modifier fa-size="[undefined, 160]">
-          <!-- All events on fa-surfaces (click, mousewheel) are piped to $scope.myEventHandler -->
-             <fa-surface fa-background-color="view.color"
-                          fa-pipe-to="myEventHandler">
-             </fa-surface>
-            </fa-modifier>
-        </fa-view>
-    </fa-scroll-view>
+<body ng-app="faPipeExampleApp">
+  <fa-app ng-controller="PipeCtrl">
+    <fa-view>
+      <fa-modifier fa-size="[100, 100]">
+          <fa-surface class="blue-surface" fa-background-color="'blue'" fa-click="surfaceClick()">Click me!</fa-surface>
+        </fa-modifier>
+    </fa-view>
+    <fa-view fa-pipe-from="eventHandlerB">
+      <fa-modifier fa-size="[100, 100]" fa-translate="redTrans.get()">
+          <fa-surface fa-background-color="'red'"></fa-surface>
+      </fa-modifier>
+    </fa-view>
   </fa-app>
 
   <script>
-    angular.module('faScrollViewExampleApp', ['famous.angular'])
-        .controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faPipeExampleApp', ['famous.angular'])
+        .controller('PipeCtrl', ['$scope', '$famous', function($scope, $famous) {
           
           var EventHandler = $famous['famous/core/EventHandler'];
-
-          $scope.views = [{color: 'red'}, {color: 'blue'}, {color: 'green'}, {color: 'yellow'}, {color: 'orange'}];
-
-          $scope.myEventHandler = new EventHandler();
+          $scope.eventHandlerA = new EventHandler();
+          $scope.eventHandlerB = new EventHandler();
+          $scope.eventHandlerA.pipe($scope.eventHandlerB); 
+          // all events received by eventHandlerA wil be piped to eventHandlerB
+          
+          var Transitionable = $famous['famous/transitions/Transitionable'];
+          $scope.redTrans = new Transitionable([0, 100, 0]);
+          
+          // eventHandlerA emits 'myEvent' on click
+          $scope.surfaceClick = function() {
+            $scope.eventHandlerA.emit('myEvent');
+          };
+          
+          // eventHandlerA pipes all events it receives to eventHandlerB
+          // This is an event handler defined on eventHandlerB for handling 'myEvent'
+          $scope.eventHandlerB.on('myEvent', function() {
+            $scope.redTrans.set([0, 200, 0], {duration: 2000, curve: 'easeInOut'})
+          });
 
       }]);
   </script>

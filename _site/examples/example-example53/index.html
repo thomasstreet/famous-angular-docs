@@ -10,32 +10,19 @@
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="faTouchEndExampleApp">
-  <fa-app ng-controller="TouchEndCtrl">
-    <fa-modifier fa-size="[200, 100]">
-      <fa-surface fa-touchend="touchEnd($event)"
-                  fa-background-color="'red'">
-        Touch-end count: {{touchEndCount}}
+<body ng-app="faSurfaceExampleApp">
+  <fa-app ng-controller="SurfaceCtrl">
+    <fa-modifier fa-size="[300, 50]">
+      <fa-surface ng-class="{strike: applyStrike}">
+        Check box to apply strikethrough!
+        <input type="checkbox" ng-model="applyStrike"></input>
       </fa-surface>
     </fa-modifier>
   </fa-app>
-
-  <script>
-    angular.module('faTouchEndExampleApp', ['famous.angular'])
-      .controller('TouchEndCtrl', ['$scope', '$famous', function($scope, $famous) {
-          
-          $scope.touchEndCount = 0;
-
-          $scope.touchEnd = function($event) {
-            console.log($event);
-            $scope.touchEndCount++;
-          };
-
-      }]);
-  </script>
 </body>
 </html>

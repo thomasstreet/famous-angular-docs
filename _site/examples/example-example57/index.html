@@ -14,25 +14,33 @@
 
   
 </head>
-<body ng-app="faTouchStartExampleApp">
-  <fa-app ng-controller="TouchStartCtrl">
-    <fa-modifier fa-size="[200, 100]">
-      <fa-surface fa-touchstart="touchStart($event)"
-                  fa-background-color="'red'">
-        Touch start count: {{touchStartCount}}
-      </fa-surface>
-    </fa-modifier>
+<body ng-app="faTouchEndExampleApp">
+  <fa-app ng-controller="TouchEndCtrl">
+
+    <!-- The fa-view receives the touchend event from the fa-surface, and calls $scope.touchEnd, which is bound to fa-touchend on the fa-view. -->
+
+    <fa-view fa-touchend="touchEnd($event)" fa-pipe-from="myEvents">
+      <fa-modifier fa-size="[100, 100]">
+        <fa-surface fa-pipe-to="myEvents"
+                    fa-background-color="'orange'">
+          Touch-end count: {{touchEndCount}}
+        </fa-surface>
+      </fa-modifier>
+    </fa-view>
   </fa-app>
 
   <script>
-    angular.module('faTouchStartExampleApp', ['famous.angular'])
-      .controller('TouchStartCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faTouchEndExampleApp', ['famous.angular'])
+      .controller('TouchEndCtrl', ['$scope', '$famous', function($scope, $famous) {
           
-          $scope.touchStartCount = 0;
+          var EventHandler = $famous['famous/core/EventHandler'];
+          $scope.myEvents = new EventHandler();
 
-          $scope.touchStart = function($event) {
+          $scope.touchEndCount = 0;
+          
+          $scope.touchEnd = function($event) {
             console.log($event);
-            $scope.touchStartCount++;
+            $scope.touchEndCount++;
           };
 
       }]);
