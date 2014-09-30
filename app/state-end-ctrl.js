@@ -72,10 +72,10 @@ angular.module('famous-angular')
   $scope.download = {
     text: {
       translate: $timeline([
-        [0, [0, 400, 0]],
-        [0.1, [0, 400, 0], Easing.inOutQuart],
-        [0.3, [-465, 350, 0]],
-        [1.6, [-465, 350, 0], Easing.outQuad],
+        [0, [0, 400, 1]],
+        [0.1, [0, 400, 1], Easing.inOutQuart],
+        [0.3, [-465, 350, 1]],
+        [1.6, [-465, 350, 1], Easing.outQuad],
         [2, [0, -200, 0]]
       ]),
       opacity: $timeline([
@@ -88,11 +88,11 @@ angular.module('famous-angular')
     },
     button: {
       translate: $timeline([
-        [0, [0, 400, 0]],
-        [0.1, [0, 400, 0], Easing.inOutQuart],
-        [0.3, [-465, 460, 0]],
-        [1.6, [-465, 460, 0], Easing.outQuad],
-        [2, [0, -200, 0]]
+        [0, [0, 400, 2]],
+        [0.1, [0, 400, 2], Easing.inOutQuart],
+        [0.3, [-465, 460, 2]],
+        [1.6, [-465, 460, 2], Easing.outQuad],
+        [2, [0, -200, 2]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -106,9 +106,9 @@ angular.module('famous-angular')
 
   $scope.cdn = {
     translate: $timeline([
-      [0, [785, 200, 0], Easing.inOutQuart],
-      [0.2, [785, 350, 0]],
-      [1.6, [785, 350, 0], Easing.outQuad],
+      [0, [785, 200, 2], Easing.inOutQuart],
+      [0.2, [785, 350, 2]],
+      [1.6, [785, 350, 2], Easing.outQuad],
       [2, [0, 200, 200]]
     ]),
     opacity: $timeline([
