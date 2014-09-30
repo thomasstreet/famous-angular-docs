@@ -3,13 +3,20 @@ fa-modifier(
   fa-opacity='entireView.opacity(t.get())'
 )
   fa-modifier(
-    fa-translate='content.translate(t.get())'
+    fa-translate='leftColumn.translate(t.get())'
   )
-    fa-surface(fa-size="[700, true]")
-      h1.heading Use core Angular directives like 
-        span.heading-code &lt;ng-repeat&gt; 
+    fa-modifier(
+      fa-translate='heading.translate(t.get())'
+      fa-opacity='heading.opacity(t.get())'
+    )
+      fa-surface(fa-size="[700, true]")
+        h1.heading Use core Angular directives like 
+          span.heading-code &lt;ng-repeat&gt; 
 
-    fa-modifier(fa-translate='code.translate(t.get())')
+    fa-modifier(
+      fa-translate='code.translate(t.get())'
+      fa-opacity='code.opacity(t.get())'
+    )
       fa-surface(fa-size="[500, true]")
         .code
           p fa-surface
@@ -46,7 +53,10 @@ fa-modifier(
                   .cat-name {{cat.name}}
                   .cat-location {{cat.location}}
 
-    fa-modifier(fa-translate='repeatSlider.translate(t.get())')
+    fa-modifier(
+      fa-translate='repeatSlider.translate(t.get())'
+      fa-opacity='repeatSlider.opacity(t.get())'
+    )
       fa-surface(
         fa-size='[repeatSlider.width, repeatSlider.height]'
       )

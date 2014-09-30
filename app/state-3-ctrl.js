@@ -82,17 +82,31 @@ angular.module('famous-angular')
     return (totalHeight * tile.countPerColumn);
   };
 
-  $scope.content = {
+  $scope.leftColumn = {
     translate: $timeline([
-      [0, [250, 200, 0], Easing.inOutQuart],
-      [0.2, [250, 160, 0]]
+      [0, [250, 200, 0]],
+    ])
+  };
+
+  $scope.heading = {
+    translate: $timeline([
+      [0, [0, 0, -150], Easing.inOutQuart],
+      [0.4, [0, 0, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0, Easing.inOutQuart],
+      [0.4, 1]
     ])
   };
 
   $scope.code = {
     translate: $timeline([
       [0.2, [0, 200, 0], Easing.inOutQuart],
-      [0.3, [0, 150, 0]]
+      [0.6, [0, 150, 0]]
+    ]),
+    opacity: $timeline([
+      [0.2, 0, Easing.inOutQuart],
+      [0.6, 1]
     ])
   };
 
@@ -103,10 +117,14 @@ angular.module('famous-angular')
       var totalTileHeight = tile.height + tile.margin.bottom;
       var heightOfAllTiles = totalTileHeight * tile.countPerColumn;
       return $timeline([
-        [0, [tileGrid.margin.left, heightOfAllTiles + 100, 0], Easing.outBounce],
-        [0.2, [tileGrid.margin.left, heightOfAllTiles, 0]]
+        [0.4, [tileGrid.margin.left, heightOfAllTiles + 200, 0], Easing.outBack],
+        [0.8, [tileGrid.margin.left, heightOfAllTiles, 0]]
       ]);
-    }()
+    }(),
+    opacity: $timeline([
+      [0.4, 0, Easing.inOutQuart],
+      [0.8, 1]
+    ])
   };
 
 /*--------------------------------------------------------------*/
