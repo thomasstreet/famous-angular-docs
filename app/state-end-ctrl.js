@@ -55,16 +55,12 @@ angular.module('famous-angular')
 
   $scope.container = {
     translate: $timeline([
-      [0, [0, 200, 0], Easing.inOutQuart],
-      [0.2, [0, 310, 0]],
-      [1.6, [0, 310, 0], Easing.outQuad],
-      [2, [0, 200, 200]]
+      [0.2, [0, 500, 0], Easing.inOutQuart],
+      [0.5, [0, 310, 0]],
     ]),
     opacity: $timeline([
-      [0, 0],
-      [0.2, 1, Easing.inCubic],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.2, 0],
+      [0.5, 1, Easing.inCubic],
     ])
   };
 
@@ -72,51 +68,40 @@ angular.module('famous-angular')
   $scope.download = {
     text: {
       translate: $timeline([
-        [0, [0, 400, 1]],
-        [0.1, [0, 400, 1], Easing.inOutQuart],
-        [0.3, [-465, 350, 1]],
-        [1.6, [-465, 350, 1], Easing.outQuad],
-        [2, [0, -200, 0]]
+        [0, [-465, 350, 1]],
+        [0.3, [-465, 350, 1], Easing.inOutQuart],
+        [0.6, [-465, 350, 1]],
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.1, 0, Easing.inCubic],
-        [0.3, 1],
-        [1.8, 1, Easing.inOutQuart],
-        [2, 0]
+        [0.3, 0, Easing.inCubic],
+        [0.6, 1],
       ])
     },
     button: {
       translate: $timeline([
-        [0, [0, 400, 2]],
-        [0.1, [0, 400, 2], Easing.inOutQuart],
-        [0.3, [-465, 460, 2]],
-        [1.6, [-465, 460, 2], Easing.outQuad],
-        [2, [0, -200, 2]]
+        [0, [-465, 460, 2]],
+        [0.4, [-465, 460, 2], Easing.inOutQuart],
+        [0.7, [-465, 460, 2]],
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.1, 0, Easing.inCubic],
-        [0.3, 1],
-        [1.8, 1, Easing.inOutQuart],
-        [2, 0]
+        [0.4, 0, Easing.inCubic],
+        [0.7, 1],
       ])
     }
   };
 
   $scope.cdn = {
     translate: $timeline([
-      [0, [785, 200, 2], Easing.inOutQuart],
-      [0.2, [785, 350, 2]],
-      [1.6, [785, 350, 2], Easing.outQuad],
-      [2, [0, 200, 200]]
+      [0, [785, 350, 2]],
+      [0.5, [785, 350, 2], Easing.inOutQuart],
+      [0.8, [785, 350, 2]],
     ]),
     opacity: $timeline([
       [0, 0],
-      [0.2, 0, Easing.outCubic],
-      [0.4, 1],
-      [1.8, 1, Easing.inOutQuart],
-      [2, 0]
+      [0.5, 0, Easing.outCubic],
+      [0.8, 1],
     ])
   };
 

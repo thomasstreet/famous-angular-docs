@@ -23,8 +23,9 @@ angular.module('famous-angular')
     ]),
     translate: $timeline([
       [0, [0, -40, 0]],
-      [1, [0, -40, 0], Easing.inOutQuart],
-      [2, [0, -770, 0]]
+      [1, [0, -40, 0], Easing.outBack],
+      [2, [0, -770, 0], Easing.inOutQuad],
+      [3, [0, -40, 0]]
     ])
   };
 
@@ -43,7 +44,20 @@ angular.module('famous-angular')
     
     if (goingToEndState()) {
       $scope.navTimeline.set(1, {duration: 0}, function() {
-        $scope.navTimeline.set(2, {duration: 500});
+        $scope.navTimeline.set(2, {duration: 400});
+      });
+      return;
+    }
+
+    if (leavingEndState()) {
+
+      // Use a shorter delay when leaving end state, as end state does not
+      // have a leave animation
+      $scope.navTimeline.halt();
+      $scope.navTimeline.delay(100);
+
+      $scope.navTimeline.set(3, {duration: 400}, function() {
+        $scope.navTimeline.set(1, {duration: 0});
       });
       return;
     }
@@ -63,6 +77,11 @@ angular.module('famous-angular')
 
     function goingToEndState() {
       return toState.data.index === 6;
+    }
+
+    function leavingEndState() {
+      if (!fromState.data) return false;
+      return fromState.data.index === 6;
     }
 
   });
