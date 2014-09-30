@@ -11,9 +11,9 @@ angular.module('famous-angular')
   $scope.grav = new Transitionable(50);
   $scope.gravity =  {
     translate: $timeline([
-      [1, [0, 0, -15], Easing.outQuad],
+      [1, [0, 0, -50], Easing.outQuad],
       [50, [0, 0, 0], Easing.inQuad],
-      [100, [0, 0, 15]],
+      [100, [0, 0, 50]],
     ]),
     opacity: $timeline([
       [1, 0, Easing.outQuad],
@@ -51,7 +51,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, 0, 0]],
       [1, [0, 0, 0], Easing.outQuad],
-      [2, [0, 0, 75]],
+      [2, [0, 0, 150]],
     ]),
     opacity: $timeline([
       [0, 1],

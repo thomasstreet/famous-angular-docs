@@ -29,7 +29,7 @@ angular.module('famous-angular')
     translate: $timeline([
       [0, [0, 0, 0]],
       [1, [0, 0, 0], Easing.inQuart],
-      [2, [0, 0, 75]],
+      [2, [0, 0, 150]],
     ]),
     opacity: $timeline([
       [0, 0],
