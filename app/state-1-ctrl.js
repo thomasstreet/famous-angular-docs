@@ -25,6 +25,8 @@ angular.module('famous-angular')
   var scrollMax = $rootScope.bodyHeight - window.innerHeight;
   var scrollRange = scrollMax / 7;
 
+/*--------------------------------------------------------------*/
+
   $(window).bind('scroll', function(e) {
     var offset = $timeline([
       [scrollRange , 1],
@@ -42,7 +44,6 @@ angular.module('famous-angular')
   };
 
   $scope.leave = function($done) {
-    console.log('view leave');
     stateTransitions.leave(t, $done);
   };
 

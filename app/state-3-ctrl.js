@@ -30,8 +30,21 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      playAnimation();
+      $done();
+    });
   };
+
+  function playAnimation() {
+    var repeatAutoplay = $interval(function() {
+      if ($scope.data.repeatCount + 1 >= 9) {
+        $interval.cancel(repeatAutoplay);
+        return;
+      }
+      $scope.data.repeatCount++;
+    }, 100);
+  }
 
   $scope.leave = function($done) {
     stateTransitions.leave(t, $done);
@@ -131,17 +144,6 @@ angular.module('famous-angular')
       [1.99, -Math.PI / 2]
     ])
   };
-
-  // Automatically go through the slides
-  setTimeout(function() {
-    var repeatAutoplay = $interval(function() {
-      if ($scope.data.repeatCount + 1 >= 9) {
-        $interval.cancel(repeatAutoplay);
-        return;
-      }
-      $scope.data.repeatCount++;
-    }, 100);
-  }, 2000);
 
   $scope.catEnter = function(t, $done) {
     t.set(1, { duration: 1500 }, $done);

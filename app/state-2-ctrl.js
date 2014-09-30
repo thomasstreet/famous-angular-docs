@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state2Ctrl', function($scope, $famous, $timeline, stateTransitions) {
+.controller('state2Ctrl', function($scope, $famous, $timeline, stateTransitions, $interval) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -16,11 +16,24 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      playAnimation();
+      $done();
+    });
   };
 
   $scope.leave = function($done) {
     stateTransitions.leave(t, $done);
+  };
+
+   function playAnimation() {
+     var repeatAutoplay = $interval(function() {
+       if ($scope.data.t + 1 > 100) {
+         $interval.cancel(repeatAutoplay);
+         return;
+       }
+       $scope.data.t++;
+     }, 1000 / 60);
   };
 
   $scope.entireView = {
