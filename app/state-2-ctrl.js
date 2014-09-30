@@ -17,7 +17,9 @@ angular.module('famous-angular')
 
   $scope.enter = function($done) {
     stateTransitions.enter(t, function() {
-      playAnimation();
+      setTimeout(function() {
+        playAnimation();
+      }, 500);
       $done();
     });
   };
@@ -80,36 +82,62 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $scope.heading = {
+    translate: $timeline([
+      [0, [0, 0, -300], Easing.outQuad],
+      [0.2, [0, 0, 0]]
+    ]),
+    opacity: $timeline([
+      [0, 0],
+      [0.2, 1]
+    ])
+  };
+
+  $scope.code = {
+    translate: $timeline([
+      [0.2, [0, 0, 0], Easing.outQuad],
+      [0.4, [0, 150, 0]]
+    ]),
+    opacity: $timeline([
+      [0.2, 0, Easing.inQuad],
+      [0.4, 1]
+    ])
+  };
+
+/*--------------------------------------------------------------*/
+
   $scope.rotate = function(sliderT) {
     sliderT = parseInt(sliderT);
     var rotate = $timeline([
-      [1, 0, function(x) { return x }],
+      [1, 0],
       [100, 2 * Math.PI]
     ])(sliderT);
     return rotate;
   };
 
   $scope.entireCard = {
-    translate: function(sliderT) {
-      sliderT = parseInt(sliderT);
-      var depth = $timeline([
-        [1, [0, 0, 0]],
-        [50, [0, 0, -500]],
-        [100, [0, 0, 0]]
-      ])(sliderT);
-      return depth;
-    }
-  };
-
-/*--------------------------------------------------------------*/
-
-  $scope.code = {
+    animation: {
+      translate: function(sliderT) {
+        sliderT = parseInt(sliderT);
+        var depth = $timeline([
+          [1, [0, 0, 0]],
+          [50, [0, 0, -500]],
+          [100, [0, 0, 0]]
+        ])(sliderT);
+        return depth;
+      }
+    },
     translate: $timeline([
-      [0.3, [0, 200, 0], Easing.outBounce],
-      [0.5, [0, 150, 0]]
+      [0.7, [0, 400, 0], Easing.outBack],
+      [1, [0, 0, 0]]
+    ]),
+    opacity: $timeline([
+      [0.7, 0, Easing.inQuad],
+      [0.9, 1]
     ])
   };
 
+/*--------------------------------------------------------------*/
 
   $scope.nametag = {
     body: {
@@ -174,23 +202,23 @@ angular.module('famous-angular')
 
     inputRange: {
       translate: $timeline([
-        [0, [0, 410, 5], Easing.outQuart],
-        [0.3, [0, 410, 5]]
+        [0.40, [-150, 410, 5], Easing.outCubic],
+        [0.70, [0, 410, 5]]
       ]),
       opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
+        [0.40, 0],
+        [0.70, 1]
       ])
     },
 
     inputText: {
       translate: $timeline([
-        [0, [320, 410, 5], Easing.outQuart],
-        [0.3, [320, 410, 5]]
+        [0.50, [470, 410, 5], Easing.outCubic],
+        [0.90, [320, 410, 5]]
       ]),
       opacity: $timeline([
-        [0.8, 0, Easing.inOutQuart],
-        [1, 1]
+        [0.50, 0],
+        [0.90, 1]
       ])
     }
 

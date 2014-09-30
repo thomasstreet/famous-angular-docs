@@ -30,7 +30,7 @@ angular.module('famous-angular')
       controller: 'state2Ctrl',
       data: {
         index: 2,
-        enterAnimationDuration: 1000,
+        enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
         cssClass: 'state-2'
       }

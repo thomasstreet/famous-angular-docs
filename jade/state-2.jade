@@ -8,46 +8,56 @@ fa-modifier(
   )
     fa-modifier(
       fa-size='[620, 375]'
-      fa-translate='entireCard.translate(data.t)'
+      fa-opacity='entireCard.opacity(t.get())'
+      fa-translate='entireCard.translate(t.get())'
       fa-align='[0, 0]'
     )
       fa-modifier(
-        fa-rotate-y='rotate(data.t)'
-        fa-origin='[0.5, 0.5]'
+        fa-translate='entireCard.animation.translate(data.t)'
       )
-        fa-modifier(fa-translate='nametag.body.translate(data.t)')
-          fa-surface(
-            fa-size='[620, 375]'
-          ).nametag-body.nametag
-            
-        fa-modifier(fa-translate='nametag.heading.translate(data.t)')
-          fa-surface(
-            fa-size='[620, true]'
-          ).nametag-heading.nametag
-            .hello
-              | HELLO
-            .intro
-              | my name is
+        fa-modifier(
+          fa-rotate-y='rotate(data.t)'
+          fa-origin='[0.5, 0.5]'
+        )
+          fa-modifier(fa-translate='nametag.body.translate(data.t)')
+            fa-surface(
+              fa-size='[620, 375]'
+            ).nametag-body.nametag
+              
+          fa-modifier(fa-translate='nametag.heading.translate(data.t)')
+            fa-surface(
+              fa-size='[620, true]'
+            ).nametag-heading.nametag
+              .hello
+                | HELLO
+              .intro
+                | my name is
 
-        fa-modifier(fa-translate='nametag.stripe.translate(data.t)')
-          fa-surface(
-            fa-size='[620, 210]'
-          ).nametag-stripe.nametag
-            
-        fa-modifier(fa-translate='nametag.name.translate(data.t)')
-          fa-surface(
-            fa-size='[620, true]'
-          ).clip-overflow.nametag-name.nametag
-            | {{data.name}}
+          fa-modifier(fa-translate='nametag.stripe.translate(data.t)')
+            fa-surface(
+              fa-size='[620, 210]'
+            ).nametag-stripe.nametag
+              
+          fa-modifier(fa-translate='nametag.name.translate(data.t)')
+            fa-surface(
+              fa-size='[620, true]'
+            ).clip-overflow.nametag-name.nametag
+              | {{data.name}}
 
-    fa-modifier(fa-translate='nametag.inputText.translate(t.get())')
+    fa-modifier(
+      fa-translate='nametag.inputText.translate(t.get())'
+      fa-opacity='nametag.inputText.opacity(t.get())'
+    )
       fa-surface(
         fa-size='[300, true]'
       )
         input(type='text' ng-model='data.name').input-name
         div.input-label
           | text input
-    fa-modifier(fa-translate='nametag.inputRange.translate(t.get())')
+    fa-modifier(
+      fa-translate='nametag.inputRange.translate(t.get())'
+      fa-opacity='nametag.inputRange.opacity(t.get())'
+    )
       fa-surface(
         fa-size='[300, true]'
       )
@@ -61,10 +71,17 @@ fa-modifier(
     fa-translate='rightColumn.translate(t.get())'
     fa-opacity='rightColumn.opacity(t.get())'
   )
-    fa-surface(fa-size="[750, true]")
-      h1.heading Combine data binding with Famo.us surfaces and modifiers 
+    fa-modifier(
+      fa-translate='heading.translate(t.get())'
+      fa-opacity='heading.opacity(t.get())'
+    )
+      fa-surface(fa-size="[750, true]")
+        h1.heading Combine data binding with Famo.us surfaces and modifiers 
 
-    fa-modifier(fa-translate='code.translate(t.get())')
+    fa-modifier(
+      fa-translate='code.translate(t.get())'
+      fa-opacity='code.opacity(t.get())'
+    )
       fa-surface(fa-size="[700, true]")
         .code
           p fa-surface
