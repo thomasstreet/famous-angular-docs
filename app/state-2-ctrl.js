@@ -62,99 +62,118 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.rotate = function() {
+  $scope.rotate = function(sliderT) {
+    sliderT = parseInt(sliderT);
     var rotate = $timeline([
       [1, 0, function(x) { return x }],
       [100, 2 * Math.PI]
-    ])(parseInt($scope.data.t));
+    ])(sliderT);
     return rotate;
+  };
+
+  $scope.entireCard = {
+    translate: function(sliderT) {
+      sliderT = parseInt(sliderT);
+      var depth = $timeline([
+        [1, [0, 0, 0]],
+        [50, [0, 0, -500]],
+        [100, [0, 0, 0]]
+      ])(sliderT);
+      return depth;
+    }
   };
 
 /*--------------------------------------------------------------*/
 
   $scope.code = {
-    frame: {
-      translate: function() {
-        return $timeline([
-          [0.3, [0, 200, 0], Easing.outBounce],
-          [0.5, [0, 150, 0]]
-        ])(t.get());
-      }
-    },
+    translate: $timeline([
+      [0.3, [0, 200, 0], Easing.outBounce],
+      [0.5, [0, 150, 0]]
+    ])
   };
 
 
   $scope.nametag = {
     body: {
-      translate: function() {
-        return [0, 0, 1];
-      },
-      opacity: function() {
+      translate: function(sliderT) {
+        sliderT = parseInt(sliderT);
         return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
+          [1, [0, 0, 1], Easing.inQuad],
+          [50, [0, 0, 1], Easing.outQuad],
+          [100, [0, 0, 1]]
+        ])(sliderT);
       },
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     },
 
     heading: {
-      translate: function() {
-        return [0, -115, 2];
-      },
-      opacity: function() {
+      translate: function(sliderT) {
+        sliderT = parseInt(sliderT);
         return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
+          [1, [0, -115, 2], Easing.inQuad],
+          [50, [0, -115, 100], Easing.outQuad],
+          [100, [0, -115, 2]]
+        ])(sliderT);
       },
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     },
 
     stripe: {
-      translate: function() {
-        return [0, 55, 3];
-      },
-      opacity: function() {
+      translate: function(sliderT) {
+        sliderT = parseInt(sliderT);
         return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
+          [1, [0, 55, 3], Easing.inQuad],
+          [50, [0, 55, 200], Easing.outQuad],
+          [100, [0, 55, 3]]
+        ])(sliderT);
       },
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     },
 
     name: {
-      translate: function() {
-        return [0, 35, 4];
-      },
-      opacity: function() {
+      translate: function(sliderT) {
+        sliderT = parseInt(sliderT);
         return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
+          [1, [0, 35, 4], Easing.inQuad],
+          [50, [0, 35, 500], Easing.outQuad],
+          [100, [0, 35, 4]]
+        ])(sliderT);
       },
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     },
 
     inputRange: {
-      translate: function() {
-        return [0, 410, 5];
-      },
-      opacity: function() {
-        return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
-      },
+      translate: $timeline([
+        [0, [0, 410, 5], Easing.outQuart],
+        [0.3, [0, 410, 5]]
+      ]),
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     },
 
     inputText: {
-      translate: function() {
-        return [320, 410, 5];
-      },
-      opacity: function() {
-        return $timeline([
-          [0.8, 0, Easing.inOutQuart],
-          [1, 1]
-        ])(t.get());
-      },
+      translate: $timeline([
+        [0, [320, 410, 5], Easing.outQuart],
+        [0.3, [320, 410, 5]]
+      ]),
+      opacity: $timeline([
+        [0.8, 0, Easing.inOutQuart],
+        [1, 1]
+      ])
     }
 
   };
