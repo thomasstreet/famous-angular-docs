@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('footerNavCtrl', function($scope, $famous, $timeline) {
+.controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline) {
 
 /*--------------------------------------------------------------*/
 
@@ -30,15 +30,14 @@ angular.module('famous-angular')
   };
 
   $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-
     $scope.navTimeline.halt();
 
-    var delay = getDelay(fromState) + 300;
+    var delay = getDelay(fromState) + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
 
     $scope.navTimeline.delay(delay);
 
     if (goingToIntroState()) {
-      $scope.navTimeline.set(0, {duration: 300});
+      $scope.navTimeline.set(0, {duration: 400});
       return;
     } 
     
