@@ -30,7 +30,7 @@ angular.module('famous-angular')
 
 
   function leaveDuration() {
-    return $state.current.data.leaveAnimationDuration;
+    return prevState.data.leaveAnimationDuration;
   }
 
 
