@@ -18,7 +18,7 @@
     {% include nav_links.html %}
 
     <div id="viewport" ng-controller="footerNavCtrl">
-      <div id="viewport" ng-controller="stateEndCtrl">
+      <div ng-controller="downloadPanelCtrl">
         <fa-app style='height: 980px; width: 1920px;' class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
           <ng-include src="'build/templates/state-nav.html'"></ng-include>
           <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
