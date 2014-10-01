@@ -52,9 +52,9 @@ angular.module('famous-angular')
       [2, 0]
     ]),
     translate: $timeline([
-      [0, [0, 1300, 0], Easing.outBack],
-      [1, [0, 0, 0], Easing.inOutQuart],
-      [2, [0, 1300, 0]]
+      [0, [0, 750, 0], Easing.outBack],
+      [1, [0, 750, 0], Easing.inOutQuart],
+      [2, [0, 750, 0]]
     ])
   };
 
@@ -63,7 +63,7 @@ angular.module('famous-angular')
 
   $scope.container = {
     translate: $timeline([
-      [0.2, [0, 500, 0], Easing.inOutQuart],
+      [0.2, [0, 310, 0], Easing.inOutQuart],
       [0.5, [0, 310, 0]],
     ]),
     opacity: $timeline([
@@ -105,9 +105,9 @@ angular.module('famous-angular')
 
   $scope.cdn = {
     translate: $timeline([
-      [0, [785, 350, 2]],
-      [0.5, [785, 350, 2], Easing.inOutQuart],
-      [0.8, [785, 350, 2]],
+      [0, [245, 350, 2]],
+      [0.5, [245, 350, 2], Easing.inOutQuart],
+      [0.8, [245, 350, 2]],
     ]),
     opacity: $timeline([
       [0, 1],
