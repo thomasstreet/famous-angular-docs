@@ -13,7 +13,7 @@ angular.module('famous-angular')
 
 
   function enterDelay() {
-    if (!prevState) {
+    if (!prevState.data) {
       return 0;
     }
     return prevState.data.leaveAnimationDuration;
@@ -45,7 +45,7 @@ angular.module('famous-angular')
 
 
   function comingFromLowerIndex() {
-    if (!prevState) {
+    if (!prevState.data) {
       return true;
     }
 
