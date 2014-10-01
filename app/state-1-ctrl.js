@@ -22,10 +22,12 @@ angular.module('famous-angular')
     ])
   };
 
+/*--------------------------------------------------------------*/
+
   var scrollMax = $rootScope.bodyHeight - window.innerHeight;
   var scrollRange = scrollMax / 7;
 
-/*--------------------------------------------------------------*/
+  var firstScrollEnd = true;
 
   var startPosition;
 
@@ -47,15 +49,17 @@ angular.module('famous-angular')
 
     var rangeHalf = currentPosition < stateScrollRange.middle ? 'top' : 'bottom';
 
-    if (rangeHalf === 'top') {
-      if (scrollDirection === 'down') {
-        return;
+    if (!firstScrollEnd) {
+      if (rangeHalf === 'top') {
+        if (scrollDirection === 'down') {
+          return;
+        }
       }
-    }
 
-    if (rangeHalf === 'bottom') {
-      if (scrollDirection === 'up') {
-        return;
+      if (rangeHalf === 'bottom') {
+        if (scrollDirection === 'up') {
+          return;
+        }
       }
     }
 
@@ -76,6 +80,7 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scrollend', function(e) {
+    firstScrollEnd = false;
     $scope.grav.halt();
     $scope.grav.set(50, {duration: 1000, curve: Easing.outElastic});
   });

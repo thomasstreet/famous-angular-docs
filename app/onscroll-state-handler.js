@@ -1,8 +1,6 @@
 angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state) {
-  $rootScope.bodyHeight = 5000;
-
   var rangePerState = 100;
   var stateCount = 7;
   var scrollStates = [
@@ -14,6 +12,8 @@ angular.module('famous-angular')
     { max: 600, name: '5' },
     { max: 700, name: 'end' }
   ];
+
+  $rootScope.bodyHeight = (window.innerHeight * stateCount) * 1.5;
 
   var initialPageLoad = true;
 
@@ -70,7 +70,7 @@ angular.module('famous-angular')
   }
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
-    determineScrollPositionFromState();
+    //determineScrollPositionFromState();
     if (initialPageLoad) {
       initialPageLoad = false;
     }
