@@ -3,6 +3,9 @@ angular.module('famous-angular')
 .factory('scrollGravity', function($rootScope, $state, $famous, $timeline) {
   var Easing = $famous['famous/transitions/Easing'];
 
+  var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+  var scrollRange = scrollMax / 7;
+
   var timelines =  {
     translate: $timeline([
       [1, [0, 0, -150], Easing.outQuad],
@@ -16,15 +19,24 @@ angular.module('famous-angular')
     ])
   };
 
-  var scrollMax = $rootScope.bodyHeight - window.innerHeight;
-  var scrollRange = scrollMax / 7;
+/*--------------------------------------------------------------*/
 
   function scrollstartHandler(start) {
     start.position = window.pageYOffset;
     start.state = $state.current.name;
   }
 
+/*--------------------------------------------------------------*/
+
+  var initialPageLoad = true;
+
+  setTimeout(function() {
+    initialPageLoad = false;
+  }, 50);
+
   function scrollHandler(grav, start, index) {
+    if (initialPageLoad) return;
+
     var currentPosition = window.pageYOffset;
     var delta = (currentPosition - start.position) || 0;
 
@@ -61,10 +73,15 @@ angular.module('famous-angular')
       [0, 50],
       [scrollRange / 2, 100]
     ])(delta * magnitude);
+    if (gravityValue === 100) {
+      console.log(delta, magnitude, start.state, $state.current);
+    }
 
     grav.halt();
     grav.set(gravityValue, { duration: 0 });
   }
+
+/*--------------------------------------------------------------*/
 
   function scrollendHandler(grav, start) {
     grav.halt();
@@ -75,6 +92,8 @@ angular.module('famous-angular')
 
     grav.set(50, {duration: 1000, curve: Easing.outElastic});
   }
+
+/*--------------------------------------------------------------*/
 
   return {
     timelines: timelines,
