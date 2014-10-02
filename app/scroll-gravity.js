@@ -8,7 +8,7 @@ angular.module('famous-angular')
 
   var timelines =  {
     translate: $timeline([
-      [1, [0, 0, -150], Easing.outQuad],
+      [1, [0, 0, -150], Easing.inQuad],
       [50, [0, 0, 0], Easing.inQuad],
       [100, [0, 0, 150]],
     ]),
@@ -62,9 +62,9 @@ angular.module('famous-angular')
     }
 
     var magnitude = $timeline([
-      [stateScrollRange.start, 1.5],
-      [stateScrollRange.middle, 0.5],
-      [stateScrollRange.end, 1.5]
+      [stateScrollRange.start, 2],
+      [stateScrollRange.middle, 1],
+      [stateScrollRange.end, 2]
     ])(currentPosition);
 
     var gravityValue = $timeline([
@@ -72,10 +72,6 @@ angular.module('famous-angular')
       [0, 50],
       [scrollRange / 2, 100]
     ])(delta * magnitude);
-
-    if (gravityValue === 100) {
-      console.log(start.state, $state.current);
-    }
 
     grav.halt();
     grav.set(gravityValue, { duration: 0 });
