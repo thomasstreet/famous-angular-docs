@@ -17,9 +17,24 @@ fa-modifier(
       fa-translate='code.translate(t.get())'
       fa-opacity='code.opacity(t.get())'
     )
-      fa-surface(fa-size="[500, true]")
-        .code
-          p fa-surface
+      fa-surface(fa-size="[true, true]").code
+        pre
+          code
+            :code
+              <fa-modifier 
+                ng-repeat="cat in cats"
+                fa-animate-enter="catEnter(cat.t, $done)"
+                fa-animate-leave="catLeave(cat.t, $done)"
+                ...
+              >
+                <fa-surface>
+                  ...
+                </fa-surface>                
+              </fa-modifier>
+
+              <fa-surface>
+                <input type="range" ng-model="data.t">
+              <fa-surface>
 
   fa-modifier(
     fa-translate='catTileGrid.translate(t.get())'
