@@ -84,8 +84,8 @@ gulp.task('site-jade', function() {
           .replace( />/g, '&gt;'   )
           .replace( /"/g, '&quot;' )
           .replace( /#/g, '&#35;'  )
-          .replace( /\\/g, '\\\\'  )
-          .replace( /\n/g, '\\n'   );
+          //.replace( /\\/g, '\\\\'  )
+          //.replace( /\n/g, '\\n'   );
   }
 
   return gulp.src(SITE_DIR + "jade/**/*.jade")

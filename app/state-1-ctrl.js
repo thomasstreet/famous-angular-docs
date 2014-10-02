@@ -138,6 +138,12 @@ angular.module('famous-angular')
     ])
   };
 
+  $scope.codeBlock = {
+    translate: $timeline([
+      [0, [0, 150, 0]]
+    ])
+  };
+
   $scope.frame = {
     visual: {
       translate: $timeline([
@@ -154,8 +160,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.15, [0, 250, 0], Easing.outQuad],
-        [0.45, [0, 150, 0]]
+        [0.15, [-50, 0, 0], Easing.outQuad],
+        [0.45, [0, 0, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -188,13 +194,13 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.35, [0, 400, 0], Easing.outQuad],
-        [0.75, [0, 300, 0]]
+        [0.30, [0, 30, 0], Easing.outQuad],
+        [0.50, [50, 30, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.35, 0],
-        [0.75, 1],
+        [0.30, 0],
+        [0.50, 1],
         [1, 1],
       ])
     },
@@ -222,13 +228,13 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.5, [0, 200, 0], Easing.inOutQuart],
-        [0.7, [0, 140, 0]]
+        [0.40, [50, 60, 0], Easing.outQuad],
+        [0.60, [100, 60, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.35, 0],
-        [0.75, 1],
+        [0.50, 0],
+        [0.60, 1],
         [1, 1],
       ])
     },
@@ -256,13 +262,13 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.6, [0, 200, 0], Easing.inOutQuart],
-        [0.8, [0, 160, 0]]
+        [0.5, [50, 90, 0], Easing.outQuad],
+        [0.7, [100, 90, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.35, 0],
-        [0.75, 1],
+        [0.5, 0],
+        [0.7, 1],
         [1, 1],
       ])
     }
@@ -329,13 +335,13 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.7, [0, 250, 0], Easing.inOutQuart],
-        [0.9, [0, 180, 0]]
+        [0, [100, 120, 0]],
+        [0.70, [100, 120, 0], Easing.outQuad],
+        [1, [150, 120, 0]],
       ]),
       opacity: $timeline([
         [0, 0],
-        [0.35, 0],
-        [0.75, 1],
+        [0.70, 0],
         [1, 1],
       ])
     }

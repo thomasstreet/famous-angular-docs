@@ -70,7 +70,7 @@ angular.module('famous-angular')
   }
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
-    //determineScrollPositionFromState();
+    determineScrollPositionFromState();
     if (initialPageLoad) {
       initialPageLoad = false;
     }
