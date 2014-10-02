@@ -23,7 +23,6 @@ angular.module('famous-angular')
 
   function scrollstartHandler(start) {
     start.position = window.pageYOffset;
-    start.state = $state.current.name;
   }
 
 /*--------------------------------------------------------------*/
@@ -73,8 +72,9 @@ angular.module('famous-angular')
       [0, 50],
       [scrollRange / 2, 100]
     ])(delta * magnitude);
+
     if (gravityValue === 100) {
-      console.log(delta, magnitude, start.state, $state.current);
+      console.log(start.state, $state.current);
     }
 
     grav.halt();

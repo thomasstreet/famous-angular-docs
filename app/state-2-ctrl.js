@@ -20,7 +20,7 @@ angular.module('famous-angular')
 
   var start = {
     position: 0,
-    state: ''
+    state: $state.current.name
   };
 
   $(window).bind('scrollstart', function() {
