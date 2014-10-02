@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions) {
+.controller('state1Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -9,89 +9,28 @@ angular.module('famous-angular')
   $scope.t = t;
 
   $scope.grav = new Transitionable(50);
-  $scope.gravity =  {
-    translate: $timeline([
-      [1, [0, 0, -150], Easing.outQuad],
-      [50, [0, 0, 0], Easing.inQuad],
-      [100, [0, 0, 150]],
-    ]),
-    opacity: $timeline([
-      [1, 0, Easing.outQuad],
-      [50, 1, Easing.inQuad],
-      [100, 0],
-    ])
-  };
+
+  $scope.gravity = scrollGravity.timelines;
+
 
 /*--------------------------------------------------------------*/
 
-  var scrollMax = $rootScope.bodyHeight - window.innerHeight;
-  var scrollRange = scrollMax / 7;
+  var start = {
+    position: 0,
+    state: ''
+  };
 
-  var firstScrollEnd = true;
-
-  var startPosition;
-  var startState;
-
-  $(window).bind('scrollstart', function(e) {
-    startPosition = window.pageYOffset;
-    startState = $state.current.name;
+  $(window).bind('scrollstart', function() {
+    scrollGravity.scrollstartHandler(start);
   });
 
-  $(window).bind('scroll', function(e) {
-    var currentPosition = window.pageYOffset;
-    var delta = (currentPosition - startPosition) || 0;
-
-    var stateScrollRange = {
-      start: scrollRange,
-      middle: scrollRange + (scrollRange / 2),
-      end: scrollRange + scrollRange
-    };
-
-    var scrollDirection = delta > 0 ? 'down' : 'up';
-
-    var rangeHalf = currentPosition < stateScrollRange.middle ? 'top' : 'bottom';
-
-    if (!firstScrollEnd) {
-      if (rangeHalf === 'top') {
-        if (scrollDirection === 'down') {
-          return;
-        }
-      }
-
-      if (rangeHalf === 'bottom') {
-        if (scrollDirection === 'up') {
-          return;
-        }
-      }
-    }
-
-    var magnitude = $timeline([
-      [stateScrollRange.start, 3],
-      [stateScrollRange.middle, 1],
-      [stateScrollRange.end, 3]
-    ])(currentPosition);
-
-    var gravityValue = $timeline([
-      [-scrollRange / 2, 1],
-      [0, 50],
-      [scrollRange / 2, 100]
-    ])(delta * magnitude);
-
-    $scope.grav.halt();
-    $scope.grav.set(gravityValue, { duration: 0 });
+  $(window).bind('scroll', function() {
+    scrollGravity.scrollHandler($scope.grav, start);
   });
 
   $(window).bind('scrollend', function(e) {
-    firstScrollEnd = false;
-    $scope.grav.halt();
-
-    if ($state.current.name !== startState) {
-      return;
-    }
-
-    $scope.grav.set(50, {duration: 1000, curve: Easing.outElastic});
+    scrollGravity.scrollendHandler($scope.grav, start);
   });
-
 
 /*--------------------------------------------------------------*/
 
