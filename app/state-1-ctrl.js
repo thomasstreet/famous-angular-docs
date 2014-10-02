@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($rootScope, $scope, $famous, $timeline, stateTransitions) {
+.controller('state1Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -30,14 +30,16 @@ angular.module('famous-angular')
   var firstScrollEnd = true;
 
   var startPosition;
+  var startState;
 
   $(window).bind('scrollstart', function(e) {
     startPosition = window.pageYOffset;
+    startState = $state.current.name;
   });
 
   $(window).bind('scroll', function(e) {
     var currentPosition = window.pageYOffset;
-    var delta = (currentPosition - startPosition);
+    var delta = (currentPosition - startPosition) || 0;
 
     var stateScrollRange = {
       start: scrollRange,
@@ -82,6 +84,11 @@ angular.module('famous-angular')
   $(window).bind('scrollend', function(e) {
     firstScrollEnd = false;
     $scope.grav.halt();
+
+    if ($state.current.name !== startState) {
+      return;
+    }
+
     $scope.grav.set(50, {duration: 1000, curve: Easing.outElastic});
   });
 
