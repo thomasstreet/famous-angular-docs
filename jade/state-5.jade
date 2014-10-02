@@ -1,66 +1,70 @@
 fa-modifier(
-  fa-translate='entireView.translate(t.get())'
-  fa-opacity='entireView.opacity(t.get())'
+  fa-translate='gravity.translate(grav.get())'
+  fa-opacity='gravity.opacity(grav.get())'
 )
   fa-modifier(
-    fa-translate='webframe.translate(t.get())'
-    fa-opacity='webframe.opacity(t.get())'
+    fa-translate='entireView.translate(t.get())'
+    fa-opacity='entireView.opacity(t.get())'
   )
-    fa-surface(fa-size="[true, true]")
-      img(src="img/webframe_x3.png" width="800px")
-
     fa-modifier(
-      fa-translate='heroBlock.translate(t.get())'
-      fa-size='[632, 236]'
-      fa-opacity='heroBlock.opacity(t.get())'
-      ng-if='showHeroBlock'
+      fa-translate='webframe.translate(t.get())'
+      fa-opacity='webframe.opacity(t.get())'
     )
-      fa-surface
-        include state-5-hero
+      fa-surface(fa-size="[true, true]")
+        img(src="img/webframe_x3.png" width="800px")
 
-  fa-modifier(fa-translate='rightColumn.translate(t.get())')
-    fa-modifier(
-      fa-translate='heading.translate(t.get())'
-      fa-opacity='heading.opacity(t.get())'
-    )
-      fa-surface(fa-size="[500, true]")
-        h1.heading Use HTML, CSS, and Famo.us all together
+      fa-modifier(
+        fa-translate='heroBlock.translate(t.get())'
+        fa-size='[632, 236]'
+        fa-opacity='heroBlock.opacity(t.get())'
+        ng-if='showHeroBlock'
+      )
+        fa-surface
+          include state-5-hero
 
-    fa-modifier(
-      fa-translate='code.top.translate(t.get())'
-      fa-opacity='code.top.opacity(t.get())'
-    )
-      fa-surface(fa-size="[500, true]")
-        .code
-          pre
-            code.grayed
-              |&lt;body&gt;
-              |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
+    fa-modifier(fa-translate='rightColumn.translate(t.get())')
+      fa-modifier(
+        fa-translate='heading.translate(t.get())'
+        fa-opacity='heading.opacity(t.get())'
+      )
+        fa-surface(fa-size="[500, true]")
+          h1.heading Use HTML, CSS, and Famo.us all together
 
-    fa-modifier(
-      fa-translate='code.middle.translate(t.get())'
-      fa-opacity='code.middle.opacity(t.get())'
-    )
-      fa-surface(fa-size="[500, true]")
-        .code
-          pre
-            code.special
-              |   &lt;fa-app id=&quot;banner&quot;&gt;
-              |     &lt;fa-modifier&gt;
-              |       &lt;fa-surface&gt;
-              |         ...
-              |       &lt;/fa-surface&gt;
-              |     &lt;/fa-modifier&gt;
-              |   &lt;/fa-app&gt;
+      fa-modifier(
+        fa-translate='code.top.translate(t.get())'
+        fa-opacity='code.top.opacity(t.get())'
+      )
+        fa-surface(fa-size="[500, true]")
+          .code
+            pre
+              code.grayed
+                |&lt;body&gt;
+                |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
 
-    fa-modifier(
-      fa-translate='code.bottom.translate(t.get())'
-      fa-opacity='code.bottom.opacity(t.get())'
-    )
-      fa-surface(fa-size="[500, true]")
-        .code
-          pre
-            code.grayed
-              |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
-              |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
-              |&lt;/body&gt;
+      fa-modifier(
+        fa-translate='code.middle.translate(t.get())'
+        fa-opacity='code.middle.opacity(t.get())'
+      )
+        fa-surface(fa-size="[500, true]")
+          .code
+            pre
+              code.special
+                |   &lt;fa-app id=&quot;banner&quot;&gt;
+                |     &lt;fa-modifier&gt;
+                |       &lt;fa-surface&gt;
+                |         ...
+                |       &lt;/fa-surface&gt;
+                |     &lt;/fa-modifier&gt;
+                |   &lt;/fa-app&gt;
+
+      fa-modifier(
+        fa-translate='code.bottom.translate(t.get())'
+        fa-opacity='code.bottom.opacity(t.get())'
+      )
+        fa-surface(fa-size="[500, true]")
+          .code
+            pre
+              code.grayed
+                |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
+                |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
+                |&lt;/body&gt;

@@ -1,12 +1,34 @@
 angular.module('famous-angular')
 
-.controller('state5Ctrl', function($scope, $famous, $timeline, stateTransitions) {
+.controller('state5Ctrl', function($scope, $state, $famous, $timeline, stateTransitions, scrollGravity) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   var t = new Transitionable(0);
   $scope.t = t;
+
+/*--------------------------------------------------------------*/
+
+  $scope.grav = new Transitionable(50);
+  $scope.gravity = scrollGravity.timelines;
+
+  var start = {
+    position: 0,
+    state: ''
+  };
+
+  $(window).bind('scrollstart', function() {
+    scrollGravity.scrollstartHandler(start);
+  });
+
+  $(window).bind('scroll', function() {
+    scrollGravity.scrollHandler($scope.grav, start, $state.current.data.index);
+  });
+
+  $(window).bind('scrollend', function(e) {
+    scrollGravity.scrollendHandler($scope.grav, start);
+  });
 
 /*--------------------------------------------------------------*/
 

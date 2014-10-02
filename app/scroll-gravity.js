@@ -24,14 +24,14 @@ angular.module('famous-angular')
     start.state = $state.current.name;
   }
 
-  function scrollHandler(grav, start) {
+  function scrollHandler(grav, start, index) {
     var currentPosition = window.pageYOffset;
     var delta = (currentPosition - start.position) || 0;
 
     var stateScrollRange = {
-      start: scrollRange,
-      middle: scrollRange + (scrollRange / 2),
-      end: scrollRange + scrollRange
+      start: (scrollRange * index),
+      middle: (scrollRange * index) + (scrollRange / 2),
+      end: (scrollRange * index) + scrollRange
     };
 
     var scrollDirection = delta > 0 ? 'down' : 'up';
@@ -51,9 +51,9 @@ angular.module('famous-angular')
     }
 
     var magnitude = $timeline([
-      [stateScrollRange.start, 2],
-      [stateScrollRange.middle, 1],
-      [stateScrollRange.end, 2]
+      [stateScrollRange.start, 1.5],
+      [stateScrollRange.middle, 0.5],
+      [stateScrollRange.end, 1.5]
     ])(currentPosition);
 
     var gravityValue = $timeline([

@@ -8,12 +8,10 @@ angular.module('famous-angular')
   var t = new Transitionable(0);
   $scope.t = t;
 
-  $scope.grav = new Transitionable(50);
-
-  $scope.gravity = scrollGravity.timelines;
-
-
 /*--------------------------------------------------------------*/
+
+  $scope.grav = new Transitionable(50);
+  $scope.gravity = scrollGravity.timelines;
 
   var start = {
     position: 0,
@@ -25,7 +23,7 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scroll', function() {
-    scrollGravity.scrollHandler($scope.grav, start);
+    scrollGravity.scrollHandler($scope.grav, start, $state.current.data.index);
   });
 
   $(window).bind('scrollend', function(e) {

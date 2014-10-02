@@ -13,7 +13,7 @@ angular.module('famous-angular')
     { max: 700, name: 'end' }
   ];
 
-  $rootScope.bodyHeight = (window.innerHeight * stateCount) * 1.5;
+  $rootScope.bodyHeight = (window.innerHeight * stateCount);
 
   var initialPageLoad = true;
 
