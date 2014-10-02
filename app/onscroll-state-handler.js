@@ -2,16 +2,10 @@ angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state) {
   var rangePerState = 100;
-  var stateCount = 7;
-  var scrollStates = [
-    { max: 100, name: 'intro' },
-    { max: 200, name: '1' },
-    { max: 300, name: '2' },
-    { max: 400, name: '3' },
-    { max: 500, name: '4' },
-    { max: 600, name: '5' },
-    { max: 700, name: 'end' }
-  ];
+  var scrollStates = $state.get().filter(function(state) {
+    return !!state.data;
+  });
+  var stateCount = scrollStates.length;
 
   $rootScope.bodyHeight = (window.innerHeight * stateCount);
 
@@ -52,7 +46,7 @@ angular.module('famous-angular')
 
     // Scale the scroll range to a simple timeline range
     t = $timeline([
-      [0, 0, function(x) { return x }],
+      [0, 0],
       [scrollMax, stateCount * rangePerState]
     ])(pageYOffset);
 
@@ -62,7 +56,7 @@ angular.module('famous-angular')
   function determineState(t) {
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
-      if (t <= state.max) {
+      if (t <= state.scrollTimelineMax) {
         return state.name;
       }
     }
@@ -86,12 +80,12 @@ angular.module('famous-angular')
 
         // Set the scroll to half past the beginning of state range
         var halfOfRange = rangePerState / 2;
-        var beginningOfStateRange = state.max - rangePerState + halfOfRange;
+        var beginningOfStateRange = state.scrollTimelineMax - rangePerState + halfOfRange;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
         var newScrollY = $timeline([
-          [0, 0, function(x) { return x }],
+          [0, 0],
           [(stateCount) * rangePerState, scrollMax]
         ])(beginningOfStateRange);
 

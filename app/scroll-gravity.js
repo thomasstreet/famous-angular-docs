@@ -4,7 +4,10 @@ angular.module('famous-angular')
   var Easing = $famous['famous/transitions/Easing'];
 
   var scrollMax = $rootScope.bodyHeight - window.innerHeight;
-  var scrollRange = scrollMax / 7;
+  var stateCount = $state.get().filter(function(state) {
+    return !!state.data;
+  }).length;
+  var scrollRange = scrollMax / stateCount;
 
   var timelines =  {
     translate: $timeline([

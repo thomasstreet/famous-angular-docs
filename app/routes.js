@@ -8,6 +8,7 @@ angular.module('famous-angular')
       controller: 'stateIntroCtrl',
       data: {
         index: 0,
+        scrollTimelineMax: 100,
         enterAnimationDuration: 1000,
         leaveAnimationDuration: 300,
         cssClass: 'state-intro'
@@ -19,6 +20,7 @@ angular.module('famous-angular')
       controller: 'state1Ctrl',
       data: {
         index: 1,
+        scrollTimelineMax: 200,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
         cssClass: 'state-1'
@@ -30,6 +32,7 @@ angular.module('famous-angular')
       controller: 'state2Ctrl',
       data: {
         index: 2,
+        scrollTimelineMax: 300,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
         cssClass: 'state-2'
@@ -41,6 +44,7 @@ angular.module('famous-angular')
       controller: 'state3Ctrl',
       data: {
         index: 3,
+        scrollTimelineMax: 400,
         enterAnimationDuration: 1000,
         leaveAnimationDuration: 300,
         cssClass: 'state-3'
@@ -52,6 +56,7 @@ angular.module('famous-angular')
       controller: 'state4Ctrl',
       data: {
         index: 4,
+        scrollTimelineMax: 500,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
         cssClass: 'state-4'
@@ -63,6 +68,7 @@ angular.module('famous-angular')
       controller: 'state5Ctrl',
       data: {
         index: 5,
+        scrollTimelineMax: 600,
         enterAnimationDuration: 2000,
         leaveAnimationDuration: 300,
         cssClass: 'state-5'
@@ -72,6 +78,8 @@ angular.module('famous-angular')
       url: '/download',
       data: {
         index: 6,
+        scrollTimelineMax: 700,
+        enterAnimationDuration: 2000,
         enterAnimationDuration: 500,
         leaveAnimationDuration: 500,
         cssClass: 'state-end'
