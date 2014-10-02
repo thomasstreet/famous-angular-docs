@@ -82,6 +82,17 @@ fa-modifier(
       fa-translate='code.translate(t.get())'
       fa-opacity='code.opacity(t.get())'
     )
-      fa-surface(fa-size="[700, true]")
-        .code
-          p fa-surface
+      fa-surface(fa-size="[700, true]").code
+        pre
+          code
+            :code
+              <fa-modifier fa-rotate-y="card.rotate(data.t)">
+                <fa-surface>
+                  ...
+                </fa-surface>                
+              </fa-modifier>
+
+              <fa-surface>
+                <input type="range" ng-model="data.t">
+                <input type="text" ng-model="data.name">
+              <fa-surface>
