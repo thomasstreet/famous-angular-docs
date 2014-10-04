@@ -23,7 +23,7 @@ angular.module('famous-angular')
     var desiredState = getState(desiredIndex);
 
     if (desiredState) {
-      $state.go(desiredState.name);
+      $state.go(desiredState.name, null, { location: 'replace' });
     }
   }
 

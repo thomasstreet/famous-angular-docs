@@ -23,7 +23,9 @@ angular.module('famous-angular')
 
   var initialPageLoad = true;
 
-  var throttledGo = _.throttle($state.go.bind($state), 1000);
+  var throttledGo = _.throttle(function(stateName) {
+    $state.go(stateName, null, { location: 'replace' });
+  }, 1000);
 
   window.onscroll = function(e) {
     // Initial routing from page laod will set the scroll position, but 
