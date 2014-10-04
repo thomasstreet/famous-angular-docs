@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state3Ctrl', function($scope, $state, $interval, $famous, $timeline, stateTransitions, scrollGravity) {
+.controller('state3Ctrl', function($rootScope, $scope, $state, $interval, $famous, $timeline, stateTransitions, scrollGravity) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -37,17 +37,17 @@ angular.module('famous-angular')
     state: $state.current.name
   };
 
-  $(window).bind('scrollstart', function() {
+  $rootScope.scrollstart = function() {
     scrollGravity.scrollstartHandler(start);
-  });
+  };
 
-  $(window).bind('scroll', function() {
+  $rootScope.scroll = function() {
     scrollGravity.scrollHandler($scope.grav, start, $state.current.data.index);
-  });
+  };
 
-  $(window).bind('scrollend', function(e) {
+  $rootScope.scrollend = function() {
     scrollGravity.scrollendHandler($scope.grav, start);
-  });
+  };
 
 /*--------------------------------------------------------------*/
 

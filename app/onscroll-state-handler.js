@@ -53,13 +53,10 @@ angular.module('famous-angular')
     var direction = compare(reachedStateIndex, currentStateIndex);
     var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
 
-    //console.log('precallback', nextStateIndex);
     $rootScope.scrollProgress.halt();
     $rootScope.scrollProgress.set(t, { duration: 200 }, function(nextIndex) {
       return function() {
-        //console.log('callback', nextIndex);
         var nextState = scrollStates[nextIndex];
-        //throttledStateChange(nextState);
         $state.go(nextState.name, null, { location: 'replace' });
       }
     }(nextStateIndex));

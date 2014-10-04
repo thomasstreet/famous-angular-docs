@@ -23,6 +23,11 @@ angular.module('famous-angular')
   };
 
 /*--------------------------------------------------------------*/
+  $(window).bind('scrollstart', function() {
+    if ($rootScope.scrollstart) {
+      $rootScope.scrollstart();
+    }
+  });
 
   function scrollstartHandler(start) {
     start.position = window.pageYOffset;
@@ -35,6 +40,12 @@ angular.module('famous-angular')
   setTimeout(function() {
     initialPageLoad = false;
   }, 50);
+
+  $(window).bind('scroll', function() {
+    if ($rootScope.scroll) {
+      $rootScope.scroll();
+    }
+  });
 
   function scrollHandler(grav, start, index) {
     if (initialPageLoad) return;
@@ -82,12 +93,14 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $(window).bind('scrollend', function(e) {
+    if ($rootScope.scrollend) {
+      $rootScope.scrollend();
+    }
+  });
+
   function scrollendHandler(grav, start) {
     grav.halt();
-
-    if ($state.current.name !== start.state) {
-      return;
-    }
 
     grav.set(50, {duration: 1000, curve: Easing.outElastic});
 

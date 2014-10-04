@@ -18,17 +18,17 @@ angular.module('famous-angular')
     state: $state.current.name
   };
 
-  $(window).bind('scrollstart', function() {
+  $rootScope.scrollstart = function() {
     scrollGravity.scrollstartHandler(start);
-  });
+  };
 
-  $(window).bind('scroll', function() {
+  $rootScope.scroll = function() {
     scrollGravity.scrollHandler($scope.grav, start, $state.current.data.index);
-  });
+  };
 
-  $(window).bind('scrollend', function(e) {
+  $rootScope.scrollend = function() {
     scrollGravity.scrollendHandler($scope.grav, start);
-  });
+  };
 
 /*--------------------------------------------------------------*/
 
