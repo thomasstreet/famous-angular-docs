@@ -41,31 +41,30 @@ angular.module('famous-angular')
     start.scrollPosition = window.pageYOffset;
   });
 
-  $(window).bind('scroll', onscrollHandler);
-
-  function onscrollHandler() {
+  $(window).bind('scroll', function() {
     // Initial routing from page laod will set the scroll position, but 
     // don't want to execute handler for that scrollTo()
     if (initialPageLoad) return;
 
     var t = getTimelineFromScroll();
 
-    var currentState = stateIndex($state.current.name);
-    var reachedState = stateIndex(determineState(t));
-    var direction = compare(reachedState, currentState);
-    var nextStateIndex = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
+    var currentStateIndex = $state.current.data.index;
+    var reachedStateIndex = stateIndex(determineState(t));
+    var direction = compare(reachedStateIndex, currentStateIndex);
+    var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
 
+    //console.log('precallback', nextStateIndex);
     $rootScope.scrollProgress.halt();
+    $rootScope.scrollProgress.set(t, { duration: 200 }, function(nextIndex) {
+      return function() {
+        //console.log('callback', nextIndex);
+        var nextState = scrollStates[nextIndex];
+        //throttledStateChange(nextState);
+        $state.go(nextState.name, null, { location: 'replace' });
+      }
+    }(nextStateIndex));
 
-    console.log(t);
-
-    $rootScope.scrollProgress.set(t, { duration: 500 });
-
-    if ($state.current.data.index !== nextStateIndex) {
-      var nextState = scrollStates[nextStateIndex];
-      throttledStateChange(nextState);
-    }
-  }
+  });
 
   function compare(a, b) {
     if (a == b) return 0;
