@@ -2,12 +2,24 @@ angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state) {
   var rangePerState = 100;
-  var scrollStates = $state.get().filter(function(state) {
-    return !!state.data;
-  });
+  var scrollStates = getScrollStates();
   var stateCount = scrollStates.length;
-
   $rootScope.bodyHeight = (window.innerHeight * stateCount);
+
+  function getScrollStates() {
+    var listOfStates = $state.get();
+    var usableStates = listOfStates.filter(function(state) {
+      return !!state.data;
+    });
+    var orderedStates = _.sortBy(usableStates, function(state) {
+      return state.data.index;
+    });
+    return orderedStates;
+  }
+
+
+/*--------------------------------------------------------------*/
+
 
   var initialPageLoad = true;
 
@@ -37,7 +49,6 @@ angular.module('famous-angular')
     var nextState = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
 
     throttledGo(scrollStates[nextState].name);
-
   };
 
   function getTimelineFromScroll() {
@@ -63,6 +74,10 @@ angular.module('famous-angular')
     return "end";
   }
 
+
+/*--------------------------------------------------------------*/
+
+
   $rootScope.$on('$stateChangeSuccess', function(e) {
     determineScrollPositionFromState();
     if (initialPageLoad) {
@@ -72,24 +87,21 @@ angular.module('famous-angular')
 
 
   function determineScrollPositionFromState() {
-    var newState = $state.current;
-
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];
-      if (newState.name === state.name) {
-
+      if ($state.current.name === state.name) {
         // Set the scroll to half past the beginning of state range
         var halfOfRange = rangePerState / 2;
-        var beginningOfStateRange = state.data.scrollTimelineMax - rangePerState + halfOfRange;
+        var halfwayPointOfRange = state.data.scrollTimelineMax - rangePerState + halfOfRange;
 
         var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
-        var newScrollY = $timeline([
+        var newScrollPosition = $timeline([
           [0, 0],
-          [(stateCount) * rangePerState, scrollMax]
-        ])(beginningOfStateRange);
+          [stateCount * rangePerState, scrollMax]
+        ])(halfwayPointOfRange);
 
-        window.scrollTo(0, newScrollY);
+        window.scrollTo(0, newScrollPosition);
 
         break;
       }
