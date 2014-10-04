@@ -1,21 +1,49 @@
 fa-modifier(
-  fa-origin="[0.5, 0.07]"
-  fa-translate="[0, 0, 10]"
   fa-opacity="navbar.opacity(navTimeline.get())"
 )
-  fa-surface(
-    fa-size="[true, true]"
+  fa-modifier(
+    fa-origin="[0.5, 0.07]"
+    fa-translate="[0, 0, 10]"
   )
-    .state-nav
-      a(ui-sref="intro" ui-sref-active='active')
-        img(src='img/famous-angular-menu-logo_x3.png' height="42px") 
-      a(ui-sref="1" ui-sref-active='active')
-        | Scene Graph
-      a(ui-sref="2" ui-sref-active='active')
-        | Data Binding
-      a(ui-sref="3" ui-sref-active='active')
-        | Angular Directives
-      a(ui-sref="4" ui-sref-active='active')
-        | Organization
-      a(ui-sref="5" ui-sref-active='active')
-        | Tying It All Together
+    fa-surface(
+      fa-size="[true, true]"
+    )
+      .state-nav
+        a(ui-sref="intro" ui-sref-active='active')
+          img(src='img/famous-angular-menu-logo_x3.png' height="42px") 
+        a(ui-sref="1" ui-sref-active='active')
+          | Scene Graph
+        a(ui-sref="2" ui-sref-active='active')
+          | Data Binding
+        a(ui-sref="3" ui-sref-active='active')
+          | Angular Directives
+        a(ui-sref="4" ui-sref-active='active')
+          | Organization
+        a(ui-sref="5" ui-sref-active='active')
+          | Tying It All Together
+
+  fa-modifier(
+    fa-origin="[0, 0.11]"
+    fa-translate="[610, 0, 0]"
+  )
+    fa-modifier(
+      fa-translate="scrollProgressDots.dot1.translate(scrollProgress)"
+    )
+      fa-surface(
+        fa-size="[true, true]"
+      )
+        .scroll-progress-dot
+    fa-modifier(
+      fa-translate="scrollProgressDots.dot2.translate(scrollProgress)"
+    )
+      fa-surface(
+        fa-size="[true, true]"
+      )
+        .scroll-progress-dot
+    fa-modifier(
+      fa-translate="scrollProgressDots.dot3.translate(scrollProgress)"
+    )
+      fa-surface(
+        fa-size="[true, true]"
+      )
+        .scroll-progress-dot

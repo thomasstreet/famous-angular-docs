@@ -1,13 +1,12 @@
 angular.module('famous-angular')
 
 .controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline) {
-
-/*--------------------------------------------------------------*/
-
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   $scope.navTimeline = new Transitionable(0);
+
+/*--------------------------------------------------------------*/
 
   $scope.navbar = {
     opacity: $timeline([
@@ -28,6 +27,8 @@ angular.module('famous-angular')
       [3, [0, -40, 0]]
     ])
   };
+
+/*--------------------------------------------------------------*/
 
   $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
     $scope.navTimeline.halt();
@@ -84,5 +85,32 @@ angular.module('famous-angular')
     }
 
   });
+
+/*--------------------------------------------------------------*/
+
+  window.rootScope = $rootScope;
+
+  var maxRange = 700;
+
+  $scope.scrollProgressDots = {
+    dot1: {
+      translate: $timeline([
+        [0, [0, 0, 0]],
+        [maxRange, [maxRange, 0, 0], Easing.inOutQuad],
+      ])
+    },
+    dot2: {
+      translate: $timeline([
+        [0, [10, 0, 0]],
+        [maxRange, [maxRange + 15, 0, 0], Easing.inOutQuad],
+      ])
+    },
+    dot3: {
+      translate: $timeline([
+        [0, [20, 0, 0]],
+        [maxRange, [maxRange + 30, 0, 0], Easing.inOutQuad],
+      ])
+    }
+  };
 
 });

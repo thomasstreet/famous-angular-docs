@@ -63,6 +63,8 @@ angular.module('famous-angular')
       [scrollMax, stateCount * rangePerState]
     ])(pageYOffset);
 
+    $rootScope.scrollProgress = t;
+
     return t;
   }
 
