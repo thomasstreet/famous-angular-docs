@@ -94,8 +94,9 @@ angular.module('famous-angular')
       var delta = scrollDistanceTraveled > 0
         ? maxAllowableDistancePerScroll
         : -maxAllowableDistancePerScroll;
-
-      return scaleScroll(start.scrollPosition + delta);
+      var scaled = scaleScroll(start.scrollPosition + delta);
+      var rounded = Math.round(scaled / 50) * 50;
+      return rounded;
     }
 
     return scaleScroll(scrollPosition);
