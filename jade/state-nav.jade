@@ -23,25 +23,25 @@ fa-modifier(
           | Tying It All Together
 
   fa-modifier(
-    fa-origin="[0, 0.11]"
+    fa-origin="[0, 0.10]"
     fa-translate="[610, 0, 0]"
   )
     fa-modifier(
-      fa-translate="scrollProgressDots.dot1.translate(scrollProgress)"
+      fa-translate="scrollProgressDots.dot1.translate(scrollProgress.get())"
     )
       fa-surface(
         fa-size="[true, true]"
       )
         .scroll-progress-dot
     fa-modifier(
-      fa-translate="scrollProgressDots.dot2.translate(scrollProgress)"
+      fa-translate="scrollProgressDots.dot2.translate(scrollProgress.get())"
     )
       fa-surface(
         fa-size="[true, true]"
       )
         .scroll-progress-dot
     fa-modifier(
-      fa-translate="scrollProgressDots.dot3.translate(scrollProgress)"
+      fa-translate="scrollProgressDots.dot3.translate(scrollProgress.get())"
     )
       fa-surface(
         fa-size="[true, true]"

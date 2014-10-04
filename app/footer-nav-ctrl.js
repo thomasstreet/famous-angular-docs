@@ -63,7 +63,7 @@ angular.module('famous-angular')
     }
 
     // Must be a state between 1 - 5, so always show sidebar
-    $scope.navTimeline.set(1, {duration: 300});
+    $scope.navTimeline.set(1, {duration: 500});
     return;
 
     function getDelay(prevState) {
@@ -95,20 +95,35 @@ angular.module('famous-angular')
   $scope.scrollProgressDots = {
     dot1: {
       translate: $timeline([
-        [0, [0, 0, 0]],
-        [maxRange, [maxRange, 0, 0], Easing.inOutQuad],
+        [50, [-160, 0, 0], Easing.inQuart],
+        [150, [0, 0, 0], Easing.inQuart],
+        [250, [170, 0, 0], Easing.inQuart],
+        [350, [375, 0, 0], Easing.inQuart],
+        [450, [575, 0, 0], Easing.inQuart],
+        [550, [785, 0, 0], Easing.inQuart],
+        [650, [785, 0, 0], Easing.inQuart],
       ])
     },
     dot2: {
       translate: $timeline([
-        [0, [10, 0, 0]],
-        [maxRange, [maxRange + 15, 0, 0], Easing.inOutQuad],
+        [50, [-150, 0, 0], Easing.inCubic],
+        [150, [10, 0, 0], Easing.inCubic],
+        [250, [180, 0, 0], Easing.inCubic],
+        [350, [385, 0, 0], Easing.inCubic],
+        [450, [585, 0, 0], Easing.inCubic],
+        [550, [795, 0, 0], Easing.inCubic],
+        [650, [795, 0, 0], Easing.inCubic],
       ])
     },
     dot3: {
       translate: $timeline([
-        [0, [20, 0, 0]],
-        [maxRange, [maxRange + 30, 0, 0], Easing.inOutQuad],
+        [50, [-140, 0, 0], Easing.inQuad],
+        [150, [20, 0, 0], Easing.inQuad],
+        [250, [190, 0, 0], Easing.inQuad],
+        [350, [395, 0, 0], Easing.inQuad],
+        [450, [595, 0, 0], Easing.inQuad],
+        [550, [805, 0, 0], Easing.inQuad],
+        [650, [805, 0, 0], Easing.inQuad],
       ])
     }
   };

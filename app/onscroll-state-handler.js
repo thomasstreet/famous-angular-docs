@@ -17,17 +17,21 @@ angular.module('famous-angular')
     return orderedStates;
   }
 
+  var Transitionable = $famous['famous/transitions/Transitionable'];
+  $rootScope.scrollProgress = new Transitionable(0);
 
 /*--------------------------------------------------------------*/
 
 
   var initialPageLoad = true;
 
-  var throttledGo = _.throttle(function(stateName) {
-    $state.go(stateName, null, { location: 'replace' });
-  }, 1000);
+  //var throttledGo = _.throttle(function(stateName) {
+    //$state.go(stateName, null, { location: 'replace' });
+  //}, 1000);
 
-  window.onscroll = function(e) {
+  var throttledScroll = _.throttle(onscrollHandler, 1000);
+
+  function onscrollHandler() {
     // Initial routing from page laod will set the scroll position, but 
     // don't want to execute handler for that scrollTo()
 
@@ -50,7 +54,12 @@ angular.module('famous-angular')
     var direction = compare(reachedState, currentState);
     var nextState = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
 
-    throttledGo(scrollStates[nextState].name);
+    //throttledGo(scrollStates[nextState].name);
+    $state.go(scrollStates[nextState].name, null, { location: 'replace' });
+  }
+
+  window.onscroll = function(e) {
+    throttledScroll();
   };
 
   function getTimelineFromScroll() {
@@ -63,7 +72,8 @@ angular.module('famous-angular')
       [scrollMax, stateCount * rangePerState]
     ])(pageYOffset);
 
-    $rootScope.scrollProgress = t;
+    $rootScope.scrollProgress.halt();
+    $rootScope.scrollProgress.set(t, { duration: 500 });
 
     return t;
   }
