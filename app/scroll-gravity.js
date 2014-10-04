@@ -90,6 +90,15 @@ angular.module('famous-angular')
     }
 
     grav.set(50, {duration: 1000, curve: Easing.outElastic});
+
+    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+
+    var newScrollPosition = $timeline([
+      [0, 0],
+      [700, scrollMax]
+    ])($state.current.data.scrollTimelineMax - 50);
+
+    window.scrollTo(0, newScrollPosition);
   }
 
 /*--------------------------------------------------------------*/

@@ -25,57 +25,81 @@ angular.module('famous-angular')
 
   var initialPageLoad = true;
 
-  //var throttledGo = _.throttle(function(stateName) {
-    //$state.go(stateName, null, { location: 'replace' });
-  //}, 1000);
+  var throttledStateChange = _.throttle(function(nextState) {
+    $state.go(nextState.name, null, { location: 'replace' });
+  }, 1000);
 
-  var throttledScroll = _.throttle(onscrollHandler, 1000);
+  var start = {
+    scrollPosition: window.pageYOffset
+  };
+
+  $(window).bind('scrollstart', function() {
+    start.scrollPosition = window.pageYOffset;
+  });
+
+  $(window).bind('scrollend', function() {
+    start.scrollPosition = window.pageYOffset;
+  });
+
+  $(window).bind('scroll', onscrollHandler);
 
   function onscrollHandler() {
     // Initial routing from page laod will set the scroll position, but 
     // don't want to execute handler for that scrollTo()
-
     if (initialPageLoad) return;
 
     var t = getTimelineFromScroll();
 
-
-    var compare = function(a, b) {
-      if (a == b) return 0;
-      return a > b ? 1 : -1
-    }
-
-    var stateIndex = function(s) {
-      return _.findIndex(scrollStates, {name: s});
-    };
-
     var currentState = stateIndex($state.current.name);
     var reachedState = stateIndex(determineState(t));
     var direction = compare(reachedState, currentState);
-    var nextState = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
-
-    //throttledGo(scrollStates[nextState].name);
-    $state.go(scrollStates[nextState].name, null, { location: 'replace' });
-  }
-
-  window.onscroll = function(e) {
-    throttledScroll();
-  };
-
-  function getTimelineFromScroll() {
-    var pageYOffset = window.pageYOffset;
-    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
-
-    // Scale the scroll range to a simple timeline range
-    t = $timeline([
-      [0, 0],
-      [scrollMax, stateCount * rangePerState]
-    ])(pageYOffset);
+    var nextStateIndex = Math.max(Math.min(stateCount - 1, currentState + direction), 0);
 
     $rootScope.scrollProgress.halt();
+
+    console.log(t);
+
     $rootScope.scrollProgress.set(t, { duration: 500 });
 
-    return t;
+    if ($state.current.data.index !== nextStateIndex) {
+      var nextState = scrollStates[nextStateIndex];
+      throttledStateChange(nextState);
+    }
+  }
+
+  function compare(a, b) {
+    if (a == b) return 0;
+    return a > b ? 1 : -1;
+  }
+
+  function stateIndex(s) {
+    return _.findIndex(scrollStates, {name: s});
+  }
+
+  function getTimelineFromScroll() {
+    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+    var maxAllowableDistancePerScroll =  scrollMax / 7;
+
+    // Scale the scroll range to a simple timeline range
+    var scaleScroll = $timeline([
+      [0, 0],
+      [scrollMax, stateCount * rangePerState]
+    ]);
+
+    var scrollPosition = window.pageYOffset;
+    var scrollDistanceTraveled = scrollPosition - start.scrollPosition;
+
+    // If the scroll distance exceeds the max allowable distance, return
+    // the starting scroll positon + the max distance
+    if (Math.abs(scrollDistanceTraveled) > maxAllowableDistancePerScroll) {
+      var delta = scrollDistanceTraveled > 0
+        ? maxAllowableDistancePerScroll
+        : -maxAllowableDistancePerScroll;
+
+      return scaleScroll(start.scrollPosition + delta);
+    }
+
+    return scaleScroll(scrollPosition);
   }
 
   function determineState(t) {
