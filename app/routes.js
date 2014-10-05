@@ -76,6 +76,8 @@ angular.module('famous-angular')
     })
     .state('end', {
       url: '/download',
+      template: '<div></div>',
+      controller: 'stateEndCtrl',
       data: {
         index: 6,
         scrollTimelineMax: 700,
