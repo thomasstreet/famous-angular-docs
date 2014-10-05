@@ -11,13 +11,14 @@ angular.module('famous-angular')
 
   var timelines =  {
     translate: $timeline([
-      [1, [0, 0, -150], Easing.inQuad],
-      [50, [0, 0, 0], Easing.inQuad],
-      [100, [0, 0, 150]],
+      [1, [0, 0, -100]],
+      [50, [0, 0, 0]],
+      [100, [0, 0, 100]],
     ]),
     opacity: $timeline([
       [1, 0, Easing.outQuad],
-      [50, 1, Easing.inQuad],
+      [40, 1],
+      [60, 1, Easing.inQuad],
       [100, 0],
     ])
   };
@@ -87,17 +88,11 @@ angular.module('famous-angular')
       }
     }
 
-    var magnitude = $timeline([
-      [stateScrollRange.start, 2],
-      [stateScrollRange.middle, 1],
-      [stateScrollRange.end, 2]
-    ])(currentPosition);
-
     var gravityValue = $timeline([
       [-scrollRange / 2, 1],
       [0, 50],
       [scrollRange / 2, 100]
-    ])(delta * magnitude);
+    ])(delta);
 
     state.grav.halt();
     state.grav.set(gravityValue, { duration: 0 });
