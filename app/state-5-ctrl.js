@@ -10,19 +10,12 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.gravity = scrollGravity.timelines;
-
   $scope.grav = new Transitionable(50);
-
-  scrollGravity.setState({
-    grav: $scope.grav,
-    startPosition: 0
-  });
+  $scope.gravity = scrollGravity.timelines;
 
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-
     // Don't initialize hero block at the state5Ctrl invocation, else there
     // will be dropped frames.  Init hero block after main state5 view has
     // been compiled
@@ -31,7 +24,14 @@ angular.module('famous-angular')
       $scope.$digest();
     }, 500);
 
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      scrollGravity.setState({
+        grav: $scope.grav,
+        startPosition: window.pageYOffset
+      });
+
+      $done();
+    });
   };
 
   $scope.leave = function($done) {

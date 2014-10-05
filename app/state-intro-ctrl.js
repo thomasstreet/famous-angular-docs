@@ -10,18 +10,17 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.gravity = scrollGravity.timelines;
-
   $scope.grav = new Transitionable(50);
-
-  scrollGravity.setState({
-    grav: $scope.grav,
-    startPosition: 0
-  });
 
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
     stateTransitions.enter(t, function() {
+      scrollGravity.setState({
+        grav: $scope.grav,
+        startPosition: window.pageYOffset
+      });
+
       // In the callback after enter animation is complete, animate the
       // down arrow
       animateArrow();

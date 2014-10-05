@@ -10,8 +10,7 @@ angular.module('famous-angular')
 
   scrollGravity.setState({
     grav: $scope.grav,
-    startPosition: 0
+    startPosition: window.pageYOffset
   });
-
 
 });

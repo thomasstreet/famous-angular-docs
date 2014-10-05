@@ -25,6 +25,10 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $rootScope.$on('stateChangeSuccess', function() {
+    state = {};
+  });
+
   // Will be clobbered everytime a new controller is instantiated
   var state = {
     startPosition: 0,
@@ -32,12 +36,14 @@ angular.module('famous-angular')
     grav: null
   };
 
+  //var blockScrollEventsDueToChangedState = true;
+
 /*--------------------------------------------------------------*/
 
   $(window).bind('scrollstart', function() {
-    if (state.grav) {
-      scrollstartHandler(state);
-    }
+    if (!state.grav) return;
+
+    scrollstartHandler(state);
   });
 
   function scrollstartHandler(state) {
@@ -53,9 +59,12 @@ angular.module('famous-angular')
   }, 50);
 
   $(window).bind('scroll', function() {
-    if (state.grav) {
-      scrollHandler(state);
-    }
+    if (!state.grav) return;
+
+    //console.log('scroll blocked', blockScrollEventsDueToChangedState);
+    //if (blockScrollEventsDueToChangedState) return;
+
+    scrollHandler(state);
   });
 
   function scrollHandler(state) {
@@ -93,21 +102,21 @@ angular.module('famous-angular')
       [0, 50],
       [scrollRange, 100]
     ])(delta);
-    //console.log('gravity', gravityValue);
 
     state.grav.halt();
+    console.log($state.current.name, 'gravity', gravityValue);
     state.grav.set(gravityValue, { duration: 0 });
   }
 
 /*--------------------------------------------------------------*/
 
   $(window).bind('scrollend', function() {
-    if (state.grav) {
-      scrollendHandler(state);
-    }
+    if (!state.grav) return;
+    scrollendHandler(state);
   });
 
   function scrollendHandler(state) {
+    console.log($state.current.name, state.grav.get(), state);
     state.grav.halt();
     state.grav.set(50, {duration: 1000, curve: Easing.outElastic});
 
@@ -131,6 +140,12 @@ angular.module('famous-angular')
   return {
     timelines: timelines,
     setState: function(controllerState) {
+      //console.log('change state to', $state.current.name);
+      //blockScrollEventsDueToChangedState = true;
+      //setTimeout(function() {
+        //blockScrollEventsDueToChangedState = false;
+      //}, 3000);
+
       state = controllerState;
     }
   };

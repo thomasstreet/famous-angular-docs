@@ -10,8 +10,20 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $scope.gravity = scrollGravity.timelines;
+  $scope.grav = new Transitionable(50);
+
+/*--------------------------------------------------------------*/
+
   $scope.enter = function($done) {
-    stateTransitions.enter(t, $done);
+    stateTransitions.enter(t, function() {
+      scrollGravity.setState({
+        grav: $scope.grav,
+        startPosition: window.pageYOffset
+      });
+
+      $done();
+    });
   };
 
   $scope.leave = function($done) {
@@ -31,17 +43,6 @@ angular.module('famous-angular')
       [2, 0],
     ])
   };
-
-/*--------------------------------------------------------------*/
-
-  $scope.gravity = scrollGravity.timelines;
-
-  $scope.grav = new Transitionable(50);
-
-  scrollGravity.setState({
-    grav: $scope.grav,
-    startPosition: 0
-  });
 
 /*--------------------------------------------------------------*/
 
