@@ -101,7 +101,13 @@ angular.module('famous-angular')
         [350, [375, 0, 0], Easing.inQuart],
         [450, [575, 0, 0], Easing.inQuart],
         [550, [785, 0, 0], Easing.inQuart],
-        [650, [785, 0, 0], Easing.inQuart],
+        [650, [985, 0, 0], Easing.inQuart],
+      ]),
+      opacity: $timeline([
+        [50, 0, Easing.inQuad],
+        [150, 1],
+        [550, 1, Easing.inQuad],
+        [650, 0]
       ])
     },
     dot2: {
@@ -112,7 +118,13 @@ angular.module('famous-angular')
         [350, [385, 0, 0], Easing.inCubic],
         [450, [585, 0, 0], Easing.inCubic],
         [550, [795, 0, 0], Easing.inCubic],
-        [650, [795, 0, 0], Easing.inCubic],
+        [650, [995, 0, 0], Easing.inCubic],
+      ]),
+      opacity: $timeline([
+        [50, 0, Easing.inQuad],
+        [150, 1],
+        [550, 1, Easing.inQuad],
+        [650, 0]
       ])
     },
     dot3: {
@@ -123,7 +135,13 @@ angular.module('famous-angular')
         [350, [395, 0, 0], Easing.inQuad],
         [450, [595, 0, 0], Easing.inQuad],
         [550, [805, 0, 0], Easing.inQuad],
-        [650, [805, 0, 0], Easing.inQuad],
+        [650, [1005, 0, 0], Easing.inQuad],
+      ]),
+      opacity: $timeline([
+        [50, 0, Easing.inQuad],
+        [150, 1],
+        [550, 1, Easing.inQuad],
+        [650, 0]
       ])
     }
   };
