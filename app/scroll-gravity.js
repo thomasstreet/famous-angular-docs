@@ -16,9 +16,9 @@ angular.module('famous-angular')
       [100, [0, 0, 100]],
     ]),
     opacity: $timeline([
-      [1, 0, Easing.outQuad],
-      [40, 1],
-      [60, 1, Easing.inQuad],
+      [1, 0],
+      [35, 1],
+      [65, 1],
       [100, 0],
     ])
   };
@@ -89,10 +89,11 @@ angular.module('famous-angular')
     }
 
     var gravityValue = $timeline([
-      [-scrollRange / 2, 1],
+      [-scrollRange, 1],
       [0, 50],
-      [scrollRange / 2, 100]
+      [scrollRange, 100]
     ])(delta);
+    //console.log('gravity', gravityValue);
 
     state.grav.halt();
     state.grav.set(gravityValue, { duration: 0 });
