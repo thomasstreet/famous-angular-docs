@@ -60,7 +60,15 @@ angular.module('famous-angular')
     var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
 
     $rootScope.scrollProgress.halt();
-    $rootScope.scrollProgress.set(t, { duration: 200 }, function(nextIndex) {
+
+    // RACE CONDITION HERE!
+    // The duration of the this transtionable set MUST be faster than the
+    // duration before a 'scrollend', when starting a 'scrollstart'.  Otherwise
+    // the 'scrollend' handlers will fire before the callback for this
+    // set() is finished, resulting in never being able to change states
+    var durationThatMustBeFasterThanScrollEndTrigger = 200;
+
+    $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function(nextIndex) {
       return function() {
         var nextState = scrollStates[nextIndex];
         $state.go(nextState.name, null, { location: 'replace' });

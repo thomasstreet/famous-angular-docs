@@ -22,6 +22,8 @@ angular.module('famous-angular')
     ])
   };
 
+/*--------------------------------------------------------------*/
+
   // Will be clobbered everytime a new controller is instantiated
   var state = {
     startPosition: 0,
@@ -30,6 +32,7 @@ angular.module('famous-angular')
   };
 
 /*--------------------------------------------------------------*/
+
   $(window).bind('scrollstart', function() {
     if (state.grav) {
       scrollstartHandler(state);
@@ -110,15 +113,19 @@ angular.module('famous-angular')
 
   function scrollendHandler(state) {
     state.grav.halt();
-
     state.grav.set(50, {duration: 1000, curve: Easing.outElastic});
 
+    setScrollToMidwayPointofRange();
+  }
+
+  function setScrollToMidwayPointofRange() {
+    var rangePerState = 100;
     var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
     var newScrollPosition = $timeline([
       [0, 0],
-      [700, scrollMax]
-    ])($state.current.data.scrollTimelineMax - 50);
+      [stateCount * rangePerState, scrollMax]
+    ])($state.current.data.scrollTimelineMax - (rangePerState / 2));
 
     window.scrollTo(0, newScrollPosition);
   }
