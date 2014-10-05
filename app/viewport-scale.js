@@ -19,7 +19,6 @@ angular.module('famous-angular')
 
       var leftOffset = (window.innerWidth / 2) - (scale * RESOLUTION.WIDTH / 2);
     
-      //$('#fa-app').css('-webkit-transform', 'scale(' + scale + ', ' + scale + ')');
       $('#fa-app').css({
         '-webkit-transform' : 'scale(' + scale + ', ' + scale + ')',
         '-moz-transform'    : 'scale(' + scale + ', ' + scale + ')',
@@ -34,6 +33,11 @@ angular.module('famous-angular')
         '-o-transform-origin'      : '0 0',
         'transform-origin'         : '0 0' 
       });
+
+      // Don't set a left value if the window width is greater than the
+      // supported resolution.  Instead, let margin: auto center the viewport
+      if (window.innerWidth > RESOLUTION.WIDTH) return;
+
       $('#fa-app').css('left', Math.floor(leftOffset));
     }
 
