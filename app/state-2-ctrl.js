@@ -116,14 +116,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.rotate = function(sliderT) {
-    sliderT = parseInt(sliderT);
-    var rotate = $timeline([
-      [1, 0],
-      [100, 2 * Math.PI]
-    ])(sliderT);
-    return rotate;
-  };
+  window.data = $scope.data;
 
   $scope.entireCard = {
     animation: {
@@ -131,10 +124,32 @@ angular.module('famous-angular')
         sliderT = parseInt(sliderT);
         var depth = $timeline([
           [1, [0, 0, 0]],
-          [50, [0, 0, -500]],
-          [100, [0, 0, 0]]
+          [25, [0, 0, 0], Easing.inQuad],
+          [40, [0, -200, 0]],
+          [43, [0, -200, 0], Easing.outQuad],
+          [60, [0, 0, 0]],
         ])(sliderT);
         return depth;
+      },
+      rotate: function(sliderT) {
+        sliderT = parseInt(sliderT);
+        var rotate = $timeline([
+          [1, 0],
+          //[100, 2 * Math.PI]
+        ])(sliderT);
+        return rotate;
+      },
+      scale: function(sliderT) {
+        sliderT = parseInt(sliderT);
+        var scale = $timeline([
+          [1, [1, 1], Easing.inQuad],
+          [20, [1.3, 0.3], Easing.inOutQuad],
+          [40, [1, 1], Easing.outQuad],
+          [56, [1, 1], Easing.outQuad],
+          [68, [1.1, 0.80], Easing.inQuad],
+          [83, [1, 1]],
+        ])(sliderT);
+        return scale;
       }
     },
     translate: $timeline([
@@ -165,9 +180,9 @@ angular.module('famous-angular')
       translate: function(sliderT) {
         sliderT = parseInt(sliderT);
         return $timeline([
-          [1, [0, -115, 2], Easing.inQuad],
-          [50, [0, -115, 100], Easing.outQuad],
-          [100, [0, -115, 2]]
+          [1, [0, -245, 2], Easing.inQuad],
+          [50, [0, -245, 2], Easing.outQuad],
+          [100, [0, -245, 2]]
         ])(sliderT);
       },
     },
@@ -176,9 +191,9 @@ angular.module('famous-angular')
       translate: function(sliderT) {
         sliderT = parseInt(sliderT);
         return $timeline([
-          [1, [0, 55, 3], Easing.inQuad],
-          [50, [0, 55, 200], Easing.outQuad],
-          [100, [0, 55, 3]]
+          [1, [0, -25, 3], Easing.inQuad],
+          [50, [0, -25, 3], Easing.outQuad],
+          [100, [0, -25, 3]]
         ])(sliderT);
       },
     },
@@ -187,9 +202,9 @@ angular.module('famous-angular')
       translate: function(sliderT) {
         sliderT = parseInt(sliderT);
         return $timeline([
-          [1, [0, 35, 4], Easing.inQuad],
-          [50, [0, 35, 500], Easing.outQuad],
-          [100, [0, 35, 4]]
+          [1, [0, 10, 4], Easing.inQuad],
+          [50, [0, 10, 4], Easing.outQuad],
+          [100, [0, 10, 4]]
         ])(sliderT);
       },
     },
