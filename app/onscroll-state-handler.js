@@ -58,6 +58,14 @@ angular.module('famous-angular')
     var reachedStateIndex = stateIndex(determineState(t));
     var direction = compare(reachedStateIndex, currentStateIndex);
     var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
+    var nextState = scrollStates[nextStateIndex];
+
+    // If the user quickly jumps to the next state (e.g. [50, 150, 250]),
+    // change the state immediately, instead of waiting for the
+    // scrollProgress.set() callback
+    if (t % 100 === 50) {
+      $state.go(nextState.name, null, { location: 'replace' });
+    }
 
     $rootScope.scrollProgress.halt();
 
@@ -68,12 +76,9 @@ angular.module('famous-angular')
     // set() is finished, resulting in never being able to change states
     var durationThatMustBeFasterThanScrollEndTrigger = 200;
 
-    $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function(nextIndex) {
-      return function() {
-        var nextState = scrollStates[nextIndex];
-        $state.go(nextState.name, null, { location: 'replace' });
-      }
-    }(nextStateIndex));
+    $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function() {
+      $state.go(nextState.name, null, { location: 'replace' });
+    });
 
   });
 
