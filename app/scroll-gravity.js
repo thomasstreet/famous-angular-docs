@@ -22,15 +22,22 @@ angular.module('famous-angular')
     ])
   };
 
+  // Will be clobbered everytime a new controller is instantiated
+  var state = {
+    startPosition: 0,
+    // Transitionable from a controller
+    grav: null
+  };
+
 /*--------------------------------------------------------------*/
   $(window).bind('scrollstart', function() {
-    if ($rootScope.scrollstart) {
-      $rootScope.scrollstart();
+    if (state.grav) {
+      scrollstartHandler(state);
     }
   });
 
-  function scrollstartHandler(start) {
-    start.position = window.pageYOffset;
+  function scrollstartHandler(state) {
+    state.startPosition = window.pageYOffset;
   }
 
 /*--------------------------------------------------------------*/
@@ -42,16 +49,18 @@ angular.module('famous-angular')
   }, 50);
 
   $(window).bind('scroll', function() {
-    if ($rootScope.scroll) {
-      $rootScope.scroll();
+    if (state.grav) {
+      scrollHandler(state);
     }
   });
 
-  function scrollHandler(grav, start, index) {
+  function scrollHandler(state) {
     if (initialPageLoad) return;
 
+    var index = $state.current.data.index;
+
     var currentPosition = window.pageYOffset;
-    var delta = (currentPosition - start.position) || 0;
+    var delta = (currentPosition - state.startPosition) || 0;
 
     var stateScrollRange = {
       start: (scrollRange * index),
@@ -87,22 +96,22 @@ angular.module('famous-angular')
       [scrollRange / 2, 100]
     ])(delta * magnitude);
 
-    grav.halt();
-    grav.set(gravityValue, { duration: 0 });
+    state.grav.halt();
+    state.grav.set(gravityValue, { duration: 0 });
   }
 
 /*--------------------------------------------------------------*/
 
-  $(window).bind('scrollend', function(e) {
-    if ($rootScope.scrollend) {
-      $rootScope.scrollend();
+  $(window).bind('scrollend', function() {
+    if (state.grav) {
+      scrollendHandler(state);
     }
   });
 
-  function scrollendHandler(grav, start) {
-    grav.halt();
+  function scrollendHandler(state) {
+    state.grav.halt();
 
-    grav.set(50, {duration: 1000, curve: Easing.outElastic});
+    state.grav.set(50, {duration: 1000, curve: Easing.outElastic});
 
     var scrollMax = $rootScope.bodyHeight - window.innerHeight;
 
@@ -118,9 +127,9 @@ angular.module('famous-angular')
 
   return {
     timelines: timelines,
-    scrollstartHandler: scrollstartHandler,
-    scrollHandler: scrollHandler,
-    scrollendHandler: scrollendHandler
+    setState: function(controllerState) {
+      state = controllerState;
+    }
   };
 
 });

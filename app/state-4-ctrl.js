@@ -34,25 +34,14 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.grav = new Transitionable(50);
   $scope.gravity = scrollGravity.timelines;
 
-  var start = {
-    position: 0,
-    state: $state.current.name
-  };
+  $scope.grav = new Transitionable(50);
 
-  $rootScope.scrollstart = function() {
-    scrollGravity.scrollstartHandler(start);
-  };
-
-  $rootScope.scroll = function() {
-    scrollGravity.scrollHandler($scope.grav, start, $state.current.data.index);
-  };
-
-  $rootScope.scrollend = function() {
-    scrollGravity.scrollendHandler($scope.grav, start);
-  };
+  scrollGravity.setState({
+    grav: $scope.grav,
+    startPosition: 0
+  });
 
 /*--------------------------------------------------------------*/
 
