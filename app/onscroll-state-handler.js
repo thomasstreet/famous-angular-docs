@@ -1,9 +1,12 @@
 angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state) {
+  var Transitionable = $famous['famous/transitions/Transitionable'];
+
   var rangePerState = 100;
   var scrollStates = getScrollStates();
   var stateCount = scrollStates.length;
+
   $rootScope.bodyHeight = (window.innerHeight * stateCount);
 
   function getScrollStates() {
@@ -17,17 +20,9 @@ angular.module('famous-angular')
     return orderedStates;
   }
 
-  var Transitionable = $famous['famous/transitions/Transitionable'];
   $rootScope.scrollProgress = new Transitionable(0);
 
 /*--------------------------------------------------------------*/
-
-
-  var initialPageLoad = true;
-
-  var throttledStateChange = _.throttle(function(nextState) {
-    $state.go(nextState.name, null, { location: 'replace' });
-  }, 1000);
 
   var start = {
     scrollPosition: window.pageYOffset
@@ -40,6 +35,17 @@ angular.module('famous-angular')
   $(window).bind('scrollend', function() {
     start.scrollPosition = window.pageYOffset;
   });
+
+/*--------------------------------------------------------------*/
+
+  // 'scroll', 'scrollend' and 'scrollstart' events fire on initial page load,
+  // resulting in unintended routing side effects.  Disable these 
+  // unintended scroll events until the rest of the app has had time to
+  // initialize
+  var initialPageLoad = true;
+  setTimeout(function() {
+    initialPageLoad = false;
+  }, 300);
 
   $(window).bind('scroll', function() {
     // Initial routing from page laod will set the scroll position, but 
@@ -115,8 +121,10 @@ angular.module('famous-angular')
 
   $rootScope.$on('$stateChangeSuccess', function(e) {
     determineScrollPositionFromState();
+
     if (initialPageLoad) {
-      initialPageLoad = false;
+      var t = $state.current.data.scrollTimelineMax;
+      $rootScope.scrollProgress.set(t - 50, { duration: 0 });
     }
   });
 
