@@ -16,18 +16,14 @@ angular.module('famous-angular')
       [100, [0, 0, 100]],
     ]),
     opacity: $timeline([
-      [1, 0],
+      [1, 0, Easing.inQuad],
       [35, 1],
-      [65, 1],
+      [65, 1, Easing],
       [100, 0],
     ])
   };
 
 /*--------------------------------------------------------------*/
-
-  $rootScope.$on('stateChangeSuccess', function() {
-    state = {};
-  });
 
   // Will be clobbered everytime a new controller is instantiated
   var state = {
@@ -35,8 +31,6 @@ angular.module('famous-angular')
     // Transitionable from a controller
     grav: null
   };
-
-  //var blockScrollEventsDueToChangedState = true;
 
 /*--------------------------------------------------------------*/
 
@@ -62,7 +56,6 @@ angular.module('famous-angular')
     if (!state.grav) return;
 
     //console.log('scroll blocked', blockScrollEventsDueToChangedState);
-    //if (blockScrollEventsDueToChangedState) return;
 
     scrollHandler(state);
   });
@@ -104,7 +97,7 @@ angular.module('famous-angular')
     ])(delta);
 
     state.grav.halt();
-    console.log($state.current.name, 'gravity', gravityValue);
+    //console.log($state.current.name, 'gravity', gravityValue);
     state.grav.set(gravityValue, { duration: 0 });
   }
 
@@ -116,7 +109,7 @@ angular.module('famous-angular')
   });
 
   function scrollendHandler(state) {
-    console.log($state.current.name, state.grav.get(), state);
+    //console.log($state.current.name, state.grav.get(), state);
     state.grav.halt();
     state.grav.set(50, {duration: 1000, curve: Easing.outElastic});
 
@@ -140,13 +133,16 @@ angular.module('famous-angular')
   return {
     timelines: timelines,
     setState: function(controllerState) {
-      //console.log('change state to', $state.current.name);
-      //blockScrollEventsDueToChangedState = true;
-      //setTimeout(function() {
-        //blockScrollEventsDueToChangedState = false;
-      //}, 3000);
+      state = {};
 
-      state = controllerState;
+      // Do not set the new state immediately, else the inertia from the
+      // scroll movement will immediately trigger scrollevents and
+      // manipulate the fresh state.  Wait an amount of time for the 
+      // inertia to settle, before setting the new state
+      setTimeout(function() {
+        state = controllerState;
+        state.startPosition = window.pageYOffset;
+      }, 300);
     }
   };
 

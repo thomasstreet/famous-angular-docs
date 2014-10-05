@@ -24,12 +24,12 @@ angular.module('famous-angular')
       $scope.$digest();
     }, 500);
 
-    stateTransitions.enter(t, function() {
-      scrollGravity.setState({
-        grav: $scope.grav,
-        startPosition: window.pageYOffset
-      });
+    scrollGravity.setState({
+      grav: $scope.grav,
+      startPosition: window.pageYOffset
+    });
 
+    stateTransitions.enter(t, function() {
       $done();
     });
   };

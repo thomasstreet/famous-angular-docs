@@ -16,12 +16,12 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, function() {
-      scrollGravity.setState({
-        grav: $scope.grav,
-        startPosition: window.pageYOffset
-      });
+    scrollGravity.setState({
+      grav: $scope.grav,
+      startPosition: window.pageYOffset
+    });
 
+    stateTransitions.enter(t, function() {
       $done();
     });
   };

@@ -15,12 +15,12 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    stateTransitions.enter(t, function() {
-      scrollGravity.setState({
-        grav: $scope.grav,
-        startPosition: window.pageYOffset
-      });
+    scrollGravity.setState({
+      grav: $scope.grav,
+      startPosition: window.pageYOffset
+    });
 
+    stateTransitions.enter(t, function() {
       // In the callback after enter animation is complete, animate the
       // down arrow
       animateArrow();
