@@ -65,25 +65,26 @@ angular.module('famous-angular')
     // If this far, must be a state between 1 - 5, so always show footer/navbar
     $scope.navTimeline.set(1, {duration: 500});
     return;
+
+    function getDelay(prevState) {
+      if (!prevState.data) return 0;
+      return prevState.data.leaveAnimationDuration;
+    }
+
+    function goingToIntroState() {
+      return toState.data.index === 0;
+    }
+
+    function goingToEndState() {
+      return toState.data.index === 6;
+    }
+
+    function leavingEndState() {
+      if (!fromState.data) return false;
+      return fromState.data.index === 6;
+    }
+
   });
-
-  function getDelay(prevState) {
-    if (!prevState.data) return 0;
-    return prevState.data.leaveAnimationDuration;
-  }
-
-  function goingToIntroState() {
-    return toState.data.index === 0;
-  }
-
-  function goingToEndState() {
-    return toState.data.index === 6;
-  }
-
-  function leavingEndState() {
-    if (!fromState.data) return false;
-    return fromState.data.index === 6;
-  }
 
 /*--------------------------------------------------------------*/
 
