@@ -9,7 +9,7 @@ angular.module('famous-angular')
   $scope.t = t;
 
   $scope.data = {
-    name: 'Angular',
+    name: '',
     t: 1
   };
 
@@ -27,9 +27,22 @@ angular.module('famous-angular')
     });
 
     stateTransitions.enter(t, function() {
+      var text = 'Angular'.split('');
+      console.log(text);
+
+      for (var i = 0; i < text.length; i++) {
+        setTimeout(function(index) {
+          return function() {
+            $scope.data.name = $scope.data.name + text[index];
+            $scope.$digest();
+          };
+        }(i), 30 * i);
+      }
+
       setTimeout(function() {
         playAnimation();
-      }, 100);
+      }, 500);
+
       $done();
     });
   };
@@ -146,8 +159,9 @@ angular.module('famous-angular')
           [20, [1.3, 0.3], Easing.inOutQuad],
           [40, [1, 1], Easing.outQuad],
           [56, [1, 1], Easing.outQuad],
-          [68, [1.1, 0.80], Easing.inQuad],
-          [83, [1, 1]],
+          [65, [1.15, 0.75]],
+          [68, [1.15, 0.75], Easing.outElastic],
+          [100, [1, 1]],
         ])(sliderT);
         return scale;
       }
