@@ -28,7 +28,6 @@ angular.module('famous-angular')
 
     stateTransitions.enter(t, function() {
       var text = 'Angular'.split('');
-      console.log(text);
 
       for (var i = 0; i < text.length; i++) {
         setTimeout(function(index) {
