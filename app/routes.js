@@ -11,7 +11,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 100,
         enterAnimationDuration: 1000,
         leaveAnimationDuration: 300,
-        cssClass: 'state-intro'
+        cssClass: 'state-intro',
+        pageTitle: 'Intro'
       }
     })
     .state('1', {
@@ -23,7 +24,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 200,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
-        cssClass: 'state-1'
+        cssClass: 'state-1',
+        pageTitle: 'Render Tree'
       }
     })
     .state('2', {
@@ -35,7 +37,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 300,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
-        cssClass: 'state-2'
+        cssClass: 'state-2',
+        pageTitle: 'Data Binding'
       }
     })
     .state('3', {
@@ -47,7 +50,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 400,
         enterAnimationDuration: 1000,
         leaveAnimationDuration: 300,
-        cssClass: 'state-3'
+        cssClass: 'state-3',
+        pageTitle: 'Angular Directives'
       }
     })
     .state('4', {
@@ -59,7 +63,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 500,
         enterAnimationDuration: 1500,
         leaveAnimationDuration: 300,
-        cssClass: 'state-4'
+        cssClass: 'state-4',
+        pageTitle: 'Organization'
       }
     })
     .state('5', {
@@ -71,7 +76,8 @@ angular.module('famous-angular')
         scrollTimelineMax: 600,
         enterAnimationDuration: 2000,
         leaveAnimationDuration: 300,
-        cssClass: 'state-5'
+        cssClass: 'state-5',
+        pageTitle: 'Tying it All Together'
       }
     })
     .state('end', {
@@ -81,10 +87,10 @@ angular.module('famous-angular')
       data: {
         index: 6,
         scrollTimelineMax: 700,
-        enterAnimationDuration: 2000,
         enterAnimationDuration: 500,
         leaveAnimationDuration: 500,
-        cssClass: 'state-end'
+        cssClass: 'state-end',
+        pageTitle: 'Download'
       }
     });
 
