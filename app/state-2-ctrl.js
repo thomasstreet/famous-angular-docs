@@ -36,12 +36,12 @@ angular.module('famous-angular')
             $scope.data.name = $scope.data.name + text[index];
             $scope.$digest();
           };
-        }(i), 30 * i);
+        }(i), 120 * i);
       }
 
       setTimeout(function() {
         playAnimation();
-      }, 500);
+      }, 1000);
 
       $done();
     });
