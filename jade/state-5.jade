@@ -45,17 +45,16 @@ fa-modifier(
         fa-translate='code.middle.translate(t.get())'
         fa-opacity='code.middle.opacity(t.get())'
       )
-        fa-surface(fa-size="[500, true]")
-          .code
-            pre
-              code(prism).language-markup
-                |   &lt;fa-app id=&quot;banner&quot;&gt;
-                |     &lt;fa-modifier&gt;
-                |       &lt;fa-surface&gt;
-                |         ...
-                |       &lt;/fa-surface&gt;
-                |     &lt;/fa-modifier&gt;
-                |   &lt;/fa-app&gt;
+        fa-surface(fa-size="[500, true]").code
+          pre
+            code.
+              &lt;<span class="tag">fa-app</span> <span class="attr-name">id</span>=<span class="attr-value">"banner"</span>&gt;
+                &lt;<span class="tag">fa-modifier</span> <span class="attr-name">...</span>&gt;
+                   &lt;<span class="tag">fa-surface</span>&gt;
+                     ...
+                   &lt;/<span class="tag">fa-surface</span>&gt;
+                &lt;/<span class="tag">fa-modifier</span>&gt;
+              &lt;/<span class="tag">fa-app</span>&gt;
 
       fa-modifier(
         fa-translate='code.bottom.translate(t.get())'
