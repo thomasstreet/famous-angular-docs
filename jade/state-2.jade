@@ -89,15 +89,15 @@ fa-modifier(
       )
         fa-surface(fa-size="[700, true]").code
           pre
-            code(prism).language-markup
-              :code
-                <fa-modifier fa-scale="card.scale(data.t)">
-                  <fa-surface>
-                    ...
-                  </fa-surface>                
-                </fa-modifier>
+            code.
+              &lt;<span class="tag">fa-modifier</span> <span class="attr-name">fa-scale</span>=<span class="attr-value">"card.scale(data.t)"</span>&gt;
+                 &lt;<span class="tag">fa-surface</span>&gt;
+                  ...
+                 &lt;/<span class="tag">fa-surface</span>&gt;
+              &lt;/<span class="tag">fa-modifier</span>&gt;
 
-                <fa-surface>
-                  <input type="range" ng-model="data.t">
-                  <input type="text" ng-model="data.name">
-                <fa-surface>
+              &lt;<span class="tag">fa-surface</span>&gt;
+                &lt;<span class="tag">input</span> <span class="attr-name">type</span>=<span class="attr-value">"range"</span> <span class="attr-name">ng-model</span>=<span class="attr-value">"data.t"</span>&gt;
+                &lt;<span class="tag">input</span> <span class="attr-name">type</span>=<span class="attr-value">"text"</span> <span class="attr-name">ng-model</span>=<span class="attr-value">"data.name"</span>&gt;
+              &lt;/<span class="tag">fa-surface</span>&gt;
+
