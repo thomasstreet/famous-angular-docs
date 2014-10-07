@@ -55,8 +55,6 @@ angular.module('famous-angular')
   $(window).bind('scroll', function() {
     if (!state.grav) return;
 
-    //console.log('scroll blocked', blockScrollEventsDueToChangedState);
-
     scrollHandler(state);
   });
 
@@ -97,7 +95,6 @@ angular.module('famous-angular')
     ])(delta);
 
     state.grav.halt();
-    //console.log($state.current.name, 'gravity', gravityValue);
     state.grav.set(gravityValue, { duration: 0 });
   }
 
@@ -109,13 +106,14 @@ angular.module('famous-angular')
   });
 
   function scrollendHandler(state) {
-    //console.log($state.current.name, state.grav.get(), state);
     state.grav.halt();
+    // Return to resting midway point of range
     state.grav.set(50, {duration: 1000, curve: Easing.outElastic});
 
     setScrollToMidwayPointofRange();
   }
 
+  // Force the user's scroll to the midway resting point of the range
   function setScrollToMidwayPointofRange() {
     var rangePerState = 100;
     var scrollMax = $rootScope.bodyHeight - window.innerHeight;
@@ -142,7 +140,7 @@ angular.module('famous-angular')
       setTimeout(function() {
         state = controllerState;
         state.startPosition = window.pageYOffset;
-      }, 300);
+      }, 400);
     }
   };
 
