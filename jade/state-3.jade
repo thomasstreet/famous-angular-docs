@@ -23,21 +23,20 @@ fa-modifier(
       )
         fa-surface(fa-size="[true, true]").code
           pre
-            code(prism).language-markup
-              :code
-                <fa-modifier 
-                  ng-repeat="cat in cats"
-                  fa-animate-enter="catEnter(cat.t, $done)"
-                  fa-animate-leave="catLeave(cat.t, $done)"
-                >
-                  <fa-surface>
-                    ...
-                  </fa-surface>                
-                </fa-modifier>
+            code.
+              &lt;<span class="tag">fa-modifier</span>
+                <span class="attr-name">ng-repeat</span>=<span class="attr-value">"cat in cats"</span>
+                <span class="attr-name">fa-animate-enter</span>=<span class="attr-value">"catEnter(cat.t, $done)"</span>
+                <span class="attr-name">fa-animate-leave</span>=<span class="attr-value">"catLeave(cat.t, $done)"</span>
+              &gt;
+                 &lt;<span class="tag">fa-surface</span>&gt;
+                  ...
+                 &lt;/<span class="tag">fa-surface</span>&gt;
+              &lt;/<span class="tag">fa-modifier</span>&gt;
 
-                <fa-surface>
-                  <input type="range" ng-model="data.t">
-                <fa-surface>
+              &lt;<span class="tag">fa-surface</span>&gt;
+                &lt;<span class="tag">input</span> <span class="attr-name">type</span>=<span class="attr-value">"range"</span> <span class="attr-name">ng-model</span>=<span class="attr-value">"data.t"</span>&gt;
+              &lt;/<span class="tag">fa-surface</span>&gt;
 
     fa-modifier(
       fa-translate='catTileGrid.translate(t.get())'
