@@ -9,8 +9,9 @@
     {% include head_includes.html %}
 
     <link rel="stylesheet" href="{{relative}}bower_components/famous-angular/dist/famous-angular.min.css">
-    <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href="{{relative}}bower_components/octicons/octicons/octicons.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{relative}}css/prism.css">
   </head>
 
   <body class="docs docs-page docs-api" style="height: {{ "{{bodyHeight" }} }}px;">
@@ -34,5 +35,6 @@
     <script src="{{relative}}bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.js"></script>
     <script src="{{relative}}build/main.js"></script>
+    <script src="{{relative}}js/prism.js"></script>
   </body>
 </html>
