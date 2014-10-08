@@ -55,22 +55,14 @@ angular.module('famous-angular')
 
     // If the nextState is different, change to and stop updating the
     // scrolll progress
-    if (nextState.name !== $state.current.name) {
+    var readyToChangeState = nextState.name !== $state.current.name;
+    if (readyToChangeState) {
       $state.go(nextState.name);
       return;
     }
 
     $rootScope.scrollProgress.halt();
-
-    // RACE CONDITION HERE!
-    // The duration of the this transtionable set MUST be faster than the
-    // duration before a 'scrollend', when starting a 'scrollstart'.  Otherwise
-    // the 'scrollend' handlers will fire before the callback for this
-    // set() is finished, resulting in never being able to change states
-    var durationThatMustBeFasterThanScrollEndTrigger = 0;
-
-    $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function() {
-    });
+    $rootScope.scrollProgress.set(t, { duration: 0 });
   });
 
 
