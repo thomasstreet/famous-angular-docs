@@ -34,17 +34,11 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $(window).bind('scrollstart', function() {
+  scrollEvents.addListeners.scrollstart(function() {
     if (!_state.grav) return;
 
-    if (scrollEvents.disabled()) return;
-
-    scrollstartHandler(_state);
+    _state.startPosition = window.pageYOffset;
   });
-
-  function scrollstartHandler(state) {
-    state.startPosition = window.pageYOffset;
-  }
 
 /*--------------------------------------------------------------*/
 
@@ -54,10 +48,8 @@ angular.module('famous-angular')
     initialPageLoad = false;
   }, 50);
 
-  $(window).bind('scroll', function() {
+  scrollEvents.addListeners.scroll(function() {
     if (!_state.grav) return;
-
-    if (scrollEvents.disabled()) return;
 
     scrollHandler(_state);
   });
@@ -104,10 +96,8 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $(window).bind('scrollend', function() {
+  scrollEvents.addListeners.scrollend(function() {
     if (!_state.grav) return;
-
-    if (scrollEvents.disabled()) return;
 
     scrollendHandler(_state);
   });

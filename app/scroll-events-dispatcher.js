@@ -28,9 +28,50 @@ angular.module('famous-angular')
     }, totalDisableDuration);
   });
 
+  var _listeners = {
+    scrollstart: [],
+    scroll: [],
+    scrollend: []
+  };
+
+  $(window).bind('scrollstart', function() {
+    if (_scrollEventsDisabled) return;
+
+    angular.forEach(_listeners.scrollstart, function(handlerFn) {
+      handlerFn();
+    })
+  });
+
+  $(window).bind('scroll', function() {
+    if (_scrollEventsDisabled) return;
+
+    angular.forEach(_listeners.scroll, function(handlerFn) {
+      handlerFn();
+    })
+  });
+
+  $(window).bind('scrollend', function() {
+    if (_scrollEventsDisabled) return;
+
+    angular.forEach(_listeners.scrollend, function(handlerFn) {
+      handlerFn();
+    })
+  });
+
   return {
     disabled: function() {
       return !!_scrollEventsDisabled;
+    },
+    addListeners: {
+      scrollstart: function(handlerFn) {
+        _listeners.scrollstart.push(handlerFn);
+      },
+      scroll: function(handlerFn) {
+        _listeners.scroll.push(handlerFn);
+      },
+      scrollend: function(handlerFn) {
+        _listeners.scrollend.push(handlerFn);
+      }
     }
   };
 });

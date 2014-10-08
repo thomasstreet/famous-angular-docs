@@ -28,35 +28,22 @@ angular.module('famous-angular')
     scrollPosition: window.pageYOffset
   };
 
-  $(window).bind('scrollstart', function() {
-    if (scrollEvents.disabled()) return;
-
+  scrollEvents.addListeners.scrollstart(function() {
     start.scrollPosition = window.pageYOffset;
   });
 
-  $(window).bind('scrollend', function() {
-    if (scrollEvents.disabled()) return;
-
+  scrollEvents.addListeners.scrollend(function() {
     start.scrollPosition = window.pageYOffset;
   });
 
 /*--------------------------------------------------------------*/
 
-  // 'scroll', 'scrollend' and 'scrollstart' events fire on initial page load,
-  // resulting in unintended routing side effects.  Disable these 
-  // unintended scroll events until the rest of the app has had time to
-  // initialize
-  var initialPageLoad = true;
-  setTimeout(function() {
-    initialPageLoad = false;
-  }, 300);
-
-  $(window).bind('scroll', function() {
-    // Initial routing from page laod will set the scroll position, but 
-    // don't want to execute handler for that scrollTo()
-    if (initialPageLoad) return;
-
-    if (scrollEvents.disabled()) return;
+  scrollEvents.addListeners.scroll(function() {
+    // If the page is reloaded with the scroll bar anywhere aside from the
+    // default window.pageYOffset = 0, the browser will fire a scroll event.
+    // Since the event happens before ui.router changes state,
+    // $state.current will be the default empty state.
+    if (!$state.current.data) return;
 
     var t = getTimelineFromScroll();
 
@@ -85,7 +72,6 @@ angular.module('famous-angular')
     $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function() {
       $state.go(nextState.name);
     });
-
   });
 
   function compare(a, b) {
@@ -141,10 +127,8 @@ angular.module('famous-angular')
   $rootScope.$on('$stateChangeSuccess', function(e) {
     determineScrollPositionFromState();
 
-    if (initialPageLoad) {
-      var t = $state.current.data.scrollTimelineMax;
-      $rootScope.scrollProgress.set(t - 50, { duration: 0 });
-    }
+    var t = $state.current.data.scrollTimelineMax;
+    $rootScope.scrollProgress.set(t - 50, { duration: 500 });
   });
 
 
