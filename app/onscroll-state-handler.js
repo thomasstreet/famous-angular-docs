@@ -62,7 +62,7 @@ angular.module('famous-angular')
     }
 
     $rootScope.scrollProgress.halt();
-    $rootScope.scrollProgress.set(t, { duration: 0 });
+    $rootScope.scrollProgress.set(t, { duration: 50 });
   });
 
 

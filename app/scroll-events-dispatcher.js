@@ -1,11 +1,8 @@
 angular.module('famous-angular')
 
 .factory('scrollEvents', function($rootScope, $state, stateTransitions) {
-  // Amount to time to disable scroll events AFTER the state's entrance
-  // animation has started
-  var DISABLE_EVENTS_DURATION = 400;
 
-  // WE MUST DISABLE SCROLL EVENTS AFTER STATE CHANGE
+  // WE MUST DISABLE SCROLL HANDLERS AFTER STATE CHANGE
 
   // 1) There may be left over scroll inertia that would trigger scroll
   // gravity immediately after switching to a new states, resulting in
@@ -19,17 +16,22 @@ angular.module('famous-angular')
   var disableTimeout;
   var _scrollEventsDisabled = false;
 
+  var nextEventMustBeScrollstart;
+
   $rootScope.$on('$stateChangeSuccess', function() {
+    nextEventMustBeScrollstart = true;
+
     if (disableTimeout) {
       clearTimeout(disableTimeout);
     }
 
     _scrollEventsDisabled = true;
 
-    var totalDisableDuration = stateTransitions.enterDelay() + DISABLE_EVENTS_DURATION;
+    var totalDisableDuration = stateTransitions.enterDelay();
 
     disableTimeout = setTimeout(function() {
       _scrollEventsDisabled = false;
+
     }, totalDisableDuration);
   });
 
@@ -40,6 +42,12 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
+    if (_scrollEventsDisabled) return;
+
+    if (nextEventMustBeScrollstart) {
+      nextEventMustBeScrollstart = false;
+    }
+
     angular.forEach(_listeners.scrollstart, function(handlerFn) {
       handlerFn();
     })
@@ -47,6 +55,8 @@ angular.module('famous-angular')
 
   $(window).bind('scroll', function() {
     if (_scrollEventsDisabled) return;
+
+    if (nextEventMustBeScrollstart) return;
 
     angular.forEach(_listeners.scroll, function(handlerFn) {
       handlerFn();
