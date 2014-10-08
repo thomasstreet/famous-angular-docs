@@ -13,26 +13,10 @@ angular.module('famous-angular')
   // ui.router's $state.  If we don't disable this handler, two $state.go()'s
   // will be triggered immediately, ruining our location history
 
-  var disableTimeout;
-  var _scrollEventsDisabled = false;
-
-  var nextEventMustBeScrollstart;
+  var disableScrollUntilScrollstart;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-    nextEventMustBeScrollstart = true;
-
-    if (disableTimeout) {
-      clearTimeout(disableTimeout);
-    }
-
-    _scrollEventsDisabled = true;
-
-    var totalDisableDuration = stateTransitions.enterDelay();
-
-    disableTimeout = setTimeout(function() {
-      _scrollEventsDisabled = false;
-
-    }, totalDisableDuration);
+    disableScrollUntilScrollstart = true;
   });
 
   var _listeners = {
@@ -42,10 +26,8 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
-    if (_scrollEventsDisabled) return;
-
-    if (nextEventMustBeScrollstart) {
-      nextEventMustBeScrollstart = false;
+    if (disableScrollUntilScrollstart) {
+      disableScrollUntilScrollstart = false;
     }
 
     angular.forEach(_listeners.scrollstart, function(handlerFn) {
@@ -54,9 +36,7 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scroll', function() {
-    if (_scrollEventsDisabled) return;
-
-    if (nextEventMustBeScrollstart) return;
+    if (disableScrollUntilScrollstart) return;
 
     angular.forEach(_listeners.scroll, function(handlerFn) {
       handlerFn();
@@ -70,9 +50,6 @@ angular.module('famous-angular')
   });
 
   return {
-    disabled: function() {
-      return !!_scrollEventsDisabled;
-    },
     addListeners: {
       scrollstart: function(handlerFn) {
         _listeners.scrollstart.push(handlerFn);
