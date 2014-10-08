@@ -16,14 +16,19 @@ angular.module('famous-angular')
   // ui.router's $state.  If we don't disable this handler, two $state.go()'s
   // will be triggered immediately, ruining our location history
 
+  var disableTimeout;
   var _scrollEventsDisabled = false;
 
   $rootScope.$on('$stateChangeSuccess', function() {
+    if (disableTimeout) {
+      clearTimeout(disableTimeout);
+    }
+
     _scrollEventsDisabled = true;
 
     var totalDisableDuration = stateTransitions.enterDelay() + DISABLE_EVENTS_DURATION;
 
-    setTimeout(function() {
+    disableTimeout = setTimeout(function() {
       _scrollEventsDisabled = false;
     }, totalDisableDuration);
   });
@@ -35,8 +40,6 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
-    if (_scrollEventsDisabled) return;
-
     angular.forEach(_listeners.scrollstart, function(handlerFn) {
       handlerFn();
     })
@@ -51,8 +54,6 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scrollend', function() {
-    if (_scrollEventsDisabled) return;
-
     angular.forEach(_listeners.scrollend, function(handlerFn) {
       handlerFn();
     })

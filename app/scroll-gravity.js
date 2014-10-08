@@ -85,9 +85,9 @@ angular.module('famous-angular')
     }
 
     var gravityValue = $timeline([
-      [-scrollRange, 1],
+      [-scrollRange / 2, 1],
       [0, 50],
-      [scrollRange, 100]
+      [scrollRange / 2, 100]
     ])(delta);
 
     state.grav.halt();

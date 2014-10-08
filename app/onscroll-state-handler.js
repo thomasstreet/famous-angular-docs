@@ -53,11 +53,11 @@ angular.module('famous-angular')
     var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
     var nextState = scrollStates[nextStateIndex];
 
-    // If the user quickly jumps to the next state (e.g. [50, 150, 250]),
-    // change the state immediately, instead of waiting for the
-    // scrollProgress.set() callback
-    if (t % 100 === 50) {
+    // If the nextState is different, change to and stop updating the
+    // scrolll progress
+    if (nextState.name !== $state.current.name) {
       $state.go(nextState.name);
+      return;
     }
 
     $rootScope.scrollProgress.halt();
@@ -67,12 +67,12 @@ angular.module('famous-angular')
     // duration before a 'scrollend', when starting a 'scrollstart'.  Otherwise
     // the 'scrollend' handlers will fire before the callback for this
     // set() is finished, resulting in never being able to change states
-    var durationThatMustBeFasterThanScrollEndTrigger = 200;
+    var durationThatMustBeFasterThanScrollEndTrigger = 0;
 
     $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function() {
-      $state.go(nextState.name);
     });
   });
+
 
   function compare(a, b) {
     if (a == b) return 0;
@@ -119,7 +119,6 @@ angular.module('famous-angular')
     }
     return "end";
   }
-
 
 /*--------------------------------------------------------------*/
 
