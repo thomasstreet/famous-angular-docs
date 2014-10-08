@@ -26,7 +26,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   // Will be clobbered everytime a new controller is instantiated
-  var state = {
+  var _state = {
     startPosition: 0,
     // Transitionable from a controller
     grav: null
@@ -35,9 +35,9 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $(window).bind('scrollstart', function() {
-    if (!state.grav) return;
+    if (!_state.grav) return;
 
-    scrollstartHandler(state);
+    scrollstartHandler(_state);
   });
 
   function scrollstartHandler(state) {
@@ -53,9 +53,9 @@ angular.module('famous-angular')
   }, 50);
 
   $(window).bind('scroll', function() {
-    if (!state.grav) return;
+    if (!_state.grav) return;
 
-    scrollHandler(state);
+    scrollHandler(_state);
   });
 
   function scrollHandler(state) {
@@ -101,8 +101,8 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $(window).bind('scrollend', function() {
-    if (!state.grav) return;
-    scrollendHandler(state);
+    if (!_state.grav) return;
+    scrollendHandler(_state);
   });
 
   function scrollendHandler(state) {
@@ -131,15 +131,15 @@ angular.module('famous-angular')
   return {
     timelines: timelines,
     setState: function(controllerState) {
-      state = {};
+      _state = {};
 
       // Do not set the new state immediately, else the inertia from the
       // scroll movement will immediately trigger scrollevents and
       // manipulate the fresh state.  Wait an amount of time for the 
       // inertia to settle, before setting the new state
       setTimeout(function() {
-        state = controllerState;
-        state.startPosition = window.pageYOffset;
+        _state = controllerState;
+        _state.startPosition = window.pageYOffset;
       }, 400);
     }
   };
