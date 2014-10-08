@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $timeline, $state) {
+.run(function($rootScope, $famous, $timeline, $state, scrollEvents) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
   var rangePerState = 100;
@@ -29,10 +29,14 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
+    if (scrollEvents.disabled()) return;
+
     start.scrollPosition = window.pageYOffset;
   });
 
   $(window).bind('scrollend', function() {
+    if (scrollEvents.disabled()) return;
+
     start.scrollPosition = window.pageYOffset;
   });
 
@@ -52,6 +56,8 @@ angular.module('famous-angular')
     // don't want to execute handler for that scrollTo()
     if (initialPageLoad) return;
 
+    if (scrollEvents.disabled()) return;
+
     var t = getTimelineFromScroll();
 
     var currentStateIndex = $state.current.data.index;
@@ -64,7 +70,7 @@ angular.module('famous-angular')
     // change the state immediately, instead of waiting for the
     // scrollProgress.set() callback
     if (t % 100 === 50) {
-      $state.go(nextState.name, null, { location: 'replace' });
+      $state.go(nextState.name);
     }
 
     $rootScope.scrollProgress.halt();
@@ -77,7 +83,7 @@ angular.module('famous-angular')
     var durationThatMustBeFasterThanScrollEndTrigger = 200;
 
     $rootScope.scrollProgress.set(t, { duration: durationThatMustBeFasterThanScrollEndTrigger }, function() {
-      $state.go(nextState.name, null, { location: 'replace' });
+      $state.go(nextState.name);
     });
 
   });

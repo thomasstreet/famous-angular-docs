@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.factory('scrollGravity', function($rootScope, $state, $famous, $timeline) {
+.factory('scrollGravity', function($rootScope, $state, $famous, $timeline, scrollEvents) {
   var Easing = $famous['famous/transitions/Easing'];
 
   var scrollMax = $rootScope.bodyHeight - window.innerHeight;
@@ -37,6 +37,8 @@ angular.module('famous-angular')
   $(window).bind('scrollstart', function() {
     if (!_state.grav) return;
 
+    if (scrollEvents.disabled()) return;
+
     scrollstartHandler(_state);
   });
 
@@ -54,6 +56,8 @@ angular.module('famous-angular')
 
   $(window).bind('scroll', function() {
     if (!_state.grav) return;
+
+    if (scrollEvents.disabled()) return;
 
     scrollHandler(_state);
   });
@@ -102,6 +106,9 @@ angular.module('famous-angular')
 
   $(window).bind('scrollend', function() {
     if (!_state.grav) return;
+
+    if (scrollEvents.disabled()) return;
+
     scrollendHandler(_state);
   });
 
@@ -131,16 +138,8 @@ angular.module('famous-angular')
   return {
     timelines: timelines,
     setState: function(controllerState) {
-      _state = {};
-
-      // Do not set the new state immediately, else the inertia from the
-      // scroll movement will immediately trigger scrollevents and
-      // manipulate the fresh state.  Wait an amount of time for the 
-      // inertia to settle, before setting the new state
-      setTimeout(function() {
-        _state = controllerState;
-        _state.startPosition = window.pageYOffset;
-      }, 400);
+      _state = controllerState;
+      _state.startPosition = window.pageYOffset;
     }
   };
 

@@ -16,7 +16,7 @@ angular.module('famous-angular')
     if (!prevState.data) {
       return 0;
     }
-    return prevState.data.leaveAnimationDuration;
+    return prevState.data.leaveAnimationDuration + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
   }
 
 
@@ -61,7 +61,7 @@ angular.module('famous-angular')
       var initialT = getEnterInitialT();
       t.set(initialT, { duration: 0 });
 
-      t.delay(enterDelay() + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS);
+      t.delay(enterDelay());
 
       // Always set to 1, regardless of transition direction
       t.set(1, { duration: enterDuration() }, $done);
@@ -73,6 +73,7 @@ angular.module('famous-angular')
 
       var leaveT = getLeaveT();
       t.set(leaveT, { duration: leaveDuration() }, $done);
-    }
+    },
+    enterDelay: enterDelay
   }
 });
