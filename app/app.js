@@ -1,4 +1,5 @@
 angular.module('famous-angular', [
   'famous.angular',
-  'ui.router'
+  'ui.router',
+  'ts.sheets'
 ]);
