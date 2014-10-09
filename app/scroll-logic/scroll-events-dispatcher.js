@@ -13,10 +13,25 @@ angular.module('famous-angular')
   // ui.router's $state.  If we don't disable this handler, two $state.go()'s
   // will be triggered immediately, ruining our location history
 
+  // After state change, disable ALL scroll events for a given amount of time.
+  // This is because changing state will trigger a window.scrollTo(), which
+  // will trigger a scrollstart, which will allow for scroll handlers to fire,
+  // which will force an incorrect state change, resulting in back-to-back
+  // state changes and a broken location history.
+  // TODO: FIND A BETTER SOLUTION
   var disableScrollUntilScrollstart;
+  var disableScrollEvents;
+  var timeout;
 
   $rootScope.$on('$stateChangeSuccess', function() {
     disableScrollUntilScrollstart = true;
+    disableScrollEvents = true;
+
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      disableScrollEvents = false;
+    }, 1000);
+
   });
 
   var _listeners = {
@@ -26,7 +41,8 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
-    console.log('scroll start');
+    if (disableScrollEvents) return;
+
     if (disableScrollUntilScrollstart) {
       disableScrollUntilScrollstart = false;
     }
@@ -37,6 +53,8 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scroll', function() {
+    if (disableScrollEvents) return;
+
     if (disableScrollUntilScrollstart) return;
 
     angular.forEach(_listeners.scroll, function(handlerFn) {
@@ -45,6 +63,8 @@ angular.module('famous-angular')
   });
 
   $(window).bind('scrollend', function() {
+    if (disableScrollEvents) return;
+
     angular.forEach(_listeners.scrollend, function(handlerFn) {
       handlerFn();
     })
@@ -61,6 +81,9 @@ angular.module('famous-angular')
       scrollend: function(handlerFn) {
         _listeners.scrollend.push(handlerFn);
       }
+    },
+    setScrollPosition: function(newScrollPosition) {
+      window.scrollTo(0, newScrollPosition);
     }
   };
 });

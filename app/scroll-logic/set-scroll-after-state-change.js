@@ -28,7 +28,7 @@ angular.module('famous-angular')
           [stateCount * rangePerState, scrollMax]
         ])(halfwayPointOfRange);
 
-        window.scrollTo(0, newScrollPosition);
+        scrollEvents.setScrollPosition(newScrollPosition);
 
         break;
       }
