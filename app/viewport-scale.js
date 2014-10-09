@@ -7,9 +7,14 @@ angular.module('famous-angular')
 
     // These dimensions will always be set on the fa-app via CSS, regardless 
     // of the user's window dimensions
+    //var FORCED_RESOLUTION = {
+      //WIDTH: 1920,
+      //HEIGHT: 1080 - NAVBAR.HEIGHT
+    //};
+
     var FORCED_RESOLUTION = {
-      WIDTH: 1920,
-      HEIGHT: 1080 - NAVBAR.HEIGHT
+      WIDTH: 414,
+      HEIGHT: 736 - NAVBAR.HEIGHT
     };
 
     setLeftOffset();
