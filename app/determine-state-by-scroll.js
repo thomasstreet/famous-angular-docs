@@ -1,22 +1,7 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $timeline, $state, scrollEvents) {
-  var rangePerState = 100;
-  var scrollStates = getScrollStates();
-  var stateCount = scrollStates.length;
-
-  $rootScope.bodyHeight = (window.innerHeight * stateCount);
-
-  function getScrollStates() {
-    var listOfStates = $state.get();
-    var usableStates = listOfStates.filter(function(state) {
-      return !!state.data;
-    });
-    var orderedStates = _.sortBy(usableStates, function(state) {
-      return state.data.index;
-    });
-    return orderedStates;
-  }
+.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils) {
+  var scrollStates = stateScrollUtils.getScrollStates();
 
 /*--------------------------------------------------------------*/
 
@@ -35,6 +20,8 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   scrollEvents.addListeners.scroll(function() {
+    // Might not need this anymore:
+
     // If the page is reloaded with the scroll bar anywhere aside from the
     // default window.pageYOffset = 0, the browser will fire a scroll event.
     // Since the event happens before ui.router changes state,
@@ -45,8 +32,12 @@ angular.module('famous-angular')
 
     var currentStateIndex = $state.current.data.index;
     var reachedStateIndex = stateIndex(determineState(t));
+
     var direction = compare(reachedStateIndex, currentStateIndex);
+
+    var stateCount = stateScrollUtils.stateCount();
     var nextStateIndex = Math.max(Math.min(stateCount - 1, currentStateIndex + direction), 0);
+
     var nextState = scrollStates[nextStateIndex];
 
     // If the nextState is different, change to and stop updating the
@@ -57,8 +48,9 @@ angular.module('famous-angular')
       return;
     }
 
-    $rootScope.scrollProgress.halt();
-    $rootScope.scrollProgress.set(t, { duration: 50 });
+    var scrollProgress = stateScrollUtils.scrollProgress();
+    scrollProgress.halt();
+    scrollProgress.set(t, { duration: 50 });
   });
 
 
@@ -72,8 +64,10 @@ angular.module('famous-angular')
   }
 
   function getTimelineFromScroll() {
-    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+    var scrollMax = stateScrollUtils.scrollMax();
+    var stateCount = stateScrollUtils.stateCount();
     var maxAllowableDistancePerScroll =  scrollMax / stateCount;
+    var rangePerState = stateScrollUtils.rangePerState();
 
     // Scale the scroll range to a simple timeline range
     var scaleScroll = $timeline([

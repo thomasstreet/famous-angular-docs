@@ -1,13 +1,7 @@
 angular.module('famous-angular')
 
-.factory('scrollGravity', function($rootScope, $state, $famous, $timeline, scrollEvents) {
+.factory('scrollGravity', function($rootScope, $state, $famous, $timeline, scrollEvents, stateScrollUtils) {
   var Easing = $famous['famous/transitions/Easing'];
-
-  var scrollMax = $rootScope.bodyHeight - window.innerHeight;
-  var stateCount = $state.get().filter(function(state) {
-    return !!state.data;
-  }).length;
-  var scrollRange = scrollMax / stateCount;
 
   var timelines =  {
     translate: $timeline([
@@ -62,6 +56,8 @@ angular.module('famous-angular')
     var currentPosition = window.pageYOffset;
     var delta = (currentPosition - state.startPosition) || 0;
 
+    var scrollRange = stateScrollUtils.scrollRange();
+
     var stateScrollRange = {
       start: (scrollRange * index),
       middle: (scrollRange * index) + (scrollRange / 2),
@@ -113,7 +109,8 @@ angular.module('famous-angular')
   // Force the user's scroll to the midway resting point of the range
   function setScrollToMidwayPointofRange() {
     var rangePerState = 100;
-    var scrollMax = $rootScope.bodyHeight - window.innerHeight;
+    var scrollMax = stateScrollUtils.scrollMax();
+    var stateCount = stateScrollUtils.stateCount();
 
     var newScrollPosition = $timeline([
       [0, 0],

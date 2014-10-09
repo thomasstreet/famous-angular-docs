@@ -1,10 +1,11 @@
 angular.module('famous-angular')
 
-.controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline) {
+.controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
   $scope.navTimeline = new Transitionable(0);
+  $scope.scrollProgress = stateScrollUtils.scrollProgress();
 
 /*--------------------------------------------------------------*/
 
