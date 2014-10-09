@@ -2,25 +2,24 @@ angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils) {
 
-  $rootScope.$on('$stateChangeSuccess', function(e) {
-    determineScrollPositionFromState();
+  $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
+    determineScrollPositionFromState(toState);
 
     setScrollProgress();
   });
 
 
-  function determineScrollPositionFromState() {
+  function determineScrollPositionFromState(newState) {
     var scrollStates = stateScrollUtils.scrollStates();
 
     for (var i = 0; i < scrollStates.length; i++) {
-      var state = scrollStates[i];
-      if ($state.current.name === state.name) {
+      if (newState.name === scrollStates[i].name) {
         var stateCount = stateScrollUtils.stateCount();
         var rangePerState = stateScrollUtils.rangePerState();
 
         // Set the scroll to half past the beginning of state range
         var halfOfRange = rangePerState / 2;
-        var halfwayPointOfRange = state.data.scrollTimelineMax - rangePerState + halfOfRange;
+        var halfwayPointOfRange = scrollStates[i].data.scrollTimelineMax - rangePerState + halfOfRange;
 
         var scrollMax = stateScrollUtils.scrollMax();
 

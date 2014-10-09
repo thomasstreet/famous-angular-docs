@@ -26,6 +26,7 @@ angular.module('famous-angular')
   };
 
   $(window).bind('scrollstart', function() {
+    console.log('scroll start');
     if (disableScrollUntilScrollstart) {
       disableScrollUntilScrollstart = false;
     }

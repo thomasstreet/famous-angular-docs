@@ -20,6 +20,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   scrollEvents.addListeners.scroll(function() {
+
     // Might not need this anymore:
 
     // If the page is reloaded with the scroll bar anywhere aside from the
