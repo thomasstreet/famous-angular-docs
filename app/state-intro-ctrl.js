@@ -67,11 +67,11 @@ angular.module('famous-angular')
       '#logo': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 300, 0], Easing.outCubic],
-            [0.5, [0, 80, 0]],
-            [1, [0, 80, 0]],
+            [0, [0, 600, 0], Easing.outCubic],
+            [0.5, [0, 380, 0]],
+            [1, [0, 380, 0]],
           ])(t.get());
-          return Transform.translate(translate);
+          return Transform.translate.apply(this, translate);
         },
         opacity: function() {
           return $timeline([
@@ -90,7 +90,7 @@ angular.module('famous-angular')
             [0.5, [0, 80, 0]],
             [1, [0, 80, 0]],
           ])(t.get());
-          return Transform.translate(translate);
+          return Transform.translate.apply(this, translate);
         },
         opacity: function() {
           return $timeline([
@@ -100,7 +100,7 @@ angular.module('famous-angular')
           ])(t.get());
         },
       },
-    }
+    },
   });
 
 
