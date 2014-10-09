@@ -10,7 +10,7 @@ angular.module('famous-angular')
 
 
   function determineScrollPositionFromState() {
-    var scrollStates = stateScrollUtils.getScrollStates();
+    var scrollStates = stateScrollUtils.scrollStates();
 
     for (var i = 0; i < scrollStates.length; i++) {
       var state = scrollStates[i];

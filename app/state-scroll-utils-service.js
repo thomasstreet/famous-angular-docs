@@ -2,25 +2,35 @@ angular.module('famous-angular')
 
 .factory('stateScrollUtils', function($rootScope, $state, $famous) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
+
   var scrollProgress = new Transitionable(0);
 
 /*--------------------------------------------------------------*/
 
-  var rangePerState = 100;
-  var scrollStates = getScrollStates();
-  var stateCount = scrollStates.length;
-  var bodyHeight = (window.innerHeight * stateCount);
+  var RANGE_PER_STATE = 100;
   $rootScope.bodyHeight = bodyHeight;
 
+  function rangePerState() {
+    return RANGE_PER_STATE;
+  }
+
+  function stateCount() {
+    return scrollStates().length;
+  }
+
+  function bodyHeight() {
+    return (window.innerHeight * stateCount());
+  }
+
   function scrollMax() {
-    return bodyHeight - window.innerHeight;
+    return bodyHeight() - window.innerHeight;
   }
 
   function scrollRange() {
-    return scrollMax() / stateCount;
+    return scrollMax() / stateCount();
   }
 
-  function getScrollStates() {
+  function scrollStates() {
     var listOfStates = $state.get();
     var usableStates = listOfStates.filter(function(state) {
       return !!state.data;
@@ -34,21 +44,15 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   return {
-    getScrollStates: getScrollStates,
-    rangePerState: function() {
-      return rangePerState;
-    },
-    stateCount: function() {
-      return stateCount;
-    },
-    bodyHeight: function() {
-      return bodyHeight;
-    },
+    scrollStates: scrollStates,
+    rangePerState: rangePerState,
+    stateCount: stateCount,
+    bodyHeight: bodyHeight,
+    scrollRange: scrollRange,
+    scrollMax: scrollMax,
     scrollProgress: function() {
       return scrollProgress;
-    },
-    scrollRange: scrollRange,
-    scrollMax: scrollMax
+    }
   };
 
 });

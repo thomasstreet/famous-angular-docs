@@ -1,7 +1,7 @@
 angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils) {
-  var scrollStates = stateScrollUtils.getScrollStates();
+  var scrollStates = stateScrollUtils.scrollStates();
 
 /*--------------------------------------------------------------*/
 
