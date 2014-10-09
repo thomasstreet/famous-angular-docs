@@ -77,6 +77,7 @@ angular.module('famous-angular', [
     $mediaProvider.$registerFieldHandler(fieldHandler.field, fieldHandler.handlerFn);
   });
 
+
 })
 
 ;
