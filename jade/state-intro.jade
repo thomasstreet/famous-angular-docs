@@ -1,128 +1,130 @@
-fa-modifier(
-  fa-translate='gravity.translate(grav.get())'
-  fa-opacity='gravity.opacity(grav.get())'
-)
+fa-view(ts-sheet='stateIntro')
   fa-modifier(
-    fa-translate='entireView.translate(t.get())'
-    fa-opacity='entireView.opacity(t.get())'
-    fa-origin='[0.5, 0]'
+    fa-translate='gravity.translate(grav.get())'
+    fa-opacity='gravity.opacity(grav.get())'
   )
     fa-modifier(
-      fa-translate='logo.translate(t.get())'
-      fa-opacity='logo.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      )
-        img.logo(src='img/famous-angular-white-logo_x3.png' height="123px")
-
-
-    fa-modifier(
-      fa-translate='heading.translate(t.get())'
-      fa-opacity='heading.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      ).intro-heading
-        h1
-          | Famo.us/
-          span.angular-text Angular
-
-
-    fa-modifier(
-      fa-translate='tagline.translate(t.get())'
-      fa-opacity='tagline.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      )
-        p Write your Famo.us apps the way you write your Angular apps.
-        .intro-divider
-
-
-    fa-modifier(
-      fa-translate='buttons.download.translate(t.get())'
-      fa-opacity='buttons.download.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      )
-        .button-links
-          a(ui-sref='end')
-            | Download
-            div.octicon.octicon-cloud-download
-    fa-modifier(
-      fa-translate='buttons.github.translate(t.get())'
-      fa-opacity='buttons.github.opacity(t.get())'
-      fa-z-index='1'
+      fa-translate='entireView.translate(t.get())'
+      fa-opacity='entireView.opacity(t.get())'
+      fa-origin='[0.5, 0]'
     )
       fa-modifier(
-        fa-rotate-x='buttons.github.rotateX(t.get())'
+        id='logo'
+        fa-translate='logo.translate(t.get())'
+        fa-opacity='logo.opacity(t.get())'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+        )
+          img.logo(src='img/famous-angular-white-logo_x3.png' height="123px")
+
+
+      fa-modifier(
+        fa-translate='heading.translate(t.get())'
+        fa-opacity='heading.opacity(t.get())'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+        ).intro-heading
+          h1
+            | Famo.us/
+            span.angular-text Angular
+
+
+      fa-modifier(
+        fa-translate='tagline.translate(t.get())'
+        fa-opacity='tagline.opacity(t.get())'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+        )
+          p Write your Famo.us apps the way you write your Angular apps.
+          .intro-divider
+
+
+      fa-modifier(
+        fa-translate='buttons.download.translate(t.get())'
+        fa-opacity='buttons.download.opacity(t.get())'
       )
         fa-surface(
           fa-size="[true, true]"
         )
           .button-links
-            a(href='https://github.com/Famous/famous-angular')
-              | Github
-              div.octicon.octicon-mark-github
-          .stars-forks
-            .left
-              span.octicon.octicon-star
-              | {{stars}} 
-            .right
-              span.octicon.octicon-repo-forked
-              | {{forks}} 
-    fa-modifier(
-      fa-translate='buttons.docs.translate(t.get())'
-      fa-opacity='buttons.docs.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      ).button-links
-          a(href='docs/api/index.html')
-            | Docs
-            div.octicon.octicon-file-text
-
-    fa-modifier(
-      fa-translate='builtBy.translate(t.get())'
-      fa-opacity='builtBy.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-      ).built-by
-        | built by 
-        span.link
-          a(href='http://thomasstreet.com/') Thomas Street
-        |  for 
-        span.link
-          a(href='http://famo.us/') Famo.us
-
-    fa-modifier(
-      fa-translate='scrollMessage.translate(t.get())'
-      fa-opacity='scrollMessage.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size="[true, true]"
-        ng-mouseover="startArrowAnimation()"
-        ng-mouseleave="endArrowAnimation()"
-      ).scroll-message
-        a(ui-sref='1')
-          .scroll-to SCROLL TO
-          .see-it see it in action
-
-    fa-modifier(
-      fa-translate='downArrow.translate(t.get())'
-      fa-opacity='downArrow.opacity(t.get())'
-    )
+            a(ui-sref='end')
+              | Download
+              div.octicon.octicon-cloud-download
       fa-modifier(
-        fa-translate='downArrow.animation.translate(arrowAnimation.get())'
-        fa-opacity='downArrow.animation.opacity(arrowAnimation.get())'
+        fa-translate='buttons.github.translate(t.get())'
+        fa-opacity='buttons.github.opacity(t.get())'
+        fa-z-index='1'
+      )
+        fa-modifier(
+          fa-rotate-x='buttons.github.rotateX(t.get())'
+        )
+          fa-surface(
+            fa-size="[true, true]"
+          )
+            .button-links
+              a(href='https://github.com/Famous/famous-angular')
+                | Github
+                div.octicon.octicon-mark-github
+            .stars-forks
+              .left
+                span.octicon.octicon-star
+                | {{stars}} 
+              .right
+                span.octicon.octicon-repo-forked
+                | {{forks}} 
+      fa-modifier(
+        fa-translate='buttons.docs.translate(t.get())'
+        fa-opacity='buttons.docs.opacity(t.get())'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+        ).button-links
+            a(href='docs/api/index.html')
+              | Docs
+              div.octicon.octicon-file-text
+
+      fa-modifier(
+        fa-translate='builtBy.translate(t.get())'
+        fa-opacity='builtBy.opacity(t.get())'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+        ).built-by
+          | built by 
+          span.link
+            a(href='http://thomasstreet.com/') Thomas Street
+          |  for 
+          span.link
+            a(href='http://famo.us/') Famo.us
+
+      fa-modifier(
+        fa-translate='scrollMessage.translate(t.get())'
+        fa-opacity='scrollMessage.opacity(t.get())'
       )
         fa-surface(
           fa-size="[true, true]"
           ng-mouseover="startArrowAnimation()"
           ng-mouseleave="endArrowAnimation()"
-        )
+        ).scroll-message
           a(ui-sref='1')
-            img(src='img/downarrow.svg' height='35px')
+            .scroll-to SCROLL TO
+            .see-it see it in action
+
+      fa-modifier(
+        fa-translate='downArrow.translate(t.get())'
+        fa-opacity='downArrow.opacity(t.get())'
+      )
+        fa-modifier(
+          fa-translate='downArrow.animation.translate(arrowAnimation.get())'
+          fa-opacity='downArrow.animation.opacity(arrowAnimation.get())'
+        )
+          fa-surface(
+            fa-size="[true, true]"
+            ng-mouseover="startArrowAnimation()"
+            ng-mouseleave="endArrowAnimation()"
+          )
+            a(ui-sref='1')
+              img(src='img/downarrow.svg' height='35px')

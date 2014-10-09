@@ -1,6 +1,8 @@
 angular.module('famous-angular')
 
-.controller('stateIntroCtrl', function($rootScope, $scope, $state, $http, $famous, $timeline, stateTransitions, scrollGravity) {
+.controller('stateIntroCtrl', function($rootScope, $scope, $state, $http, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+  var Transform = $famous['famous/core/Transform'];
+
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
@@ -60,18 +62,47 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.logo = {
-    translate: $timeline([
-      [0, [0, 300, 0], Easing.outCubic],
-      [0.5, [0, 80, 0]],
-      [1, [0, 80, 0]],
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.5, 1],
-      [1, 1]
-    ])
-  };
+  $media.$sheet('stateIntro', {
+    xs: {
+      '#logo': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 300, 0], Easing.outCubic],
+            [0.5, [0, 80, 0]],
+            [1, [0, 80, 0]],
+          ])(t.get());
+          return Transform.translate(translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [0.5, 1],
+            [1, 1],
+          ])(t.get());
+        },
+      },
+    },
+    sm: {
+      '#logo': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 300, 0], Easing.outCubic],
+            [0.5, [0, 80, 0]],
+            [1, [0, 80, 0]],
+          ])(t.get());
+          return Transform.translate(translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [0.5, 1],
+            [1, 1],
+          ])(t.get());
+        },
+      },
+    }
+  });
+
 
 
   $scope.heading = {
