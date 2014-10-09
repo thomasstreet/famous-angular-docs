@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils) {
+.controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
@@ -143,5 +143,28 @@ angular.module('famous-angular')
       ])
     }
   };
+
+  $media.$sheet('test', {
+    xs: {
+      '#routing-text': {
+        transform: function() {
+          return Transform.translate.apply(this, $scope.routing.text.translate(t.get()))
+        },
+        align: [0, 0],
+        size: [true, true],
+        opacity: 0
+      }
+    },
+    sm: {
+      '#routing-text': {
+        transform: function() {
+          return Transform.translate.apply(this, $scope.routing.text.translate(t.get()))
+        },
+        align: [0, 0],
+        size: [true, true],
+        opacity: 1
+      }
+    }
+  });
 
 });
