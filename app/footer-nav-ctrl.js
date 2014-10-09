@@ -89,7 +89,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  // These timelines assume an input range of 0-700
+  // Code for the blue progress dots below the nav
   $scope.scrollProgressDots = {
     dot1: {
       translate: $timeline([
@@ -144,27 +144,5 @@ angular.module('famous-angular')
     }
   };
 
-  $media.$sheet('test', {
-    xs: {
-      '#routing-text': {
-        transform: function() {
-          return Transform.translate.apply(this, $scope.routing.text.translate(t.get()))
-        },
-        align: [0, 0],
-        size: [true, true],
-        opacity: 0
-      }
-    },
-    sm: {
-      '#routing-text': {
-        transform: function() {
-          return Transform.translate.apply(this, $scope.routing.text.translate(t.get()))
-        },
-        align: [0, 0],
-        size: [true, true],
-        opacity: 1
-      }
-    }
-  });
 
 });

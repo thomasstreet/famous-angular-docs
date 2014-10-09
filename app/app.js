@@ -4,9 +4,9 @@ angular.module('famous-angular', [
   'ts.sheets'
 ])
 
-.config(function($rootScopeProvider, $mediaProvider, $famousProvider) {
+.config(function($mediaProvider, $famousProvider) {
   var $famous = $famousProvider.$get();
-  var $rootscope = $rootScopeProvider.$get();
+  var Timer = $famous['famous/utilities/Timer'];
 
   var FAMOUS_FIELD_HANDLERS = [
       {
@@ -57,19 +57,26 @@ angular.module('famous-angular', [
       {
         field: 'style',
         handlerFn: function(element, payloadFn) {
-          var cssData = payloadFn();
-          for (var propertyName in cssData) {
-            var propertyValue = cssData[propertyName];
-            element.style.[propertyName] = propertyValue;
-          }
-        }
-        console.log(element.style);
-      }
-    ];
 
-    angular.forEach(FAMOUS_FIELD_HANDLERS, function(fieldHandler) {
-      $mediaProvider.$registerFieldHandler(fieldHandler.field, fieldHandler.handlerFn);
-    });
+          Timer.every(function() {
+            var cssData = payloadFn();
+            for (var propertyName in cssData) {
+              var propertyValue = cssData[propertyName];
+              if (typeof propertyValue === 'function') {
+                propertyValue = propertyValue();
+              }
+              element.style[propertyName] = propertyValue;
+            }
+          });
+
+        }
+      }
+  ];
+
+  angular.forEach(FAMOUS_FIELD_HANDLERS, function(fieldHandler) {
+    $mediaProvider.$registerFieldHandler(fieldHandler.field, fieldHandler.handlerFn);
+  });
+
 })
 
 ;

@@ -15,22 +15,26 @@
 
   <body class="docs docs-page docs-api" style="height: {{ "{{bodyHeight()" }} }}px;">
 
-    {% include nav_links.html %}
+    <div ts-sheet='layoutSheet'>
 
-    <div id="viewport" ng-controller="footerNavCtrl">
-      <div ng-controller="downloadPanelCtrl">
-        <fa-app style='height: 980px; width: 1920px;' class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
-          <ng-include src="'build/templates/state-nav.html'"></ng-include>
-          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
-          <ng-include src="'build/templates/state-footer.html'"></ng-include>
-        </fa-app>
+      {% include nav_links.html %}
+
+      <div id="viewport" ng-controller="footerNavCtrl">
+        <div ng-controller="downloadPanelCtrl">
+          <fa-app style='height: 980px; width: 1920px;' class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
+            <ng-include src="'build/templates/state-nav.html'"></ng-include>
+            <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+            <ng-include src="'build/templates/state-footer.html'"></ng-include>
+          </fa-app>
+        </div>
       </div>
+
     </div>
 
     {% include base_scripts.html %}
-    <script src="{{relative}}bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="{{relative}}bower_components/lodash/dist/lodash.js"></script>
     <script src="{{relative}}bower_components/famous/famous-global.js"></script>
-    <script src="{{relative}}bower_components/angular/angular.min.js"></script>
+    <script src="{{relative}}bower_components/angular/angular.js"></script>
     <script src="{{relative}}bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.js"></script>
     <script src="{{relative}}build/main.js"></script>
