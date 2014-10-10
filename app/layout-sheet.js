@@ -23,17 +23,6 @@ angular.module('famous-angular')
           };
         }
       },
-      '#fa-app': {
-        style: function() {
-          var navHeight = 50;
-          return {
-            'width': '768px',
-            'height': function() {
-              return 1366 - navHeight + 'px';
-            }
-          };
-        }
-      }
     },
 
     sm: {
@@ -55,17 +44,6 @@ angular.module('famous-angular')
           };
         }
       },
-      '#fa-app': {
-        style: function() {
-          var navHeight = 100;
-          return {
-            'width': '1920px',
-            'height': function() {
-              return 1080 - navHeight + 'px';
-            }
-          };
-        }
-      }
     }
   });
 
