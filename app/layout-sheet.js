@@ -27,9 +27,9 @@ angular.module('famous-angular')
         style: function() {
           var navHeight = 50;
           return {
-            'width': '414px',
+            'width': '768px',
             'height': function() {
-              return 736 - navHeight + 'px';
+              return 1366 - navHeight + 'px';
             }
           };
         }

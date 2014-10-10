@@ -23,11 +23,15 @@ angular.module('famous-angular')
     var size_xs = !$media.$query('sm');
 
     if (size_xs) {
+      NAVBAR.HEIGHT = 50;
+
       _forcedResolution = {
-        width: 414,
-        height: 736 - NAVBAR.HEIGHT
+        width: 768,
+        height: 1366 - NAVBAR.HEIGHT
       };
     } else {
+      NAVBAR.HEIGHT = 100;
+
       _forcedResolution = {
         width: 1920,
         height: 1080 - NAVBAR.HEIGHT
