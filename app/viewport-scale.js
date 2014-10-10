@@ -18,16 +18,19 @@ angular.module('famous-angular')
 
   function determineResolution() {
     // These dimensions will always be set on the fa-app via CSS, regardless 
-    // of the user's window dimensions
-    if ($media.$query('sm')) {
-      _forcedResolution = {
-        width: 1920,
-        height: 1080 - NAVBAR.HEIGHT
-      };
-    } else {
+    // of the user's actual window dimensions
+
+    var size_xs = !$media.$query('sm');
+
+    if (size_xs) {
       _forcedResolution = {
         width: 414,
         height: 736 - NAVBAR.HEIGHT
+      };
+    } else {
+      _forcedResolution = {
+        width: 1920,
+        height: 1080 - NAVBAR.HEIGHT
       };
     }
   }
