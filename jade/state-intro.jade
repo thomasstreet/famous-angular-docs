@@ -8,21 +8,14 @@ fa-view(ts-sheet='stateIntro')
       fa-opacity='entireView.opacity(t.get())'
       fa-origin='[0.5, 0]'
     )
-      fa-modifier(
-        id='logo'
-        fa-translate='logo.translate(t.get())'
-        fa-opacity='logo.opacity(t.get())'
-      )
+      fa-modifier(id='logo')
         fa-surface(
           fa-size="[true, true]"
         )
           img.logo(src='img/famous-angular-white-logo_x3.png')
 
 
-      fa-modifier(
-        fa-translate='heading.translate(t.get())'
-        fa-opacity='heading.opacity(t.get())'
-      )
+      fa-modifier(id="heading")
         fa-surface(
           fa-size="[true, true]"
         ).intro-heading
@@ -31,10 +24,7 @@ fa-view(ts-sheet='stateIntro')
             span.angular-text Angular
 
 
-      fa-modifier(
-        fa-translate='tagline.translate(t.get())'
-        fa-opacity='tagline.opacity(t.get())'
-      )
+      fa-modifier(id="tagline")
         fa-surface(
           fa-size="[true, true]"
         )
@@ -113,18 +103,12 @@ fa-view(ts-sheet='stateIntro')
             .scroll-to SCROLL TO
             .see-it see it in action
 
-      fa-modifier(
-        fa-translate='downArrow.translate(t.get())'
-        fa-opacity='downArrow.opacity(t.get())'
-      )
-        fa-modifier(
-          fa-translate='downArrow.animation.translate(arrowAnimation.get())'
-          fa-opacity='downArrow.animation.opacity(arrowAnimation.get())'
-        )
+      fa-modifier(id="down-arrow")
+        fa-modifier(id="down-arrow-animation")
           fa-surface(
             fa-size="[true, true]"
             ng-mouseover="startArrowAnimation()"
             ng-mouseleave="endArrowAnimation()"
           )
             a(ui-sref='1')
-              img(src='img/downarrow.svg' height='35px')
+              img.down-arrow-image(src='img/downarrow.svg')

@@ -63,6 +63,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $media.$sheet('stateIntro', {
+
     xs: {
       '#logo': {
         transform: function() {
@@ -81,7 +82,88 @@ angular.module('famous-angular')
           ])(t.get());
         },
       },
+
+      '#heading': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 400, 0]],
+            [0.05, [0, 400, 0], Easing.outCubic],
+            [0.55, [0, 260, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [0.05, 0],
+            [0.55, 1],
+          ])(t.get());
+        },
+      },
+
+      '#tagline': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 600, 0]],
+            [0.1, [0, 600, 0], Easing.outCubic],
+            [0.6, [0, 400, 0]],
+            [1, [0, 400, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+          [0, 0],
+          [0.1, 0],
+          [0.6, 1],
+          ])(t.get());
+        },
+      },
+
+      '#down-arrow': {
+        transform: function() {
+          var translate = $timeline([
+          [0, [0, 1100, 0]],
+          [0.5, [0, 1100, 0], Easing.inOutQuart],
+          [1, [0, 1200, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+          [0, 0],
+          [0.6, 0],
+          [1, 1]
+          ])(t.get());
+        },
+      },
+
+      '#down-arrow-animation': {
+        transform: function() {
+          var translate = $timeline([
+          [0, [0, 0, 0], Easing.inOutQuart],
+          [300, [0, 50, 0]],
+          [301, [0, -45, 0], Easing.inQuad],
+          [600, [0, 0, 0]],
+          [1700, [0, 0, 0]]
+          ])(arrowAnimation.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+          [0, 1, Easing.outQuad],
+          [300, 0],
+          [301, 0, Easing.outQuad],
+          [600, 1],
+          [1700, 1]
+          ])(arrowAnimation.get());
+        },
+      },
+
     },
+
+
+
     sm: {
       '#logo': {
         transform: function() {
@@ -93,40 +175,58 @@ angular.module('famous-angular')
           return Transform.translate.apply(this, translate);
         },
       },
+
+      '#heading': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 400, 0]],
+            [0.05, [0, 400, 0], Easing.outCubic],
+            [0.55, [0, 210, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        }
+      },
+
+      '#tagline': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 600, 0]],
+            [0.1, [0, 600, 0], Easing.outCubic],
+            [0.6, [0, 350, 0]],
+            [1, [0, 350, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+
+      '#down-arrow': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 785, 0]],
+            [0.5, [0, 785, 0], Easing.inOutQuart],
+            [1, [0, 885, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+
+      '#down-arrow-animation': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 0, 0], Easing.inOutQuart],
+            [300, [0, 30, 0]],
+            [301, [0, -25, 0], Easing.inQuad],
+            [600, [0, 0, 0]],
+            [1700, [0, 0, 0]]
+          ])(arrowAnimation.get());
+          return Transform.translate.apply(this, translate);
+        }
+      },
+
     },
+
   });
 
-
-
-  $scope.heading = {
-    translate: $timeline([
-      [0, [0, 400, 0]],
-      [0.05, [0, 400, 0], Easing.outCubic],
-      [0.55, [0, 210, 0]],
-      [1, [0, 210, 0]],
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.05, 0],
-      [0.55, 1],
-      [1, 1],
-    ])
-  };
-
-  $scope.tagline = {
-    translate: $timeline([
-      [0, [0, 600, 0]],
-      [0.1, [0, 600, 0], Easing.outCubic],
-      [0.6, [0, 350, 0]],
-      [1, [0, 350, 0]],
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.1, 0],
-      [0.6, 1, Easing.inCubic],
-      [1, 1],
-    ])
-  };
 
   $scope.buttons = {
     download: {
@@ -204,44 +304,14 @@ angular.module('famous-angular')
     ])
   };
 
-  $scope.downArrow = {
-    translate: $timeline([
-      [0, [0, 785, 0]],
-      [0.5, [0, 785, 0], Easing.inOutQuart],
-      [1, [0, 885, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.6, 0],
-      [1, 1]
-    ])
-  };
-
 /*--------------------------------------------------------------*/
 
-  $scope.arrowAnimation = new Transitionable(0);
-  $scope.downArrow.animation = {
-    translate: $timeline([
-      [0, [0, 0, 0], Easing.inOutQuart],
-      [300, [0, 30, 0]],
-      [301, [0, -25, 0], Easing.inQuad],
-      [600, [0, 0, 0]],
-      [1700, [0, 0, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 1, Easing.outQuad],
-      [300, 0],
-      [301, 0, Easing.outQuad],
-      [600, 1],
-      [1700, 1]
-    ])
-  };
-
+  var arrowAnimation = new Transitionable(0);
   var loopAnimation;
 
   function animateArrow() {
-    $scope.arrowAnimation.set(0, {duration: 0});
-    $scope.arrowAnimation.set(1700, {duration: 1700}, function() {
+    arrowAnimation.set(0, {duration: 0});
+    arrowAnimation.set(1700, {duration: 1700}, function() {
       if (loopAnimation) {
         animateArrow();
       }
