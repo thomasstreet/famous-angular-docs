@@ -32,10 +32,7 @@ fa-view(ts-sheet='stateIntro')
           .intro-divider
 
 
-      fa-modifier(
-        fa-translate='buttons.download.translate(t.get())'
-        fa-opacity='buttons.download.opacity(t.get())'
-      )
+      fa-modifier(id='button-download')
         fa-surface(
           fa-size="[true, true]"
         )
@@ -43,32 +40,23 @@ fa-view(ts-sheet='stateIntro')
             a(ui-sref='end')
               | Download
               div.octicon.octicon-cloud-download
-      fa-modifier(
-        fa-translate='buttons.github.translate(t.get())'
-        fa-opacity='buttons.github.opacity(t.get())'
-        fa-z-index='1'
-      )
-        fa-modifier(
-          fa-rotate-x='buttons.github.rotateX(t.get())'
+
+      fa-modifier(id="button-github" fa-z-index="1")
+        fa-surface(
+          fa-size="[true, true]"
         )
-          fa-surface(
-            fa-size="[true, true]"
-          )
-            .button-links
-              a(href='https://github.com/Famous/famous-angular')
-                | Github
-                div.octicon.octicon-mark-github
-            .stars-forks
-              .left
-                span.octicon.octicon-star
-                | {{stars}} 
-              .right
-                span.octicon.octicon-repo-forked
-                | {{forks}} 
-      fa-modifier(
-        fa-translate='buttons.docs.translate(t.get())'
-        fa-opacity='buttons.docs.opacity(t.get())'
-      )
+          .button-links
+            a(href='https://github.com/Famous/famous-angular')
+              | Github
+              div.octicon.octicon-mark-github
+          .stars-forks
+            .left
+              span.octicon.octicon-star
+              | {{stars}} 
+            .right
+              span.octicon.octicon-repo-forked
+              | {{forks}} 
+      fa-modifier(id="button-docs")
         fa-surface(
           fa-size="[true, true]"
         ).button-links
@@ -76,10 +64,7 @@ fa-view(ts-sheet='stateIntro')
               | Docs
               div.octicon.octicon-file-text
 
-      fa-modifier(
-        fa-translate='builtBy.translate(t.get())'
-        fa-opacity='builtBy.opacity(t.get())'
-      )
+      fa-modifier(id="built-by")
         fa-surface(
           fa-size="[true, true]"
         ).built-by
@@ -90,10 +75,7 @@ fa-view(ts-sheet='stateIntro')
           span.link
             a(href='http://famo.us/') Famo.us
 
-      fa-modifier(
-        fa-translate='scrollMessage.translate(t.get())'
-        fa-opacity='scrollMessage.opacity(t.get())'
-      )
+      fa-modifier(id="scroll-message")
         fa-surface(
           fa-size="[true, true]"
           ng-mouseover="startArrowAnimation()"
