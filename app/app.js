@@ -54,23 +54,6 @@ angular.module('famous-angular', [
           //Need to make sure to clean up watchers when this gets re-called
         }
       },
-      {
-        field: 'style',
-        handlerFn: function(element, payloadFn) {
-
-          Timer.every(function() {
-            var cssData = payloadFn();
-            for (var propertyName in cssData) {
-              var propertyValue = cssData[propertyName];
-              if (typeof propertyValue === 'function') {
-                propertyValue = propertyValue();
-              }
-              element.style[propertyName] = propertyValue;
-            }
-          });
-
-        }
-      }
   ];
 
   angular.forEach(FAMOUS_FIELD_HANDLERS, function(fieldHandler) {

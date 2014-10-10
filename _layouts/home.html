@@ -15,20 +15,21 @@
 
   <body class="docs docs-page docs-api" style="height: {{ "{{bodyHeight()" }} }}px;">
 
-    <div ts-sheet='layoutSheet'>
-
+    <div class="hidden-xs">
       {% include nav_links.html %}
+    </div>
+    <div class="visible-xs" id="mobile-navbar">
+      TEMP MOBILE NAV
+    </div>
 
-      <div id="viewport" ng-controller="footerNavCtrl">
-        <div ng-controller="downloadPanelCtrl">
-          <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
-            <ng-include src="'build/templates/state-nav.html'"></ng-include>
-            <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
-            <ng-include src="'build/templates/state-footer.html'"></ng-include>
-          </fa-app>
-        </div>
+    <div id="viewport" ng-controller="footerNavCtrl">
+      <div ng-controller="downloadPanelCtrl">
+        <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
+          <ng-include src="'build/templates/state-nav.html'"></ng-include>
+          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+          <ng-include src="'build/templates/state-footer.html'"></ng-include>
+        </fa-app>
       </div>
-
     </div>
 
     {% include base_scripts.html %}

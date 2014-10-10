@@ -5,8 +5,6 @@
   box-sizing border-box
   position fixed
   top 100px
-  height calc(100% - 100px)
-  width 100%
   background -moz-linear-gradient(50% 99.88% 90deg,rgba(12, 9, 13, 1) 0.05%,rgba(29, 23, 33, 1) 100%)
   background -webkit-linear-gradient(90deg, rgba(12, 9, 13, 1) 0.05%, rgba(29, 23, 33, 1) 100%)
   background -webkit-gradient(linear,50% 99.88% ,50% 1.78% ,color-stop(0.0005,rgba(12, 9, 13, 1) ),color-stop(1,rgba(29, 23, 33, 1) ))
@@ -16,17 +14,18 @@
   background linear-gradient(0deg, rgba(12, 9, 13, 1) 0.05%, rgba(29, 23, 33, 1) 100%)
 
   #fa-app
+    height calc(1080px - 100px)
+    width 1920px
     margin auto
     transform-style preserve-3d;
-    width 1920px
-    height calc(1080px - 100px)
 
 @media (max-width: 767px) 
   #viewport
+    top 60px
 
     #fa-app
+      height calc(1366px - 60px)
       width 768px
-      height calc(1366px - 50px)
 
 /***********************************************************************
   Code Snippets
