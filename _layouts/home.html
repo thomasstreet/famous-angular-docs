@@ -19,13 +19,17 @@
       {% include nav_links.html %}
     </div>
     <div class="visible-xs" id="mobile-navbar">
-      TEMP MOBILE NAV
+      <ng-include src="'build/templates/mobile-state-nav.html'"></ng-include>
     </div>
 
     <div id="viewport" ng-controller="footerNavCtrl">
       <div ng-controller="downloadPanelCtrl">
         <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
-          <ng-include src="'build/templates/state-nav.html'"></ng-include>
+
+          <div ng-if="showNavbar()">
+            <ng-include src="'build/templates/state-nav.html'"></ng-include>
+          </div>
+
           <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
           <ng-include src="'build/templates/state-footer.html'"></ng-include>
         </fa-app>

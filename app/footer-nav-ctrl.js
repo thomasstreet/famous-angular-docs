@@ -9,6 +9,10 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $scope.showNavbar = function() {
+    return !$media.$query('xs');
+  };
+
   $scope.navbar = {
     opacity: $timeline([
       [0, 0],
