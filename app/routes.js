@@ -89,7 +89,7 @@ angular.module('famous-angular')
         scrollTimelineMax: 700,
         enterAnimationDuration: 500,
         leaveAnimationDuration: 500,
-        cssClass: 'state-end',
+        cssClass: 'download-panel',
         pageTitle: 'Download'
       }
     });

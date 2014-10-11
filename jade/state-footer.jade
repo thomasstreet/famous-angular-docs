@@ -1,22 +1,19 @@
-fa-modifier(
-  fa-origin="[0.5, 1]"
-  fa-translate="footer.translate(navTimeline.get())"
-  fa-opacity="footer.opacity(navTimeline.get())"
-)
-  fa-surface(
-    fa-size="[true, true]"
-  )
-    .state-footer
-      .divider
-      .footer-links
-        a(ui-sref='end' ui-sref-active='active')
-          div.octicon.octicon-cloud-download
-          | Download
-        a(href='https://github.com/famous/famous-angular/')
-          div.octicon.octicon-mark-github
-          | GitHub
-        a(href='docs/api/index.html')
-          div.octicon.octicon-file-text
-          | Docs
+fa-view(ts-sheet='FooterSheet')
+  fa-modifier(id="footer")
+    fa-surface(
+      fa-size="[true, true]"
+    )
+      .state-footer
+        .divider
+        .footer-links
+          a(ui-sref='end' ui-sref-active='active')
+            div.octicon.octicon-cloud-download
+            | Download
+          a(href='https://github.com/famous/famous-angular/')
+            div.octicon.octicon-mark-github
+            | GitHub
+          a(href='docs/api/index.html')
+            div.octicon.octicon-file-text
+            | Docs
 
-  include download-panel
+    include download-panel

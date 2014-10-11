@@ -1,10 +1,13 @@
 angular.module('famous-angular')
 
 .controller('footerNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
+  var Transform = $famous['famous/core/Transform'];
+
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
-  $scope.navTimeline = new Transitionable(0);
+  var navTimeline = new Transitionable(0);
+  $scope.navTimeline = navTimeline;
   $scope.scrollProgress = stateScrollUtils.scrollProgress();
 
 /*--------------------------------------------------------------*/
@@ -32,6 +35,48 @@ angular.module('famous-angular')
       [3, [0, -40, 0]]
     ])
   };
+
+  $media.$sheet('FooterSheet', {
+    xs: {
+      '#footer': {
+        transform: function() {
+            var translate = $timeline([
+            [0, [0, -40, 0]],
+            [1, [0, -40, 0], Easing.outBack],
+            [2, [0, -1100, 0], Easing.outBounce],
+            [3, [0, -40, 0]]
+          ])(navTimeline.get());
+          return Transform.translate.apply(this, translate);
+        },
+        origin: function() {
+          return [0.5, 1];
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [1, 1]
+          ])(navTimeline.get());
+        }
+      },
+    },
+
+    sm: {
+      '#footer': {
+        transform: function() {
+            var translate = $timeline([
+            [0, [0, -40, 0]],
+            [1, [0, -40, 0], Easing.outBack],
+            [2, [0, -770, 0], Easing.outBounce],
+            [3, [0, -40, 0]]
+          ])(navTimeline.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+    }
+
+  });
+
+
 
 /*--------------------------------------------------------------*/
 
