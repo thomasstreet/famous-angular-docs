@@ -26,9 +26,9 @@
       <div ng-controller="downloadPanelCtrl">
         <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-          <div ng-if="showNavbar()">
+          <fa-view ng-if="showNavbar()">
             <ng-include src="'build/templates/state-nav.html'"></ng-include>
-          </div>
+          </fa-view>
 
           <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
           <ng-include src="'build/templates/state-footer.html'"></ng-include>

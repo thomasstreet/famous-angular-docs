@@ -10,7 +10,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   $scope.showNavbar = function() {
-    return !$media.$query('xs');
+    return $media.$query('sm');
   };
 
   $scope.navbar = {
