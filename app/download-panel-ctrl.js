@@ -36,7 +36,6 @@ angular.module('famous-angular')
   };
 
   $scope.showDownloadButton = function() {
-    console.log($media.$query('sm'));
     return $media.$query('sm');
   }
 
@@ -47,7 +46,7 @@ angular.module('famous-angular')
     xs: {
       '#download-panel': {
         transform: function() {
-          var translate = [0, 1100, 0];
+          var translate = [0, 1050, 0];
           return Transform.translate.apply(this, translate);
         },
         origin: function() {
