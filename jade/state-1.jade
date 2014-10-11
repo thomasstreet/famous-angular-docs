@@ -1,173 +1,169 @@
-fa-modifier(
-  fa-translate='gravity.translate(grav.get())'
-  fa-opacity='gravity.opacity(grav.get())'
-)
+fa-view(ts-sheet="State1Sheet")
   fa-modifier(
-    fa-translate='entireView.translate(t.get())'
-    fa-opacity='entireView.opacity(t.get())'
+    fa-translate='gravity.translate(grav.get())'
+    fa-opacity='gravity.opacity(grav.get())'
   )
     fa-modifier(
-      fa-translate='leftColumn.translate(t.get())'
+      fa-translate='entireView.translate(t.get())'
+      fa-opacity='entireView.opacity(t.get())'
     )
-      fa-modifier(
-        fa-translate='heading.translate(t.get())'
-        fa-opacity='heading.opacity(t.get())'
-      )
-        fa-surface(fa-size="[750, true]")
-          h1.heading Visualize your Famo.us render tree in an HTML hierarchy
-
-      fa-modifier(
-        fa-translate='codeBlock.translate(t.get())'
-      )
+      fa-modifier(id="left-column")
         fa-modifier(
-          fa-translate='frame.code.translate(t.get())'
-          fa-opacity='frame.code.opacity(t.get())'
+          fa-translate='heading.translate(t.get())'
+          fa-opacity='heading.opacity(t.get())'
         )
-          fa-surface(fa-size="[true, true]").code
-            pre
-              code.
-                 &lt;<span class="tag">fa-flexible-layout</span> <span class="attr-name">...</span>&gt;
-                 
-                 
+          fa-surface(fa-size="[750, true]")
+            h1.heading Visualize your Famo.us render tree in an HTML hierarchy
 
-                 
-                 
-                 
-                 
-                 
-                 &lt;/<span class="tag">fa-flexible-layout</span>&gt;
         fa-modifier(
-          fa-translate='header.code.translate(t.get())'
-          fa-opacity='header.code.opacity(t.get())'
+          fa-translate='codeBlock.translate(t.get())'
         )
-          fa-surface(fa-size="[true, true]").code
-            pre
-              code.
-                 &lt;<span class="tag">fa-flexible-layout</span> <span class="attr-name">...</span>&gt;
-                   
-                   
+          fa-modifier(
+            fa-translate='frame.code.translate(t.get())'
+            fa-opacity='frame.code.opacity(t.get())'
+          )
+            fa-surface(fa-size="[true, true]").code
+              pre
+                code.
+                   &lt;<span class="tag">fa-flexible-layout</span> <span class="attr-name">...</span>&gt;
                    
                    
 
                    
-                 &lt;/<span class="tag">fa-flexible-layout</span>&gt;
+                   
+                   
+                   
+                   
+                   &lt;/<span class="tag">fa-flexible-layout</span>&gt;
+          fa-modifier(
+            fa-translate='header.code.translate(t.get())'
+            fa-opacity='header.code.opacity(t.get())'
+          )
+            fa-surface(fa-size="[true, true]").code
+              pre
+                code.
+                   &lt;<span class="tag">fa-flexible-layout</span> <span class="attr-name">...</span>&gt;
+                     
+                     
+                     
+                     
+
+                     
+                   &lt;/<span class="tag">fa-flexible-layout</span>&gt;
+          fa-modifier(
+            fa-translate='sidenav.code.translate(t.get())'
+            fa-opacity='sidenav.code.opacity(t.get())'
+          )
+            fa-surface(fa-size="[true, true]").code
+              pre
+                code.
+                   &lt;<span class="tag">fa-surface</span>&gt;&lt;/<span class="tag">fa-surface</span>&gt;
+          fa-modifier(
+            fa-translate='container.code.translate(t.get())'
+            fa-opacity='container.code.opacity(t.get())'
+          )
+            fa-surface(fa-size="[true, true]").code
+              pre
+                code.
+                   &lt;<span class="tag">fa-grid-layout</span> <span class="attr-name">...</span>&gt;
+
+
+
+                   &lt;/<span class="tag">fa-grid-layout</span>&gt;
+
+          fa-modifier(
+            fa-translate='frameContent.code.translate(t.get())'
+            fa-opacity='frameContent.code.opacity(t.get())'
+          )
+            fa-surface(fa-size="[true, true]").code
+              pre
+                code.
+                   &lt;<span class="tag">fa-surface</span> <span class="attr-name">ng-repeat</span>=<span class="attr-value">"column in columns"</span>&gt;
+                     ...
+                   &lt;/<span class="tag">fa-surface</span>&gt;
+
+      fa-modifier(id="right-column" fa-size='[600, 375]')
         fa-modifier(
-          fa-translate='sidenav.code.translate(t.get())'
-          fa-opacity='sidenav.code.opacity(t.get())'
+          fa-translate='frame.visual.translate(t.get())'
+          fa-opacity='frame.visual.opacity(t.get())'
         )
-          fa-surface(fa-size="[true, true]").code
-            pre
-              code.
-                 &lt;<span class="tag">fa-surface</span>&gt;&lt;/<span class="tag">fa-surface</span>&gt;
-        fa-modifier(
-          fa-translate='container.code.translate(t.get())'
-          fa-opacity='container.code.opacity(t.get())'
-        )
-          fa-surface(fa-size="[true, true]").code
-            pre
-              code.
-                 &lt;<span class="tag">fa-grid-layout</span> <span class="attr-name">...</span>&gt;
-
-
-
-                 &lt;/<span class="tag">fa-grid-layout</span>&gt;
+          fa-surface
+            .example-frame
 
         fa-modifier(
-          fa-translate='frameContent.code.translate(t.get())'
-          fa-opacity='frameContent.code.opacity(t.get())'
+          fa-translate='header.visual.translate(t.get())'
+          fa-opacity='header.visual.opacity(t.get())'
+          fa-size='[560, 55]'
+          fa-align='[0, 0]'
         )
-          fa-surface(fa-size="[true, true]").code
-            pre
-              code.
-                 &lt;<span class="tag">fa-surface</span> <span class="attr-name">ng-repeat</span>=<span class="attr-value">"column in columns"</span>&gt;
-                   ...
-                 &lt;/<span class="tag">fa-surface</span>&gt;
+          fa-modifier(
+            fa-scale='header.visual.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-header
 
-    fa-modifier(
-      fa-translate='rightColumn.translate(t.get())'
-      fa-size='[600, 375]'
-    )
-      fa-modifier(
-        fa-translate='frame.visual.translate(t.get())'
-        fa-opacity='frame.visual.opacity(t.get())'
-      )
-        fa-surface
-          .example-frame
-
-      fa-modifier(
-        fa-translate='header.visual.translate(t.get())'
-        fa-opacity='header.visual.opacity(t.get())'
-        fa-size='[560, 55]'
-        fa-align='[0, 0]'
-      )
         fa-modifier(
-          fa-scale='header.visual.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
+          fa-translate='sidenav.visual.translate(t.get())'
+          fa-opacity='sidenav.visual.opacity(t.get())'
+          fa-size='[75, 245]'
+          fa-align='[0, 0]'
         )
-          fa-surface()
-            .example-header
+          fa-modifier(
+            fa-scale='sidenav.visual.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-sidenav
 
-      fa-modifier(
-        fa-translate='sidenav.visual.translate(t.get())'
-        fa-opacity='sidenav.visual.opacity(t.get())'
-        fa-size='[75, 245]'
-        fa-align='[0, 0]'
-      )
         fa-modifier(
-          fa-scale='sidenav.visual.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
+          fa-translate='container.visual.translate(t.get())'
+          fa-opacity='container.visual.opacity(t.get())'
+          fa-size='[470, 245]' 
+          fa-align='[0, 0]'
         )
-          fa-surface()
-            .example-sidenav
+          fa-modifier(
+            fa-scale='container.visual.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-container
 
-      fa-modifier(
-        fa-translate='container.visual.translate(t.get())'
-        fa-opacity='container.visual.opacity(t.get())'
-        fa-size='[470, 245]' 
-        fa-align='[0, 0]'
-      )
         fa-modifier(
-          fa-scale='container.visual.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
+          fa-translate='frameContent.visual.box1.translate(t.get())'
+          fa-opacity='frameContent.visual.box1.opacity(t.get())'
+          fa-size='[125, 195]' 
+          fa-align='[0, 0]'
         )
-          fa-surface()
-            .example-container
+          fa-modifier(
+            fa-scale='frameContent.visual.box1.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-content
 
-      fa-modifier(
-        fa-translate='frameContent.visual.box1.translate(t.get())'
-        fa-opacity='frameContent.visual.box1.opacity(t.get())'
-        fa-size='[125, 195]' 
-        fa-align='[0, 0]'
-      )
         fa-modifier(
-          fa-scale='frameContent.visual.box1.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
+          fa-translate='frameContent.visual.box2.translate(t.get())'
+          fa-opacity='frameContent.visual.box2.opacity(t.get())'
+          fa-size='[125, 195]' 
+          fa-align='[0, 0]'
         )
-          fa-surface()
-            .example-content
+          fa-modifier(
+            fa-scale='frameContent.visual.box2.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-content
 
-      fa-modifier(
-        fa-translate='frameContent.visual.box2.translate(t.get())'
-        fa-opacity='frameContent.visual.box2.opacity(t.get())'
-        fa-size='[125, 195]' 
-        fa-align='[0, 0]'
-      )
         fa-modifier(
-          fa-scale='frameContent.visual.box2.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
+          fa-translate='frameContent.visual.box3.translate(t.get())'
+          fa-opacity='frameContent.visual.box3.opacity(t.get())'
+          fa-size='[125, 195]' 
+          fa-align='[0, 0]'
         )
-          fa-surface()
-            .example-content
-
-      fa-modifier(
-        fa-translate='frameContent.visual.box3.translate(t.get())'
-        fa-opacity='frameContent.visual.box3.opacity(t.get())'
-        fa-size='[125, 195]' 
-        fa-align='[0, 0]'
-      )
-        fa-modifier(
-          fa-scale='frameContent.visual.box3.scale(t.get())'
-          fa-origin='[0.5, 0.5]'
-        )
-          fa-surface()
-            .example-content
+          fa-modifier(
+            fa-scale='frameContent.visual.box3.scale(t.get())'
+            fa-origin='[0.5, 0.5]'
+          )
+            fa-surface()
+              .example-content

@@ -62,7 +62,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $media.$sheet('stateIntro', {
+  $media.$sheet('StateIntroSheet', {
 
     xs: {
       '#logo': {

@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.controller('state1Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity) {
+.controller('state1Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+  var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -44,6 +45,48 @@ angular.module('famous-angular')
   };
 
 /*--------------------------------------------------------------*/
+
+  $media.$sheet('State1Sheet', {
+
+    xs: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [35, 80, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        }
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [85, 620, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      }
+    },
+
+    sm: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [220, 190, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [1050, 190, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      }
+    }
+
+  });
 
   $scope.leftColumn = {
     translate: $timeline([
