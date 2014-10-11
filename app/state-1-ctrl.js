@@ -239,8 +239,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.5, [60, 90, 0], Easing.outQuad],
-        [0.7, [90, 90, 0]]
+        [0.5, [30, 90, 0], Easing.outQuad],
+        [0.7, [60, 90, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -312,8 +312,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.70, [90, 120, 0], Easing.outQuad],
-        [1, [120, 120, 0]],
+        [0.70, [60, 120, 0], Easing.outQuad],
+        [1, [90, 120, 0]],
       ]),
       opacity: $timeline([
         [0, 0],
