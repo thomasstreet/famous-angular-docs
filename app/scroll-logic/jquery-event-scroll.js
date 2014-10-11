@@ -53,6 +53,7 @@
       };
  
       $(this).bind(nsScrollStart, handler);
+      $(this).bind('touchstart', handler);
     },
  
     teardown: function (){
@@ -76,7 +77,7 @@
       };
  
       $(this).bind(nsScrollEnd, handler);
- 
+      $(this).bind('touchend', handler);
     },
  
     teardown: function (){

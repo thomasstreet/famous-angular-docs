@@ -5,13 +5,13 @@ angular.module('famous-angular')
   // WE MUST DISABLE SCROLL HANDLERS AFTER STATE CHANGE
 
   // 1) There may be left over scroll inertia that would trigger scroll
-  // gravity immediately after switching to a new states, resulting in
-  // bouncy gravity effect duration the new state's entrance animation
+  // gravity immediately after switching to a new state, resulting in
+  // bouncy gravity effect duration the new state's entrance animation.
 
   // 2) Changing $state manipulates the scroll bar position, and doing so
   // would fire all scroll handlers.  One of the scroll handler changes
   // ui.router's $state.  If we don't disable this handler, two $state.go()'s
-  // will be triggered immediately, ruining our location history
+  // will be triggered immediately, ruining our location history.
 
   // After state change, disable ALL scroll events for a given amount of time.
   // This is because changing state will trigger a window.scrollTo(), which
@@ -52,7 +52,10 @@ angular.module('famous-angular')
     })
   });
 
-  $(window).bind('scroll', function() {
+  $(window).bind('touchmove', scrollHandler);
+  $(window).bind('scroll', scrollHandler);
+
+  function scrollHandler() {
     if (disableScrollEvents) return;
 
     if (disableScrollUntilScrollstart) return;
@@ -60,7 +63,7 @@ angular.module('famous-angular')
     angular.forEach(_listeners.scroll, function(handlerFn) {
       handlerFn();
     })
-  });
+  }
 
   $(window).bind('scrollend', function() {
     if (disableScrollEvents) return;
