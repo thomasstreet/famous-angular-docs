@@ -25,10 +25,7 @@ angular.module('famous-angular')
     stateTransitions.enter(t, function() {
       // In the callback after enter animation is complete, animate the
       // down arrow
-      animateArrow();
-      setTimeout(function() {
-        animateArrow();
-      }, 1700);
+      $scope.startArrowAnimation();
       $done();
     });
   };
