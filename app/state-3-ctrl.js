@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.controller('state3Ctrl', function($rootScope, $scope, $state, $interval, $famous, $timeline, stateTransitions, scrollGravity) {
+.controller('state3Ctrl', function($rootScope, $scope, $state, $interval, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+  var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -76,26 +77,72 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.catTileGrid = {
-    translate: $timeline([
-      [0, [980, 200, 0], Easing.inOutQuart],
-      [0.2, [980, 200, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0, Easing.inOutQuart],
-      [0.2, 1]
-    ])
-  };
+  $media.$sheet('State3Sheet', {
+
+    xs: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [40, 830, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        }
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [50, 150, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code': {
+        opacity: function() {
+          return 0;
+        },
+      }
+    },
+
+
+    sm: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [250, 180, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [980, 200, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code': {
+        transform: function() {
+          var translate = $timeline([
+            [0.2, [0, 200, 0], Easing.inOutQuart],
+            [0.6, [0, 150, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0.2, 0, Easing.inOutQuart],
+            [0.6, 1]
+          ])(t.get());
+        },
+      }
+    }
+
+  });
 
   $scope.faAppHeight = function() {
     var totalHeight = tile.height + tile.margin.bottom;
     return (totalHeight * tile.countPerColumn);
-  };
-
-  $scope.leftColumn = {
-    translate: $timeline([
-      [0, [250, 180, 0]],
-    ])
   };
 
   $scope.heading = {
@@ -106,17 +153,6 @@ angular.module('famous-angular')
     opacity: $timeline([
       [0, 0, Easing.inOutQuart],
       [0.4, 1]
-    ])
-  };
-
-  $scope.code = {
-    translate: $timeline([
-      [0.2, [0, 200, 0], Easing.inOutQuart],
-      [0.6, [0, 150, 0]]
-    ]),
-    opacity: $timeline([
-      [0.2, 0, Easing.inOutQuart],
-      [0.6, 1]
     ])
   };
 

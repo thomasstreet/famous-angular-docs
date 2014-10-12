@@ -1,82 +1,75 @@
-fa-modifier(
-  fa-translate='gravity.translate(grav.get())'
-  fa-opacity='gravity.opacity(grav.get())'
-)
+fa-view(ts-sheet='State3Sheet')
   fa-modifier(
-    fa-translate='entireView.translate(t.get())'
-    fa-opacity='entireView.opacity(t.get())'
+    fa-translate='gravity.translate(grav.get())'
+    fa-opacity='gravity.opacity(grav.get())'
   )
     fa-modifier(
-      fa-translate='leftColumn.translate(t.get())'
+      fa-translate='entireView.translate(t.get())'
+      fa-opacity='entireView.opacity(t.get())'
     )
-      fa-modifier(
-        fa-translate='heading.translate(t.get())'
-        fa-opacity='heading.opacity(t.get())'
-      )
-        fa-surface(fa-size="[700, true]")
-          h1.heading Use core Angular directives like 
-            span.heading-code &lt;ng-repeat&gt; 
-
-      fa-modifier(
-        fa-translate='code.translate(t.get())'
-        fa-opacity='code.opacity(t.get())'
-      )
-        fa-surface(fa-size="[true, true]").code
-          pre
-            code.
-              &lt;<span class="tag">fa-modifier</span>
-                <span class="attr-name">ng-repeat</span>=<span class="attr-value">"cat in cats"</span>
-                <span class="attr-name">fa-animate-enter</span>=<span class="attr-value">"catEnter(cat.t, $done)"</span>
-                <span class="attr-name">fa-animate-leave</span>=<span class="attr-value">"catLeave(cat.t, $done)"</span>
-              &gt;
-                 &lt;<span class="tag">fa-surface</span>&gt;
-                   ...
-                 &lt;/<span class="tag">fa-surface</span>&gt;
-              &lt;/<span class="tag">fa-modifier</span>&gt;
-
-              &lt;<span class="tag">fa-surface</span>&gt;
-                &lt;<span class="tag">input</span> <span class="attr-name">type</span>=<span class="attr-value">"range"</span> <span class="attr-name">ng-model</span>=<span class="attr-value">"data.t"</span>&gt;
-              &lt;/<span class="tag">fa-surface</span>&gt;
-
-    fa-modifier(
-      fa-translate='catTileGrid.translate(t.get())'
-      fa-opacity='catTileGrid.opacity(t.get())'
-    )
-      fa-surface(
-        fa-size='[640, faAppHeight()]'
-      )
-        fa-app(fa-perspective='1000').set-perspective
-
-          // Give a left padding so that the flapping animation is not cut off
-          fa-modifier(fa-translate='[tileGrid.margin.left, 0, 0]')
-
-            fa-modifier(
-              ng-repeat='cat in cats'
-              fa-size='[tile.width, tile.height]'
-              fa-animate-enter='catEnter(cat.t, $done)'
-              fa-animate-leave='catLeave(cat.t, $done)'
-              fa-translate='catTile.translate(cat.t, $index)'
-              fa-origin="[0, 0]"
-              fa-align="[0, 0]"
-            )
-              fa-modifier(
-                fa-rotate-x='catTile.rotateX(cat.t.get())'
-              )
-                fa-surface(
-                  fa-size='[tile.width, tile.height]'
-                ).cat-tile
-                  .left-col
-                    img(ng-src="{{cat.picture}}").cat-picture
-                  .right-col
-                    .cat-name {{cat.name}}
-                    .cat-location {{cat.location}}
-
-      fa-modifier(
-        fa-translate='repeatSlider.translate(t.get())'
-        fa-opacity='repeatSlider.opacity(t.get())'
-      )
-        fa-surface(
-          fa-size='[repeatSlider.width, repeatSlider.height]'
+      fa-modifier(id='left-column')
+        fa-modifier(
+          fa-translate='heading.translate(t.get())'
+          fa-opacity='heading.opacity(t.get())'
         )
-          div.repeat-slider-container
-            input(type='range' min="0" max="8" ng-model='data.repeatCount').repeat-slider
+          fa-surface(fa-size="[700, true]")
+            h1.heading Use core Angular directives like 
+              span.heading-code &lt;ng-repeat&gt; 
+
+        fa-modifier(id='code')
+          fa-surface(fa-size="[true, true]").code
+            pre
+              code.
+                &lt;<span class="tag">fa-modifier</span>
+                  <span class="attr-name">ng-repeat</span>=<span class="attr-value">"cat in cats"</span>
+                  <span class="attr-name">fa-animate-enter</span>=<span class="attr-value">"catEnter(cat.t, $done)"</span>
+                  <span class="attr-name">fa-animate-leave</span>=<span class="attr-value">"catLeave(cat.t, $done)"</span>
+                &gt;
+                   &lt;<span class="tag">fa-surface</span>&gt;
+                     ...
+                   &lt;/<span class="tag">fa-surface</span>&gt;
+                &lt;/<span class="tag">fa-modifier</span>&gt;
+
+                &lt;<span class="tag">fa-surface</span>&gt;
+                  &lt;<span class="tag">input</span> <span class="attr-name">type</span>=<span class="attr-value">"range"</span> <span class="attr-name">ng-model</span>=<span class="attr-value">"data.t"</span>&gt;
+                &lt;/<span class="tag">fa-surface</span>&gt;
+
+      fa-modifier(id='right-column')
+        fa-surface(
+          fa-size='[640, faAppHeight()]'
+        )
+          fa-app(fa-perspective='1000').set-perspective
+
+            // Give a left padding so that the flapping animation is not cut off
+            fa-modifier(fa-translate='[tileGrid.margin.left, 0, 0]')
+
+              fa-modifier(
+                ng-repeat='cat in cats'
+                fa-size='[tile.width, tile.height]'
+                fa-animate-enter='catEnter(cat.t, $done)'
+                fa-animate-leave='catLeave(cat.t, $done)'
+                fa-translate='catTile.translate(cat.t, $index)'
+                fa-origin="[0, 0]"
+                fa-align="[0, 0]"
+              )
+                fa-modifier(
+                  fa-rotate-x='catTile.rotateX(cat.t.get())'
+                )
+                  fa-surface(
+                    fa-size='[tile.width, tile.height]'
+                  ).cat-tile
+                    .left-col
+                      img(ng-src="{{cat.picture}}").cat-picture
+                    .right-col
+                      .cat-name {{cat.name}}
+                      .cat-location {{cat.location}}
+
+        fa-modifier(
+          fa-translate='repeatSlider.translate(t.get())'
+          fa-opacity='repeatSlider.opacity(t.get())'
+        )
+          fa-surface(
+            fa-size='[repeatSlider.width, repeatSlider.height]'
+          )
+            div.repeat-slider-container
+              input(type='range' min="0" max="8" ng-model='data.repeatCount').repeat-slider
