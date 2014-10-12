@@ -61,9 +61,9 @@ angular.module('famous-angular')
   $scope.routing = {
    text: {
      translate: $timeline([
-       [0, [330, 1030, 0], Easing.outBack],
-       [0.25, [330, 1030, 0], Easing.outBack],
-       [0.55, [330, 680, 0]]
+       [0, [270, 1030, 0], Easing.outBack],
+       [0.25, [270, 1030, 0], Easing.outBack],
+       [0.55, [270, 680, 0]]
      ]),
      scale: $timeline([
        [0, [0.2, 0.2], Easing.outBack],
@@ -93,9 +93,9 @@ angular.module('famous-angular')
   $scope.dependency = {
    text: {
      translate: $timeline([
-       [0, [950, 1030, 0], Easing.outBack],
-       [0.30, [950, 1030, 0], Easing.outBack],
-       [0.60, [950, 680, 0]]
+       [0, [750, 1030, 0], Easing.outBack],
+       [0.30, [750, 1030, 0], Easing.outBack],
+       [0.60, [750, 680, 0]]
      ]),
      scale: $timeline([
        [0, [0.2, 0.2], Easing.outBack],
@@ -125,9 +125,9 @@ angular.module('famous-angular')
   $scope.modules = {
    text: {
      translate: $timeline([
-       [0, [1510, 1030, 0], Easing.outBack],
-       [0.45, [1510, 1030, 0], Easing.outBack],
-       [0.75, [1510, 680, 0]]
+       [0, [1430, 1030, 0], Easing.outBack],
+       [0.45, [1430, 1030, 0], Easing.outBack],
+       [0.75, [1430, 680, 0]]
      ]),
      scale: $timeline([
        [0, [0.2, 0.2], Easing.outBack],

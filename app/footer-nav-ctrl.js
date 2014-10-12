@@ -51,6 +51,9 @@ angular.module('famous-angular')
         origin: function() {
           return [0.5, 1];
         },
+        align: function() {
+          return [0.5, 1];
+        },
         opacity: function() {
           return $timeline([
             [0, 0],

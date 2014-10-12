@@ -51,6 +51,9 @@ angular.module('famous-angular')
         },
         origin: function() {
           return [0.5, 0];
+        },
+        align: function() {
+          return [0.5, 0];
         }
       },
       '#cdn': {
