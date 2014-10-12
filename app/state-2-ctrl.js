@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.controller('state2Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, $interval, scrollGravity) {
+.controller('state2Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, $interval, scrollGravity, $media) {
+  var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -80,27 +81,48 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.leftColumn = {
-    translate: $timeline([
-      [0, [250, 190, 0], Easing.outQuart],
-      [0.3, [250, 190, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.3, 1]
-    ])
-  };
+  $media.$sheet('State2Sheet', {
 
-  $scope.rightColumn = {
-    translate: $timeline([
-      [0, [1020, 180, 0], Easing.outQuart],
-      [0.3, [1020, 180, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.3, 1]
-    ])
-  };
+    xs: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [75, 100, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        }
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [30, 650, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      }
+    },
+
+    sm: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [250, 190, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [1020, 180, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      }
+    }
+
+  });
+
 
 /*--------------------------------------------------------------*/
 
