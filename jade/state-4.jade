@@ -11,18 +11,13 @@ fa-view(ts-sheet='State4Sheet')
         fa-surface(fa-size="[true, true]")
           h1.heading Organize your Famo.us apps with Angular’s MVC structure 
 
-      fa-modifier(
-        fa-translate='routing.image.translate(t.get())'
-        fa-opacity='routing.image.opacity(t.get())'
-        fa-size='[true, true]'
-      )
-        fa-surface
+      fa-modifier(id='routing-image')
+        fa-surface(fa-size='[true, true]')
           .column-image
-            img(src='img/routing_x3.png' width='400px')
+            img(src='img/routing_x3.png').routing
 
       fa-modifier(
-        fa-translate='routing.text.translate(t.get())'
-        fa-opacity='routing.text.opacity(t.get())'
+        id='routing-text'
         fa-size='[true, true]'
       )
         fa-modifier(
@@ -37,17 +32,15 @@ fa-view(ts-sheet='State4Sheet')
               a(href='http://angular-ui.github.io/ui-router/site/#/api/ui.router') Learn More
 
       fa-modifier(
-        fa-translate='dependency.image.translate(t.get())'
-        fa-opacity='dependency.image.opacity(t.get())'
+        id='dependency-image'
         fa-size='[true, true]'
       )
         fa-surface
           .column-image
-            img(src='img/dependency_x3.png' width='400px')
+            img(src='img/dependency_x3.png').dependency
 
       fa-modifier(
-        fa-translate='dependency.text.translate(t.get())'
-        fa-opacity='dependency.text.opacity(t.get())'
+        id='dependency-text'
         fa-size='[true, true]'
       )
         fa-modifier(
@@ -62,17 +55,15 @@ fa-view(ts-sheet='State4Sheet')
               a(href='https://docs.angularjs.org/guide/di') Learn More
 
       fa-modifier(
-        fa-translate='modules.image.translate(t.get())'
-        fa-opacity='modules.image.opacity(t.get())'
+        id='modules-image'
         fa-size='[true, true]'
       )
         fa-surface
           .column-image
-            img(src='img/modules_x3.png' width='380px')
+            img(src='img/modules_x3.png').modules
 
       fa-modifier(
-        fa-translate='modules.text.translate(t.get())'
-        fa-opacity='modules.text.opacity(t.get())'
+        id='modules-text'
         fa-size='[true, true]'
       )
         fa-modifier(
