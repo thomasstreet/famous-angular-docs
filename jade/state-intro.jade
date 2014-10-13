@@ -39,8 +39,9 @@ fa-view(ts-sheet='StateIntroSheet')
         )
           .button-links
             a(ui-sref='end')
+              span.octicon.octicon-cloud-download.visible-xs-inline
               | Download
-              div.octicon.octicon-cloud-download
+              div.octicon.octicon-cloud-download.hidden-xs
 
       fa-modifier(id="button-github" fa-z-index="1")
         fa-surface(
@@ -48,8 +49,9 @@ fa-view(ts-sheet='StateIntroSheet')
         )
           .button-links
             a(href='https://github.com/Famous/famous-angular')
+              span.octicon.octicon-mark-github.visible-xs-inline
               | Github
-              div.octicon.octicon-mark-github
+              div.octicon.octicon-mark-github.hidden-xs
           .stars-forks
             .left
               span.octicon.octicon-star
@@ -62,8 +64,9 @@ fa-view(ts-sheet='StateIntroSheet')
           fa-size="[true, true]"
         ).button-links
             a(href='docs/api/index.html')
+              span.octicon.octicon-file-text.visible-xs-inline
               | Docs
-              div.octicon.octicon-file-text
+              div.octicon.octicon-file-text.hidden-xs
 
       fa-modifier(id="built-by")
         fa-surface(

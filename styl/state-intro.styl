@@ -44,11 +44,15 @@
       transition margin-top 0.2s ease, height 0.2s ease, background-color 0.2s ease
 
       .octicon
-        display block
         font-size 40px
+        transition opacity 0.2s ease
+
+      div.octicon
         margin-top 20px
         opacity 0
-        transition opacity 0.2s ease
+
+      span.octicon
+        margin-right 15px
 
     &:hover
       a
@@ -143,13 +147,6 @@
         display block
         width 640px
         height 90px
-
-        .octicon
-          display block
-          font-size 40px
-          margin-top 20px
-          opacity 0
-          transition opacity 0.2s ease
 
     .built-by
       font-size 32px
