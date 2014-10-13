@@ -18,15 +18,18 @@
     <div class="hidden-xs">
       {% include nav_links.html %}
     </div>
-    <div class="visible-xs" id="mobile-navbar">
-      <ng-include src="'build/templates/mobile-state-nav.html'"></ng-include>
-    </div>
 
     <div id="viewport" ng-controller="footerNavCtrl">
       <div ng-controller="downloadPanelCtrl">
         <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-          <fa-view ng-if="showNavbar()">
+          <fa-view ng-if="showMobileNav()">
+            <fa-surface id="mobile-navbar" class="visible-xs">
+              <ng-include src="'build/templates/mobile-state-nav.html'"></ng-include>
+            </fa-surface>
+          </fa-view>
+
+          <fa-view ng-if="showDesktopNav()">
             <ng-include src="'build/templates/state-nav.html'"></ng-include>
           </fa-view>
 

@@ -23,7 +23,8 @@ angular.module('famous-angular')
     var size_xs = !$media.$query('sm');
 
     if (size_xs) {
-      NAVBAR.HEIGHT = 60;
+      // No navbar for mobile
+      NAVBAR.HEIGHT = 0;
 
       _forcedResolution = {
         width: 768,

@@ -12,7 +12,11 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.showNavbar = function() {
+  $scope.showMobileNav = function() {
+    return !$media.$query('sm');
+  };
+
+  $scope.showDesktopNav = function() {
     return $media.$query('sm');
   };
 
