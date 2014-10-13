@@ -32,9 +32,10 @@ angular.module('famous-angular')
 
       _forcedResolution = {
         width: 768,
+        height: 1366 - NAVBAR.HEIGHT
+
         // To match iOS 320 x 460, ~11.13:16
-        height: 1104 - NAVBAR.HEIGHT
-        //height: 1366 - NAVBAR.HEIGHT
+        //height: 1104 - NAVBAR.HEIGHT
       };
     } else {
       NAVBAR.HEIGHT = 100;

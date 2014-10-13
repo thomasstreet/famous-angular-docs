@@ -4,6 +4,16 @@ angular.module('famous-angular', [
   'ts.sheets'
 ])
 
+.run(function($rootScope, $media) {
+  $rootScope.isMobile = function() {
+    return !$media.$query('sm');
+  };
+
+  $rootScope.isDesktop = function() {
+    return $media.$query('sm');
+  };
+})
+
 .config(function($mediaProvider, $famousProvider) {
   var $famous = $famousProvider.$get();
   var Timer = $famous['famous/utilities/Timer'];

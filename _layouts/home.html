@@ -23,13 +23,13 @@
       <div ng-controller="downloadPanelCtrl">
         <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-          <fa-view ng-if="showMobileNav()">
+          <fa-view ng-if="isMobile()">
             <fa-surface id="mobile-navbar" class="visible-xs">
               <ng-include src="'build/templates/mobile-state-nav.html'"></ng-include>
             </fa-surface>
           </fa-view>
 
-          <fa-view ng-if="showDesktopNav()">
+          <fa-view ng-if="isDesktop()">
             <ng-include src="'build/templates/state-nav.html'"></ng-include>
           </fa-view>
 

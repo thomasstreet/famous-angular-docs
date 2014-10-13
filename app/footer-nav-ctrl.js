@@ -12,31 +12,10 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.showMobileNav = function() {
-    return !$media.$query('sm');
-  };
-
-  $scope.showDesktopNav = function() {
-    return $media.$query('sm');
-  };
-
   $scope.navbar = {
     opacity: $timeline([
       [0, 0],
       [1, 1]
-    ])
-  };
-
-  $scope.footer = {
-    opacity: $timeline([
-      [0, 0],
-      [1, 1]
-    ]),
-    translate: $timeline([
-      [0, [0, -40, 0]],
-      [1, [0, -40, 0], Easing.outBack],
-      [2, [0, -770, 0], Easing.outBounce],
-      [3, [0, -40, 0]]
     ])
   };
 

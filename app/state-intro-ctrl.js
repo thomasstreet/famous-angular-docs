@@ -62,24 +62,6 @@ angular.module('famous-angular')
   $media.$sheet('StateIntroSheet', {
 
     xs: {
-      '#logo': {
-        transform: function() {
-          var translate = $timeline([
-            [0, [0, 300, 0], Easing.outCubic],
-            [0.5, [0, 80, 0]],
-            [1, [0, 80, 0]],
-          ])(t.get());
-          return Transform.translate.apply(this, translate);
-        },
-        opacity: function() {
-          return $timeline([
-            [0, 0],
-            [0.5, 1],
-            [1, 1],
-          ])(t.get());
-        },
-      },
-
       '#heading': {
         transform: function() {
           var translate = $timeline([
@@ -254,6 +236,21 @@ angular.module('famous-angular')
 
     sm: {
       '#logo': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 300, 0], Easing.outCubic],
+            [0.5, [0, 80, 0]],
+            [1, [0, 80, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [0.5, 1],
+            [1, 1],
+          ])(t.get());
+        },
       },
 
       '#heading': {
