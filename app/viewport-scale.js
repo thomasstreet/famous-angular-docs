@@ -16,6 +16,9 @@ angular.module('famous-angular')
     setLeftOffset();
   });
 
+  // iPhone 5 without bars: 320 x 568
+  // With bars: 320 x 460
+
   function determineResolution() {
     // These dimensions will always be set on the fa-app via CSS, regardless 
     // of the user's actual window dimensions
@@ -26,9 +29,12 @@ angular.module('famous-angular')
       // No navbar for mobile
       NAVBAR.HEIGHT = 0;
 
+
       _forcedResolution = {
         width: 768,
-        height: 1366 - NAVBAR.HEIGHT
+        // To match iOS 320 x 460, ~11.13:16
+        height: 1104 - NAVBAR.HEIGHT
+        //height: 1366 - NAVBAR.HEIGHT
       };
     } else {
       NAVBAR.HEIGHT = 100;
