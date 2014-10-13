@@ -65,9 +65,9 @@ angular.module('famous-angular')
       '#heading': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 400, 0]],
-            [0.05, [0, 400, 0], Easing.outCubic],
-            [0.55, [0, 260, 0]],
+            [0, [0, 240, 0]],
+            [0.05, [0, 240, 0], Easing.outCubic],
+            [0.55, [0, 100, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -83,10 +83,9 @@ angular.module('famous-angular')
       '#tagline': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 600, 0]],
-            [0.1, [0, 600, 0], Easing.outCubic],
-            [0.6, [0, 400, 0]],
-            [1, [0, 400, 0]],
+            [0, [0, 440, 0]],
+            [0.1, [0, 440, 0], Easing.outCubic],
+            [0.6, [0, 240, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -102,9 +101,9 @@ angular.module('famous-angular')
       '#button-download': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 790, 0]],
-            [0.7, [0, 790, 0], Easing.inOutQuart],
-            [1, [0, 590, 0]],
+            [0, [0, 650, 0]],
+            [0.7, [0, 650, 0], Easing.inOutQuart],
+            [1, [0, 450, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -120,9 +119,9 @@ angular.module('famous-angular')
       '#button-github': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 990, 1]],
-            [0.15, [0, 990, 1], Easing.inOutQuart],
-            [0.65, [0, 790, 1]],
+            [0, [0, 970, 1]],
+            [0.15, [0, 970, 1], Easing.inOutQuart],
+            [0.65, [0, 770, 1]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -138,9 +137,9 @@ angular.module('famous-angular')
       '#button-docs': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 890, 0]],
-            [0.7, [0, 890, 0], Easing.inOutQuart],
-            [1, [0, 690, 0]],
+            [0, [0, 800, 0]],
+            [0.7, [0, 800, 0], Easing.inOutQuart],
+            [1, [0, 610, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -157,9 +156,9 @@ angular.module('famous-angular')
       '#built-by': {
         transform: function() {
           var translate = $timeline([
-          [0, [0, 1170, 0], Easing.inOutQuart],
-          [0.2, [0, 1170, 0], Easing.outQuad],
-          [0.7, [0, 970, 0]],
+          [0, [0, 1205, 0], Easing.inOutQuart],
+          [0.2, [0, 1205, 0], Easing.outQuad],
+          [0.7, [0, 1005, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -175,10 +174,9 @@ angular.module('famous-angular')
       '#scroll-message': {
         transform: function() {
           var translate = $timeline([
-          [0, [0, 960, 0]],
-          [0.45, [0, 960, 0], Easing.inOutQuart],
-          [0.95, [0, 1060, 0]],
-          [1, [0, 1060, 0]],
+          [0, [0, 1000, 0]],
+          [0.45, [0, 1000, 0], Easing.inOutQuart],
+          [0.95, [0, 1100, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -195,9 +193,9 @@ angular.module('famous-angular')
       '#down-arrow': {
         transform: function() {
           var translate = $timeline([
-          [0, [0, 1100, 0]],
-          [0.5, [0, 1100, 0], Easing.inOutQuart],
-          [1, [0, 1200, 0]]
+          [0, [0, 1150, 0]],
+          [0.5, [0, 1150, 0], Easing.inOutQuart],
+          [1, [0, 1250, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
