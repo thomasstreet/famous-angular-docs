@@ -1,5 +1,14 @@
 angular.module('famous-angular')
 
+.directive('mobileNav', function() { 
+  return {
+    scope: false,
+    restrict: 'E',
+    controller: 'MobileNavCtrl',
+    templateUrl: 'build/templates/state-mobile-nav.html'
+  };
+})
+
 .controller('MobileNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
   var Transform = $famous['famous/core/Transform'];
 

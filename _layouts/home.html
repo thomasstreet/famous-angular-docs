@@ -20,24 +20,22 @@
     </div>
 
     <div id="viewport">
-      <div ng-controller='MobileNavCtrl'>
-        <div ng-controller="DownloadPanelCtrl">
-          <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
+      <div ng-controller="DownloadPanelCtrl">
+        <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-            <fa-view ng-if="isMobile()">
-              <fa-surface fa-z-index="100">
-                <ng-include src="'build/templates/mobile-state-nav.html'"></ng-include>
-              </fa-surface>
-            </fa-view>
+          <fa-view ng-if="isMobile()">
+            <mobile-nav></mobile-nav>
+          </fa-view>
 
-            <fa-view ng-if="isDesktop()">
-              <desktop-nav></desktop-nav>
-            </fa-view>
+          <fa-view ng-if="isDesktop()">
+            <desktop-nav></desktop-nav>
+          </fa-view>
 
-            <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
-            <state-footer></state-footer>
-          </fa-app>
-        </div>
+          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+
+          <state-footer></state-footer>
+
+        </fa-app>
       </div>
     </div>
 
