@@ -52,7 +52,7 @@ angular.module('famous-angular')
       '#left-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [35, 80, 0]],
+            [0, [10, 120, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -60,12 +60,21 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [85, 620, 0]],
+            [0, [85, 340, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code-block': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 700, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
       }
     },
+
 
     sm: {
       '#left-column': {
@@ -80,6 +89,14 @@ angular.module('famous-angular')
         transform: function() {
           var translate = $timeline([
             [0, [1050, 190, 0]],
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code-block': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 170, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -112,12 +129,6 @@ angular.module('famous-angular')
       [0, 0],
       [0.2, 1],
       [1, 1],
-    ])
-  };
-
-  $scope.codeBlock = {
-    translate: $timeline([
-      [0, [0, 170, 0]]
     ])
   };
 

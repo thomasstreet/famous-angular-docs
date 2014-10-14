@@ -82,9 +82,15 @@ angular.module('famous-angular')
           return Transform.translate.apply(this, translate);
         },
       },
-      '#code': {
+      '#code-block': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [0, 170, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
         opacity: function() {
-          return 0;
+          return 1;
         },
       }
     },
