@@ -87,7 +87,7 @@ angular.module('famous-angular')
       '#left-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [75, 100, 0]],
+            [0, [75, 280, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -95,12 +95,28 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [30, 650, 0]],
+            [0, [10, 100, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
+      },
+      '#code': {
+        transform: function() {
+          var translate = $timeline([
+            [0.2, [0, 510, 0], Easing.outQuad],
+            [0.4, [0, 710, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0.2, 0, Easing.inQuad],
+            [0.4, 1]
+          ])(t.get());
+        }
       }
     },
+
 
     sm: {
       '#left-column': {
@@ -118,6 +134,15 @@ angular.module('famous-angular')
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
+      },
+      '#code': {
+        transform: function() {
+          var translate = $timeline([
+            [0.2, [0, 0, 0], Easing.outQuad],
+            [0.4, [0, 170, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        }
       }
     }
 
@@ -134,17 +159,6 @@ angular.module('famous-angular')
     opacity: $timeline([
       [0, 0],
       [0.2, 1]
-    ])
-  };
-
-  $scope.code = {
-    translate: $timeline([
-      [0.2, [0, 0, 0], Easing.outQuad],
-      [0.4, [0, 170, 0]]
-    ]),
-    opacity: $timeline([
-      [0.2, 0, Easing.inQuad],
-      [0.4, 1]
     ])
   };
 
