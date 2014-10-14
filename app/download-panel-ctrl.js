@@ -35,10 +35,6 @@ angular.module('famous-angular')
     }
   };
 
-  $scope.showDownloadButton = function() {
-    return $media.$query('sm');
-  }
-
 /*--------------------------------------------------------------*/
 
   $media.$sheet('DownloadPanelSheet', {
@@ -46,15 +42,9 @@ angular.module('famous-angular')
     xs: {
       '#download-panel': {
         transform: function() {
-          var translate = [0, 1050, 0];
+          var translate = [300, 100, 0];
           return Transform.translate.apply(this, translate);
         },
-        origin: function() {
-          return [0.5, 0];
-        },
-        align: function() {
-          return [0.5, 0];
-        }
       },
       '#cdn': {
         transform: function() {
@@ -75,13 +65,13 @@ angular.module('famous-angular')
     sm: {
       '#download-panel': {
         transform: function() {
-          var translate = [0, 750, 0];
+          var translate = [0, 250, 0];
           return Transform.translate.apply(this, translate);
         }
       },
       '#cdn': {
         transform: function() {
-          var translate = [245, 350, 2];
+          var translate = [245, 295, 2];
           return Transform.translate.apply(this, translate);
         }
       },
@@ -107,12 +97,12 @@ angular.module('famous-angular')
   $scope.download = {
     text: {
       translate: function() {
-        return [-465, 350, 1]; 
+        return [-465, -40, 1]; 
       }
     },
     button: {
       translate: function() {
-        return [-465, 460, 2]; 
+        return [-465, 190, 2]; 
       }
     }
   };

@@ -6,58 +6,42 @@ fa-view(ts-sheet='DownloadPanelSheet')
       fa-surface(
         fa-size="[true, true]"
       ).download-container
-        .download-container-divider
-
-    fa-view(ng-if="showDownloadButton()")
-      fa-modifier(
-        fa-translate="download.text.translate(t.get())"
-      )
-        fa-surface(
-          fa-size="[true, true]"
-        ).download-text
-          div
+        div(ng-if="isDesktop()").starter-kit
+          .download-text
             | Download the Starter Kit
           .horizontal-divider.center
-
-      fa-modifier(
-        fa-translate="download.button.translate(t.get())"
-      )
-        fa-surface(
-          fa-size="[225, 225]"
-        )
           a(href='http://code.famo.us/famous-angular/latest/famous-angular-starter-kit.zip?src=project-page-modal').download-button
             .octicon.octicon-cloud-download
 
-    fa-modifier(id="cdn")
-      fa-surface(
-        fa-size="[true, true]"
-      )
-        .download-text
-          | Start using Famo.us/Angular
-        .horizontal-divider
-        .cdn-option
-          .icons
-            span.pill-button
-              | CDN
-            .minify-option(
-              ng-class="{ 'active': minified}"
-              ng-click="toggleMinified()"
-            )
-              .circle.octicon.octicon-check
-              .option-label Minified
-            .minify-option(
-              ng-class="{ 'active': !minified}"
-              ng-click="toggleMinified()"
-            )
-              .circle.octicon.octicon-check
-              .option-label Unminified
-          .info
-            .line {{jsCDN()}}
-            .line {{cssCDN()}}
-            .line.required Both files are required
-        .cdn-option
-          .icons
-            span.pill-button
-              | BOWER
-          .info
-            | bower install famous-angular
+        .download-container-divider
+
+        .cdn
+          .download-text
+            | Start using Famo.us/Angular
+          .horizontal-divider
+          .cdn-option
+            .icons
+              span.pill-button
+                | CDN
+              .minify-option(
+                ng-class="{ 'active': minified}"
+                ng-click="toggleMinified()"
+              )
+                .circle.octicon.octicon-check
+                .option-label Minified
+              .minify-option(
+                ng-class="{ 'active': !minified}"
+                ng-click="toggleMinified()"
+              )
+                .circle.octicon.octicon-check
+                .option-label Unminified
+            .info
+              .line {{jsCDN()}}
+              .line {{cssCDN()}}
+              .line.required Both files are required
+          .cdn-option
+            .icons
+              span.pill-button
+                | BOWER
+            .info
+              | bower install famous-angular

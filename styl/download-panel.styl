@@ -19,6 +19,90 @@
       width 1px
       border-right 2px solid #5C4554
       left 34%
+      top 0
+
+    .starter-kit
+      position absolute
+      left 85px
+      top 40px
+
+    .cdn
+      position absolute
+      left 535px
+      top 40px
+
+      .cdn-option
+        margin-bottom 20px
+
+        .icons
+          margin-bottom 20px
+
+          .pill-button
+            display inline-block
+            vertical-align middle
+            background white
+            border-radius 10px
+            padding 8px 13px
+            font-size 22px
+            letter-spacing 1.2px
+            text-transform uppercase
+            color black
+
+
+          .minify-option
+            cursor pointer
+            display inline-block
+            vertical-align middle
+             
+            .circle
+              vertical-align middle
+              display inline-block
+              border-radius 999px
+              border 3px solid inherit
+              height 40px
+              width 40px
+              margin-left 50px
+              font-size 30px
+
+              &.octicon
+                padding-top 2px
+                background black
+                border-color gray
+                color black
+                text-align center
+                transition border-color 0.2s ease, background 0.2s ease
+
+            .option-label
+              margin-left 20px
+              font-weight 400
+              vertical-align middle
+              display inline-block
+              color gray
+              font-size 30px
+              transition color 0.2s ease
+
+            &.active
+              .circle
+                &.octicon
+                  border-color #AE81FF
+                  background #AE81FF
+                  transition border-color 0.2s ease, background 0.2s ease
+
+              .option-label
+                color #AE81FF
+                transition color 0.2s ease
+
+        .info
+          font-size 26px
+          color white
+
+          .line
+            margin-bottom 5px
+
+          .required
+            text-transform uppercase
+            letter-spacing 1.2px
+            color #F92672
 
   .download-text
     color #AE81FF
@@ -37,11 +121,12 @@
       margin-right auto
 
   .download-button
+    display block
+    margin auto
     background white
     border-radius 10px
-    position absolute
-    height 100%
-    width 100%
+    height 225px
+    width 225px
     text-align center
     padding-top 50px
     color black
@@ -54,78 +139,6 @@
     .octicon
       font-size 110px
 
-  .cdn-option
-    margin-bottom 20px
-
-    .icons
-      margin-bottom 20px
-
-      .pill-button
-        display inline-block
-        vertical-align middle
-        background white
-        border-radius 10px
-        padding 8px 13px
-        font-size 22px
-        letter-spacing 1.2px
-        text-transform uppercase
-        color black
-
-
-      .minify-option
-        cursor pointer
-        display inline-block
-        vertical-align middle
-         
-        .circle
-          vertical-align middle
-          display inline-block
-          border-radius 999px
-          border 3px solid inherit
-          height 40px
-          width 40px
-          margin-left 50px
-          font-size 30px
-
-          &.octicon
-            padding-top 2px
-            background black
-            border-color gray
-            color black
-            text-align center
-            transition border-color 0.2s ease, background 0.2s ease
-
-        .option-label
-          margin-left 20px
-          font-weight 400
-          vertical-align middle
-          display inline-block
-          color gray
-          font-size 30px
-          transition color 0.2s ease
-
-        &.active
-          .circle
-            &.octicon
-              border-color #AE81FF
-              background #AE81FF
-              transition border-color 0.2s ease, background 0.2s ease
-
-          .option-label
-            color #AE81FF
-            transition color 0.2s ease
-
-    .info
-      font-size 26px
-      color white
-
-      .line
-        margin-bottom 5px
-
-      .required
-        text-transform uppercase
-        letter-spacing 1.2px
-        color #F92672
 
 @media (max-width: 767px) 
   .download-panel
