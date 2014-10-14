@@ -40,7 +40,7 @@ angular.module('famous-angular')
       },
       '#download-panel': {
         transform: function() {
-          var translate = [300, 100, 0];
+          var translate = [0, 350, 0];
           return Transform.translate.apply(this, translate);
         },
       },
