@@ -20,23 +20,21 @@
     </div>
 
     <div id="viewport">
-      <div ng-controller="DownloadPanelCtrl">
-        <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
+      <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-          <fa-view ng-if="isMobile()">
-            <mobile-nav></mobile-nav>
-          </fa-view>
+        <fa-view ng-if="isMobile()">
+          <mobile-nav></mobile-nav>
+        </fa-view>
 
-          <fa-view ng-if="isDesktop()">
-            <desktop-nav></desktop-nav>
-          </fa-view>
+        <fa-view ng-if="isDesktop()">
+          <desktop-nav></desktop-nav>
+        </fa-view>
 
-          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+        <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
 
-          <state-footer></state-footer>
+        <state-footer></state-footer>
 
-        </fa-app>
-      </div>
+      </fa-app>
     </div>
 
     {% include base_scripts.html %}

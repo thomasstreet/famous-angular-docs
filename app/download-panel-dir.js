@@ -1,5 +1,14 @@
 angular.module('famous-angular')
 
+.directive('downloadPanel', function() { 
+  return {
+    scope: false,
+    restrict: 'E',
+    controller: 'DownloadPanelCtrl',
+    templateUrl: 'build/templates/download-panel.html'
+  };
+})
+
 .controller('DownloadPanelCtrl', function($scope, $http, $famous, $timeline, stateTransitions, $media) {
   var Transform = $famous['famous/core/Transform'];
 
