@@ -108,13 +108,15 @@ angular.module('famous-angular')
           return Transform.translate.apply(this, translate);
         },
       },
-      '#code': {
+      '#code-block': {
         transform: function() {
           var translate = $timeline([
-            [0.2, [0, 200, 0], Easing.inOutQuart],
-            [0.6, [0, 150, 0]]
+            [0, [0, 170, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return 1;
         },
       }
     }
@@ -150,8 +152,7 @@ angular.module('famous-angular')
   $scope.code = {
     top: {
       translate: $timeline([
-        [0.2, [0, 150, 0], Easing.inOutQuart],
-        [0.4, [0, 150, 0]]
+        [0, [0, 0, 0]],
       ]),
       opacity: $timeline([
         [0, 0],
@@ -161,8 +162,8 @@ angular.module('famous-angular')
     },
     middle: {
       translate: $timeline([
-        [0.8, [-50, 250, 0], Easing.outQuart],
-        [1, [28, 250, 0]]
+        [0.8, [-50, 80, 0], Easing.outQuart],
+        [1, [28, 80, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -172,9 +173,9 @@ angular.module('famous-angular')
     },
     bottom: {
       translate: $timeline([
-        [0, [0, 240, 0], Easing.inOutQuart],
-        [0.6, [0, 240, 0], Easing.inOutQuart],
-        [0.8, [0, 510, 0]]
+        [0, [0, 80, 0]],
+        [0.6, [0, 80, 0], Easing.inOutQuart],
+        [0.8, [0, 320, 0]]
       ]),
       opacity: $timeline([
         [0, 0],

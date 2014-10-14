@@ -28,40 +28,41 @@ fa-view(ts-sheet='State5Sheet')
           fa-surface(fa-size="[500, true]")
             h1.heading Use HTML, CSS, and Famo.us all together
 
-        fa-modifier(
-          fa-translate='code.top.translate(t.get())'
-          fa-opacity='code.top.opacity(t.get())'
-        )
-          fa-surface(fa-size="[500, true]")
-            .code
-              pre
-                code.grayed
-                  |&lt;body&gt;
-                  |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
+        fa-modifier(id='code-block')
+          fa-modifier(
+            fa-translate='code.top.translate(t.get())'
+            fa-opacity='code.top.opacity(t.get())'
+          )
+            fa-surface(fa-size="[500, true]")
+              .code
+                pre
+                  code
+                    |&lt;body&gt;
+                    |   &lt;div id=&quot;navbar&quot;&gt;...&lt;/div&gt;
 
-        fa-modifier(
-          fa-translate='code.middle.translate(t.get())'
-          fa-opacity='code.middle.opacity(t.get())'
-        )
-          fa-surface(fa-size="[500, true]").code
-            pre
-              code.
-                &lt;<span class="tag">fa-app</span> <span class="attr-name">id</span>=<span class="attr-value">"banner"</span>&gt;
-                  &lt;<span class="tag">fa-modifier</span> <span class="attr-name">...</span>&gt;
-                     &lt;<span class="tag">fa-surface</span>&gt;
-                       ...
-                     &lt;/<span class="tag">fa-surface</span>&gt;
-                  &lt;/<span class="tag">fa-modifier</span>&gt;
-                &lt;/<span class="tag">fa-app</span>&gt;
-
-        fa-modifier(
-          fa-translate='code.bottom.translate(t.get())'
-          fa-opacity='code.bottom.opacity(t.get())'
-        )
-          fa-surface(fa-size="[500, true]")
-            .code
+          fa-modifier(
+            fa-translate='code.middle.translate(t.get())'
+            fa-opacity='code.middle.opacity(t.get())'
+          )
+            fa-surface(fa-size="[500, true]").code
               pre
-                code.grayed
-                  |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
-                  |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
-                  |&lt;/body&gt;
+                code.
+                  &lt;<span class="tag">fa-app</span> <span class="attr-name">id</span>=<span class="attr-value">"banner"</span>&gt;
+                    &lt;<span class="tag">fa-modifier</span> <span class="attr-name">...</span>&gt;
+                       &lt;<span class="tag">fa-surface</span>&gt;
+                         ...
+                       &lt;/<span class="tag">fa-surface</span>&gt;
+                    &lt;/<span class="tag">fa-modifier</span>&gt;
+                  &lt;/<span class="tag">fa-app</span>&gt;
+
+          fa-modifier(
+            fa-translate='code.bottom.translate(t.get())'
+            fa-opacity='code.bottom.opacity(t.get())'
+          )
+            fa-surface(fa-size="[500, true]")
+              .code
+                pre
+                  code
+                    |   &lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
+                    |   &lt;div id=&quot;content&quot;&gt;...&lt;/div&gt;
+                    |&lt;/body&gt;

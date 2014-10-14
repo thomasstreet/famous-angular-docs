@@ -140,7 +140,7 @@ angular.module('famous-angular')
   $scope.code = {
     translate: $timeline([
       [0.2, [0, 0, 0], Easing.outQuad],
-      [0.4, [0, 150, 0]]
+      [0.4, [0, 170, 0]]
     ]),
     opacity: $timeline([
       [0.2, 0, Easing.inQuad],

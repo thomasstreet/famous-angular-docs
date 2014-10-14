@@ -117,7 +117,7 @@ angular.module('famous-angular')
 
   $scope.codeBlock = {
     translate: $timeline([
-      [0, [0, 150, 0]]
+      [0, [0, 170, 0]]
     ])
   };
 

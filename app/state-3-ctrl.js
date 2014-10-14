@@ -124,8 +124,8 @@ angular.module('famous-angular')
       '#code': {
         transform: function() {
           var translate = $timeline([
-            [0.2, [0, 200, 0], Easing.inOutQuart],
-            [0.6, [0, 150, 0]]
+            [0.2, [0, 220, 0], Easing.inOutQuart],
+            [0.6, [0, 170, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
