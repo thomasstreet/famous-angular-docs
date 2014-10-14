@@ -1,5 +1,14 @@
 angular.module('famous-angular')
 
+.directive('stateFooter', function() {
+  return {
+    scope: false,
+    restrict: 'E',
+    controller: 'FooterCtrl',
+    templateUrl: 'build/templates/state-footer.html'
+  }
+})
+
 .controller('FooterCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
   var Transform = $famous['famous/core/Transform'];
 
