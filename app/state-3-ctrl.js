@@ -83,7 +83,7 @@ angular.module('famous-angular')
       '#left-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [40, 830, 0]],
+            [0, [40, 890, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -91,7 +91,7 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [50, 150, 0]]
+            [0, [50, 270, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
