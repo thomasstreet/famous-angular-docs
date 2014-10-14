@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('downloadPanelCtrl', function($scope, $http, $famous, $timeline, stateTransitions, $media) {
+.controller('DownloadPanelCtrl', function($scope, $http, $famous, $timeline, stateTransitions, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   $scope.minified = true;
