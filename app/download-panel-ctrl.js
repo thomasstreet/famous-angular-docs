@@ -32,15 +32,9 @@ angular.module('famous-angular')
   $media.$sheet('DownloadPanelSheet', {
 
     xs: {
-      '#download-container': {
-        transform: function() {
-          var translate = [0, 310, 0];
-          return Transform.translate.apply(this, translate);
-        },
-      },
       '#download-panel': {
         transform: function() {
-          var translate = [0, 350, 0];
+          var translate = [0, 660, 0];
           return Transform.translate.apply(this, translate);
         },
       },
@@ -49,7 +43,7 @@ angular.module('famous-angular')
     sm: {
       '#download-panel': {
         transform: function() {
-          var translate = [0, 250, 0];
+          var translate = [0, 560, 0];
           return Transform.translate.apply(this, translate);
         }
       },
