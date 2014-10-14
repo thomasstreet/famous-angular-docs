@@ -68,7 +68,7 @@ angular.module('famous-angular')
       '#code-block': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 700, 0]]
+            [0, [-5, 700, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
