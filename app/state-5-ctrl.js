@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.controller('state5Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity) {
+.controller('state5Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+  var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
@@ -53,17 +54,73 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.webframe = {
-    translate: $timeline([
-      [0.3, [250, 580, 0], Easing.outBack],
-      [0.6, [250, 180, 0]]
-    ]),
-    opacity: $timeline([
-      [0, 0],
-      [0.3, 0],
-      [0.5, 1],
-    ])
-  };
+
+  $media.$sheet('State5Sheet', {
+
+    xs: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0.3, [-15, 500, 0], Easing.outBack],
+            [0.6, [-15, 100, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+        opacity: function() {
+          return $timeline([
+            [0, 0],
+            [0.3, 0],
+            [0.5, 1],
+          ])(t.get());
+        },
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [20, 615, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code': {
+        opacity: function() {
+          return 0;
+        },
+      }
+    },
+
+
+    sm: {
+      '#left-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0.3, [250, 580, 0], Easing.outBack],
+            [0.6, [250, 180, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#right-column': {
+        transform: function() {
+          var translate = $timeline([
+            [0, [1170, 170, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      },
+      '#code': {
+        transform: function() {
+          var translate = $timeline([
+            [0.2, [0, 200, 0], Easing.inOutQuart],
+            [0.6, [0, 150, 0]]
+          ])(t.get());
+          return Transform.translate.apply(this, translate);
+        },
+      }
+    }
+
+  });
+
 
   $scope.heroBlock = {
     translate: $timeline([
@@ -78,13 +135,6 @@ angular.module('famous-angular')
   };
 
 /*--------------------------------------------------------------*/
-
-  $scope.rightColumn = {
-    translate: $timeline([
-      [0, [1170, 170, -150], Easing.inOutQuart],
-      [0.2, [1170, 170, 0]]
-    ])
-  };
 
   $scope.heading = {
     translate: $timeline([
