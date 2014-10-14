@@ -49,7 +49,7 @@ angular.module('famous-angular')
     }
 
     function isIntroState() {
-      return toState.data.name === 'intro';
+      return toState.name === 'intro';
     }
   });
 
