@@ -30,7 +30,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+  $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     $scope.navTimeline.halt();
 
     var delay = getDelay(fromState) + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;

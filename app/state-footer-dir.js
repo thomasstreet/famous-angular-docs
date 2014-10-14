@@ -9,7 +9,7 @@ angular.module('famous-angular')
   }
 })
 
-.controller('FooterCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
+.controller('FooterCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateScrollUtils, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -66,7 +66,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+  $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     footerTimeline.halt();
 
     var delay = getDelay(fromState) + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
