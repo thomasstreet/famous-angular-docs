@@ -60,11 +60,18 @@ angular.module('famous-angular')
     xs: {
       '#left-column': {
         transform: function() {
-          var translate = $timeline([
-            [0.3, [-15, 500, 0], Easing.outBack],
-            [0.6, [-15, 100, 0]]
+          var scale = $timeline([
+            [0, [0.8, 0.8]],
           ])(t.get());
-          return Transform.translate.apply(this, translate);
+          var scaleMatrix = Transform.scale.apply(this, scale);
+
+          var translate = $timeline([
+            [0.3, [80, 655, 0], Easing.outBack],
+            [0.6, [80, 345, 0]]
+          ])(t.get());
+          var translateMatrix = Transform.translate.apply(this, translate);
+
+          return Transform.multiply(scaleMatrix, translateMatrix);
         },
         opacity: function() {
           return $timeline([
@@ -77,17 +84,18 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [20, 615, 0]]
+            [0, [20, 100, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
-        },
+        }
       },
       '#code-block': {
         transform: function() {
           var translate = $timeline([
-            [0, [0, 170, 0]]
+            [0, [40, 625, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
+
         },
         opacity: function() {
           return 1;
