@@ -29,37 +29,21 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.entireView = {
-    translate: function() {
-      return [0, 750, 0]; 
-    }
-  };
-
-/*--------------------------------------------------------------*/
-
   $media.$sheet('DownloadPanelSheet', {
 
     xs: {
+      '#download-container': {
+        transform: function() {
+          var translate = [0, 310, 0];
+          return Transform.translate.apply(this, translate);
+        },
+      },
       '#download-panel': {
         transform: function() {
           var translate = [300, 100, 0];
           return Transform.translate.apply(this, translate);
         },
       },
-      '#cdn': {
-        transform: function() {
-          var translate = [60, 350, 2];
-          return Transform.translate.apply(this, translate);
-        }
-      },
-      //'#right-column': {
-        //transform: function() {
-          //var translate = $timeline([
-            //[0, [85, 620, 0]],
-          //])(t.get());
-          //return Transform.translate.apply(this, translate);
-        //},
-      //}
     },
 
     sm: {
@@ -69,48 +53,8 @@ angular.module('famous-angular')
           return Transform.translate.apply(this, translate);
         }
       },
-      '#cdn': {
-        transform: function() {
-          var translate = [245, 295, 2];
-          return Transform.translate.apply(this, translate);
-        }
-      },
-      //'#right-column': {
-        //transform: function() {
-          //var translate = $timeline([
-            //[0, [1050, 190, 0]],
-          //])(t.get());
-          //return Transform.translate.apply(this, translate);
-        //},
-      //}
     }
 
   });
-
-  $scope.container = {
-    translate: function() {
-      return [0, 310, 0]; 
-    }
-  };
-
-
-  $scope.download = {
-    text: {
-      translate: function() {
-        return [-465, -40, 1]; 
-      }
-    },
-    button: {
-      translate: function() {
-        return [-465, 190, 2]; 
-      }
-    }
-  };
-
-  $scope.cdn = {
-    translate: function() {
-      return [245, 350, 2]; 
-    }
-  };
 
 });
