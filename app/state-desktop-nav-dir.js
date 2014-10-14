@@ -37,10 +37,10 @@ angular.module('famous-angular')
 
     $scope.navTimeline.delay(delay);
 
-    if (notIntroState()) {
-      $scope.navTimeline.set(1, {duration: 400});
-    } else {
+    if (isIntroState()) {
       $scope.navTimeline.set(0, {duration: 400});
+    } else {
+      $scope.navTimeline.set(1, {duration: 400});
     } 
 
     function getDelay(prevState) {
@@ -48,8 +48,8 @@ angular.module('famous-angular')
       return prevState.data.leaveAnimationDuration;
     }
 
-    function notIntroState() {
-      return toState.data.index !== 0;
+    function isIntroState() {
+      return toState.data.name === 'intro';
     }
   });
 
