@@ -1,5 +1,14 @@
 angular.module('famous-angular')
 
+.directive('desktopNav', function() { 
+  return {
+    scope: false,
+    restrict: 'E',
+    controller: 'DesktopNavCtrl',
+    templateUrl: 'build/templates/state-desktop-nav.html'
+  };
+})
+
 .controller('DesktopNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
   var Transform = $famous['famous/core/Transform'];
 
