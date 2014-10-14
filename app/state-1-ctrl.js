@@ -60,7 +60,7 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [85, 340, 0]],
+            [0, [85, 320, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -68,7 +68,7 @@ angular.module('famous-angular')
       '#code-block': {
         transform: function() {
           var translate = $timeline([
-            [0, [-5, 700, 0]]
+            [0, [-5, 660, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
