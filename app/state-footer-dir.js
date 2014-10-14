@@ -66,6 +66,14 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  /* 
+   footerTimline:
+     0 | opacity 0; footer on bottom of screen
+     1 | opacity 1; footer on bottom of screen
+     2 | opacity 1; footer raised to middle of screen
+     3 | opacity 1; footer dropped to bottom of screen
+  */
+
   $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     footerTimeline.halt();
 
