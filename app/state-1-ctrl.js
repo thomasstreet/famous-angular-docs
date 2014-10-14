@@ -182,8 +182,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.30, [0, 30, 0], Easing.outQuad],
-        [0.50, [30, 30, 0]]
+        [0.30, [0, 35, 0], Easing.outQuad],
+        [0.50, [30, 35, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -216,8 +216,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.40, [30, 60, 0], Easing.outQuad],
-        [0.60, [60, 60, 0]]
+        [0.40, [30, 71, 0], Easing.outQuad],
+        [0.60, [60, 71, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -250,8 +250,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.5, [30, 90, 0], Easing.outQuad],
-        [0.7, [60, 90, 0]]
+        [0.5, [30, 108, 0], Easing.outQuad],
+        [0.7, [60, 108, 0]]
       ]),
       opacity: $timeline([
         [0, 0],
@@ -323,8 +323,8 @@ angular.module('famous-angular')
     },
     code: {
       translate: $timeline([
-        [0.70, [60, 120, 0], Easing.outQuad],
-        [1, [90, 120, 0]],
+        [0.70, [60, 145, 0], Easing.outQuad],
+        [1, [90, 145, 0]],
       ]),
       opacity: $timeline([
         [0, 0],
