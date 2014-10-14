@@ -1,55 +1,44 @@
 @import 'variables'
 
-/****************************************************************
-* Main header navbar
-****************************************************************/
+/***********************************************************************
+  Mobile State Nav
+***********************************************************************/
 
-#nav-bar
-  //font-family 'Raleway'
-  position fixed
-  width 100%
-  height 100px
-  top 0px
-  left 0px
-  background-color #333
-  color white
-  overflow hidden
-  box-shadow 0px 2px 0px 0px $box-shadow-color
-  z-index 3
+#viewport
 
-  a
-    text-decoration none
-    color inherit
 
-    &:hover
-      text-decoration underline
+  .mobile-state-nav
+    vertical-align top
+    padding 0px 20px
 
-  a.nav-bar-item
-    display inline-block
-    vertical-align middle
-    line-height 100px
-    padding 20px
-    height 100%
-    line-height 60px
-    font-size 16px
-    font-weight normal
+    .menu-icon
+      display inline-block
+      vertical-align top
+      color white
 
-    img
-      vertical-align middle
+      .octicon
+        font-size 110px
 
-  a.download
-    box-sizing border-box
-    position absolute
-    width 120px
-    margin 25px 20px
-    line-height 30px
-    right 0px
-    vertical-align middle
-    text-align center
-    border none
-    font-size 16px
-    font-weight normal
-    color white
-    background-color $primary-color
-    padding 10px
-    border-radius 5px
+    a
+      display inline-block
+      vertical-align top
+      transition $color-transition
+      color #5C4554
+      cursor pointer
+      margin 0 24px
+      font-size 22px
+
+      &:hover
+        text-decoration none
+        transition $color-transition
+        color $blue
+
+      &.active
+        color $blue
+
+  .scroll-progress-dot
+    background-color $blue
+    border-radius 999px
+    height 5px
+    width 5px
+
