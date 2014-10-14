@@ -66,6 +66,14 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  // If $state.current.name is defined, the state change must have finished
+  // before the $stateChangeSuccess handler is set up.  Reload the state to 
+  // ensure that the $stateChangeSuccess event is fired AFTER the handler is
+  // set up.
+  if ($state.current.name) {
+    $state.go($state.current.name, null, { reload: true });
+  }
+
   /* 
    footerTimline:
      0 | opacity 0; footer on bottom of screen

@@ -80,7 +80,7 @@ angular.module('famous-angular')
         pageTitle: 'Tying it All Together'
       }
     })
-    .state('end', {
+    .state('download', {
       url: '/download',
       template: '<div></div>',
       controller: 'stateEndCtrl',
