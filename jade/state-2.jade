@@ -49,6 +49,7 @@ fa-view(ts-sheet='State2Sheet')
                   | {{data.name}}
 
         fa-modifier(
+          ng-if='isDesktop()'
           fa-translate='nametag.inputText.translate(t.get())'
           fa-opacity='nametag.inputText.opacity(t.get())'
         )
@@ -63,11 +64,11 @@ fa-view(ts-sheet='State2Sheet')
           fa-opacity='nametag.inputRange.opacity(t.get())'
         )
           fa-surface(
-            fa-size='[300, true]'
+            fa-size='[isDesktop() ? 300 : 615, true]'
           )
             div.input-animation-container
               input(type='range' min="1" ng-model='data.t').input-animation
-            div.input-label
+            div.input-label.hidden-xs
               | Animation
 
 
