@@ -103,8 +103,8 @@ angular.module('famous-angular')
       '#code': {
         transform: function() {
           var translate = $timeline([
-            [0.2, [0, 510, 0], Easing.outQuad],
-            [0.4, [0, 710, 0]]
+            [0.2, [0, 485, 0], Easing.outQuad],
+            [0.4, [0, 685, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
