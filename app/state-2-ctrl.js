@@ -87,7 +87,7 @@ angular.module('famous-angular')
       '#left-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [75, 290, 0]],
+            [0, [75, 310, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -95,7 +95,7 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [10, 110, 0]],
+            [0, [10, 140, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -103,8 +103,8 @@ angular.module('famous-angular')
       '#code': {
         transform: function() {
           var translate = $timeline([
-            [0.2, [0, 520, 0], Easing.outQuad],
-            [0.4, [0, 720, 0]]
+            [0.2, [0, 510, 0], Easing.outQuad],
+            [0.4, [0, 710, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
