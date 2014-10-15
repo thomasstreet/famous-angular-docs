@@ -1,6 +1,15 @@
+fa-surface(
+  fa-size='[true, true]'
+  fa-z-index='9999'
+)
+  .mobile-state-nav
+    .menu-icon
+      span.octicon.octicon-three-bars
+
 fa-container-surface(fa-options='navOptions')
   fa-modifier(
     fa-align='[0.5, 0.5]'
+    fa-opacity='0'
   )
     fa-modifier(
       ng-repeat='item in menuItems'
