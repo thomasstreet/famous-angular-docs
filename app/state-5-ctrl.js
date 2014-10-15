@@ -67,7 +67,7 @@ angular.module('famous-angular')
 
           var translate = $timeline([
             [0.3, [80, 655, 0], Easing.outBack],
-            [0.6, [80, 345, 0]]
+            [0.6, [80, 395, 0]]
           ])(t.get());
           var translateMatrix = Transform.translate.apply(this, translate);
 
@@ -84,7 +84,7 @@ angular.module('famous-angular')
       '#right-column': {
         transform: function() {
           var translate = $timeline([
-            [0, [20, 100, 0]]
+            [0, [20, 140, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -92,7 +92,7 @@ angular.module('famous-angular')
       '#code-block': {
         transform: function() {
           var translate = $timeline([
-            [0, [40, 625, 0]]
+            [0, [40, 615, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
 
