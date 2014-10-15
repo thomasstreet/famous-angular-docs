@@ -19,6 +19,11 @@ angular.module('famous-angular')
   $scope.navTimeline = navTimeline;
   $scope.scrollProgress = stateScrollUtils.scrollProgress();
 
+  $scope.navOptions = {
+    classes: ['set-nav-perspective'],
+    size: [undefined, 150]
+  };
+
 /*--------------------------------------------------------------*/
 
   $scope.navbar = {
