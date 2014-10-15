@@ -52,7 +52,7 @@ angular.module('famous-angular')
     _pointer.set(num, {duration: 300});
   };
 
-  $scope.itemSize = [420, 90];
+  $scope.itemSize = [400, 75];
 
   $scope.getTranslate = function($index) {
     var position = $index - _pointer.get();
