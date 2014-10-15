@@ -85,7 +85,7 @@ angular.module('famous-angular')
           var translate = $timeline([
             [0, [0, 320, 0]],
             [0.1, [0, 320, 0], Easing.outCubic],
-            [0.6, [0, 120, 0]],
+            [0.6, [0, 140, 0]],
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
