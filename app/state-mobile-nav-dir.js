@@ -53,9 +53,9 @@ angular.module('famous-angular')
     isGridMode = !isGridMode;
 
     if (isGridMode) {
-      gridModeTran.set(1, { duration: 300, curve: Easing.outBack });
+      gridModeTran.set(1, { duration: 350 });
     } else {
-      gridModeTran.set(0, { duration: 300, curve: Easing.inBack });
+      gridModeTran.set(0, { duration: 350 });
     }
   }
 
@@ -70,8 +70,10 @@ angular.module('famous-angular')
   };
 
   $scope.gridModePosition = function($index) {
-    var yTranslate = $index * 100 * gridModeTran.get();
-    return [0, yTranslate, 0];
+    return $timeline([
+      [0, [0, 0, 0], Easing.outBack],
+      [0.8, [0, $index * 100, 0]],
+    ])(gridModeTran.get());
   };
 
   // Resizing surfaces doesn't work that well, so translate the overlay
@@ -87,17 +89,17 @@ angular.module('famous-angular')
     },
     opacity: function() {
       return $timeline([
-        [0, 0],
+        [0, 0, Easing.outCubic],
         [1, 0.9]
       ])(gridModeTran.get());
     },
     x: {
       translate: function() {
         return $timeline([
-          [0, [360, 900, 1000], Easing.outQuad],
+          [0.3, [360, 900, 1000], Easing.outQuad],
           // Translate z-value should be lower than the nav, but above all other
           // content, so that only the nav is unaffected
-          [1, [360, 900, 10]]
+          [0.6, [360, 900, 10]]
         ])(gridModeTran.get());
       }
     }
