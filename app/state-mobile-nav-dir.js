@@ -88,8 +88,18 @@ angular.module('famous-angular')
     opacity: function() {
       return $timeline([
         [0, 0],
-        [1, 0.8]
+        [1, 0.9]
       ])(gridModeTran.get());
+    },
+    x: {
+      translate: function() {
+        return $timeline([
+          [0, [360, 900, 1000], Easing.outQuad],
+          // Translate z-value should be lower than the nav, but above all other
+          // content, so that only the nav is unaffected
+          [1, [360, 900, 10]]
+        ])(gridModeTran.get());
+      }
     }
   };
 

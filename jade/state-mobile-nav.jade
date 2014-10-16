@@ -1,7 +1,6 @@
 fa-modifier(fa-translate='[0, 0, 10]')
   fa-surface(
     fa-size='[true, true]'
-    fa-z-index='9999'
   )
     .mobile-state-nav
       .menu-icon
@@ -36,4 +35,15 @@ fa-modifier(
     fa-background-color="'black'"
     ng-click='toggleGridMode()'
   ).grid-mode-overlay
+
+
+fa-modifier(
+  fa-translate='overlay.x.translate()'
+)
+  fa-surface(
+    fa-size='[true, true]'
+    ng-click='toggleGridMode()'
+  ).overlay-x
+    .octicon.octicon-x
+
 
