@@ -6,22 +6,18 @@ fa-surface(
     .menu-icon
       span.octicon.octicon-three-bars
 
-fa-container-surface(fa-options='navOptions')
+fa-container-surface(fa-options='containerSurfaceOptions')
   fa-modifier(
-    fa-align='[0.5, 0.5]'
-    fa-opacity='opacity()'
+    fa-align='[0.5, 0]'
   )
     fa-modifier(
       ng-repeat='item in menuItems'
-      fa-translate='getTranslate($index)'
-      fa-opacity='getOpacity($index)'
+      fa-origin='[0.5, 0]'
+      fa-translate='[0, 35, 0]'
+      fa-rotate-x='item.rotateX(t.get())'
     )
-      fa-modifier(
-        fa-origin='getOrigin($index)'
-        fa-rotate-y='getRotateY($index)'
-      )
-        fa-surface(
-          fa-size='itemSize'
-          fa-z-index='9999'
-        ).menu-item
-          | {{item.text}}
+      fa-surface(
+        fa-size='[400, 75]'
+        fa-z-index='9999'
+      ).menu-item
+        | {{item.text}}

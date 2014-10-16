@@ -10,26 +10,22 @@ angular.module('famous-angular')
 })
 
 .controller('MobileNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
-  var Transform = $famous['famous/core/Transform'];
-
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
-  var navTimeline = new Transitionable(0);
-  $scope.navTimeline = navTimeline;
-  $scope.scrollProgress = stateScrollUtils.scrollProgress();
-
-  $scope.navOptions = {
+  $scope.containerSurfaceOptions = {
     classes: ['set-nav-perspective'],
     size: [undefined, 150]
   };
 
 /*--------------------------------------------------------------*/
 
+  $scope.t = new Transitionable(0);
+
   $(window).bind('scroll', function() {
-    _pointer.halt();
+    $scope.t.halt();
     var t = getTimelineFromScroll();
-    _pointer.set(t, {duration: 300});
+    $scope.t.set(t, {duration: 0});
   });
 
   function getTimelineFromScroll() {
@@ -46,85 +42,94 @@ angular.module('famous-angular')
     return scaleScroll(scrollPosition);
   }
 
-  $scope.opacity = function() {
-    return $timeline([
-      [0, 0],
-      [1, 1],
-    ])(_pointer.get());
-  };
-
-
-  var _pointer = new Transitionable(0);
   window.setPointer = function(num) {
-    _pointer.set(num, {duration: 300});
-  };
-
-  $scope.itemSize = [400, 75];
-
-  $scope.getTranslate = function($index) {
-    var position = $index - _pointer.get();
-    var xTranslate = position * ($scope.itemSize[0] - 0);
-    return [xTranslate, 0, 0];
-  };
-
-  $scope.getRotateY = function($index) {
-    var position = $index - _pointer.get();
-    return (6.28 / 7) * position;
-  };
-
-  $scope.getOpacity = function($index) {
-    var position = $index - _pointer.get();
-    position = Math.abs(position);
-
-    return 1 - position + 0.5;
-  };
-
-  $scope.getOrigin = function($index) {
-    return [0.5, 0.5];
-
-
-    var position = $index - _pointer.get();
-    var xOrigin = 0.5;
-
-    var cappedPosition = Math.max(Math.min(position, 1), -1);
-
-    xOrigin += -cappedPosition * 0.5;
-
-    console.log('index', $index, 'xOrigin', xOrigin);
-
-    return [xOrigin, 0.5];
+    $scope.t.set(num, {duration: 1600, curve: Easing.outElastic});
   };
 
   $scope.menuItems = [
     {
-      text: 'Intro',
-      color: 'blue'
-    },
-    {
       text: 'Render Tree',
-      color: 'red'
+      rotateX: $timeline([
+        [0, -Math.PI],
+        [1, 0],
+        [2, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0, Easing.inCubic],
+        [1, 1, Easing.outCubic],
+        [2, 0]
+      ])
     },
     {
       text: 'Data Binding',
-      color: 'blue'
+      rotateX: $timeline([
+        [1, -Math.PI],
+        [2, 0],
+        [3, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [1, 0],
+        [2, 1],
+        [3, 0]
+      ])
     },
     {
       text: 'Angular Directives',
-      color: 'red'
+      rotateX: $timeline([
+        [2, -Math.PI],
+        [3, 0],
+        [4, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [2, 0],
+        [3, 1],
+        [4, 0]
+      ])
     },
     {
       text: 'Organization',
-      color: 'blue'
+      rotateX: $timeline([
+        [3, -Math.PI],
+        [4, 0],
+        [5, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [3, 0],
+        [4, 1],
+        [5, 0]
+      ])
     },
     {
       text: 'No Compromises',
-      color: 'red'
+      rotateX: $timeline([
+        [4, -Math.PI],
+        [5, 0],
+        [6, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [4, 0],
+        [5, 1],
+        [6, 0]
+      ])
     },
     {
       text: 'Download',
-      color: 'blue'
+      rotateX: $timeline([
+        [5, -Math.PI],
+        [6, 0],
+        [7, Math.PI]
+      ]),
+      opacity: $timeline([
+        [0, 0],
+        [5, 0],
+        [6, 1],
+        [7, 0]
+      ])
     }
-  ]
-
+  ];
 
 });
