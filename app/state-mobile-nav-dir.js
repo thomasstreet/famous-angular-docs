@@ -96,10 +96,10 @@ angular.module('famous-angular')
     x: {
       translate: function() {
         return $timeline([
-          [0.3, [360, 900, 1000], Easing.outQuad],
+          [0.1, [360, 900, 1000], Easing.outQuad],
           // Translate z-value should be lower than the nav, but above all other
           // content, so that only the nav is unaffected
-          [0.6, [360, 900, 10]]
+          [0.5, [360, 900, 10]]
         ])(gridModeTran.get());
       }
     }
