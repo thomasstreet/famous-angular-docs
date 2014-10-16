@@ -46,6 +46,53 @@ angular.module('famous-angular')
     $scope.t.set(num, {duration: 1600, curve: Easing.outElastic});
   };
 
+  var isGridMode = false;
+  var gridModeTran = new Transitionable(0);
+
+  $scope.toggleGridMode = function() {
+    isGridMode = !isGridMode;
+
+    if (isGridMode) {
+      gridModeTran.set(1, { duration: 300, curve: Easing.outBack });
+    } else {
+      gridModeTran.set(0, { duration: 300, curve: Easing.inBack });
+    }
+  }
+
+  $scope.rotateX = function($index, timeValue) {
+    if (gridModeTran.get()) return 0;
+
+    return $timeline([
+      [$index, -Math.PI],
+      [$index + 1, 0],
+      [$index + 2, Math.PI]
+    ])(timeValue);
+  };
+
+  $scope.gridModePosition = function($index) {
+    var yTranslate = $index * 100 * gridModeTran.get();
+    return [0, yTranslate, 0];
+  };
+
+  // Resizing surfaces doesn't work that well, so translate the overlay
+  // off screen when not in use, to prevent it from gobbling up events.
+  $scope.overlay = {
+    translate: function() {
+      return $timeline([
+        [0, [0, -1366, -10]],
+        // Translate z-value should be lower than the nav, but above all other
+        // content, so that only the nav is unaffected
+        [0.01, [0, 0, 9]]
+      ])(gridModeTran.get());
+    },
+    opacity: function() {
+      return $timeline([
+        [0, 0],
+        [1, 0.8]
+      ])(gridModeTran.get());
+    }
+  };
+
   $scope.menuItems = [
     {
       text: 'Render Tree',
