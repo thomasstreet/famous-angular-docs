@@ -46,8 +46,9 @@ angular.module('famous-angular')
     $scope.t.set(num, {duration: 1600, curve: Easing.outElastic});
   };
 
-  var isGridMode = false;
-  var gridModeTran = new Transitionable(0);
+  var isGridMode = true;
+  var gridModeTran = new Transitionable(1);
+  $scope.gridModeT = gridModeTran;
 
   $scope.toggleGridMode = function() {
     isGridMode = !isGridMode;
@@ -72,7 +73,7 @@ angular.module('famous-angular')
   $scope.gridModePosition = function($index) {
     return $timeline([
       [0, [0, 0, 0], Easing.outBack],
-      [0.8, [0, $index * 100, 0]],
+      [0.8, [0, $index * 150 + 120, 0]],
     ])(gridModeTran.get());
   };
 
@@ -90,16 +91,16 @@ angular.module('famous-angular')
     opacity: function() {
       return $timeline([
         [0, 0, Easing.outCubic],
-        [1, 0.9]
+        [1, 0.85]
       ])(gridModeTran.get());
     },
     x: {
       translate: function() {
         return $timeline([
-          [0.1, [360, 900, 1000], Easing.outQuad],
+          [0.1, [360, 1090, 1000], Easing.outQuad],
           // Translate z-value should be lower than the nav, but above all other
           // content, so that only the nav is unaffected
-          [0.5, [360, 900, 10]]
+          [0.5, [360, 1090, 10]]
         ])(gridModeTran.get());
       }
     }

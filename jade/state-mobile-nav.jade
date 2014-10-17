@@ -11,6 +11,19 @@ fa-modifier(fa-translate='[0, 0, 10]')
       fa-align='[0.5, 0]'
     )
       fa-modifier(
+        fa-translate='[0, 25, 0]'
+        fa-origin='[0.5, 0]'
+        fa-opacity='gridModeT.get()'
+      )
+        fa-surface(
+          fa-size="[true, true]"
+          ng-click='toggleGridMode()'
+        ).famous-angular
+          h1
+            | Famo.us/
+            span.angular-text Angular
+
+      fa-modifier(
         ng-repeat='item in menuItems'
         fa-origin='[0.5, 0]'
         fa-translate='[0, 35, 1]'
@@ -20,7 +33,7 @@ fa-modifier(fa-translate='[0, 0, 10]')
           fa-translate='gridModePosition($index)'
         )
           fa-surface(
-            fa-size='[400, 75]'
+            fa-size='[540, 120]'
             fa-z-index='9999'
             ng-click='toggleGridMode()'
           ).menu-item
