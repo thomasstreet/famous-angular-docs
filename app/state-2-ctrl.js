@@ -251,9 +251,9 @@ angular.module('famous-angular')
       translate: function(sliderT) {
         sliderT = parseInt(sliderT);
         return $timeline([
-          [1, [0, 10, 4], Easing.inQuad],
-          [50, [0, 10, 4], Easing.outQuad],
-          [100, [0, 10, 4]]
+          [1, [0, 25, 4], Easing.inQuad],
+          [50, [0, 25, 4], Easing.outQuad],
+          [100, [0, 25, 4]]
         ])(sliderT);
       },
     },
