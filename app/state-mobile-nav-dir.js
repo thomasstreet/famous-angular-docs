@@ -9,7 +9,7 @@ angular.module('famous-angular')
   };
 })
 
-.controller('MobileNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
+.controller('MobileNavCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateScrollUtils, $media) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
@@ -50,15 +50,21 @@ angular.module('famous-angular')
   var gridModeTran = new Transitionable(0);
   $scope.gridModeT = gridModeTran;
 
-  $scope.toggleGridMode = function() {
+  $scope.toggleGridMode = function(state) {
     isGridMode = !isGridMode;
 
     if (isGridMode) {
       gridModeTran.set(1, { duration: 350 });
     } else {
-      gridModeTran.set(0, { duration: 350 });
+      gridModeTran.set(0, { duration: 350 }, function() {
+        $state.go(state);
+      });
     }
   }
+
+  $scope.isCurrentState = function(state) {
+    return $state.current.name === state;
+  };
 
   $scope.rotateX = function($index, timeValue) {
     if (gridModeTran.get()) return 0;
@@ -116,86 +122,27 @@ angular.module('famous-angular')
   $scope.menuItems = [
     {
       text: 'Render Tree',
-      rotateX: $timeline([
-        [0, -Math.PI],
-        [1, 0],
-        [2, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0, Easing.inCubic],
-        [1, 1, Easing.outCubic],
-        [2, 0]
-      ])
+      state: '1'
     },
     {
       text: 'Data Binding',
-      rotateX: $timeline([
-        [1, -Math.PI],
-        [2, 0],
-        [3, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0],
-        [1, 0],
-        [2, 1],
-        [3, 0]
-      ])
+      state: '2'
     },
     {
       text: 'Angular Directives',
-      rotateX: $timeline([
-        [2, -Math.PI],
-        [3, 0],
-        [4, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0],
-        [2, 0],
-        [3, 1],
-        [4, 0]
-      ])
+      state: '3'
     },
     {
       text: 'Organization',
-      rotateX: $timeline([
-        [3, -Math.PI],
-        [4, 0],
-        [5, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0],
-        [3, 0],
-        [4, 1],
-        [5, 0]
-      ])
+      state: '4'
     },
     {
       text: 'No Compromises',
-      rotateX: $timeline([
-        [4, -Math.PI],
-        [5, 0],
-        [6, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0],
-        [4, 0],
-        [5, 1],
-        [6, 0]
-      ])
+      state: '5'
     },
     {
       text: 'Download',
-      rotateX: $timeline([
-        [5, -Math.PI],
-        [6, 0],
-        [7, Math.PI]
-      ]),
-      opacity: $timeline([
-        [0, 0],
-        [5, 0],
-        [6, 1],
-        [7, 0]
-      ])
+      state: 'download'
     }
   ];
 
