@@ -1,9 +1,9 @@
-fa-surface(
-  fa-size='[true, true]'
-)
-  .mobile-state-nav
-    .menu-icon
-      span.octicon.octicon-three-bars
+fa-modifier(fa-translate='[0, 0, 11]')
+  fa-surface(
+    fa-size='[true, true]'
+  ).mobile-nav-logo
+    a(href='https://famo.us')
+      img.logo(src='img/famous_logo_white.svg')
 
 fa-modifier(fa-translate='[0, 0, 10]')
   fa-container-surface(fa-options='containerSurfaceOptions')
@@ -26,7 +26,7 @@ fa-modifier(fa-translate='[0, 0, 10]')
       fa-modifier(
         ng-repeat='item in menuItems'
         fa-origin='[0.5, 0]'
-        fa-translate='[0, 35, 1]'
+        fa-translate='[0, 45, 1]'
         fa-rotate-x='tile.rotateX($index, t.get())'
       )
         fa-modifier(

@@ -103,7 +103,7 @@ angular.module('famous-angular')
 
   $scope.tile = {
     scale: $timeline([
-      [0, [0.75, 0.75], Easing.inQuad],
+      [0, [0.65, 0.65], Easing.inQuad],
       [0.5, [1, 1]]
     ]),
     rotateX: function($index, timeValue) {
