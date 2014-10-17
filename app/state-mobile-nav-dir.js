@@ -46,8 +46,8 @@ angular.module('famous-angular')
     $scope.t.set(num, {duration: 1600, curve: Easing.outElastic});
   };
 
-  var isGridMode = true;
-  var gridModeTran = new Transitionable(1);
+  var isGridMode = false;
+  var gridModeTran = new Transitionable(0);
   $scope.gridModeT = gridModeTran;
 
   $scope.toggleGridMode = function() {
@@ -68,6 +68,13 @@ angular.module('famous-angular')
       [$index + 1, 0],
       [$index + 2, Math.PI]
     ])(timeValue);
+  };
+
+  $scope.card = {
+    scale: $timeline([
+      [0, [0.75, 0.75], Easing.inQuad],
+      [0.5, [1, 1]]
+    ])
   };
 
   $scope.gridModePosition = function($index) {
