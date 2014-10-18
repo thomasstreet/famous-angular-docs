@@ -24,7 +24,7 @@ angular.module('famous-angular')
   var timeout;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-    disableScrollUntilScrollstart = true;
+    //disableScrollUntilScrollstart = true;
     disableScrollEvents = true;
 
     if (timeout) clearTimeout(timeout);
@@ -53,9 +53,10 @@ angular.module('famous-angular')
   });
 
   $(window).bind('touchmove', scrollHandler);
-  $(window).bind('scroll', scrollHandler);
+  $('body').bind('scroll', scrollHandler);
 
   function scrollHandler() {
+    console.log('body scroll');
     if (disableScrollEvents) return;
 
     if (disableScrollUntilScrollstart) return;

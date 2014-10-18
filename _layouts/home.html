@@ -13,30 +13,34 @@
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
   </head>
 
-  <body class="docs docs-page docs-api">
+  <body>
 
-    <div class='force-body-scroll' style="height: {{ "{{bodyHeight()" }} }}px;">
+    <div class='scroll-container'>
 
-      <div class="hidden-xs">
-        {% include nav_links.html %}
-      </div>
+      <div class='force-overflow' style="height: {{ "{{bodyHeight()" }} }}px;">
 
-      <div id="viewport">
-        <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
+        <div class="hidden-xs">
+          {% include nav_links.html %}
+        </div>
 
-          <fa-view ng-if="isMobile()">
-            <mobile-nav></mobile-nav>
-          </fa-view>
+        <div id="viewport">
+          <fa-app class="{{ "{{stateClasses" }} }}" id="fa-app" fa-perspective="1000">
 
-          <fa-view ng-if="isDesktop()">
-            <desktop-nav></desktop-nav>
-          </fa-view>
+            <fa-view ng-if="isMobile()">
+              <mobile-nav></mobile-nav>
+            </fa-view>
 
-          <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
+            <fa-view ng-if="isDesktop()">
+              <desktop-nav></desktop-nav>
+            </fa-view>
 
-          <state-footer></state-footer>
+            <ui-view fa-animate-enter='enter($done)' fa-animate-leave='leave($done)'></ui-view>
 
-        </fa-app>
+            <state-footer></state-footer>
+
+          </fa-app>
+        </div>
+
       </div>
 
     </div>
@@ -48,10 +52,5 @@
     <script src="{{relative}}bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.js"></script>
     <script src="{{relative}}build/main.js"></script>
-    <script>
-      $('body').scroll(function() {
-        console.log('scroll!');
-      });
-    </script>
   </body>
 </html>
