@@ -31,7 +31,7 @@ angular.module('famous-angular')
   scrollEvents.addListeners.scrollstart(function() {
     if (!_state.grav) return;
 
-    _state.startPosition = window.pageYOffset;
+    _state.startPosition = stateScrollUtils.scrollPosition;
   });
 
 /*--------------------------------------------------------------*/
@@ -53,7 +53,7 @@ angular.module('famous-angular')
 
     var index = $state.current.data.index;
 
-    var currentPosition = window.pageYOffset;
+    var currentPosition = stateScrollUtils.scrollPosition;
     var delta = (currentPosition - state.startPosition) || 0;
 
     var scrollRange = stateScrollUtils.scrollRange();
@@ -126,7 +126,7 @@ angular.module('famous-angular')
     timelines: timelines,
     setState: function(controllerState) {
       _state = controllerState;
-      _state.startPosition = window.pageYOffset;
+      _state.startPosition = stateScrollUtils.scrollPosition;
     }
   };
 

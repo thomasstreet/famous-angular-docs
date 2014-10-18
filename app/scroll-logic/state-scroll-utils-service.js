@@ -41,9 +41,14 @@ angular.module('famous-angular')
     return orderedStates;
   }
 
+  function scrollPosition() {
+    return $('#scroll-container').scrollTop();
+  }
+
 /*--------------------------------------------------------------*/
 
   return {
+    scrollPosition: scrollPosition,
     scrollStates: scrollStates,
     rangePerState: rangePerState,
     stateCount: stateCount,

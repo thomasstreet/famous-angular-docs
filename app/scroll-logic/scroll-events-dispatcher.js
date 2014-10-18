@@ -53,7 +53,7 @@ angular.module('famous-angular')
   });
 
   $(window).bind('touchmove', scrollHandler);
-  $('body').bind('scroll', scrollHandler);
+  $('#scroll-container').bind('scroll', scrollHandler);
 
   function scrollHandler() {
     console.log('body scroll');

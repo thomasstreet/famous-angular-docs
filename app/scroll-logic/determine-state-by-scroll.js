@@ -6,15 +6,15 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   var start = {
-    scrollPosition: window.pageYOffset
+    scrollPosition: stateScrollUtils.scrollPosition
   };
 
   scrollEvents.addListeners.scrollstart(function() {
-    start.scrollPosition = window.pageYOffset;
+    start.scrollPosition = stateScrollUtils.scrollPosition;
   });
 
   scrollEvents.addListeners.scrollend(function() {
-    start.scrollPosition = window.pageYOffset;
+    start.scrollPosition = stateScrollUtils.scrollPosition;
   });
 
 /*--------------------------------------------------------------*/
@@ -76,7 +76,7 @@ angular.module('famous-angular')
       [scrollMax, stateCount * rangePerState]
     ]);
 
-    var scrollPosition = window.pageYOffset;
+    var scrollPosition = stateScrollUtils.scrollPosition;
     var scrollDistanceTraveled = scrollPosition - start.scrollPosition;
 
     // If the scroll distance exceeds the max allowable distance, return
