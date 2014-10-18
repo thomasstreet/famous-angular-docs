@@ -5,16 +5,39 @@
 ****************************************************************/
 
 html, body
-  height: 100%
+  height 100%
+  width 100%
+  overflow hidden
 
 body
   // Top navbar is fixed, so add padding to prevent content from going beneath
-  padding-top: $navbar-height
+  padding-top $navbar-height
   -webkit-font-smoothing: antialiased
   font-family 'AvenirNextLTW02-Regular', 'sans-serif'; 
   //background-color inherit !important;
   background #0c090d
+  height 100%
+  width 105%
+  overflow-y scroll
+  overflow-x hidden
 
+  .force-body-scroll
+    width 100%
+
+#viewport
+  pointer-events none
+
+  #fa-app
+    pointer-events none
+
+    .famous-surface
+      pointer-events none
+
+      a
+        pointer-events all
+
+      input
+        pointer-events all
 
 .fill-width
   width: 100%
