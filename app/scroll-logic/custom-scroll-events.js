@@ -50,6 +50,12 @@ angular.module('famous-angular')
     },
     getPosition: function() {
       return $scrolledElement.scrollTop();
+    },
+    getHeight: function() {
+      return $scrolledElement.height();
+    },
+    setHeight: function(newScrollHeight) {
+      return $scrolledElement.height(newScrollHeight);
     }
   };
 

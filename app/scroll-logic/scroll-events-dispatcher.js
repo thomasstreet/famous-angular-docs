@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.factory('scrollEvents', function($rootScope, $state, stateTransitions) {
+.factory('scrollEvents', function($rootScope, $state, stateTransitions, $scroll) {
+  console.log($scroll.getHeight());
 
   // WE MUST DISABLE SCROLL HANDLERS AFTER STATE CHANGE
 

@@ -1,6 +1,7 @@
 angular.module('famous-angular')
 
-.factory('stateScrollUtils', function($rootScope, $state, $famous) {
+.factory('stateScrollUtils', function($rootScope, $state, $famous, $scroll) {
+
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
   var scrollProgress = new Transitionable(0);
@@ -8,22 +9,12 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   var RANGE_PER_STATE = 100;
-  $rootScope.bodyHeight = bodyHeight;
-
   function rangePerState() {
     return RANGE_PER_STATE;
   }
 
   function stateCount() {
     return scrollStates().length;
-  }
-
-  function bodyHeight() {
-    return (window.innerHeight * stateCount());
-  }
-
-  function scrollMax() {
-    return bodyHeight() - window.innerHeight;
   }
 
   function scrollRange() {
@@ -52,9 +43,7 @@ angular.module('famous-angular')
     scrollStates: scrollStates,
     rangePerState: rangePerState,
     stateCount: stateCount,
-    bodyHeight: bodyHeight,
     scrollRange: scrollRange,
-    scrollMax: scrollMax,
     scrollProgress: function() {
       return scrollProgress;
     }

@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $media) {
+.run(function($rootScope, $media, $scroll, stateScrollUtils) {
 
   var NAVBAR = {
     HEIGHT: 100
@@ -8,13 +8,14 @@ angular.module('famous-angular')
 
   var _forcedResolution;
 
-  determineResolution();
-  setLeftOffset();
+  resizeHandler();
+  $(window).bind('resize', resizeHandler);
 
-  $(window).bind('resize', function() {
+  function resizeHandler() {
     determineResolution();
     setLeftOffset();
-  });
+    $scroll.setHeight(stateScrollUtils.stateCount() * window.innerHeight);
+  }
 
   // iPhone 5 without bars: 320 x 568
   // With bars: 320 x 460
