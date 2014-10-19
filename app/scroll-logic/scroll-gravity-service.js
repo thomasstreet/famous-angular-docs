@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.factory('scrollGravity', function($rootScope, $state, $famous, $timeline, scrollEvents, stateScrollUtils) {
+.factory('scrollGravity', function($rootScope, $state, $famous, $timeline, stateScrollUtils, $scroll) {
   var Easing = $famous['famous/transitions/Easing'];
 
   var timelines =  {
@@ -28,7 +28,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  scrollEvents.addListeners.scrollstart(function() {
+  $rootScope.$on('fa-scrollstart', function() {
     if (!_state.grav) return;
 
     _state.startPosition = stateScrollUtils.scrollPosition;
@@ -42,7 +42,7 @@ angular.module('famous-angular')
     initialPageLoad = false;
   }, 50);
 
-  scrollEvents.addListeners.scroll(function() {
+  $rootScope.$on('fa-scroll', function() {
     if (!_state.grav) return;
 
     scrollHandler(_state);
@@ -92,7 +92,7 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  scrollEvents.addListeners.scrollend(function() {
+  $rootScope.$on('fa-scrollend', function() {
     if (!_state.grav) return;
 
     scrollendHandler(_state);

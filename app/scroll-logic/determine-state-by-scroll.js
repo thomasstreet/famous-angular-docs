@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils, $scroll) {
+.run(function($rootScope, $famous, $timeline, $state, stateScrollUtils, $scroll) {
   var scrollStates = stateScrollUtils.scrollStates();
 
 /*--------------------------------------------------------------*/
@@ -9,17 +9,17 @@ angular.module('famous-angular')
     scrollPosition: $scroll.getPosition()
   };
 
-  scrollEvents.addListeners.scrollstart(function() {
+  $rootScope.$on('fa-scrollstart', function() {
     start.scrollPosition = $scroll.getPosition();
   });
 
-  scrollEvents.addListeners.scrollend(function() {
+  $rootScope.$on('fa-scrollend', function() {
     start.scrollPosition = $scroll.getPosition(); 
   });
 
 /*--------------------------------------------------------------*/
 
-  scrollEvents.addListeners.scroll(function() {
+  $rootScope.$on('fa-scroll', function() {
 
     // Might not need this anymore:
 
@@ -30,6 +30,7 @@ angular.module('famous-angular')
     if (!$state.current.data) return;
 
     var t = getTimelineFromScroll();
+    console.log(t);
 
     var currentStateIndex = $state.current.data.index;
     var reachedStateIndex = stateIndex(determineState(t));
@@ -75,7 +76,7 @@ angular.module('famous-angular')
       [$scroll.getHeight(), stateCount * rangePerState]
     ]);
 
-    var scrollDistanceTraveled = $scroll.getPosition - start.scrollPosition;
+    var scrollDistanceTraveled = $scroll.getPosition() - start.scrollPosition;
 
     // If the scroll distance exceeds the max allowable distance, return
     // the starting scroll positon + the max distance
@@ -85,10 +86,12 @@ angular.module('famous-angular')
         : -maxAllowableDistancePerScroll;
       var scaled = scaleScroll(start.scrollPosition + delta);
       var rounded = Math.round(scaled / 50) * 50;
+      console.log('rounded', rounded);
       return rounded;
     }
 
-    return scaleScroll(scrollPosition);
+    console.log('rounded', scaleScroll($scroll.getPosition()));
+    return scaleScroll($scroll.getPosition());
   }
 
   function determineState(t) {

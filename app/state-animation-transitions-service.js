@@ -13,7 +13,7 @@ angular.module('famous-angular')
 
 
   function enterDelay() {
-    if (!prevState.data) {
+    if (!prevState || !prevState.data) {
       return 0;
     }
     return prevState.data.leaveAnimationDuration + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
@@ -45,7 +45,7 @@ angular.module('famous-angular')
 
 
   function comingFromLowerIndex() {
-    if (!prevState.data) {
+    if (!prevState || !prevState.data) {
       return true;
     }
 
