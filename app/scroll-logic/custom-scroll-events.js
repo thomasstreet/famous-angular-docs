@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope) {
+.factory('$scroll', function($rootScope) {
   /* Custom events to listen for:
 
     $rootScope.$on('fa-scrollend', function() {
@@ -43,5 +43,14 @@ angular.module('famous-angular')
     }, DELAY_UNTIL_SCROLLEND)
 
   });
+
+  return {
+    setPosition: function(newScrollPosition) {
+      return $scrolledElement.scrollTop(newScrollPosition);
+    },
+    getPosition: function() {
+      return $scrolledElement.scrollTop();
+    }
+  };
 
 });
