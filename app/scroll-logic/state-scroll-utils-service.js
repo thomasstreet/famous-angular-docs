@@ -18,7 +18,7 @@ angular.module('famous-angular')
   }
 
   function scrollRange() {
-    return scrollMax() / stateCount();
+    return $scroll.getHeight() / stateCount();
   }
 
   function scrollStates() {

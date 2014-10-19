@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils) {
+.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils, $scroll) {
 
   $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     determineScrollPositionFromState(toState);
@@ -21,11 +21,9 @@ angular.module('famous-angular')
         var halfOfRange = rangePerState / 2;
         var halfwayPointOfRange = scrollStates[i].data.scrollTimelineMax - rangePerState + halfOfRange;
 
-        var scrollMax = stateScrollUtils.scrollMax();
-
         var newScrollPosition = $timeline([
           [0, 0],
-          [stateCount * rangePerState, scrollMax]
+          [stateCount * rangePerState, $scroll.getHeight()]
         ])(halfwayPointOfRange);
 
         scrollEvents.setScrollPosition(newScrollPosition);

@@ -1,20 +1,20 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils) {
+.run(function($rootScope, $famous, $timeline, $state, scrollEvents, stateScrollUtils, $scroll) {
   var scrollStates = stateScrollUtils.scrollStates();
 
 /*--------------------------------------------------------------*/
 
   var start = {
-    scrollPosition: stateScrollUtils.scrollPosition
+    scrollPosition: $scroll.getPosition()
   };
 
   scrollEvents.addListeners.scrollstart(function() {
-    start.scrollPosition = stateScrollUtils.scrollPosition;
+    start.scrollPosition = $scroll.getPosition();
   });
 
   scrollEvents.addListeners.scrollend(function() {
-    start.scrollPosition = stateScrollUtils.scrollPosition;
+    start.scrollPosition = $scroll.getPosition(); 
   });
 
 /*--------------------------------------------------------------*/
@@ -65,19 +65,17 @@ angular.module('famous-angular')
   }
 
   function getTimelineFromScroll() {
-    var scrollMax = stateScrollUtils.scrollMax();
     var stateCount = stateScrollUtils.stateCount();
-    var maxAllowableDistancePerScroll =  scrollMax / stateCount;
+    var maxAllowableDistancePerScroll =  $scroll.getHeight() / stateCount;
     var rangePerState = stateScrollUtils.rangePerState();
 
     // Scale the scroll range to a simple timeline range
     var scaleScroll = $timeline([
       [0, 0],
-      [scrollMax, stateCount * rangePerState]
+      [$scroll.getHeight(), stateCount * rangePerState]
     ]);
 
-    var scrollPosition = stateScrollUtils.scrollPosition;
-    var scrollDistanceTraveled = scrollPosition - start.scrollPosition;
+    var scrollDistanceTraveled = $scroll.getPosition - start.scrollPosition;
 
     // If the scroll distance exceeds the max allowable distance, return
     // the starting scroll positon + the max distance

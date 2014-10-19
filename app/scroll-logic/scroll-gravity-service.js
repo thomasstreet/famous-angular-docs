@@ -109,12 +109,11 @@ angular.module('famous-angular')
   // Force the user's scroll to the midway resting point of the range
   function setScrollToMidwayPointofRange() {
     var rangePerState = 100;
-    var scrollMax = stateScrollUtils.scrollMax();
     var stateCount = stateScrollUtils.stateCount();
 
     var newScrollPosition = $timeline([
       [0, 0],
-      [stateCount * rangePerState, scrollMax]
+      [stateCount * rangePerState, $scroll.getHeight()]
     ])($state.current.data.scrollTimelineMax - (rangePerState / 2));
 
     window.scrollTo(0, newScrollPosition);

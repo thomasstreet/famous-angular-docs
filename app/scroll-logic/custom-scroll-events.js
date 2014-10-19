@@ -44,6 +44,7 @@ angular.module('famous-angular')
 
   });
 
+
   return {
     setPosition: function(newScrollPosition) {
       return $scrolledElement.scrollTop(newScrollPosition);
