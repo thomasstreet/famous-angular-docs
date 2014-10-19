@@ -17,12 +17,12 @@ angular.module('famous-angular')
 
  */
 
-  var $scrolledElement = $('#scroll-container');
+  var $scrollContainer = $('#scroll-container');
   var DELAY_UNTIL_SCROLLEND = 300;
 
   var scrollendTimeout;
 
-  $scrolledElement.bind('scroll', function() {
+  $scrollContainer.bind('scroll', function() {
 
     // If a scrollendTimeout exists, this scroll event is in the middle 
     // of a scroll session 
@@ -47,16 +47,17 @@ angular.module('famous-angular')
 
   return {
     setPosition: function(newScrollPosition) {
-      return $scrolledElement.scrollTop(newScrollPosition);
+      return $scrollContainer.scrollTop(newScrollPosition);
     },
     getPosition: function() {
-      return $scrolledElement.scrollTop();
+      return $scrollContainer.scrollTop();
     },
     getHeight: function() {
-      return $scrolledElement.height();
+      return $scrollContainer.height();
     },
+    // Set the height for the element forcing the overflow
     setHeight: function(newScrollHeight) {
-      return $scrolledElement.height(newScrollHeight);
+      return $('#force-overflow').height(newScrollHeight);
     }
   };
 

@@ -1,12 +1,6 @@
 angular.module('famous-angular')
 
 .factory('scrollEvents', function($rootScope, $state, stateTransitions, $scroll) {
-  console.log($scroll.getHeight(), $scroll.getPosition());
-
-  $rootScope.$on('fa-scroll', function() {
-    console.log('fa-scroll');
-    console.log($scroll.getPosition());
-  });
 
   // WE MUST DISABLE SCROLL HANDLERS AFTER STATE CHANGE
 
@@ -62,7 +56,6 @@ angular.module('famous-angular')
   $('#scroll-container').bind('scroll', scrollHandler);
 
   function scrollHandler() {
-    console.log('body scroll');
     if (disableScrollEvents) return;
 
     if (disableScrollUntilScrollstart) return;
