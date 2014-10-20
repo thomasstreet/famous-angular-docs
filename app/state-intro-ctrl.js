@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('stateIntroCtrl', function($rootScope, $scope, $state, $http, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+.controller('stateIntroCtrl', function($rootScope, $scope, $state, $http, $famous, $timeline, stateTransitions, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -11,17 +11,23 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.gravity = scrollGravity.timelines;
-  $scope.grav = new Transitionable(50);
+  $scope.gravity = {
+    translate: $timeline([
+      [0, [0, 0, -100]],
+      [0.5, [0, 0, 0]],
+      [1, [0, 0, 100]],
+    ]),
+    opacity: $timeline([
+      [0, 0, Easing.inQuad],
+      [0.5, 1, Easing.outQuad],
+      [1, 0],
+    ])
+  };
+
 
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    scrollGravity.setState({
-      grav: $scope.grav,
-      startPosition: window.pageYOffset
-    });
-
     stateTransitions.enter(t, function() {
       // In the callback after enter animation is complete, animate the
       // down arrow

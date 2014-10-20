@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state2Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, $interval, scrollGravity, $media) {
+.controller('state2Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, $interval, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -16,17 +16,22 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.gravity = scrollGravity.timelines;
-  $scope.grav = new Transitionable(50);
+  $scope.gravity = {
+    translate: $timeline([
+      [2, [0, 0, -100]],
+      [2.5, [0, 0, 0]],
+      [3, [0, 0, 100]],
+    ]),
+    opacity: $timeline([
+      [2, 0, Easing.inQuad],
+      [2.5, 1, Easing.outQuad],
+      [3, 0],
+    ])
+  };
 
 /*--------------------------------------------------------------*/
 
   $scope.enter = function($done) {
-    scrollGravity.setState({
-      grav: $scope.grav,
-      startPosition: window.pageYOffset
-    });
-
     stateTransitions.enter(t, function() {
       var text = 'Angular'.split('');
 

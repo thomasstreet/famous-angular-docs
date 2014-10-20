@@ -1,16 +1,22 @@
 angular.module('famous-angular')
 
-.controller('stateEndCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity) {
-
+.controller('stateEndCtrl', function($scope, $famous, $timeline) {
+  var Easing = $famous['famous/transitions/Easing'];
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
-  $scope.gravity = scrollGravity.timelines;
+/*--------------------------------------------------------------*/
 
-  $scope.grav = new Transitionable(50);
-
-  scrollGravity.setState({
-    grav: $scope.grav,
-    startPosition: window.pageYOffset
-  });
+  $scope.gravity = {
+    translate: $timeline([
+      [6, [0, 0, -100]],
+      [6.5, [0, 0, 0]],
+      [7, [0, 0, 100]],
+    ]),
+    opacity: $timeline([
+      [6, 0, Easing.inQuad],
+      [6.5, 1, Easing.outQuad],
+      [7, 0],
+    ])
+  };
 
 });

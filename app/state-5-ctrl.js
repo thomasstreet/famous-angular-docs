@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state5Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, scrollGravity, $media) {
+.controller('state5Ctrl', function($rootScope, $scope, $state, $famous, $timeline, stateTransitions, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -11,8 +11,18 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  $scope.grav = new Transitionable(50);
-  $scope.gravity = scrollGravity.timelines;
+  $scope.gravity = {
+    translate: $timeline([
+      [5, [0, 0, -100]],
+      [5.5, [0, 0, 0]],
+      [6, [0, 0, 100]],
+    ]),
+    opacity: $timeline([
+      [5, 0, Easing.inQuad],
+      [5.5, 1, Easing.outQuad],
+      [6, 0],
+    ])
+  };
 
 /*--------------------------------------------------------------*/
 
@@ -24,11 +34,6 @@ angular.module('famous-angular')
       $scope.showHeroBlock = true;
       $scope.$digest();
     }, 500);
-
-    scrollGravity.setState({
-      grav: $scope.grav,
-      startPosition: window.pageYOffset
-    });
 
     stateTransitions.enter(t, function() {
       $done();
