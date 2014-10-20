@@ -6,8 +6,11 @@ angular.module('famous-angular')
 
   var progressTimeline = new Transitionable(0);
   $rootScope.progressTimeline = progressTimeline;
+
   var gravityTimeline = new Transitionable(0);
   $rootScope.gravityTimeline = gravityTimeline;
+
+  var initialPageLoad = true;
 
   var gravityTimeout;
 
@@ -19,12 +22,17 @@ angular.module('famous-angular')
 
     var indexMidpoint = $state.current.data.index + 0.5;
     progressTimeline.set(indexMidpoint, {duration: 500});
-    gravityTimeline.set(indexMidpoint, { duration: 500 });
+
+    gravityTimeline.halt();
+    gravityTimeline.delay(initialPageLoad ? 0 : 500);
+    gravityTimeline.set(indexMidpoint, {duration: 0});
+
+    if (initialPageLoad) initialPageLoad = false;
   });
 
 /*--------------------------------------------------------------*/
 
-  var WAIT_BEFORE_NEXT_STATE_CHANGE = 800;
+  var DISABLE_EVENTS_MS = 1200;
 
   var preventStateChange;
 
@@ -64,7 +72,7 @@ angular.module('famous-angular')
       preventStateChange = true;
       setTimeout(function() {
         preventStateChange = false;
-      }, WAIT_BEFORE_NEXT_STATE_CHANGE);
+      }, DISABLE_EVENTS_MS);
     }
 
   });

@@ -37,7 +37,9 @@ angular.module('famous-angular')
   };
 
   $scope.leave = function($done) {
-    stateTransitions.leave(t, $done);
+    stateTransitions.leave(t, function() {
+      $done();
+    });
   };
 
   $scope.entireView = {

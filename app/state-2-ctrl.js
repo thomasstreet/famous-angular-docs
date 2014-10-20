@@ -56,7 +56,9 @@ angular.module('famous-angular')
     if (animationInterval) {
       $interval.cancel(animationInterval);
     }
-    stateTransitions.leave(t, $done);
+    stateTransitions.leave(t, function() {
+      $done();
+    });
   };
 
   var animationInterval;
