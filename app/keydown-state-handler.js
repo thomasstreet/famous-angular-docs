@@ -2,29 +2,38 @@ angular.module('famous-angular')
 
 .run(function($state) {
 
+  var FORCE_THRESHOLD = 50;
+  var WAIT_BEFORE_NEXT_STATE_CHANGE = 800;
+
   var preventStateChange;
+
   $(window).on('mousewheel', function(e) {
-    console.log(preventStateChange);
     if (preventStateChange) return;
 
-    // If scrolling upwards
-    if (e.deltaY <= 50) {
-      goToStateWithIndex($state.current.data.index + 1);
+    // If scrolling upwards with enough force, go back a state
+    if (e.deltaY >= FORCE_THRESHOLD) {
+      goToStateWithIndex($state.current.data.index - 1);
+
       preventStateChange = true;
       setTimeout(function() {
         preventStateChange = false;
-      }, 1000);
+      }, WAIT_BEFORE_NEXT_STATE_CHANGE);
     }
 
-    // If scrolling downwards
-    if (e.deltaY >= -50) {
-      goToStateWithIndex($state.current.data.index - 1);
+    // If scrolling downwards with enough force, go forward a state
+    if (e.deltaY <= -FORCE_THRESHOLD) {
+      goToStateWithIndex($state.current.data.index + 1);
+
       preventStateChange = true;
       setTimeout(function() {
         preventStateChange = false;
-      }, 1000);
+      }, WAIT_BEFORE_NEXT_STATE_CHANGE);
     }
   });
+
+
+
+
 
   window.addEventListener('keydown', function(e) {
     var key = e.keyCode;
