@@ -1,6 +1,11 @@
 angular.module('famous-angular')
 
 .factory('$scroll', function($rootScope) {
+
+  $(window).on('mousewheel', function(event) {
+      console.log(event.deltaX, event.deltaY);
+  });
+
   /* Custom events to listen for:
 
     $rootScope.$on('fa-scrollend', function() {
@@ -23,16 +28,14 @@ angular.module('famous-angular')
   var scrollendTimeout;
 
   $scrollContainer.bind('scroll', function() {
+    // If there isn't a pending scrollend timeout, this is a fresh scroll session
+    if (!scrollendTimeout) $rootScope.$emit('fa-scrollstart');
 
     // If a scrollendTimeout exists, this scroll event is in the middle 
     // of a scroll session 
     if (scrollendTimeout) {
       clearTimeout(scrollendTimeout);
       scrollendTimeout = null;
-
-    // If there isn't a pending scrollend timeout, this is a fresh scroll session
-    } else {
-      $rootScope.$emit('fa-scrollstart');
     }
 
     $rootScope.$emit('fa-scroll');

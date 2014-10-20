@@ -30,7 +30,6 @@ angular.module('famous-angular')
     if (!$state.current.data) return;
 
     var t = getTimelineFromScroll();
-    console.log(t);
 
     var currentStateIndex = $state.current.data.index;
     var reachedStateIndex = stateIndex(determineState(t));
@@ -86,11 +85,9 @@ angular.module('famous-angular')
         : -maxAllowableDistancePerScroll;
       var scaled = scaleScroll(start.scrollPosition + delta);
       var rounded = Math.round(scaled / 50) * 50;
-      console.log('rounded', rounded);
       return rounded;
     }
 
-    console.log('rounded', scaleScroll($scroll.getPosition()));
     return scaleScroll($scroll.getPosition());
   }
 
