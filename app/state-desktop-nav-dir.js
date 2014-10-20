@@ -55,7 +55,7 @@ angular.module('famous-angular')
 /*--------------------------------------------------------------*/
 
   // Code for the blue progress dots below the nav
-  $scope.scrollProgressDots = {
+  $scope.progressDots = {
     dot1: {
       translate: $timeline([
         [0.5, [-160, 0, 0], Easing.inQuart],

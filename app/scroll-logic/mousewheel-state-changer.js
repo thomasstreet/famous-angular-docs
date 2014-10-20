@@ -3,13 +3,13 @@ angular.module('famous-angular')
 .run(function($rootScope, $famous, $state, stateUtils) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
-  var scrollProgress = new Transitionable(0);
-  $rootScope.scrollProgress = scrollProgress;
+  var progressTimeline = new Transitionable(0);
+  $rootScope.progressTimeline = progressTimeline;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-      scrollProgress.halt();
+      progressTimeline.halt();
       var newIndex = $state.current.data.index;
-      scrollProgress.set((newIndex) + 0.5, {duration: 500});
+      progressTimeline.set((newIndex) + 0.5, {duration: 500});
   });
 
 /*--------------------------------------------------------------*/
@@ -24,10 +24,10 @@ angular.module('famous-angular')
 
     e.deltaY = correctDeltaY(e.deltaY);
 
-    var newProgressValue = scrollProgress.get() + e.deltaY;
+    var newProgressValue = progressTimeline.get() + e.deltaY;
 
-    scrollProgress.halt();
-    scrollProgress.set(newProgressValue, { duration: 0 });
+    progressTimeline.halt();
+    progressTimeline.set(newProgressValue, { duration: 0 });
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(e.deltaY); 

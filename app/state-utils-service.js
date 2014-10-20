@@ -2,10 +2,6 @@ angular.module('famous-angular')
 
 .factory('stateUtils', function($rootScope, $state, $famous, $scroll) {
 
-  var Transitionable = $famous['famous/transitions/Transitionable'];
-
-  var scrollProgress = new Transitionable(0);
-
 /*--------------------------------------------------------------*/
 
   var RANGE_PER_STATE = 100;
@@ -65,9 +61,6 @@ angular.module('famous-angular')
     rangePerState: rangePerState,
     stateCount: stateCount,
     scrollRange: scrollRange,
-    scrollProgress: function() {
-      return scrollProgress;
-    },
     goToStateWithIndex: goToStateWithIndex,
     getStateByIndex: getStateByIndex
   };
