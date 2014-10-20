@@ -54,12 +54,16 @@ angular.module('famous-angular')
   });
 
   $(window).on('touchmove', function(e) {
+    // If the target is an HTML Input Element (e.g. an input range slider),
+    // don't adjust timelines
+    if (/Input/.test(e.target.toString())) return;
+
     delta = startY - e.originalEvent.touches[0].pageY;
 
     var deltaY = $timeline([
-      [-400, -0.4],
+      [-500, -0.5],
       [0, 0],
-      [400, 0.4]
+      [500, 0.5]
     ])(delta);
 
     adjustTimelines(deltaY);
