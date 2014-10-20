@@ -47,6 +47,21 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  $(window).on('touchstart', function() {
+    console.log('touchstart');
+  });
+
+  $(window).on('touchmove', function() {
+    console.log('touchmove');
+  });
+
+  $(window).on('touchend', function() {
+    console.log('touchend');
+  });
+
+
+/*--------------------------------------------------------------*/
+
   var preventStateChange;
   var DISABLE_EVENTS_MS = 1000;
 
