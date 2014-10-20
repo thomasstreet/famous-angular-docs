@@ -3,7 +3,7 @@ angular.module('famous-angular')
 .factory('$scroll', function($rootScope) {
 
   $(window).on('mousewheel', function(event) {
-      console.log(event.deltaX, event.deltaY);
+      //console.log(event.deltaX, event.deltaY);
   });
 
   /* Custom events to listen for:
