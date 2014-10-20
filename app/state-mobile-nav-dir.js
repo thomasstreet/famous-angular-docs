@@ -83,9 +83,9 @@ angular.module('famous-angular')
       if (gridModeTran.get()) return 0;
 
       return $timeline([
-        [$index + 0.5, -Math.PI],
+        [$index + 0.8, -Math.PI],
         [$index + 1.5, 0],
-        [$index + 2.5, Math.PI]
+        [$index + 2.2, Math.PI]
       ])(timeValue);
     },
     isCurrentState: function(state) {

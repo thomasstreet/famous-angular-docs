@@ -55,11 +55,17 @@ angular.module('famous-angular')
 
   $(window).on('touchmove', function(e) {
     delta = startY - e.originalEvent.touches[0].pageY;
+    console.log(delta);
+
+    //if (Math.abs(delta) < 35) {
+      //return;
+    //}
+
     var deltaY = delta / 100;
     if (deltaY > 0) {
-      deltaY = 0.07;
+      deltaY = 0.03;
     } else {
-      deltaY = -0.07;
+      deltaY = -0.03;
     }
     adjustTimelines(deltaY);
   });
@@ -133,7 +139,8 @@ angular.module('famous-angular')
   function traveledFarEnoughForStateChange(newProgressValue) {
     var progressValueStartingPoint = ($state.current.data.index + 0.5);
     var delta = Math.abs(newProgressValue - progressValueStartingPoint);
-    return delta >= 0.7;
+    var threshold = $rootScope.isMobile() ? 0.4 : 1;
+    return delta >= threshold;
   }
 
 

@@ -9,9 +9,10 @@ fa-modifier(fa-translate='[0, 0, 10]')
   fa-container-surface(fa-options='containerSurfaceOptions')
     fa-modifier(
       fa-align='[0.5, 0]'
+      fa-translate='[0, -20, 0]'
     )
       fa-modifier(
-        fa-translate='[0, 25, 0]'
+        fa-translate='[0, 45, 0]'
         fa-origin='[0.5, 0]'
         fa-opacity='gridModeT.get()'
       )
@@ -26,7 +27,7 @@ fa-modifier(fa-translate='[0, 0, 10]')
       fa-modifier(
         ng-repeat='item in menuItems'
         fa-origin='[0.5, 0]'
-        fa-translate='[0, 45, 1]'
+        fa-translate='[0, 65, 1]'
         fa-rotate-x='tile.rotateX($index, progressTimeline.get())'
       )
         fa-modifier(
