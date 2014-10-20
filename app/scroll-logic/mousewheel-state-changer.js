@@ -23,6 +23,9 @@ angular.module('famous-angular')
     var indexMidpoint = $state.current.data.index + 0.5;
     progressTimeline.set(indexMidpoint, {duration: 500});
 
+    // Wait 200 ms to give Angular time to compile before animating.
+    // Otherwise, trying to animate during compilation will cause dropped
+    // frames
     gravityTimeline.halt();
     gravityTimeline.delay(initialPageLoad ? 0 : 200);
     gravityTimeline.set(indexMidpoint, {duration: 500});
@@ -32,25 +35,29 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  var DISABLE_EVENTS_MS = 1000;
-
-  var preventStateChange;
-
   $(window).on('mousewheel', {
     mousewheel: {
       debounce: true,
       throttle: true
     }
   }, function(e) {
-
-    if (preventStateChange) return;
-
     e.deltaY = correctDeltaY(e.deltaY);
+    adjustTimelines(e.deltaY);
+  });
+
+/*--------------------------------------------------------------*/
+
+  var preventStateChange;
+  var DISABLE_EVENTS_MS = 1000;
+
+  function adjustTimelines(deltaY) {
+    if (preventStateChange) return;
 
     var startingPoint = $state.current.data.index + 0.5;
 
+    // Cap the newProgerssValue
     // If state index is 3, keep the new progress value between [2.5 and 4.5];
-    var newProgressValue = progressTimeline.get() + e.deltaY;
+    var newProgressValue = progressTimeline.get() + deltaY;
     newProgressValue = Math.max(startingPoint - 1, newProgressValue);
     newProgressValue = Math.min(startingPoint + 1, newProgressValue);
 
@@ -74,15 +81,15 @@ angular.module('famous-angular')
     }, 300);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
-      changeState(e.deltaY); 
+      changeState(deltaY); 
 
       preventStateChange = true;
       setTimeout(function() {
         preventStateChange = false;
       }, DISABLE_EVENTS_MS);
     }
+  }
 
-  });
 
 
   function correctDeltaY(deltaY) {
@@ -95,7 +102,7 @@ angular.module('famous-angular')
     // appropriately
     deltaY = deltaY / 100;
 
-    var MAXIMUM_SCROLL_DISTANCE = 0.02;
+    var MAXIMUM_SCROLL_DISTANCE = 0.025;
     // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
     deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
     deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
