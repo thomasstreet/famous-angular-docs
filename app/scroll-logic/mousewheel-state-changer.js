@@ -12,11 +12,14 @@ angular.module('famous-angular')
   var gravityTimeout;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-      if (gravityTimeout) clearTimeout(gravityTimeout);
+    if (gravityTimeout) {
+      clearTimeout(gravityTimeout);
+      gravityTimeout = null;
+    }
 
-      var indexMidpoint = $state.current.data.index + 0.5;
-      progressTimeline.set(indexMidpoint, {duration: 500});
-      gravityTimeline.set(indexMidpoint, { duration: 0 });
+    var indexMidpoint = $state.current.data.index + 0.5;
+    progressTimeline.set(indexMidpoint, {duration: 500});
+    gravityTimeline.set(indexMidpoint, { duration: 500 });
   });
 
 /*--------------------------------------------------------------*/
@@ -25,7 +28,13 @@ angular.module('famous-angular')
 
   var preventStateChange;
 
-  $(window).bind('mousewheel', function(e) {
+  $(window).on('mousewheel', {
+    mousewheel: {
+      debounce: true,
+      throttle: true
+    }
+  }, function(e) {
+
     if (preventStateChange) return;
 
     e.deltaY = correctDeltaY(e.deltaY);
@@ -36,13 +45,18 @@ angular.module('famous-angular')
     progressTimeline.set(newProgressValue, { duration: 0 });
     gravityTimeline.set(newProgressValue, { duration: 0 });
 
-    if (gravityTimeout) clearTimeout(gravityTimeout);
+    if (gravityTimeout) {
+      clearTimeout(gravityTimeout);
+      gravityTimeout = null;
+    }
 
     gravityTimeout = setTimeout(function() {
       var startingPoint = $state.current.data.index + 0.5;
+      progressTimeline.halt();
       progressTimeline.set(startingPoint, { duration: 500 });
+      gravityTimeline.halt();
       gravityTimeline.set(startingPoint, { duration: 1500, curve: Easing.outElastic });
-    }, 10);
+    }, 300);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(e.deltaY); 
