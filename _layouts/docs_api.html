@@ -5,6 +5,7 @@
 
     <title>{{page.title}}{% if page.header_sub_title %} - {{ page.header_sub_title}}{% endif %} - Angular Famous</title>
     {% include head_includes.html %}
+    <script src="{{relative}}bower_components/angular/angular.min.js"></script>
   </head>
 
   <body class="docs docs-page docs-api">
@@ -32,10 +33,8 @@
     </div>
 
     {% include base_scripts.html %}
-    <script src="{{relative}}bower_components/underscore/underscore.js"></script>
-    <script src="{{relative}}bower_components/famous/famous-global.min.js"></script>
-    <script src="{{relative}}bower_components/angular/angular.min.js"></script>
+    <script src="{{relative}}bower_components/famous/dist/famous-global.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.min.js"></script>
-    <script src="{{relative}}js/main.min.js"></script>
+    <script src="{{relative}}build/main.min.js"></script>
   </body>
 </html>
