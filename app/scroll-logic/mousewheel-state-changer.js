@@ -61,9 +61,9 @@ angular.module('famous-angular')
     delta = startY - e.originalEvent.touches[0].pageY;
 
     var deltaY = $timeline([
-      [-500, -0.5],
+      [-600, -1.4],
       [0, 0],
-      [500, 0.5]
+      [600, 1.4]
     ])(delta);
 
     adjustTimelines(deltaY);
@@ -138,7 +138,7 @@ angular.module('famous-angular')
   function traveledFarEnoughForStateChange(newProgressValue) {
     var progressValueStartingPoint = ($state.current.data.index + 0.5);
     var delta = Math.abs(newProgressValue - progressValueStartingPoint);
-    var threshold = $rootScope.isMobile() ? 0.4 : 1;
+    var threshold = 1;
     return delta >= threshold;
   }
 
