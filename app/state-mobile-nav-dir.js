@@ -9,7 +9,7 @@ angular.module('famous-angular')
   };
 })
 
-.controller('MobileNavCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateScrollUtils, $media) {
+.controller('MobileNavCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateUtils, $media) {
   var Transitionable = $famous['famous/transitions/Transitionable'];
   var Easing = $famous['famous/transitions/Easing'];
 
@@ -58,8 +58,8 @@ angular.module('famous-angular')
   });
 
   function getTimelineFromScroll() {
-    var scrollMax = stateScrollUtils.scrollMax();
-    var stateCount = stateScrollUtils.stateCount();
+    var scrollMax = stateUtils.scrollMax();
+    var stateCount = stateUtils.stateCount();
     var halfOfScrollRange = scrollMax / stateCount / 2;
 
     var scaleScroll = $timeline([

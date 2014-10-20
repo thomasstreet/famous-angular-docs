@@ -9,7 +9,7 @@ angular.module('famous-angular')
   };
 })
 
-.controller('DesktopNavCtrl', function($rootScope, $scope, $famous, $timeline, stateScrollUtils, $media) {
+.controller('DesktopNavCtrl', function($rootScope, $scope, $famous, $timeline, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -17,7 +17,6 @@ angular.module('famous-angular')
 
   var navTimeline = new Transitionable(0);
   $scope.navTimeline = navTimeline;
-  $scope.scrollProgress = stateScrollUtils.scrollProgress();
 
 /*--------------------------------------------------------------*/
 

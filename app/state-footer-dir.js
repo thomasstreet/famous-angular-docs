@@ -9,7 +9,7 @@ angular.module('famous-angular')
   }
 })
 
-.controller('FooterCtrl', function($rootScope, $scope, $state, $famous, $timeline, stateScrollUtils, $media) {
+.controller('FooterCtrl', function($rootScope, $scope, $state, $famous, $timeline, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];

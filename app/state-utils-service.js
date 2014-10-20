@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.factory('stateScrollUtils', function($rootScope, $state, $famous, $scroll) {
+.factory('stateUtils', function($rootScope, $state, $famous, $scroll) {
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
@@ -36,6 +36,27 @@ angular.module('famous-angular')
     return $('#scroll-container').scrollTop();
   }
 
+  function goToStateWithIndex(desiredIndex) {
+    var desiredState = getStateByIndex(desiredIndex);
+
+    if (desiredState) {
+      $state.go(desiredState.name);
+    }
+  }
+
+  function getStateByIndex(index) {
+    var stateList = $state.get();
+    for (var i = 0; i < stateList.length; i++) {
+      var state = stateList[i];
+      if (state.data && state.data.index === index) {
+        return state;
+      }
+    }
+    return null;
+  }
+
+
+
 /*--------------------------------------------------------------*/
 
   return {
@@ -46,7 +67,9 @@ angular.module('famous-angular')
     scrollRange: scrollRange,
     scrollProgress: function() {
       return scrollProgress;
-    }
+    },
+    goToStateWithIndex: goToStateWithIndex,
+    getStateByIndex: getStateByIndex
   };
 
 });

@@ -1,0 +1,6 @@
+rename scrollProgress timeline to progressTimeline
+refactor scrollProgressDots timelines to range of 0-7
+use unified progressTimeline for both gravity and progress dots
+  Set the gravity as piecewise functions of the progressTimeline, for each individual controller
+
+  Don't change state on certain veloctiy: change it based upon the timeline
