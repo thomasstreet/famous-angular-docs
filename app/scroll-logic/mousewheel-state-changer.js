@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.run(function($rootScope, $famous, $state, stateUtils) {
+.run(function($rootScope, $famous, $state, stateUtils, $timeline) {
   var Easing = $famous['famous/transitions/Easing'];
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
@@ -55,18 +55,13 @@ angular.module('famous-angular')
 
   $(window).on('touchmove', function(e) {
     delta = startY - e.originalEvent.touches[0].pageY;
-    console.log(delta);
 
-    //if (Math.abs(delta) < 35) {
-      //return;
-    //}
+    var deltaY = $timeline([
+      [-400, -0.4],
+      [0, 0],
+      [400, 0.4]
+    ])(delta);
 
-    var deltaY = delta / 100;
-    if (deltaY > 0) {
-      deltaY = 0.03;
-    } else {
-      deltaY = -0.03;
-    }
     adjustTimelines(deltaY);
   });
 
