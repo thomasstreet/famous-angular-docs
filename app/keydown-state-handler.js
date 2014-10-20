@@ -2,6 +2,30 @@ angular.module('famous-angular')
 
 .run(function($state) {
 
+  var preventStateChange;
+  $(window).on('mousewheel', function(e) {
+    console.log(preventStateChange);
+    if (preventStateChange) return;
+
+    // If scrolling upwards
+    if (e.deltaY <= 50) {
+      goToStateWithIndex($state.current.data.index + 1);
+      preventStateChange = true;
+      setTimeout(function() {
+        preventStateChange = false;
+      }, 1000);
+    }
+
+    // If scrolling downwards
+    if (e.deltaY >= -50) {
+      goToStateWithIndex($state.current.data.index - 1);
+      preventStateChange = true;
+      setTimeout(function() {
+        preventStateChange = false;
+      }, 1000);
+    }
+  });
+
   window.addEventListener('keydown', function(e) {
     var key = e.keyCode;
 

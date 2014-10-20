@@ -1,10 +1,6 @@
 angular.module('famous-angular')
 
-.factory('$scroll', function($rootScope) {
-
-  $(window).on('mousewheel', function(event) {
-      //console.log(event.deltaX, event.deltaY);
-  });
+.factory('$scroll', function($rootScope, $state) {
 
   /* Custom events to listen for:
 
