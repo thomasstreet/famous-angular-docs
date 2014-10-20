@@ -27,7 +27,7 @@ fa-modifier(fa-translate='[0, 0, 10]')
         ng-repeat='item in menuItems'
         fa-origin='[0.5, 0]'
         fa-translate='[0, 45, 1]'
-        fa-rotate-x='tile.rotateX($index, t.get())'
+        fa-rotate-x='tile.rotateX($index, progressTimeline.get())'
       )
         fa-modifier(
           fa-translate='gridMode.translate($index, gridModeT.get())'

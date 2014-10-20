@@ -47,33 +47,6 @@ angular.module('famous-angular')
     }
   ];
 
-/*--------------------------------------------------------------*/
-
-  $scope.t = new Transitionable(0);
-
-  $(window).bind('scroll', function() {
-    $scope.t.halt();
-    var t = getTimelineFromScroll();
-    $scope.t.set(t, {duration: 0});
-  });
-
-  function getTimelineFromScroll() {
-    var scrollMax = stateUtils.scrollMax();
-    var stateCount = stateUtils.stateCount();
-    var halfOfScrollRange = scrollMax / stateCount / 2;
-
-    var scaleScroll = $timeline([
-      [halfOfScrollRange, 0],
-      [scrollMax - halfOfScrollRange, 6]
-    ]);
-
-    var scrollPosition = window.pageYOffset;
-    return scaleScroll(scrollPosition);
-  }
-
-  window.setPointer = function(num) {
-    $scope.t.set(num, {duration: 1600, curve: Easing.outElastic});
-  };
 
 /*--------------------------------------------------------------*/
 
