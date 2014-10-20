@@ -18,8 +18,10 @@ angular.module('famous-angular')
       [1, [0, 0, 100]],
     ]),
     opacity: $timeline([
-      [0, 0, Easing.inQuad],
-      [0.5, 1, Easing.outQuad],
+      [0, 0],
+      [0.3, 1],
+      [0.5, 1],
+      [0.7, 1],
       [1, 0],
     ])
   };

@@ -24,15 +24,15 @@ angular.module('famous-angular')
     progressTimeline.set(indexMidpoint, {duration: 500});
 
     gravityTimeline.halt();
-    gravityTimeline.delay(initialPageLoad ? 0 : 500);
-    gravityTimeline.set(indexMidpoint, {duration: 0});
+    gravityTimeline.delay(initialPageLoad ? 0 : 200);
+    gravityTimeline.set(indexMidpoint, {duration: 500});
 
     if (initialPageLoad) initialPageLoad = false;
   });
 
 /*--------------------------------------------------------------*/
 
-  var DISABLE_EVENTS_MS = 1200;
+  var DISABLE_EVENTS_MS = 1000;
 
   var preventStateChange;
 
@@ -51,6 +51,7 @@ angular.module('famous-angular')
 
     progressTimeline.halt();
     progressTimeline.set(newProgressValue, { duration: 0 });
+    gravityTimeline.halt();
     gravityTimeline.set(newProgressValue, { duration: 0 });
 
     if (gravityTimeout) {
@@ -61,9 +62,11 @@ angular.module('famous-angular')
     gravityTimeout = setTimeout(function() {
       var startingPoint = $state.current.data.index + 0.5;
       progressTimeline.halt();
-      progressTimeline.set(startingPoint, { duration: 500 });
+      progressTimeline.set(startingPoint, { duration: 200 });
       gravityTimeline.halt();
       gravityTimeline.set(startingPoint, { duration: 1500, curve: Easing.outElastic });
+      clearTimeout(gravityTimeout);
+      gravityTimeout = null;
     }, 300);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
@@ -100,7 +103,7 @@ angular.module('famous-angular')
   function traveledFarEnoughForStateChange(newProgressValue) {
     var progressValueStartingPoint = ($state.current.data.index + 0.5);
     var delta = Math.abs(newProgressValue - progressValueStartingPoint);
-    return delta > 0.5;
+    return delta >= 1;
   }
 
 
