@@ -47,7 +47,12 @@ angular.module('famous-angular')
 
     e.deltaY = correctDeltaY(e.deltaY);
 
+    var startingPoint = $state.current.data.index + 0.5;
+
+    // If state index is 3, keep the new progress value between [2.5 and 4.5];
     var newProgressValue = progressTimeline.get() + e.deltaY;
+    newProgressValue = Math.max(startingPoint - 1, newProgressValue);
+    newProgressValue = Math.min(startingPoint + 1, newProgressValue);
 
     progressTimeline.halt();
     progressTimeline.set(newProgressValue, { duration: 0 });
@@ -60,7 +65,6 @@ angular.module('famous-angular')
     }
 
     gravityTimeout = setTimeout(function() {
-      var startingPoint = $state.current.data.index + 0.5;
       progressTimeline.halt();
       progressTimeline.set(startingPoint, { duration: 200 });
       gravityTimeline.halt();
@@ -91,7 +95,7 @@ angular.module('famous-angular')
     // appropriately
     deltaY = deltaY / 100;
 
-    var MAXIMUM_SCROLL_DISTANCE = 0.03;
+    var MAXIMUM_SCROLL_DISTANCE = 0.02;
     // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
     deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
     deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
