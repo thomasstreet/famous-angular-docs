@@ -1,25 +1,31 @@
 angular.module('famous-angular')
 
 .run(function($rootScope, $famous, $state, stateUtils) {
+  var Easing = $famous['famous/transitions/Easing'];
   var Transitionable = $famous['famous/transitions/Transitionable'];
 
   var progressTimeline = new Transitionable(0);
   $rootScope.progressTimeline = progressTimeline;
+  var gravityTimeline = new Transitionable(0);
+  $rootScope.gravityTimeline = gravityTimeline;
+
+  var gravityTimeout;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-      progressTimeline.halt();
-      var newIndex = $state.current.data.index;
-      progressTimeline.set((newIndex) + 0.5, {duration: 500});
+      if (gravityTimeout) clearTimeout(gravityTimeout);
+
+      var indexMidpoint = $state.current.data.index + 0.5;
+      progressTimeline.set(indexMidpoint, {duration: 500});
+      gravityTimeline.set(indexMidpoint, { duration: 0 });
   });
 
 /*--------------------------------------------------------------*/
 
   var WAIT_BEFORE_NEXT_STATE_CHANGE = 800;
-  var MAXIMUM_SCROLL_DISTANCE = 0.03;
 
   var preventStateChange;
 
-  $(window).on('mousewheel', function(e) {
+  $(window).bind('mousewheel', function(e) {
     if (preventStateChange) return;
 
     e.deltaY = correctDeltaY(e.deltaY);
@@ -28,6 +34,15 @@ angular.module('famous-angular')
 
     progressTimeline.halt();
     progressTimeline.set(newProgressValue, { duration: 0 });
+    gravityTimeline.set(newProgressValue, { duration: 0 });
+
+    if (gravityTimeout) clearTimeout(gravityTimeout);
+
+    gravityTimeout = setTimeout(function() {
+      var startingPoint = $state.current.data.index + 0.5;
+      progressTimeline.set(startingPoint, { duration: 500 });
+      gravityTimeline.set(startingPoint, { duration: 1500, curve: Easing.outElastic });
+    }, 10);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(e.deltaY); 
@@ -51,6 +66,7 @@ angular.module('famous-angular')
     // appropriately
     deltaY = deltaY / 100;
 
+    var MAXIMUM_SCROLL_DISTANCE = 0.03;
     // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
     deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
     deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
