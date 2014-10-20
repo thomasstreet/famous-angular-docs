@@ -58,53 +58,53 @@ angular.module('famous-angular')
   $scope.scrollProgressDots = {
     dot1: {
       translate: $timeline([
-        [50, [-160, 0, 0], Easing.inQuart],
-        [150, [0, 0, 0], Easing.inQuart],
-        [250, [170, 0, 0], Easing.inQuart],
-        [350, [375, 0, 0], Easing.inQuart],
-        [450, [575, 0, 0], Easing.inQuart],
-        [550, [785, 0, 0], Easing.inQuart],
-        [650, [985, 0, 0], Easing.inQuart],
+        [0.5, [-160, 0, 0], Easing.inQuart],
+        [1.5, [0, 0, 0], Easing.inQuart],
+        [2.5, [170, 0, 0], Easing.inQuart],
+        [3.5, [375, 0, 0], Easing.inQuart],
+        [4.5, [575, 0, 0], Easing.inQuart],
+        [5.5, [785, 0, 0], Easing.inQuart],
+        [6.5, [985, 0, 0], Easing.inQuart],
       ]),
       opacity: $timeline([
-        [50, 0, Easing.inQuad],
-        [150, 1],
-        [550, 1, Easing.inQuad],
-        [650, 0]
+        [0.5, 0, Easing.inQuad],
+        [1.5, 1],
+        [5.5, 1, Easing.inQuad],
+        [6.5, 0]
       ])
     },
     dot2: {
       translate: $timeline([
-        [50, [-150, 0, 0], Easing.inCubic],
-        [150, [10, 0, 0], Easing.inCubic],
-        [250, [180, 0, 0], Easing.inCubic],
-        [350, [385, 0, 0], Easing.inCubic],
-        [450, [585, 0, 0], Easing.inCubic],
-        [550, [795, 0, 0], Easing.inCubic],
-        [650, [995, 0, 0], Easing.inCubic],
+        [0.5, [-150, 0, 0], Easing.inCubic],
+        [1.5, [10, 0, 0], Easing.inCubic],
+        [2.5, [180, 0, 0], Easing.inCubic],
+        [3.5, [385, 0, 0], Easing.inCubic],
+        [4.5, [585, 0, 0], Easing.inCubic],
+        [5.5, [795, 0, 0], Easing.inCubic],
+        [6.5, [995, 0, 0], Easing.inCubic],
       ]),
       opacity: $timeline([
-        [50, 0, Easing.inQuad],
-        [150, 1],
-        [550, 1, Easing.inQuad],
-        [650, 0]
+        [0.5, 0, Easing.inQuad],
+        [1.5, 1],
+        [5.5, 1, Easing.inQuad],
+        [6.5, 0]
       ])
     },
     dot3: {
       translate: $timeline([
-        [50, [-140, 0, 0], Easing.inQuad],
-        [150, [20, 0, 0], Easing.inQuad],
-        [250, [190, 0, 0], Easing.inQuad],
-        [350, [395, 0, 0], Easing.inQuad],
-        [450, [595, 0, 0], Easing.inQuad],
-        [550, [805, 0, 0], Easing.inQuad],
-        [650, [1005, 0, 0], Easing.inQuad],
+        [0.5, [-140, 0, 0], Easing.inQuad],
+        [1.5, [20, 0, 0], Easing.inQuad],
+        [2.5, [190, 0, 0], Easing.inQuad],
+        [3.5, [395, 0, 0], Easing.inQuad],
+        [4.5, [595, 0, 0], Easing.inQuad],
+        [5.5, [805, 0, 0], Easing.inQuad],
+        [6.5, [1005, 0, 0], Easing.inQuad],
       ]),
       opacity: $timeline([
-        [50, 0, Easing.inQuad],
-        [150, 1],
-        [550, 1, Easing.inQuad],
-        [650, 0]
+        [0.5, 0, Easing.inQuad],
+        [1.5, 1],
+        [5.5, 1, Easing.inQuad],
+        [6.5, 0]
       ])
     }
   };
