@@ -45,6 +45,24 @@ angular.module('famous-angular')
     adjustTimelines(e.deltaY);
   });
 
+  function correctDeltaY(deltaY) {
+    // Normally 'scrolling' down === -e.deltaY.  But when scrolling down,
+    // we want to move the page forward.  Invert the original e.deltaY so that
+    // when talking about moving forward, we can use positive numbers.
+    deltaY = -deltaY;
+
+    // Our ranges for state changes are between [0, 7], so scale e.deltaY
+    // appropriately
+    deltaY = deltaY / 100;
+
+    var MAXIMUM_SCROLL_DISTANCE = 0.025;
+    // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
+    deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
+    deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
+
+    return deltaY;
+  }
+
 /*--------------------------------------------------------------*/
 
   var startY;
@@ -115,24 +133,6 @@ angular.module('famous-angular')
   }
 
 
-
-  function correctDeltaY(deltaY) {
-    // Normally 'scrolling' down === -e.deltaY.  But when scrolling down,
-    // we want to move the page forward.  Invert the original e.deltaY so that
-    // when talking about moving forward, we can use positive numbers.
-    deltaY = -deltaY;
-
-    // Our ranges for state changes are between [0, 7], so scale e.deltaY
-    // appropriately
-    deltaY = deltaY / 100;
-
-    var MAXIMUM_SCROLL_DISTANCE = 0.025;
-    // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
-    deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
-    deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
-
-    return deltaY;
-  }
 
 
   function traveledFarEnoughForStateChange(newProgressValue) {
