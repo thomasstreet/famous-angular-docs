@@ -1,6 +1,6 @@
 angular.module('famous-angular')
 
-.controller('state3Ctrl', function($rootScope, $scope, $state, $interval, $famous, $timeline, stateTransitions, $media) {
+.controller('State3Ctrl', function($rootScope, $scope, $state, $interval, $famous, $timeline, stateTransitions, $media) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
