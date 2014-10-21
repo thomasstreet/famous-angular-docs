@@ -29,6 +29,7 @@
     "gulp-clean": "^0.2.4",
     "gulp-concat": "^2.2.0",
     "gulp-exec": "^2.0.1",
+    "gulp-flatten": "0.0.4",
     "gulp-header": "^1.0.2",
     "gulp-jade": "^0.8.0",
     "gulp-jshint": "^1.5.3",

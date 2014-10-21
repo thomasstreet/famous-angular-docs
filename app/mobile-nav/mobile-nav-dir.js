@@ -5,7 +5,7 @@ angular.module('famous-angular')
     scope: false,
     restrict: 'E',
     controller: 'MobileNavCtrl',
-    templateUrl: 'build/templates/state-mobile-nav.html'
+    templateUrl: 'build/templates/mobile-nav.html'
   };
 })
 

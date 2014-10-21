@@ -5,7 +5,7 @@ angular.module('famous-angular')
     scope: false,
     restrict: 'E',
     controller: 'DesktopNavCtrl',
-    templateUrl: 'build/templates/state-desktop-nav.html'
+    templateUrl: 'build/templates/desktop-nav.html'
   };
 })
 

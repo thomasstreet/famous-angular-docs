@@ -8,6 +8,7 @@ var LIVERELOAD_PORT = 35729;
 
 // Load plugins
 var gulp = require('gulp'),
+  flatten = require('gulp-flatten'),
   jade = require('gulp-jade'),
   autoprefixer = require('gulp-autoprefixer'),
   minifycss = require('gulp-minify-css'),
@@ -75,21 +76,9 @@ gulp.task('build-jekyll', ['site-jade', 'site-styl', 'site-js'], function() {
 
 // Compile .styl for the site submodule
 gulp.task('site-jade', function() {
-  var jaderef = require('gulp-jade/node_modules/jade');
-
-  jaderef.filters.code = function( block ) {
-      return block
-          .replace( /&/g, '&amp;'  )
-          .replace( /</g, '&lt;'   )
-          .replace( />/g, '&gt;'   )
-          .replace( /"/g, '&quot;' )
-          .replace( /#/g, '&#35;'  )
-          //.replace( /\\/g, '\\\\'  )
-          //.replace( /\n/g, '\\n'   );
-  }
-
   return gulp.src(SITE_DIR + "app/**/*.jade")
     .pipe(jade())
+    .pipe(flatten())
     .pipe(gulp.dest(SITE_DIR + "build/templates/"));
 });
 
