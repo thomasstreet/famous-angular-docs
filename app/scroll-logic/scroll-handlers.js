@@ -15,10 +15,7 @@ angular.module('famous-angular')
   var gravityTimeout;
 
   $rootScope.$on('$stateChangeSuccess', function() {
-    if (gravityTimeout) {
-      clearTimeout(gravityTimeout);
-      gravityTimeout = null;
-    }
+    if (gravityTimeout) clearGravityTimeout();
 
     var indexMidpoint = $state.current.data.index + 0.5;
     progressTimeline.set(indexMidpoint, {duration: 500});
@@ -89,50 +86,50 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  var preventStateChange;
+  var haltScrollEvents;
   var DISABLE_EVENTS_MS = 1000;
 
   function adjustTimelines(deltaY) {
-    if (preventStateChange) return;
+    if (haltScrollEvents) return;
 
     var startingPoint = $state.current.data.index + 0.5;
 
-    // Cap the newProgerssValue
-    // If state index is 3, keep the new progress value between [2.5 and 4.5];
-    var newProgressValue = progressTimeline.get() + deltaY;
-    newProgressValue = Math.max(startingPoint - 1, newProgressValue);
-    newProgressValue = Math.min(startingPoint + 1, newProgressValue);
+    var newProgressValue = cappedProgressValue(deltaY, startingPoint);
 
-    progressTimeline.halt();
-    progressTimeline.set(newProgressValue, { duration: 0 });
-    gravityTimeline.halt();
-    gravityTimeline.set(newProgressValue, { duration: 0 });
+    updateTimelines(newProgressValue);
 
-    if (gravityTimeout) {
-      clearTimeout(gravityTimeout);
-      gravityTimeout = null;
-    }
+    // Trigger the gravity effect after the last scroll event has finished
+    if (gravityTimeout) clearGravityTimeout();
 
     gravityTimeout = setTimeout(function() {
-      progressTimeline.halt();
-      progressTimeline.set(startingPoint, { duration: 200 });
-      gravityTimeline.halt();
-      gravityTimeline.set(startingPoint, { duration: 1500, curve: Easing.outElastic });
-      clearTimeout(gravityTimeout);
-      gravityTimeout = null;
+      triggerGravityEffect(startingPoint);
+      clearGravityTimeout();
     }, 300);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(deltaY); 
-
-      preventStateChange = true;
-      setTimeout(function() {
-        preventStateChange = false;
-      }, DISABLE_EVENTS_MS);
+      haltAdditionalScrollEvents();
     }
+
   }
 
 
+  // Cap the newProgerssValue
+  // If state index is 3, keep the new progress value between [2.5 and 4.5];
+  function cappedProgressValue(deltaY, startingPoint) {
+    var newProgressValue = progressTimeline.get() + deltaY;
+    newProgressValue = Math.max(startingPoint - 1, newProgressValue);
+    newProgressValue = Math.min(startingPoint + 1, newProgressValue);
+    return newProgressValue;
+  }
+
+
+  function updateTimelines(newProgressValue) {
+    progressTimeline.halt();
+    progressTimeline.set(newProgressValue, { duration: 0 });
+    gravityTimeline.halt();
+    gravityTimeline.set(newProgressValue, { duration: 0 });
+  }
 
 
   function traveledFarEnoughForStateChange(newProgressValue) {
@@ -143,11 +140,33 @@ angular.module('famous-angular')
   }
 
 
+  function triggerGravityEffect(startingPoint) {
+      progressTimeline.halt();
+      progressTimeline.set(startingPoint, { duration: 200 });
+      gravityTimeline.halt();
+      gravityTimeline.set(startingPoint, { duration: 1500, curve: Easing.outElastic });
+  }
+
+
   function changeState(deltaY) {
     var direction = deltaY > 0 ? 'forward' : 'backwards';
     var indexChange = direction === 'forward' ? 1 : -1;
     var currentStateIndex = $state.current.data.index;
     stateUtils.goToStateWithIndex(currentStateIndex + indexChange);
+  }
+
+
+  function haltAdditionalScrollEvents() {
+    haltScrollEvents = true;
+    setTimeout(function() {
+      haltScrollEvents = false;
+    }, DISABLE_EVENTS_MS);
+  }
+
+
+  function clearGravityTimeout() {
+    clearTimeout(gravityTimeout);
+    gravityTimeout = null;
   }
 
 });
