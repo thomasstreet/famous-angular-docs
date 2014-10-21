@@ -4,5 +4,5 @@ angular.module('faInputExampleApp', ['famous.angular'])
       $scope.myClickHandler = function($event) {
         console.log($event);
         $scope.clicked++;
-      }; 
+      };
   }]);

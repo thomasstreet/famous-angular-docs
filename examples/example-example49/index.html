@@ -17,11 +17,11 @@
 </head>
 <body ng-app="faSurfaceExampleApp">
   <fa-app>
-    <fa-modifier fa-size="[200, 50]">
-      <fa-surface fa-background-color="'orange'" fa-color="'#fff'">
-          This text should be white on an orange background.
-      </fa-surface>
-    </fa-modifier>
+    <fa-modifier fa-size="[960, undefined]">
+       <fa-surface fa-size="[undefined, undefined]">
+         <div ng-include src=" 'helloWorld.html' "></div>
+       </fa-surface>
+     </fa-modifier>
   </fa-app>
 </body>
 </html>

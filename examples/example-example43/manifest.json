@@ -1,6 +1,7 @@
 {
   "name": "example-example43",
   "files": [
-    "index.html"
+    "index.html",
+    "style.css"
   ]
 }

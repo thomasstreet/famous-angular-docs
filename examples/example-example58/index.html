@@ -14,33 +14,25 @@
 
   
 </head>
-<body ng-app="faTouchStartExampleApp">
-  <fa-app ng-controller="TouchStartCtrl">
-
-    <!-- The fa-view receives the touchstart event from the fa-surface, and calls $scope.touchStart, bound to fa-touchstart on the fa-view. -->
-
-    <fa-view fa-touchstart="touchStart($event)" fa-pipe-from="myEvents">
-      <fa-modifier fa-size="[200, 100]">
-        <fa-surface fa-pipe-to="myEvents"
-                    fa-background-color="'orange'">
-          Touch start count: {{touchStartCount}}
-        </fa-surface>
-      </fa-modifier>
-    </fa-view>
+<body ng-app="faTouchMoveExampleApp">
+  <fa-app ng-controller="TouchMoveCtrl">
+    <fa-modifier fa-size="[200, 100]">
+      <fa-surface fa-touchmove="touchMove($event)"
+                  fa-background-color="'red'">
+        Touch move count: {{touchMoveCount}}
+      </fa-surface>
+    </fa-modifier>
   </fa-app>
 
   <script>
-    angular.module('faTouchStartExampleApp', ['famous.angular'])
-      .controller('TouchStartCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faTouchMoveExampleApp', ['famous.angular'])
+      .controller('TouchMoveCtrl', ['$scope', '$famous', function($scope, $famous) {
           
-          var EventHandler = $famous['famous/core/EventHandler'];
-          $scope.myEvents = new EventHandler();
+          $scope.touchMoveCount = 0;
 
-          $scope.touchStartCount = 0;
-          
-          $scope.touchStart = function($event) {
+          $scope.touchMove = function($event) {
             console.log($event);
-            $scope.touchStartCount++;
+            $scope.touchMoveCount++;
           };
 
       }]);

@@ -10,40 +10,18 @@
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="faTapExampleApp">
-  <fa-app ng-controller="TapCtrl">
-
-    <!-- The fa-view receives the tap event from the fa-surface, and calls $scope.tap, which is bound to fa-tap on the fa-view. -->
-
-    <fa-view fa-tap="tap($event)" fa-pipe-from="myEvents">
-      <fa-modifier fa-size="[100, 100]">
-        <fa-surface fa-pipe-to="myEvents"
-                    fa-background-color="'orange'">
-          Tap count: {{tapCount}}
-        </fa-surface>
-      </fa-modifier>
-    </fa-view>
+<body ng-app="faSurfaceExampleApp">
+  <fa-app>
+    <fa-modifier fa-size="[200, 50]">
+      <fa-surface fa-background-color="'orange'" fa-color="'#fff'">
+          This text should be white on an orange background.
+      </fa-surface>
+    </fa-modifier>
   </fa-app>
-
-  <script>
-    angular.module('faTapExampleApp', ['famous.angular'])
-      .controller('TapCtrl', ['$scope', '$famous', function($scope, $famous) {
-          
-          var EventHandler = $famous['famous/core/EventHandler'];
-          $scope.myEvents = new EventHandler();
-
-          $scope.tapCount = 0;
-          
-          $scope.tap = function($event) {
-            console.log($event);
-            $scope.tapCount++;
-          };
-
-      }]);
-  </script>
 </body>
 </html>
