@@ -38,7 +38,7 @@ angular.module('famous-angular')
       state: '4'
     },
     {
-      text: 'No Compromises',
+      text: 'Unification',
       state: '5'
     },
     {
