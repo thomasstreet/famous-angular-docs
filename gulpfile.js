@@ -35,12 +35,12 @@ gulp.task('dev', ['build-jekyll'], function() {
   gulp.watch([
 	      // Because .styl compiles into .css, do not watch .css, else you will
 	      // an infinite loop
-	      'styl/**/*.styl',
-	      'jade/**/*.jade',
 	      '**/*.html',
 	      '**/*.md',
-        // Only watch the js from app/
-	      'app/**/*.js',
+        // Watch CSS / JS libs
+	      'libs/**/*',
+        // Watch all app/ files
+	      'app/**/*',
 	      // Do NOT watch the compile _site directory, else the watch will create
 	      // an infinite loop
 	      '!_site/**',
@@ -88,7 +88,7 @@ gulp.task('site-jade', function() {
           //.replace( /\n/g, '\\n'   );
   }
 
-  return gulp.src(SITE_DIR + "jade/**/*.jade")
+  return gulp.src(SITE_DIR + "app/**/*.jade")
     .pipe(jade())
     .pipe(gulp.dest(SITE_DIR + "build/templates/"));
 });
@@ -98,7 +98,7 @@ gulp.task('site-jade', function() {
 gulp.task('site-styl', function() {
   var stylus = require('gulp-stylus');
 
-  return gulp.src(SITE_DIR + "styl/**/*.styl")
+  return gulp.src(SITE_DIR + "app/**/*.styl")
     .pipe(stylus())
     .pipe(autoprefixer())
     .pipe(minifycss())
