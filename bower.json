@@ -22,6 +22,7 @@
     "lodash": "~2.4.1",
     "octicons": "~2.1.2",
     "famous-angular": "~0.5.0",
-    "jquery-mousewheel": "~3.1.12"
+    "jquery-mousewheel": "~3.1.12",
+    "famous": "~0.3.0"
   }
 }
