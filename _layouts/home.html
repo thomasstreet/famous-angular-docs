@@ -38,7 +38,7 @@
       </fa-app>
     </div>
 
-    {% include base_scripts.html %}
+    <script src="{{relative}}bower_components/jquery/dist/jquery.min.js"></script>
     <script src="{{relative}}bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script>
     <script src="{{relative}}bower_components/lodash/dist/lodash.min.js"></script>
     <script src="{{relative}}libs/js/famous-global-edited.js"></script>
@@ -46,5 +46,6 @@
     <script src="{{relative}}bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="{{relative}}bower_components/famous-angular/dist/famous-angular.min.js"></script>
     <script src="{{relative}}build/main.min.js"></script>
+    {% include mix_panel.html %}
   </body>
 </html>
