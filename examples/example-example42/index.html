@@ -10,42 +10,59 @@
   <script src="https://code.famo.us/famous/global/0.2.2/famous.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="../../bower_components/famous-angular/dist/famous-angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="faScrollViewExampleApp">
-  <fa-app ng-controller="ScrollCtrl">
-    <fa-scroll-view fa-pipe-from="myEventHandler" fa-options="options.myScrollView">
-        <fa-view ng-repeat="view in list">
-          <fa-modifier fa-size="[500, 320]">
-             <fa-surface fa-background-color="view.color"
-                          fa-pipe-to="myEventHandler">
-                {{view.content}}
-             </fa-surface>
+<body ng-app="faPipeExampleApp">
+  <fa-app ng-controller="PipeCtrl">
+    <!-- directional pad view -->
+    <fa-view>
+      <!-- scroll view used as a directional pad input, receives events from mainPipe-->
+      <fa-scroll-view fa-pipe-from="mainPipe">
+        <fa-modifier fa-translate="[0, 0, 15]" fa-size="[300, 50]">
+          <fa-view>
+            <fa-modifier>
+              <!-- mousewheel events will be piped to mainPipe -->
+              <fa-surface fa-background-color="'orange'" fa-pipe-to="mainPipe">
+                <div>Directional pad</div>
+                  <span ng-repeat="input in inputList">
+                    <label>{{input.letter}}</label>
+                    <!-- checkboxes -->
+                    <input type="checkbox"
+                           ng-model="input.model" 
+                           name="scrollPipeTo" 
+                           ng-change="checkBoxChange($index, input.letter, input.model)"
+                           ng-true-value="true"
+                           ng-false-value="false">
+                  </span>
+              </fa-surface>
             </fa-modifier>
+          </fa-view>
+        </fa-modifier>
+      </fa-scroll-view>
+    </fa-view>
+    
+    <!-- view with 3 Scroll Views -->
+    <fa-view>
+      <!-- ng-repeat creating 3 different scroll Views -->
+      <fa-modifier ng-repeat="view in scrollViews"
+                   fa-translate="[100 * $index, 50, 0]">
+        <fa-view>
+          <!-- each Scroll View conditionally receives events from mainPipe or emptyPipe, default is emptyPipe -->
+          <fa-scroll-view fa-pipe-from="view.pipe" fa-options="options.scrollViewTwo">
+            <fa-view ng-repeat="items in list">
+              <fa-modifier fa-size="[100, 100]">
+                  <fa-surface fa-background-color="view.bgColor">
+                    Index: {{$index}}
+                  </fa-surface>
+                </fa-modifier>
+            </fa-view>
+           </fa-scroll-view>   
         </fa-view>
-    </fa-scroll-view>
+      </fa-modifier>
+    </fa-view>
   </fa-app>
-
-  <script>
-    angular.module('faScrollViewExampleApp', ['famous.angular'])
-        .controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
-          
-          var EventHandler = $famous['famous/core/EventHandler'];
-          $scope.myEventHandler = new EventHandler();
-          $scope.list = [{content: "Scroll", color: "red"}, {content: "horizontally", color: "blue"}, {content: "yay!", color: "green"}, {content: "woo!", color: "yellow"}];
-          
-          $scope.options = {
-            myScrollView: {
-              clipSize: 100,
-              paginated: false,
-              speedLimit: 5,
-              direction: 0,
-            }
-          };
-
-      }]);
-  </script>
 </body>
 </html>

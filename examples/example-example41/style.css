@@ -5,3 +5,7 @@ fa-app {
     bottom: 0;
     left: 0;
   }
+  .blue-surface {
+    cursor: pointer;
+    color: #fff;
+  }

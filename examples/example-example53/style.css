@@ -5,3 +5,6 @@ fa-app {
     bottom: 0;
     left: 0;
   }
+  .strike {
+    text-decoration: line-through;
+  }

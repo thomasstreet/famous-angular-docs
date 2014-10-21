@@ -14,25 +14,19 @@
 
   
 </head>
-<body ng-app="faTapExampleApp">
-  <fa-app ng-controller="TapCtrl">
-    <fa-modifier fa-size="[100, 100]">
-      <fa-surface fa-tap="tapHandler($event)"
-                  fa-background-color="'red'">
-        Tap count: {{tapCount}}
-      </fa-surface>
+<body ng-app="faSurfaceExampleApp">
+  <fa-app ng-controller="SurfaceCtrl">
+    <fa-modifier fa-size="sizeForBoxFunction">
+      <fa-surface fa-background-color="'red'"></fa-surface>
     </fa-modifier>
   </fa-app>
 
   <script>
-    angular.module('faTapExampleApp', ['famous.angular'])
-      .controller('TapCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faSurfaceExampleApp', ['famous.angular'])
+      .controller('SurfaceCtrl', ['$scope', '$famous', function($scope, $famous) {
           
-          $scope.tapCount = 0;
-
-          $scope.tapHandler = function($event) {
-            console.log($event);
-            $scope.tapCount++;
+          $scope.sizeForBoxFunction = function() {
+             return [75, 75];
           };
 
       }]);

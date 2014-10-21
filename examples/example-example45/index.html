@@ -14,26 +14,36 @@
 
   
 </head>
-<body ng-app="faSequentialExampleApp">
-  <fa-app ng-controller="SequentialCtrl">
-    <fa-sequential-layout fa-options="sequentialOptions">
-     <fa-view ng-repeat="view in sequence">
-       <fa-modifier fa-size="[undefined, 100]">
-         <fa-surface fa-background-color="view.bgColor"></fa-surface>
-       </fa-modifier>
-     </fa-view>
-    </fa-sequential-layout>
+<body ng-app="faScrollViewExampleApp">
+  <fa-app ng-controller="ScrollCtrl">
+    <fa-scroll-view fa-pipe-from="myEventHandler" fa-options="options.myScrollView">
+        <fa-view ng-repeat="view in list">
+          <fa-modifier fa-size="[500, 320]">
+             <fa-surface fa-background-color="view.color"
+                          fa-pipe-to="myEventHandler">
+                {{view.content}}
+             </fa-surface>
+            </fa-modifier>
+        </fa-view>
+    </fa-scroll-view>
   </fa-app>
 
   <script>
-    angular.module('faSequentialExampleApp', ['famous.angular'])
-        .controller('SequentialCtrl', ['$scope', '$famous', function($scope, $famous) {
+    angular.module('faScrollViewExampleApp', ['famous.angular'])
+        .controller('ScrollCtrl', ['$scope', '$famous', function($scope, $famous) {
           
-          $scope.sequentialOptions = {
-            direction: 1, // vertical = 1 (default), horizontal = 0
+          var EventHandler = $famous['famous/core/EventHandler'];
+          $scope.myEventHandler = new EventHandler();
+          $scope.list = [{content: "Scroll", color: "red"}, {content: "horizontally", color: "blue"}, {content: "yay!", color: "green"}, {content: "woo!", color: "yellow"}];
+          
+          $scope.options = {
+            myScrollView: {
+              clipSize: 100,
+              paginated: false,
+              speedLimit: 5,
+              direction: 0,
+            }
           };
-
-          $scope.sequence = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
 
       }]);
   </script>
