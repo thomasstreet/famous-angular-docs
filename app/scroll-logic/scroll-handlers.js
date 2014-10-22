@@ -16,6 +16,10 @@ angular.module('famous-angular')
 
   $rootScope.$on('$stateChangeSuccess', function() {
     if (gravityTimeout) clearGravityTimeout();
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function() {
+    if (gravityTimeout) clearGravityTimeout();
 
     var indexMidpoint = $state.current.data.index + 0.5;
     progressTimeline.set(indexMidpoint, {duration: 500});
@@ -166,6 +170,7 @@ angular.module('famous-angular')
     var direction = deltaY > 0 ? 'forward' : 'backwards';
     var indexChange = direction === 'forward' ? 1 : -1;
     var currentStateIndex = $state.current.data.index;
+    if (gravityTimeout) clearGravityTimeout();
     stateUtils.goToStateWithIndex(currentStateIndex + indexChange);
   }
 
