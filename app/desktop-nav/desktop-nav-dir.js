@@ -9,7 +9,7 @@ angular.module('famous-angular')
   };
 })
 
-.controller('DesktopNavCtrl', function($rootScope, $scope, $famous, $timeline, $media) {
+.controller('DesktopNavCtrl', function($rootScope, $scope, $state, $famous, $timeline, $media, stateTransitions) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -29,10 +29,18 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
+  // If $state.current.name is defined, the state change must have finished
+  // before the $stateChangeSuccess handler is set up.  Reload the state to 
+  // ensure that the $stateChangeSuccess event is fired AFTER the handler is
+  // set up.
+  if ($state.current.name) {
+    $state.go($state.current.name, null, { reload: true });
+  }
+
   $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     $scope.navTimeline.halt();
 
-    var delay = getDelay(fromState) + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
+    var delay = getDelay(fromState) + stateTransitions.delayBetweenEnterLeaveAnimations;
 
     $scope.navTimeline.delay(delay);
 

@@ -9,7 +9,7 @@ angular.module('famous-angular')
   }
 })
 
-.controller('FooterCtrl', function($rootScope, $scope, $state, $famous, $timeline, $media) {
+.controller('FooterCtrl', function($rootScope, $scope, $state, $famous, $timeline, $media, stateTransitions) {
   var Transform = $famous['famous/core/Transform'];
 
   var Transitionable = $famous['famous/transitions/Transitionable'];
@@ -71,7 +71,7 @@ angular.module('famous-angular')
   // ensure that the $stateChangeSuccess event is fired AFTER the handler is
   // set up.
   if ($state.current.name) {
-    $state.go('download', null, { reload: true });
+    $state.go($state.current.name, null, { reload: true });
   }
 
   /* 
@@ -85,8 +85,7 @@ angular.module('famous-angular')
   $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     footerTimeline.halt();
 
-    var delayBetweenAnimations = $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS || 0;
-    var delay = getDelay(fromState) + delayBetweenAnimations;
+    var delay = getDelay(fromState) + stateTransitions.delayBetweenEnterLeaveAnimations;
 
     footerTimeline.delay(delay);
 

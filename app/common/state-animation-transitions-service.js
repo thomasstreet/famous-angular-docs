@@ -3,7 +3,7 @@ angular.module('famous-angular')
 .factory('stateTransitions', function($rootScope, $state) {
   // Need to give dead time between animations, so that the compilation
   // of a new view will not stutter frame rate
-  $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS = 300;
+  var DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS = 300;
 
   var prevState;
 
@@ -16,7 +16,7 @@ angular.module('famous-angular')
     if (!prevState || !prevState.data) {
       return 0;
     }
-    return prevState.data.leaveAnimationDuration + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
+    return prevState.data.leaveAnimationDuration + DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
   }
 
 
@@ -69,11 +69,12 @@ angular.module('famous-angular')
     leave: function(t, $done) {
       t.halt();
 
-      t.delay($rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS);
+      t.delay(DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS);
 
       var leaveT = getLeaveT();
       t.set(leaveT, { duration: leaveDuration() }, $done);
     },
-    enterDelay: enterDelay
+    enterDelay: enterDelay,
+    delayBetweenEnterLeaveAnimations: DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS
   }
 });
