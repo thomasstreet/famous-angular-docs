@@ -82,6 +82,13 @@ angular.module('famous-angular')
 
     previousPageY = e.originalEvent.touches[0].pageY;
 
+
+    if (Math.abs(delta) > 30) {
+      haltAdditionalScrollEvents();
+      changeState(delta);
+      return;
+    }
+
     var deltaY = $timeline([
       [-100, -1],
       [0, 0],
@@ -89,11 +96,6 @@ angular.module('famous-angular')
     ])(delta);
 
     adjustTimelines(deltaY);
-
-    if (Math.abs(delta) > 30) {
-      haltAdditionalScrollEvents();
-      changeState(delta);
-    }
   });
 
 /*--------------------------------------------------------------*/
@@ -111,7 +113,7 @@ angular.module('famous-angular')
     // Trigger the gravity effect after the last scroll event has finished
     if (gravityTimeout) clearGravityTimeout();
 
-    var delayUntilGravitySnap = $rootScope.isMobile() ? 700 : 300;
+    var delayUntilGravitySnap = 300;
     gravityTimeout = setTimeout(function() {
       triggerGravityEffect(startingPoint);
       clearGravityTimeout();
