@@ -102,9 +102,9 @@ angular.module('famous-angular')
       '#routing-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [105, 1410, 0], Easing.outBack],
-            [0.25, [105, 1410, 0], Easing.outBack],
-            [0.55, [105, 1060, 0]]
+            [0, [195, 1410, 0], Easing.outBack],
+            [0.25, [195, 1410, 0], Easing.outBack],
+            [0.55, [195, 1080, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -138,9 +138,9 @@ angular.module('famous-angular')
       '#dependency-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [125, 1025, 0], Easing.outBack],
-            [0.30, [125, 1025, 0], Easing.outBack],
-            [0.60, [125, 665, 0]]
+            [0, [95, 1025, 0], Easing.outBack],
+            [0.30, [95, 1025, 0], Easing.outBack],
+            [0.60, [95, 685, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -174,9 +174,9 @@ angular.module('famous-angular')
       '#modules-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [495, 1410, 0], Easing.outBack],
-            [0.45, [495, 1410, 0], Easing.outBack],
-            [0.75, [495, 1060, 0]]
+            [0, [595, 1410, 0], Easing.outBack],
+            [0.45, [595, 1410, 0], Easing.outBack],
+            [0.75, [595, 1080, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         },
@@ -222,9 +222,9 @@ angular.module('famous-angular')
       '#routing-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [270, 1030, 0], Easing.outBack],
-            [0.25, [270, 1030, 0], Easing.outBack],
-            [0.55, [270, 680, 0]]
+            [0, [335, 1030, 0], Easing.outBack],
+            [0.25, [335, 1030, 0], Easing.outBack],
+            [0.55, [335, 680, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -233,9 +233,9 @@ angular.module('famous-angular')
       '#dependency-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [750, 1030, 0], Easing.outBack],
-            [0.30, [750, 1030, 0], Easing.outBack],
-            [0.60, [750, 680, 0]]
+            [0, [650, 1030, 0], Easing.outBack],
+            [0.30, [650, 1030, 0], Easing.outBack],
+            [0.60, [650, 680, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
@@ -266,9 +266,9 @@ angular.module('famous-angular')
       '#modules-text': {
         transform: function() {
           var translate = $timeline([
-            [0, [1430, 1030, 0], Easing.outBack],
-            [0.45, [1430, 1030, 0], Easing.outBack],
-            [0.75, [1430, 680, 0]]
+            [0, [1515, 1030, 0], Easing.outBack],
+            [0.45, [1515, 1030, 0], Easing.outBack],
+            [0.75, [1515, 680, 0]]
           ])(t.get());
           return Transform.translate.apply(this, translate);
         }
