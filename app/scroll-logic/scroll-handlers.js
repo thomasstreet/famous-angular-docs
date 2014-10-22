@@ -152,7 +152,7 @@ angular.module('famous-angular')
   function traveledFarEnoughForStateChange(newProgressValue) {
     var progressValueStartingPoint = ($state.current.data.index + 0.5);
     var delta = Math.abs(newProgressValue - progressValueStartingPoint);
-    var threshold = $rootScope.isMobile ? 0.4 : 1;
+    var threshold = $rootScope.isMobile() ? 0.4 : 1;
     return delta >= threshold;
   }
 
