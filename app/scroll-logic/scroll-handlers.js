@@ -52,7 +52,7 @@ angular.module('famous-angular')
     // appropriately
     deltaY = deltaY / 100;
 
-    var MAXIMUM_SCROLL_DISTANCE = 0.025;
+    var MAXIMUM_SCROLL_DISTANCE = 0.03;
     // Force a range of [-MAXIMUM_SCROLL_DISTANCE, MAXIUM_SCROLL_DISTANCE]
     deltaY = Math.min(MAXIMUM_SCROLL_DISTANCE, deltaY);
     deltaY = Math.max(-MAXIMUM_SCROLL_DISTANCE, deltaY);
