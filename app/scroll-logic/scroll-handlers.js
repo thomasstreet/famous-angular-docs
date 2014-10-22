@@ -85,6 +85,7 @@ angular.module('famous-angular')
 
     if (Math.abs(delta) > 30) {
       haltAdditionalScrollEvents();
+      if (gravityTimeout) clearGravityTimeout();
       changeState(delta);
       return;
     }
