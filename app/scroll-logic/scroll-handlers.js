@@ -89,7 +89,6 @@ angular.module('famous-angular')
 
     if (Math.abs(delta) > 30) {
       haltAdditionalScrollEvents();
-      if (gravityTimeout) clearGravityTimeout();
       changeState(delta);
       return;
     }
@@ -118,15 +117,15 @@ angular.module('famous-angular')
     // Trigger the gravity effect after the last scroll event has finished
     if (gravityTimeout) clearGravityTimeout();
 
-    var delayUntilGravitySnap = 300;
-    gravityTimeout = setTimeout(function() {
-      triggerGravityEffect(startingPoint);
-      clearGravityTimeout();
-    }, delayUntilGravitySnap);
-
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(deltaY); 
       haltAdditionalScrollEvents();
+    } else {
+      var delayUntilGravitySnap = 300;
+      gravityTimeout = setTimeout(function() {
+        triggerGravityEffect(startingPoint);
+        clearGravityTimeout();
+      }, delayUntilGravitySnap);
     }
 
   }
