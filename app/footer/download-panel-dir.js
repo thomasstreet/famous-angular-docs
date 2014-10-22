@@ -27,13 +27,13 @@ angular.module('famous-angular')
   };
 
   var js = {
-    minified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.js',
-    unminified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.js'
+    minified: 'http://code.famo.us/famous-angular/latest/famous-angular.min.js',
+    unminified: 'http://code.famo.us/famous-angular/latest/famous-angular.js'
   };
 
   var css = {
-    minified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.min.css',
-    unminified: 'https://code.famo.us/integrations/angular/2.0.2/famous-angular.css'
+    minified: 'http://code.famo.us/famous-angular/latest/famous-angular.min.css',
+    unminified: 'http://code.famo.us/famous-angular/latest/famous-angular.css'
   };
 
 /*--------------------------------------------------------------*/
