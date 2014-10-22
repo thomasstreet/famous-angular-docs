@@ -31,6 +31,7 @@ angular.module('famous-angular')
   });
 
 /*--------------------------------------------------------------*/
+  var haltScrollEvents;
 
   $(window).on('mousewheel', {
     mousewheel: {
@@ -38,6 +39,8 @@ angular.module('famous-angular')
       throttle: true
     }
   }, function(e) {
+    if (haltScrollEvents) return;
+
     e.deltaY = correctDeltaY(e.deltaY);
     adjustTimelines(e.deltaY);
   });
@@ -62,35 +65,42 @@ angular.module('famous-angular')
 
 /*--------------------------------------------------------------*/
 
-  var startY;
+  var previousPageY;
   
   $(window).on('touchstart', function(e) {
-    startY = e.originalEvent.touches[0].pageY;
+    previousPageY = e.originalEvent.touches[0].pageY;
   });
 
   $(window).on('touchmove', function(e) {
+    if (haltScrollEvents) return;
+
     // If the target is an HTML Input Element (e.g. an input range slider),
     // don't adjust timelines
     if (/Input/.test(e.target.toString())) return;
 
-    delta = startY - e.originalEvent.touches[0].pageY;
+    var delta = previousPageY - e.originalEvent.touches[0].pageY;
+
+    previousPageY = e.originalEvent.touches[0].pageY;
 
     var deltaY = $timeline([
-      [-600, -1.4],
+      [-100, -1],
       [0, 0],
-      [600, 1.4]
+      [100, 1]
     ])(delta);
 
     adjustTimelines(deltaY);
+
+    if (Math.abs(delta) > 30) {
+      haltAdditionalScrollEvents();
+      changeState(delta);
+    }
   });
 
 /*--------------------------------------------------------------*/
 
-  var haltScrollEvents;
   var DISABLE_EVENTS_MS = 1000;
 
   function adjustTimelines(deltaY) {
-    if (haltScrollEvents) return;
 
     var startingPoint = $state.current.data.index + 0.5;
 
@@ -101,10 +111,11 @@ angular.module('famous-angular')
     // Trigger the gravity effect after the last scroll event has finished
     if (gravityTimeout) clearGravityTimeout();
 
+    var delayUntilGravitySnap = $rootScope.isMobile() ? 700 : 300;
     gravityTimeout = setTimeout(function() {
       triggerGravityEffect(startingPoint);
       clearGravityTimeout();
-    }, 300);
+    }, delayUntilGravitySnap);
 
     if (traveledFarEnoughForStateChange(newProgressValue)) {
       changeState(deltaY); 
@@ -135,7 +146,7 @@ angular.module('famous-angular')
   function traveledFarEnoughForStateChange(newProgressValue) {
     var progressValueStartingPoint = ($state.current.data.index + 0.5);
     var delta = Math.abs(newProgressValue - progressValueStartingPoint);
-    var threshold = 1;
+    var threshold = $rootScope.isMobile ? 0.4 : 1;
     return delta >= threshold;
   }
 
