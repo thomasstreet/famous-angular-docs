@@ -71,7 +71,7 @@ angular.module('famous-angular')
   // ensure that the $stateChangeSuccess event is fired AFTER the handler is
   // set up.
   if ($state.current.name) {
-    $state.go($state.current.name, null, { reload: true });
+    $state.go('download', null, { reload: true });
   }
 
   /* 
@@ -85,7 +85,8 @@ angular.module('famous-angular')
   $scope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
     footerTimeline.halt();
 
-    var delay = getDelay(fromState) + $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
+    var delayBetweenAnimations = $rootScope.DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS || 0;
+    var delay = getDelay(fromState) + delayBetweenAnimations;
 
     footerTimeline.delay(delay);
 
@@ -93,11 +94,10 @@ angular.module('famous-angular')
       footerTimeline.set(0, {duration: 400});
       return;
     } 
-    
+
     if (goingToEndState()) {
-      footerTimeline.set(1, {duration: 0}, function() {
-        footerTimeline.set(2, {duration: 400});
-      });
+      footerTimeline.set(1, {duration: 0});
+      footerTimeline.set(2, {duration: 400});
       return;
     }
 
@@ -119,7 +119,7 @@ angular.module('famous-angular')
     return;
 
     function getDelay(prevState) {
-      if (!prevState.data) return 0;
+      if (!prevState || !prevState.data) return 0;
       return prevState.data.leaveAnimationDuration;
     }
 
