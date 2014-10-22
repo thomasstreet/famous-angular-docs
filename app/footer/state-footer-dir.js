@@ -69,8 +69,8 @@ angular.module('famous-angular')
   // If $state.current.name is defined, the state change must have finished
   // before the $stateChangeSuccess handler is set up.  Reload the state to 
   // ensure that the $stateChangeSuccess event is fired AFTER the handler is
-  // set up.
-  if ($state.current.name) {
+  // set up.  Don't worry about this for intro page, as no nav is shown.
+  if ($state.current.name && $state.current.name !== 'intro') {
     $state.go($state.current.name, null, { reload: true });
   }
 
