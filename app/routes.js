@@ -77,7 +77,7 @@ angular.module('famous-angular')
         enterAnimationDuration: 2000,
         leaveAnimationDuration: 300,
         cssClass: 'state-5',
-        pageTitle: 'Tying it All Together'
+        pageTitle: 'Unification'
       }
     })
     .state('download', {
