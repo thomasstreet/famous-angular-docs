@@ -76,6 +76,8 @@ angular.module('famous-angular')
   });
 
   $(window).on('touchmove', function(e) {
+    e.preventDefault();
+
     if (haltScrollEvents) return;
 
     // If the target is an HTML Input Element (e.g. an input range slider),
