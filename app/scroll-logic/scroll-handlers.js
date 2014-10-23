@@ -71,11 +71,11 @@ angular.module('famous-angular')
 
   var previousPageY;
   
-  $(document).on('touchstart', function(e) {
+  $(document).bind('touchstart', function(e) {
     previousPageY = e.originalEvent.touches[0].pageY;
   });
 
-  $(document).on('touchmove', function(e) {
+  $(document).bind('touchmove', function(e) {
     e.preventDefault();
 
     if (haltScrollEvents) return;
