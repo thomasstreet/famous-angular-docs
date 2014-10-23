@@ -152,10 +152,10 @@ angular.module('famous-angular')
 
 
   function traveledFarEnoughForStateChange(newProgressValue) {
-    // If scroll backgrounds on intro state, the newProgressValue can go
-    // below 0.  If it hits 0, halt additional scroll events are trigger the
-    // gravity effect.
-    if (newProgressValue <= 0) {
+    // If scrolling past max range, halt additional scroll events and trigger
+    // the gravity effect.
+    var maxRange = $rootScope.isMobile() ? [0.1, 6.9] : [0, 7];
+    if (newProgressValue <= maxRange[0] || newProgressValue >= maxRange[1]) {
       haltAdditionalScrollEvents();
       return false;
     }
