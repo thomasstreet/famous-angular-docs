@@ -13,8 +13,10 @@ angular.module('famous-angular')
 
 
   function enterDelay() {
+    // If the initial state animation, delay long enough for angular to compile
+    // before animating.
     if (!prevState || !prevState.data) {
-      return 0;
+      return 1000;
     }
     return prevState.data.leaveAnimationDuration + DELAY_BETWEEN_ENTER_LEAVE_ANIMATIONS;
   }
