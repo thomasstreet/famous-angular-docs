@@ -1,6 +1,8 @@
 Famo.us/Angular Docs
 =======================
 
+**See it live:** [https://famo.us/integrations/angular/](https://famo.us/integrations/angular/)
+
 <p>
   1. Install the frontend dependencies with <code>bower install</code>
 </p>
